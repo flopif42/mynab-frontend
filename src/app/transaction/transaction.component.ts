@@ -8,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
         <div>Transactions</div>
     `
 })
-export class TransactionComponent implements OnInit {
+export class TransactionComponent /*implements OnInit */ {
     /*
     m_serviceUrl = 'http://91.134.68.226:5000/transactions';
     m_transactions = [
