@@ -23,6 +23,6 @@ export class TransactionComponent implements OnInit {
     constructor(private http: HttpClient) {}
 
     ngOnInit() {
-        this.m_response$ = this.http.get<Object>(this.m_serviceUrl);
+        this.m_response$ = this.http.get<Object[]>(this.m_serviceUrl);
     }
 }
