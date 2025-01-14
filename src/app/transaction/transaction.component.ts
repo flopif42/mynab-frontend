@@ -9,6 +9,7 @@ import { HttpClient } from "@angular/common/http";
     `
 })
 export class TransactionComponent implements OnInit {
+    /*
     m_serviceUrl = 'http://91.134.68.226:5000/transactions';
     m_transactions = [
         {
@@ -27,4 +28,5 @@ export class TransactionComponent implements OnInit {
     ngOnInit() {
         this.m_response$ = this.http.get<Object[]>(this.m_serviceUrl);
     }
+    */
 }
