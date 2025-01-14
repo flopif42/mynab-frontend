@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { AccountComponent } from './account/account.component';
 import { BudgetComponent } from './budget/budget.component';
 import { PayeeComponent } from './payee/payee.component';
+import { CategoryComponent } from './category/category.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { UserComponent } from './user/user.component';
 
@@ -26,6 +27,11 @@ export const routes: Routes = [
     path: 'payee',
     title: 'Payees',
     component: PayeeComponent,
+  },
+  {
+    path: 'category',
+    title: 'Categories',
+    component: CategoryComponent,
   },
   {
     path: 'transaction',
