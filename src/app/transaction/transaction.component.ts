@@ -27,15 +27,15 @@ export class TransactionComponent implements OnInit {
     
     
     */
-    m_response$: Observable<Object[]>;
+    m_req: Observable<Object[]>;
     m_serviceUrl = 'http://91.134.68.226:5000/transactions';
 
     constructor(private http: HttpClient) { }
 
     m_output: string = '';
     ngOnInit() {
-        this.m_response$ = this.http.get<Object[]>(this.m_serviceUrl);
+        this.m_req = this.http.get<Object[]>(this.m_serviceUrl);
+        this.m_req.subscribe();
         this.m_output = 'on est passes dans ngOnInit'
     }
-    
 }
