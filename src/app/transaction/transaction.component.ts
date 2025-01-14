@@ -6,9 +6,10 @@ import { HttpClient } from "@angular/common/http";
     selector: 'transaction-home',
     template: `
         <div>Transactions</div>
+        {{ this.m_output }}
     `
 })
-export class TransactionComponent /*implements OnInit */ {
+export class TransactionComponent implements OnInit {
     /*
     m_serviceUrl = 'http://91.134.68.226:5000/transactions';
     m_transactions = [
@@ -24,9 +25,11 @@ export class TransactionComponent /*implements OnInit */ {
     ];
     m_response$: Observable<Object[]>;
     constructor(private http: HttpClient) {}
-
-    ngOnInit() {
-        this.m_response$ = this.http.get<Object[]>(this.m_serviceUrl);
-    }
     */
+    m_output: string = '';
+    ngOnInit() {
+    //    this.m_response$ = this.http.get<Object[]>(this.m_serviceUrl);
+        this.m_output = 'on est passés dans ngOnInit'
+    }
+    
 }
