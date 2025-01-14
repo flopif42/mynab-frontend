@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from "rxjs/Observable";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -6,6 +7,7 @@ import { HttpClient } from "@angular/common/http";
     templateUrl: './transaction.component.html'
 })
 export class TransactionComponent implements OnInit {
+    m_serviceUrl = 'http://91.134.68.226:5000/transactions';
     m_transactions = [
         {
             amount: 810,
@@ -17,16 +19,10 @@ export class TransactionComponent implements OnInit {
             memo_trans: "menu"
         }
     ];
-
-    m_response = [];
-
-    m_serviceUrl = 'http://91.134.68.226:5000/transactions';
-
-    constructor(private http: HttpClient) {
-
-    }
+    m_response$: Observable<Object[]>;
+    constructor(private http: HttpClient) {}
 
     ngOnInit() {
-        this.m_response = this.http.get<Object>(this.m_serviceUrl);
+        this.m_response$ = this.http.get<Object>(this.m_serviceUrl);
     }
 }
