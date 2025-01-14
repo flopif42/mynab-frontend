@@ -1,4 +1,8 @@
 <div>Transactions</div>
+<p>begin</p>
+m_response$ | async
+<p>end</p>
+
 <ul>
     @for (transaction of m_transactions; track transaction.id_trans) {
     <li>{{ transaction.memo_trans }}</li>
