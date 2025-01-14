@@ -1,6 +1,6 @@
 <div>Transactions</div>
 <ul>
-    @for (transaction of m_transactions; track transaction.id) {
+    @for (transaction of m_transactions; track transaction.id_trans) {
     <li>{{ transaction.memo_trans }}</li>
     } @empty {
     <li>No transactions.</li>
