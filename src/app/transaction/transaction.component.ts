@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
 @Component({
     selector: 'transaction-home',
     templateUrl: './transaction.component.html'
 })
-export class TransactionComponent {
+export class TransactionComponent implements OnInit {
     m_transactions = [
         {
             amount: 810,
@@ -18,7 +18,15 @@ export class TransactionComponent {
         }
     ];
 
+    m_response = [];
+
+    m_serviceUrl = 'http://91.134.68.226:5000/transactions';
+
     constructor(private http: HttpClient) {
 
+    }
+
+    ngOnInit() {
+        this.m_response = this.http.get<Object>(this.m_serviceUrl);
     }
 }
