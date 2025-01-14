@@ -16,4 +16,8 @@ export class TransactionComponent {
             memo_trans: "menu"
         }
     ];
+
+    constructor(private http: HttpClient) {
+
+    }
 }
