@@ -23,7 +23,7 @@ export class Transaction {
     imports: [HttpClientModule]
 })
 export class TransactionComponent implements OnInit {
-    m_serviceUrl = 'http://91.134.68.226:5000/transactions';
+    m_serviceUrl = 'http://127.0.0.1:5000/transactions';
     m_transactions: Transaction[];
     constructor(private http: HttpClient) { }
 
