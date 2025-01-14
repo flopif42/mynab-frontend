@@ -1,0 +1,8 @@
+<div>Transactions</div>
+<ul>
+    @for (transaction of m_transactions; track transaction.description) {
+    <li>{{ transaction.description }}</li>
+    } @empty {
+    <li>No transactions.</li>
+    }
+</ul>
