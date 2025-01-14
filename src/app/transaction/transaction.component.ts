@@ -7,11 +7,12 @@ import { HttpClient } from "@angular/common/http";
     template: `
         <div>Transactions</div>
         {{ this.m_output }}
+        <div>Apres</div>
     `
 })
 export class TransactionComponent implements OnInit {
     /*
-    m_serviceUrl = 'http://91.134.68.226:5000/transactions';
+    
     m_transactions = [
         {
             amount: 810,
@@ -23,13 +24,18 @@ export class TransactionComponent implements OnInit {
             memo_trans: "menu"
         }
     ];
-    m_response$: Observable<Object[]>;
-    constructor(private http: HttpClient) {}
+    
+    
     */
+    m_response$: Observable<Object[]>;
+    m_serviceUrl = 'http://91.134.68.226:5000/transactions';
+
+    constructor(private http: HttpClient) { }
+
     m_output: string = '';
     ngOnInit() {
-    //    this.m_response$ = this.http.get<Object[]>(this.m_serviceUrl);
-        this.m_output = 'on est passés dans ngOnInit'
+        this.m_response$ = this.http.get<Object[]>(this.m_serviceUrl);
+        this.m_output = 'on est passes dans ngOnInit'
     }
     
 }
