@@ -4,7 +4,22 @@ import { HttpClient } from "@angular/common/http";
 
 @Component({
     selector: 'transaction-home',
-    templateUrl: './transaction.component.html'
+    template: `
+        <div>Transactions</div>
+        <!--
+        <p>begin</p>
+        m_response$ | async
+        <p>end</p>
+
+        <ul>
+            @for (transaction of m_transactions; track transaction.id_trans) {
+            <li>{{ transaction.memo_trans }}</li>
+            } @empty {
+            <li>No transactions.</li>
+            }
+        </ul>
+        -->
+`
 })
 export class TransactionComponent implements OnInit {
     m_serviceUrl = 'http://91.134.68.226:5000/transactions';
