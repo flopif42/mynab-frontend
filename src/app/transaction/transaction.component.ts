@@ -9,9 +9,11 @@ import { HttpClientModule } from '@angular/common/http';
         <div>Transactions</div>
         {{ this.m_output }}
         <div>Apres</div>
-    `
+    `,
+    imports: [HttpClientModule]
 })
 export class TransactionComponent implements OnInit {
+    
     /*
     
     m_transactions = [
