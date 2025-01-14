@@ -1,0 +1,40 @@
+import { Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AccountComponent } from './account/account.component';
+import { BudgetComponent } from './budget/budget.component';
+import { PayeeComponent } from './payee/payee.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { UserComponent } from './user/user.component';
+
+export const routes: Routes = [
+  {
+    path: '',
+    title: 'Home',
+    component: HomeComponent,
+  },
+  {
+    path: 'account',
+    title: 'Accounts',
+    component: AccountComponent,
+  },
+  {
+    path: 'budget',
+    title: 'Budget',
+    component: BudgetComponent,
+  },
+  {
+    path: 'payee',
+    title: 'Payees',
+    component: PayeeComponent,
+  },
+  {
+    path: 'transaction',
+    title: 'Transactions',
+    component: TransactionComponent,
+  },
+  {
+    path: 'user',
+    title: 'User Settings',
+    component: UserComponent,
+  }
+];
