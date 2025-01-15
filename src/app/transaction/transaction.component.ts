@@ -15,7 +15,8 @@ export class Transaction {
 
 @Component({
     selector: 'transaction-home',
-    templateUrl: './transaction.component.html',
+    templateUrl: 'transaction.component.html',
+    styleUrl: 'transaction.component.css',
     imports: [HttpClientModule]
 })
 export class TransactionComponent implements OnInit {

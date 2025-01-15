@@ -1,13 +1,20 @@
 ﻿<div>Transactions</div>
-    <table>
+<table>
     @for (trs of this.m_transactions; track trs.id_trans) {
-        <tr>
-            <td>{{ trs.id_account }}</td>
-            <td>{{ trs.date_trans }}</td>
-            <td>{{ trs.id_payee }}</td>
-            <td>{{ trs.memo_trans }}</td>
-            <td>{{ trs.amount }}</td>
-        </tr>
+    <th>
+        <td>Account</td>
+        <td>Date</td>
+        <td>Payee</td>
+        <td>Memo</td>
+        <td>Amount</td>
+    </th>
+    <tr>
+        <td>{{ trs.id_account }}</td>
+        <td>{{ trs.date_trans }}</td>
+        <td>{{ trs.id_payee }}</td>
+        <td>{{ trs.memo_trans }}</td>
+        <td>{{ trs.amount }}</td>
+    </tr>
     }
-    </table>
+</table>
 <div>Fin</div>
