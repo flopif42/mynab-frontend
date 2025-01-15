@@ -15,11 +15,7 @@ export class Transaction {
 
 @Component({
     selector: 'transaction-home',
-    template: `
-        <div>Transactions</div>
-        {{ this.m_transactions }}
-        <div>Apres</div>
-    `,
+    templateUrl: './transaction.component.html',
     imports: [HttpClientModule]
 })
 export class TransactionComponent implements OnInit {
@@ -47,18 +43,4 @@ export class TransactionComponent implements OnInit {
                     console.log('Request completed')
                 })
     }
-
-    /*
-    m_transactions = [
-        {
-            amount: 810,
-            date_trans: "14/01/2025",
-            flow: "outflow",
-            id_account: "tickets_resto",
-            id_payee: "quick",
-            id_trans: 1,
-            memo_trans: "menu"
-        }
-    ];
-    */
 }
