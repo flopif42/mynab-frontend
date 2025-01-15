@@ -1,7 +1,13 @@
 ﻿<div>Transactions</div>
-    <ul>
-    @for (transaction of this.m_transactions; track transaction.id_trans) {
-        <li>{{ transaction.memo_trans }} : {{ transaction.amount }}</li>
+    <table>
+    @for (trs of this.m_transactions; track trs.id_trans) {
+        <tr>
+            <td>{{ trs.id_account }}</td>
+            <td>{{ trs.date_trans }}</td>
+            <td>{{ trs.id_payee }}</td>
+            <td>{{ trs.memo_trans }}</td>
+            <td>{{ trs.amount }}</td>
+        </tr>
     }
-</ul>
+    </table>
 <div>Fin</div>
