@@ -33,7 +33,7 @@ export class TransactionComponent implements OnInit {
             .subscribe(
                 (response) => {
                     console.log('response received')
-                    console.log(response);
+//                    console.log(response);
                     this.m_transactions = response;
                 },
                 (error) => {
