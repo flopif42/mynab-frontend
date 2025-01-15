@@ -5,3 +5,7 @@ table, td, th {
 table {
     border-collapse: collapse;
 }
+
+td {
+    background-color: burlywood;
+}
