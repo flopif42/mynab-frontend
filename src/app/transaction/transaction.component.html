@@ -1,6 +1,6 @@
 ﻿<div>Transactions</div>
     <ul>
-    @for (transaction of this.m_transactions; track transaction.id) {
+    @for (transaction of this.m_transactions; track transaction.id_trans) {
         <li>{{ transaction.memo_trans }} : {{ transaction.amout }}</li>
     }
 </ul>
