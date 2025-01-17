@@ -70,8 +70,18 @@ export class TransactionComponent implements OnInit {
 
     public createTransaction(txn: Transaction) {
         const endpoint = this.m_serviceUrl + "/transactions/new"
-        var result = this.http.post<Transaction>(endpoint, txn)
-        console.log(result)
+        var result = this.http.post<Transaction>(endpoint, txn).subscribe(
+            (response) => {
+                console.log('response received')
+                console.log(response);
+            },
+            (error) => {
+                console.error('Request failed with error')
+                alert(error);
+            },
+            () => {
+                console.log('Request completed')
+            })
     }
 
     onSubmit() {
