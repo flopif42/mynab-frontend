@@ -9,3 +9,7 @@ table {
 th {
     background-color: burlywood;
 }
+
+input {
+    width: 100%
+}
