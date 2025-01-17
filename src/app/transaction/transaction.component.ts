@@ -6,7 +6,7 @@ import { DecimalPipe } from '@angular/common';
 
 export class Transaction {
     id_trans: Number;
-    amount: Number;
+    amount: String;
     date_trans: String;
     flow: String;
     id_account: String;
