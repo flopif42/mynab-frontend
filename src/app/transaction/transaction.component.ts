@@ -5,18 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 export class Transaction {
-    constructor(id_trans, amount, date_trans, flow, id_account, id_payee, memo_trans) {
-        this.id_trans = id_trans;
-        this.amount = amount;
-        this.date_trans = date_trans;
-        this.flow = flow;
-        this.id_account = id_account;
-        this.id_payee = id_payee;
-        this.memo_trans = memo_trans;
-    }
-
     id_trans: Number;
     amount: String;
     date_trans: String;
@@ -37,7 +26,6 @@ export class TransactionComponent implements OnInit {
     m_transactions: Transaction[];
 
     m_newTransactionForm = new FormGroup({
-        id_trans: new FormControl(''),
         date_trans: new FormControl(''),
         id_account: new FormControl(''),
         id_payee: new FormControl(''),
@@ -71,7 +59,7 @@ export class TransactionComponent implements OnInit {
 
     errorMessage = 'No errors';
 
-    public createTransaction(txn: Transaction) {
+    public createTransaction(txn) {
         const endpoint = this.m_serviceUrl + "/transactions/new"
 
         const headers = { 'Content-Type': 'application/json' };
@@ -89,16 +77,6 @@ export class TransactionComponent implements OnInit {
 
     onSubmit() {
         var formData = this.m_newTransactionForm.value;
-        /*
-        var newTransaction = new Transaction(
-            0,
-            data['amount'],
-            data['date_trans'],
-            data['flow'],
-            data['id_account'],
-            data['id_payee'],
-            data['memo_trans']
-        );*/
         this.createTransaction(formData);
     }
 }
