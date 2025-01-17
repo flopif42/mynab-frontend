@@ -49,4 +49,8 @@ export class TransactionComponent implements OnInit {
                     console.log('Request completed')
                 })
     }
+
+    updateName() {
+        this.name.setValue('Nancy');
+    }
 }
