@@ -37,6 +37,7 @@ export class TransactionComponent implements OnInit {
     m_transactions: Transaction[];
 
     m_newTransactionForm = new FormGroup({
+        id_trans: 0,
         date_trans: new FormControl(''),
         id_account: new FormControl(''),
         id_payee: new FormControl(''),
@@ -87,9 +88,7 @@ export class TransactionComponent implements OnInit {
     }
 
     onSubmit() {
-        var data = this.m_newTransactionForm.value;
-
-        data['id_trans'] = 0
+        var formData = this.m_newTransactionForm.value;
         /*
         var newTransaction = new Transaction(
             0,
@@ -100,6 +99,6 @@ export class TransactionComponent implements OnInit {
             data['id_payee'],
             data['memo_trans']
         );*/
-        this.createTransaction(data);
+        this.createTransaction(formData);
     }
 }
