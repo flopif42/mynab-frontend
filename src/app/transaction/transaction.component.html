@@ -11,6 +11,9 @@
     </tr>
     }
 </table>
-<input id="name" type="text" [formControl]="name">
-<p>Value: {{ name.value }}</p>
-<button type="button" (click)="updateName()">Update Name</button>
+
+<form [formGroup]="m_newTransactionForm" (ngSubmit)="onSubmit()">
+    <label for="id_account">Account: </label><input id="id_account" type="text" formControlName="id_account">
+    <label for="memo_trans">Memo: </label><input id="memo_trans" type="text" formControlName="memo_trans">
+    <button type="submit">Submit</button>
+</form>

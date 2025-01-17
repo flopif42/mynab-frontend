@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { HttpClientModule } from '@angular/common/http';
@@ -26,7 +26,14 @@ export class TransactionComponent implements OnInit {
     m_serviceUrl = 'http://91.134.68.226:5000/transactions';
     m_transactions: Transaction[];
 
-    name = new FormControl('');
+    m_newTransactionForm = new FormGroup({
+        date_trans: new FormControl(''),
+        id_account: new FormControl(''),
+        id_payee: new FormControl(''),
+        memo_trans: new FormControl(''),
+        amount: new FormControl(''),
+        flow: new FormControl('')
+    });
 
     constructor(private http: HttpClient) { }
 
@@ -50,7 +57,8 @@ export class TransactionComponent implements OnInit {
                 })
     }
 
-    updateName() {
-        this.name.setValue('Nancy');
+    onSubmit() {
+        // TODO: Use EventEmitter with form value
+        console.warn(this.m_newTransactionForm.value);
     }
 }
