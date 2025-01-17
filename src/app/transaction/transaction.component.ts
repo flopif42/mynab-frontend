@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { HttpClientModule } from '@angular/common/http';
+import { DecimalPipe } from '@angular/common';
 
 export class Transaction {
     id_trans: Number;
@@ -17,7 +18,7 @@ export class Transaction {
     selector: 'transaction-home',
     templateUrl: 'transaction.component.html',
     styleUrl: 'transaction.component.css',
-    imports: [HttpClientModule]
+    imports: [HttpClientModule, DecimalPipe]
 })
 export class TransactionComponent implements OnInit {
     m_serviceUrl = 'http://91.134.68.226:5000/transactions';
