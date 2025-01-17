@@ -68,24 +68,29 @@ export class TransactionComponent implements OnInit {
                 })
     }
 
+    errorMessage = 'No errors';
+
     public createTransaction(txn: Transaction) {
         const endpoint = this.m_serviceUrl + "/transactions/new"
-        var result = this.http.post<Transaction>(endpoint, txn).subscribe(
-            (response) => {
-                console.log('response received')
-                console.log(response);
+
+        const headers = { 'Content-Type': 'application/json' };
+
+        var result = this.http.post<any>(endpoint, txn, { headers }).subscribe({
+            next: data => {
+                console.log(data.id);
             },
-            (error) => {
-                console.error('Request failed with error')
-                alert(error);
-            },
-            () => {
-                console.log('Request completed')
-            })
+            error: error => {
+                this.errorMessage = error.message;
+                console.error('There was an error!', error);
+            }
+        })
     }
 
     onSubmit() {
         var data = this.m_newTransactionForm.value;
+
+        data['id_trans'] = 0
+        /*
         var newTransaction = new Transaction(
             0,
             data['amount'],
@@ -94,7 +99,7 @@ export class TransactionComponent implements OnInit {
             data['id_account'],
             data['id_payee'],
             data['memo_trans']
-        );
-        this.createTransaction(newTransaction);
+        );*/
+        this.createTransaction(data);
     }
 }
