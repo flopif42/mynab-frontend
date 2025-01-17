@@ -52,31 +52,21 @@ export class TransactionComponent implements OnInit {
                     console.error('Request failed with error')
                     alert(error);
                 },
-                () => {
-                    console.log('Request completed')
-                })
+                () => { console.log('Request completed') })
     }
-
-    errorMessage = 'No errors';
 
     public createTransaction(txn) {
         const endpoint = this.m_serviceUrl + "/transactions/new"
-
         const headers = { 'Content-Type': 'application/json' };
-
         var result = this.http.post<any>(endpoint, txn, { headers }).subscribe({
-            next: data => {
-                console.log(data.id);
-            },
-            error: error => {
-                this.errorMessage = error.message;
-                console.error('There was an error!', error);
-            }
+            next: data => { console.log(data.id); },
+            error: error => { console.error('There was an error!', error); }
         })
     }
 
     onSubmit() {
         var formData = this.m_newTransactionForm.value;
         this.createTransaction(formData);
+        this.getTransactions()
     }
 }
