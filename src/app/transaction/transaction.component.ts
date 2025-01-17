@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 export class Transaction {
     id_trans: Number;
@@ -14,14 +17,17 @@ export class Transaction {
 }
 
 @Component({
-    selector: 'transaction-home',
+    selector: 'app-transaction',
     templateUrl: 'transaction.component.html',
     styleUrl: 'transaction.component.css',
-    imports: [HttpClientModule]
+    imports: [HttpClientModule, ReactiveFormsModule]
 })
 export class TransactionComponent implements OnInit {
     m_serviceUrl = 'http://91.134.68.226:5000/transactions';
     m_transactions: Transaction[];
+
+    name = new FormControl('');
+
     constructor(private http: HttpClient) { }
 
     ngOnInit() {
