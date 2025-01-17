@@ -23,7 +23,7 @@ export class Transaction {
     imports: [HttpClientModule, ReactiveFormsModule]
 })
 export class TransactionComponent implements OnInit {
-    m_serviceUrl = 'http://91.134.68.226:5000/transactions';
+    m_serviceUrl = 'http://91.134.68.226:5000';
     m_transactions: Transaction[];
 
     m_newTransactionForm = new FormGroup({
@@ -42,7 +42,8 @@ export class TransactionComponent implements OnInit {
     }
 
     public getTransactions() {
-        return this.http.get<Transaction[]>(this.m_serviceUrl)
+        const endpoint = this.m_serviceUrl + "/transactions"
+        return this.http.get<Transaction[]>(endpoint)
             .subscribe(
                 (response) => {
                     console.log('response received')
@@ -57,8 +58,13 @@ export class TransactionComponent implements OnInit {
                 })
     }
 
+    public createTransaction(txn: Transaction) {
+        const endpoint = this.m_serviceUrl + "/transactions/new"
+        var result = this.http.post<Transaction>(endpoint, txn)
+        console.log(result)
+    }
+
     onSubmit() {
-        // TODO: Use EventEmitter with form value
-        console.warn(this.m_newTransactionForm.value);
+        this.createTransaction(this.m_newTransactionForm.value);
     }
 }
