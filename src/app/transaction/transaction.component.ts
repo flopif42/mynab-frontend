@@ -37,7 +37,7 @@ export class TransactionComponent implements OnInit {
     m_transactions: Transaction[];
 
     m_newTransactionForm = new FormGroup({
-        id_trans: 0,
+        id_trans: new FormControl(''),
         date_trans: new FormControl(''),
         id_account: new FormControl(''),
         id_payee: new FormControl(''),
