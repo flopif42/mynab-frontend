@@ -59,7 +59,7 @@ export class TransactionComponent implements OnInit {
         const endpoint = this.m_serviceUrl + "/transactions/new"
         const headers = { 'Content-Type': 'application/json' };
         var result = this.http.post<any>(endpoint, txn, { headers }).subscribe({
-            next: data => { console.log(data.id); },
+            next: data => { console.log(data.id); this.getTransactions() },
             error: error => { console.error('There was an error!', error); }
         })
     }
@@ -67,6 +67,5 @@ export class TransactionComponent implements OnInit {
     onSubmit() {
         var formData = this.m_newTransactionForm.value;
         this.createTransaction(formData);
-        this.getTransactions()
     }
 }
