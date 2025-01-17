@@ -4,7 +4,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    imports: [RouterLink, RouterOutlet],
+    imports: [RouterLink, RouterOutlet, app-transaction],
 })
 export class AppComponent {
     title = 'MYNAB';
