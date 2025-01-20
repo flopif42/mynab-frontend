@@ -55,6 +55,9 @@ export class TransactionComponent implements OnInit {
     }
 
     public createTransaction(txn) {
+        console.log(txn)
+
+
         const endpoint = this.m_serviceUrl + "/transactions/new"
         const headers = { 'Content-Type': 'application/json' };
         var result = this.http.post<any>(endpoint, txn, { headers }).subscribe({
@@ -68,11 +71,11 @@ export class TransactionComponent implements OnInit {
 
         if (formData['inflow'] == '') {
             formData['amount'] = formData['outflow']
-            formData['flow'] = formData['outflow']
+            formData['flow'] = 'outflow'
         }
         else {
             formData['amount'] = formData['inflow']
-            formData['flow'] = formData['inflow']
+            formData['flow'] = 'inflow'
         }
         this.createTransaction(formData);
     }
