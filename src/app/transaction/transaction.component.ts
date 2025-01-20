@@ -55,9 +55,6 @@ export class TransactionComponent implements OnInit {
     }
 
     public createTransaction(txn) {
-        console.log(txn)
-
-
         const endpoint = this.m_serviceUrl + "/transactions/new"
         const headers = { 'Content-Type': 'application/json' };
         var result = this.http.post<any>(endpoint, txn, { headers }).subscribe({
