@@ -11,5 +11,9 @@ th {
 }
 
 input {
-    width: 100%
+    width: 100%;
+}
+
+.amount {
+    text-align: right;
 }

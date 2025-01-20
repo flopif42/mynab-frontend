@@ -9,10 +9,10 @@
             <td>{{ trs.id_payee }}</td>
             <td>{{ trs.memo_trans }}</td>
             @if (trs.flow == 'outflow') {
-                <td>{{ trs.amount }}</td><td>&nbsp;</td>
+                <td class="amount">{{ trs.amount }}</td><td>&nbsp;</td>
             }
             @else {
-                <td>&nbsp;</td><td>{{ trs.amount }}</td>
+                <td>&nbsp;</td><td class="amount">{{ trs.amount }}</td>
             }
         </tr>
         }
