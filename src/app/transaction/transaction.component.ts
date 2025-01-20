@@ -29,7 +29,8 @@ export class TransactionComponent implements OnInit {
         id_account: new FormControl(''),
         id_payee: new FormControl(''),
         memo_trans: new FormControl(''),
-        amount: new FormControl(''),
+        outflow: new FormControl(''),
+        inflow: new FormControl(''),
         flow: new FormControl('')
     });
 
