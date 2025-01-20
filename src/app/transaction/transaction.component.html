@@ -12,13 +12,13 @@
             <td>{{ trs.amount }}</td>
             }
             @else {
-            <td> &nbsp; </td>
+            <td> {{ trs.flow }} </td>
             }
             @if (trs.flow == 'inflow') {
             <td>{{ trs.amount }}</td>
             }
             @else {
-            <td> &nbsp; </td>
+            <td> {{ trs.flow }} </td>
             }
             <td>&nbsp;</td>
         </tr>
