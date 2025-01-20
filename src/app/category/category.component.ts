@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'category-home',
     template: `
-    <div>Manage Categories</div>
+    <div>My Categories</div>
   `
 })
 export class CategoryComponent { }
