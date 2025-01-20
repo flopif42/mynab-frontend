@@ -8,19 +8,12 @@
             <td>{{ trs.date_trans }}</td>
             <td>{{ trs.id_payee }}</td>
             <td>{{ trs.memo_trans }}</td>
-            @if (trs.flow == 'ouflow') {
-            <td>{{ trs.amount }}</td>
+            @if (trs.flow == "ouflow") {
+                <td>{{ trs.amount }}</td><td>&nbsp;</td>
             }
             @else {
-            <td> {{ trs.flow }} </td>
+                <td>&nbsp;</td><td>{{ trs.amount }}</td>
             }
-            @if (trs.flow == 'inflow') {
-            <td>{{ trs.amount }}</td>
-            }
-            @else {
-            <td> {{ trs.flow }} </td>
-            }
-            <td>&nbsp;</td>
         </tr>
         }
         <tr>
