@@ -31,7 +31,6 @@ export class TransactionComponent implements OnInit {
         memo_trans: new FormControl(''),
         outflow: new FormControl(''),
         inflow: new FormControl(''),
-        flow: new FormControl('')
     });
 
     constructor(private http: HttpClient) { }
@@ -66,6 +65,15 @@ export class TransactionComponent implements OnInit {
 
     onSubmit() {
         var formData = this.m_newTransactionForm.value;
+
+        if (formData['inflow'] == '') {
+            formData['amount'] = formData['outflow']
+            formData['flow'] = formData['outflow']
+        }
+        else {
+            formData['amount'] = formData['inflow']
+            formData['flow'] = formData['inflow']
+        }
         this.createTransaction(formData);
     }
 }
