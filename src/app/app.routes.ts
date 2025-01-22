@@ -7,6 +7,7 @@ import { CategoryComponent } from './category/category.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 export const routes: Routes = [
     {
@@ -48,5 +49,10 @@ export const routes: Routes = [
         path: 'login',
         title: 'Login',
         component: LoginComponent,
+    },
+    {
+        path: 'sign-up',
+        title: 'Signup',
+        component: SignupComponent,
     }
 ];

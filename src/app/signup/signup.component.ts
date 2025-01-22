@@ -1,0 +1,20 @@
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+@Component({
+    selector: 'app-signup',
+    templateUrl: 'signup.component.html',
+    imports: [ReactiveFormsModule]
+})
+
+export class SignupComponent {
+    signupForm = new FormGroup({
+        email: new FormControl('', [Validators.required]),
+        password: new FormControl('', [Validators.required]),
+        confirm_password: new FormControl('', [Validators.required]),
+        first_name: new FormControl(''),
+        last_name: new FormControl('')
+    });
+
+    
+}

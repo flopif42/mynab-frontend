@@ -30,7 +30,7 @@ export class LoginComponent {
             this.authService.login(val.email, val.password)
                 .subscribe(
                     (response) => {
-                        console.log("User is logged in, toek key : ");
+                        console.log("User is logged in, token key : ");
                         console.log(response);
                         // this.router.navigateByUrl('/');
                     }
