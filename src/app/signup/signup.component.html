@@ -11,7 +11,7 @@
             <label>Confirm password</label><input name="confirm_password" formControlName="confirm_password" type="password">
         </div>
 
-        @if (passwordForm.errors?.['PasswordNoMatch']) {
+        @if (signupForm.errors?.['PasswordNoMatch']) {
         <div class="error-message">Password does'nt match.</div>
         }
 

@@ -15,9 +15,8 @@ export class SignupComponent {
         password: new FormControl('', [Validators.required]),
         confirm_password: new FormControl('', [Validators.required]),
         first_name: new FormControl(''),
-        last_name: new FormControl(''),
-        validators: confirmPasswordValidator 
-    });
+        last_name: new FormControl('')
+    }, confirmPasswordValidator());
 
     onSubmit() {
         const val = this.signupForm.value;
