@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from './login.authservice';
+import { AuthService } from './login.authservicez';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -15,11 +15,11 @@ export class LoginComponent {
         email: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required])
     });
-
+    /*
     constructor(private authService: AuthService,
                 private router: Router) {
     }
-
+    */
     login() {
         const val = this.loginForm.value;
 
