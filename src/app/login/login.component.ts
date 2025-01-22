@@ -18,9 +18,6 @@ export class LoginComponent {
 
     constructor(private authService: AuthService) {}
 
-    
-
-
     /*
     constructor(private authService: AuthService,
                 private router: Router) {
@@ -30,17 +27,13 @@ export class LoginComponent {
         const val = this.loginForm.value;
 
         if (val.email && val.password) {
-            console.log("in login()")
-            console.log(this.authService.hello())
-            /*
             this.authService.login(val.email, val.password)
                 .subscribe(
                     () => {
                         console.log("User is logged in");
-                        this.router.navigateByUrl('/');
+                        // this.router.navigateByUrl('/');
                     }
                 );
-                */
         }
     }
 }
