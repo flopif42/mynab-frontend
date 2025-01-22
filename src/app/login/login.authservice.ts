@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
+/*
 import { HttpClient } from "@angular/common/http";
 import { shareReplay } from 'rxjs/operators'
+*/
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
+    constructor() { }
+
+    hello() : string {
+        return "Hello";
+    }
+    /*
     constructor(private http: HttpClient) {
     }
 
@@ -16,4 +24,5 @@ export class AuthService {
             // this is just the HTTP call, 
             // we still need to handle the reception of the token
     }
+    */
 }

@@ -15,6 +15,12 @@ export class LoginComponent {
         email: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required])
     });
+
+    constructor(private authService: AuthService) {}
+
+    
+
+
     /*
     constructor(private authService: AuthService,
                 private router: Router) {
@@ -25,6 +31,7 @@ export class LoginComponent {
 
         if (val.email && val.password) {
             console.log("in login()")
+            console.log(this.authService.hello())
             /*
             this.authService.login(val.email, val.password)
                 .subscribe(
