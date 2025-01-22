@@ -16,13 +16,8 @@ export class LoginComponent {
         password: new FormControl('', [Validators.required])
     });
 
-    constructor(private authService: AuthService) {}
+    constructor(private authService: AuthService) { }
 
-    /*
-    constructor(private authService: AuthService,
-                private router: Router) {
-    }
-    */
     onSubmit() {
         const val = this.loginForm.value;
 
@@ -30,7 +25,6 @@ export class LoginComponent {
             this.authService.login(val.email, val.password)
                 .subscribe(
                     (response) => {
-                        console.log("User is logged in, token key : ");
                         console.log(response);
                         // this.router.navigateByUrl('/');
                     }
