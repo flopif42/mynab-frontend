@@ -8,6 +8,7 @@ import { shareReplay } from 'rxjs/operators'
 export class AuthService {
     constructor(private http: HttpClient) {
     }
+
     login(email: string, password: string) {
         return this.http.post<Object>('http://91.134.68.226:5000/user/login', { email, password }).pipe(
             shareReplay()
