@@ -24,6 +24,8 @@ export class LoginComponent {
         const val = this.loginForm.value;
 
         if (val.email && val.password) {
+            console.log("in login()")
+            /*
             this.authService.login(val.email, val.password)
                 .subscribe(
                     () => {
@@ -31,6 +33,7 @@ export class LoginComponent {
                         this.router.navigateByUrl('/');
                     }
                 );
+                */
         }
     }
 }
