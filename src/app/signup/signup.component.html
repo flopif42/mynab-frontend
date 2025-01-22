@@ -21,6 +21,6 @@
         </div>
     </fieldset>
     <div class="form-buttons">
-        <button class="button button-primary">Sign up</button>
+        <button class="button button-primary" [disabled]="!signupForm.valid">Sign up</button>
     </div>
 </form>

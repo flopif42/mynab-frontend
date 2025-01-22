@@ -21,7 +21,7 @@ export class SignupComponent {
     onSubmit() {
         const val = this.signupForm.value;
 
-        if (val.email && val.password && val.confirm_password) {
+        if (this.signupForm && val.email && val.password && val.confirm_password) {
             console.log(val)
         }
     }
