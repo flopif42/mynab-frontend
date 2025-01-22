@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 /*
 import { shareReplay } from 'rxjs/operators'
 */
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
+    imports: [ReactiveFormsModule, HttpClientModule]
 })
 export class AuthService {
     m_serviceUrl = 'http://91.134.68.226:5000';

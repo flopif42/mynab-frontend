@@ -3,12 +3,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from './login.authservice';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from "@angular/common/http";
 
 @Component({
     selector: 'login',
     templateUrl: 'login.component.html',
-    imports: [ReactiveFormsModule, HttpClientModule]
+    imports: [ReactiveFormsModule]
 })
 
 export class LoginComponent {
