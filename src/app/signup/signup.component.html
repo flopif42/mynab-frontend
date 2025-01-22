@@ -10,6 +10,11 @@
         <div class="form-field">
             <label>Confirm password</label><input name="confirm_password" formControlName="confirm_password" type="password">
         </div>
+
+        <div class="error-message" *ngIf="passwordForm.errors?.['PasswordNoMatch']">
+            Password does'nt match.
+        </div>
+
         <div class="form-field">
             <label>First name</label><input name="first_name" formControlName="first_name">
             <label>Last name</label><input name="last_name" formControlName="last_name">

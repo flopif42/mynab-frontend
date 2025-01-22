@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { confirmPasswordValidator } from '../confirm-password.validator';
 
 @Component({
     selector: 'app-signup',
@@ -14,7 +15,8 @@ export class SignupComponent {
         password: new FormControl('', [Validators.required]),
         confirm_password: new FormControl('', [Validators.required]),
         first_name: new FormControl(''),
-        last_name: new FormControl('')
+        last_name: new FormControl(''),
+        validators: confirmPasswordValidator 
     });
 
     signup() {
