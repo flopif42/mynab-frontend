@@ -17,5 +17,11 @@ export class SignupComponent {
         last_name: new FormControl('')
     });
 
-    
+    signup() {
+        const val = this.signupForm.value;
+
+        if (val.email && val.password && val.confirm_password) {
+            console.log(val)
+        }
+    }
 }
