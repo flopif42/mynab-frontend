@@ -6,8 +6,7 @@ import { shareReplay } from 'rxjs/operators'
 */
 
 @Injectable({
-    providedIn: 'root',
-    imports: [ReactiveFormsModule, HttpClientModule]
+    providedIn: 'root'
 })
 export class AuthService {
     m_serviceUrl = 'http://91.134.68.226:5000';
