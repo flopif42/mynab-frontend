@@ -5,10 +5,8 @@ import { HttpClient } from "@angular/common/http";
     providedIn: 'root'
 })
 export class AuthService {
-
     constructor(private http: HttpClient) {
     }
-
     login(email: string, password: string) {
         return this.http.post<Object>('/api/login', { email, password })
             // this is just the HTTP call, 
