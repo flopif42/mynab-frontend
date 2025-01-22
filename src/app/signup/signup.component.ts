@@ -19,7 +19,7 @@ export class SignupComponent {
         validators: confirmPasswordValidator 
     });
 
-    signup() {
+    onSubmit() {
         const val = this.signupForm.value;
 
         if (val.email && val.password && val.confirm_password) {

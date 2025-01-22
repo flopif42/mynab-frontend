@@ -1,4 +1,4 @@
-<form [formGroup]="signupForm">
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <fieldset>
         <legend>Sign-up form</legend>
         <div class="form-field">
@@ -11,9 +11,9 @@
             <label>Confirm password</label><input name="confirm_password" formControlName="confirm_password" type="password">
         </div>
 
-        <div class="error-message" *ngIf="passwordForm.errors?.['PasswordNoMatch']">
-            Password does'nt match.
-        </div>
+        @if (passwordForm.errors?.['PasswordNoMatch']) {
+        <div class="error-message">Password does'nt match.</div>
+        }
 
         <div class="form-field">
             <label>First name</label><input name="first_name" formControlName="first_name">
@@ -21,6 +21,6 @@
         </div>
     </fieldset>
     <div class="form-buttons">
-        <button class="button button-primary" (click)="signup()">Sign up</button>
+        <button class="button button-primary">Sign up</button>
     </div>
 </form>

@@ -23,7 +23,7 @@ export class LoginComponent {
                 private router: Router) {
     }
     */
-    login() {
+    onSubmit() {
         const val = this.loginForm.value;
 
         if (val.email && val.password) {
