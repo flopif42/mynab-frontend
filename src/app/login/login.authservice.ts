@@ -12,7 +12,7 @@ export class AuthService {
     m_serviceUrl = 'http://91.134.68.226:5000';
 
     constructor(private http: HttpClient) { }
-    /*
+
     login(email: string, password: string) {
         const endpoint = this.m_serviceUrl + "/transactions"
 
@@ -22,5 +22,4 @@ export class AuthService {
             // this is just the HTTP call, 
             // we still need to handle the reception of the token
     }
-    */
 }
