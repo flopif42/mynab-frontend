@@ -14,7 +14,7 @@ export class AuthService {
     constructor(private http: HttpClient) { }
 
     login(email: string, password: string) {
-        const endpoint = this.m_serviceUrl + "/transactions"
+        const endpoint = this.m_serviceUrl + "/login"
 
         return this.http.post<Object>(endpoint, { email, password })
             // .pipe(shareReplay())
