@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Md5 } from 'ts-md5';
-
-/*
 import { shareReplay } from 'rxjs/operators'
-*/
 
 @Injectable({
     providedIn: 'root'
@@ -19,8 +16,7 @@ export class AuthService {
         var passphrase_md5 = Md5.hashStr(password);
 
         return this.http.post<Object>(this.m_endpoint, { email_address, passphrase_md5 })
-            // .pipe(shareReplay())
-            ;
+            .pipe(shareReplay());
             // this is just the HTTP call, 
             // we still need to handle the reception of the token
     }
