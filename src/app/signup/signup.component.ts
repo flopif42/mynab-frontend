@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { confirmPasswordValidator } from '../confirm-password.validator';
+import { SignupService } from './signup.signupservice';
 
 @Component({
     selector: 'app-signup',
@@ -18,11 +19,22 @@ export class SignupComponent {
         last_name: new FormControl('')
     }, confirmPasswordValidator());
 
+    constructor(private signupService: SignupService) { }
+
     onSubmit() {
         const val = this.signupForm.value;
 
         if (this.signupForm && val.email && val.password && val.confirm_password) {
-            console.log(val)
+            // console.log(val)
+            this.signupService.signup(
+                val.first_name, val.last_name, val.email, val.password
+            ).subscribe(
+                (response) => {
+                    console.log("User created : ");
+                    console.log(response);
+                    // this.router.navigateByUrl('/');
+                }
+            );
         }
     }
 }
