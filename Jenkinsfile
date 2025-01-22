@@ -6,6 +6,7 @@ pipeline {
             steps {
 		            echo 'Build step ...'                
 		            sh 'npm install'
+                    sh 'npm install ts-md5'
 		            sh 'npm run ng build'
             }
         }
