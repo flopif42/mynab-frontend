@@ -9,7 +9,7 @@ import { shareReplay } from 'rxjs/operators'
 })
 export class AuthService {
   //  m_endpoint = environment.apiUrl + "/user/login"
-    m_endpoint = "91.134.68.226:5000" + "/user/login"
+    m_endpoint = "http://91.134.68.226:5000" + "/user/login"
 
     constructor(private http: HttpClient) { }
 
