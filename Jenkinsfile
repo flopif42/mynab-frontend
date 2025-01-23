@@ -14,7 +14,7 @@ pipeline {
             steps {
 		            echo 'Deliver step ...'
                     sh 'rm -rf /tmp/*'
-                    sh 'mv /var/jenkins_home/workspace/mynab-frontend/dist/myapp/browser/*.* /tmp/'
+                    sh 'mv /home/jenkins/workspace/mynab-frontend/dist/myapp/browser/*.* /tmp/'
 		        }
         }
     }
