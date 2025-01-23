@@ -14,6 +14,8 @@ export class AuthService {
     constructor(private http: HttpClient) { }
 
     login(email_address: string, password: string) {
+        console.log("in login() m_endpoint = ");
+        console.log(this.m_endpoint);
         var passphrase_md5 = Md5.hashStr(password);
 
         return this.http.post<Object>(this.m_endpoint, { email_address, passphrase_md5 })
