@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Md5 } from 'ts-md5';
 import { shareReplay } from 'rxjs/operators'
+import { environment } from '../environments/environment'
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    m_serviceUrl = 'http://91.134.68.226:5000';
-    m_endpoint = this.m_serviceUrl + "/user/login"
+    m_endpoint = environment.apiUrl + "/user/login"
 
     constructor(private http: HttpClient) { }
 
