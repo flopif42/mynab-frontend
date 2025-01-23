@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Md5 } from 'ts-md5';
-//import { environment } from '../environments/environment'
+import { environment } from '../environments/environment'
 
 @Injectable({
     providedIn: 'root'
 })
 export class SignupService {
-  //  m_endpoint = environment.apiUrl + "/user/login"
-    m_endpoint = "http://91.134.68.226:5000" + "/sign-up"
+    m_endpoint = environment.apiUrl + "/sign-up"
 
     constructor(private http: HttpClient) { }
 
