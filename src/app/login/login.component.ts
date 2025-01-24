@@ -25,7 +25,8 @@ export class LoginComponent {
             this.authService.login(val.email, val.password)
                 .subscribe(
                     (response) => {
-                        console.log(response);
+                        // here we receive the JWT and the expiration time
+                        console.log(response); 
                         // this.router.navigateByUrl('/');
                     }
                 );

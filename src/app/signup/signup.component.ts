@@ -25,7 +25,6 @@ export class SignupComponent {
         const val = this.signupForm.value;
 
         if (this.signupForm && val.email && val.password && val.confirm_password) {
-            // console.log(val)
             this.signupService.signup(
                 val.first_name, val.last_name, val.email, val.password
             ).subscribe(
