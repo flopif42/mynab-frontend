@@ -2,6 +2,13 @@ pipeline {
     agent any
     tools {nodejs "NODEJS"}
     stages {
+        stage('Prepare Environment') {
+            steps {
+                configFileProvider([configFile(fileId: '84a07396-9e07-4eea-a679-1e59c85687f7', targetLocation: 'src/environments/environment.ts')]) {
+                    sh 'cat src/environments/environment.ts' // Verify the file is present
+                }
+            }
+        }
         stage('Build') {
             steps {
 		            echo 'Build step ...'                
