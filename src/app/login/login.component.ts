@@ -25,6 +25,7 @@ export class LoginComponent {
                 .subscribe(
                     (response) => {
                         console.log(response.body);
+                        console.log(response.headers);
                         this.m_bLoginFailed = false;
                     },
 
