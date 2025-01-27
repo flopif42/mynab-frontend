@@ -5,15 +5,14 @@ import { Md5 } from 'ts-md5';
 import { shareReplay } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
-@Injectable({
-    providedIn: 'root'
-})
-
 export function loggingInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
     console.log(req.url);
     return next(req);
 }
 
+@Injectable({
+    providedIn: 'root'
+})
 export class AuthService {
     m_endpoint = environment.apiUrl + "/user/login"
 
