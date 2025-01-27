@@ -6,7 +6,12 @@ import { shareReplay } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 export function loggingInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
-    return next(req).pipe(tap(event => {
+
+    const clonedRequest = req.clone({
+        withCredentials: true,
+    });
+
+    return next(clonedRequest).pipe(tap(event => {
         if (event.type === HttpEventType.Response) {
             console.log(req.url, 'returned a response with status', event.status);
         }
@@ -23,7 +28,7 @@ export class AuthService {
 
     login(email_address: string, password: string) {
         var passphrase_md5 = Md5.hashStr(password);
-        var response = this.http.post<Object>(this.m_endpoint, { email_address, passphrase_md5 }, { observe: 'response' }, { withCredentials: true })
+        var response = this.http.post<Object>(this.m_endpoint, { email_address, passphrase_md5 }, { observe: 'response' })
             .pipe(shareReplay());
         return response;
             // this is just the HTTP call, 
