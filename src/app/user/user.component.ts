@@ -8,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class UserComponent {
     m_endpoint = environment.apiUrl + "/user/profile"
-    m_data = ''
+    m_data = []
 
     constructor(private http: HttpClient) { }
 
@@ -21,7 +21,7 @@ export class UserComponent {
             .subscribe(
                 (response) => {
                     console.log('response received')
-                    this.m_data = response;
+                    this.m_data = response[0];
                 },
                 (error) => {
                     console.error('Request failed with error')
