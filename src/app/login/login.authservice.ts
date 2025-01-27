@@ -6,6 +6,7 @@ import { shareReplay } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 export function loggingInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
+    req.withCredentials = true;
     return next(req).pipe(tap(event => {
         if (event.type === HttpEventType.Response) {
             console.log(req.url, 'returned a response with status', event.status);
