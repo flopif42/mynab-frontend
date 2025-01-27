@@ -28,6 +28,10 @@ export class LoginComponent {
                         if (response.status == 401) {
                             this.m_bLoginFailed = true;
                         }
+                    },
+
+                    (error) => {
+                        console.log("Error : " + error);
                     }
                 );
         }
