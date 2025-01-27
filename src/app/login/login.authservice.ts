@@ -23,7 +23,7 @@ export class AuthService {
 
     login(email_address: string, password: string) {
         var passphrase_md5 = Md5.hashStr(password);
-        var response = this.http.post<Object>(this.m_endpoint, { email_address, passphrase_md5 }, { observe: 'response' })
+        var response = this.http.post<Object>(this.m_endpoint, { email_address, passphrase_md5 }, { observe: 'response' }, { withCredentials: true })
             .pipe(shareReplay());
         return response;
             // this is just the HTTP call, 
