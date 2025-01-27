@@ -24,10 +24,8 @@ export class LoginComponent {
             this.authService.login(val.email, val.password)
                 .subscribe(
                     (response) => {
-                        console.log(response.status);
-                        if (response.status == 401) {
-                            this.m_bLoginFailed = true;
-                        }
+                        console.log(response.body);
+                        this.m_bLoginFailed = false;
                     },
 
                     (error) => {
