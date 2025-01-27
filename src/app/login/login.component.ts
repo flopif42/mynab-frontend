@@ -24,11 +24,11 @@ export class LoginComponent {
         if (val.email && val.password) {
             this.authService.login(val.email, val.password)
                 .subscribe(
+                    /*
                     (res: HttpResponse<any>) => {
                         console.log('response from server:', res);
                         console.log('response headers', res.headers.keys())
-                        /*
-
+                        */
                 (response) => {
                     console.log(response.body);
                     console.log(response.headers);
@@ -39,8 +39,7 @@ export class LoginComponent {
                     if (error.status == 401) {
                         this.m_bLoginFailed = true;
                     }
-                }*/
-                    });
+                });
         }
     }
 }
