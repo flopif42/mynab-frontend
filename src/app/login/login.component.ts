@@ -29,8 +29,6 @@ export class LoginComponent {
                     },
 
                     (error) => {
-                        console.log("Error !");
-                        console.log(error.status);
                         if (error.status == 401) {
                             this.m_bLoginFailed = true;
                         }
