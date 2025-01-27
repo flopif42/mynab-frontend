@@ -10,7 +10,10 @@
             <input name="password" formControlName="password" type="password">
         </div>
     </fieldset>
+    @if (this.m_bLoginFailed) {
+    <div class="error-message">Email and/or password incorrect.</div>
+    }
     <div class="form-buttons">
-        <button class="button button-primary" >Login</button>
+        <button class="button button-primary">Login</button>
     </div>
 </form>

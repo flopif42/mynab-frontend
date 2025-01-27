@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from './login.authservice';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -15,7 +14,7 @@ export class LoginComponent {
         email: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required])
     });
-
+    m_bLoginFailed = false;
     constructor(private authService: AuthService) { }
 
     onSubmit() {
@@ -26,8 +25,10 @@ export class LoginComponent {
                 .subscribe(
                     (response) => {
                         // here we receive the JWT and the expiration time
-                        console.log(response); 
-                        // this.router.navigateByUrl('/');
+                        console.log(response);
+                        if (response.status == 401) {
+                            this.m_bLoginFailed = true;
+                        }
                     }
                 );
         }
