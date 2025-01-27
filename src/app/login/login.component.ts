@@ -24,7 +24,6 @@ export class LoginComponent {
             this.authService.login(val.email, val.password)
                 .subscribe(
                     (response) => {
-                        // here we receive the JWT and the expiration time
                         console.log(response.status);
                         if (response.status == 401) {
                             this.m_bLoginFailed = true;
