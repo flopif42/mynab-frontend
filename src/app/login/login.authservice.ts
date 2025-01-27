@@ -2,8 +2,8 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpHandlerFn, HttpEvent } from "@angular/common/http";
 import { Md5 } from 'ts-md5';
-import { shareReplay } from 'rxjs/operators'
-import { environment } from '../../environments/environment'
+import { shareReplay } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
