@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from './login.authservice';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpResponse } from "@angular/common/http";
 
 @Component({
     selector: 'login',
@@ -23,18 +24,23 @@ export class LoginComponent {
         if (val.email && val.password) {
             this.authService.login(val.email, val.password)
                 .subscribe(
-                    (response) => {
-                        console.log(response.body);
-                        console.log(response.headers);
-                        this.m_bLoginFailed = false;
-                    },
+                    (res: HttpResponse<any>) => {
+                        console.log('response from server:', res);
+                        console.log('response headers', res.headers.keys())
+                        /*
 
-                    (error) => {
-                        if (error.status == 401) {
-                            this.m_bLoginFailed = true;
-                        }
+                (response) => {
+                    console.log(response.body);
+                    console.log(response.headers);
+                    this.m_bLoginFailed = false;
+                },
+
+                (error) => {
+                    if (error.status == 401) {
+                        this.m_bLoginFailed = true;
                     }
-                );
+                }*/
+                    });
         }
     }
 }
