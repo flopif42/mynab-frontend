@@ -10,12 +10,13 @@ export function loggingInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
     const clonedRequest = req.clone({
         withCredentials: true,
     });
-
+    /*
     return next(clonedRequest).pipe(tap(event => {
         if (event.type === HttpEventType.Response) {
             console.log(req.url, 'returned a response with status', event.status);
         }
     }));
+    */
 }
 
 @Injectable({
