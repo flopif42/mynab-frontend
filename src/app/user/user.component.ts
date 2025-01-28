@@ -20,13 +20,11 @@ export class UserComponent {
         return this.http.get<Object>(this.m_endpoint)
             .subscribe(
                 (response) => {
-                    console.log('response received')
                     this.m_data = response[0];
                 },
                 (error) => {
                     console.error('Request failed with error')
                     alert(error);
-                },
-                () => { console.log('Request completed') })
+                })
     }
 }

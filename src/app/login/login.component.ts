@@ -30,8 +30,6 @@ export class LoginComponent {
                         console.log('response headers', res.headers.keys())
                         */
                 (response) => {
-                    console.log(response.body);
-                    console.log(response.headers);
                     this.m_bLoginFailed = false;
                 },
 
