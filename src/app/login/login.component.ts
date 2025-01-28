@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from './login.authservice';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpResponse } from "@angular/common/http";
 
 @Component({
     selector: 'login',
@@ -26,7 +25,7 @@ export class LoginComponent {
 
             (error) => {
                 if (error.status == 401) {
-                    console.log("Error refreshing the Access token.");
+                    console.log("Refresh token expired. User needs to log in again.");
                     alert(error);
                 }
             });
@@ -34,15 +33,8 @@ export class LoginComponent {
 
     onSubmit() {
         const val = this.loginForm.value;
-
         if (val.email && val.password) {
-            this.authService.login(val.email, val.password)
-                .subscribe(
-                    /*
-                    (res: HttpResponse<any>) => {
-                        console.log('response from server:', res);
-                        console.log('response headers', res.headers.keys())
-                        */
+            this.authService.login(val.email, val.password).subscribe(
                 (response) => {
                     this.m_bLoginFailed = false;
                 },
