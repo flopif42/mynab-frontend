@@ -24,16 +24,24 @@ export function loggingInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
     providedIn: 'root'
 })
 export class AuthService {
-    m_endpoint = environment.apiUrl + "/user/login"
+    m_endpoint = environment.apiUrl + "/user"
 
     constructor(private http: HttpClient) { }
 
     login(email_address: string, password: string) {
         var passphrase_md5 = Md5.hashStr(password);
-        var response = this.http.post<Object>(this.m_endpoint, { email_address, passphrase_md5 }, { observe: 'response' })
+        var response = this.http.post<Object>(this.m_endpoint + "/login", { email_address, passphrase_md5 }, { observe: 'response' })
             .pipe(shareReplay());
         return response;
             // this is just the HTTP call, 
             // we still need to handle the reception of the token
+    }
+
+    refresh() {
+        var response = this.http.post<Object>(this.m_endpoint + "/refresh", { observe: 'response' })
+            .pipe(shareReplay());
+        return response;
+        // this is just the HTTP call, 
+        // we still need to handle the reception of the token
     }
 }

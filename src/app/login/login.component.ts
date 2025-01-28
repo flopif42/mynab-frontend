@@ -18,6 +18,20 @@ export class LoginComponent {
     m_bLoginFailed = false;
     constructor(private authService: AuthService) { }
 
+    refreshAccessToken() {
+        this.authService.refresh().subscribe(
+            (response) => {
+                console.log("Access token refreshed");
+            },
+
+            (error) => {
+                if (error.status == 401) {
+                    console.log("Error refreshing the Access token.");
+                    alert(error);
+                }
+            });
+    }
+
     onSubmit() {
         const val = this.loginForm.value;
 
