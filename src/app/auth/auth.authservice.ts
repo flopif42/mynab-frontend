@@ -8,11 +8,13 @@ import { environment } from '../../environments/environment';
 export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
     const clonedRequest = req.clone({ withCredentials: true, });
     
-    return next(clonedRequest).pipe(tap(event => {
-        if (event.type === HttpEventType.Response) {
-            console.log(req.url, 'In interceptor. Server returned a response with status', event.status);
+    return next(clonedRequest).pipe(
+        event => {
+            if (event.type === HttpEventType.Response) {
+                console.log(req.url, 'In interceptor. Server returned a response with status', event.status);
+            }
         }
-    }));
+    );
 }
 
 @Injectable({
