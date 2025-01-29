@@ -29,8 +29,7 @@ export class SignupComponent {
                 val.first_name, val.last_name, val.email, val.password
             ).subscribe(
                 (response) => {
-                    console.log("User created : ");
-                    console.log(response);
+                    console.log("User created");
                     // this.router.navigateByUrl('/');
                 }
             );

@@ -5,7 +5,7 @@ import { Md5 } from 'ts-md5';
 import { shareReplay } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
-export function loggingInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
+export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
     const clonedRequest = req.clone({ withCredentials: true, });
     
     return next(clonedRequest).pipe(tap(event => {
