@@ -12,16 +12,17 @@ export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn):
 }
 
 export function LogInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
+    console.log("In start of log interceptor.");
     return next(req).pipe(
         tap(event => {
             if (event.type === HttpEventType.Response) {
-                console.log("In log interceptor. Response event.");
+                console.log("In return(next) of log interceptor. Response event.");
             }
             else if (event.type === HttpEventType.Sent) {
-                console.log("In log interceptor. Sent event.");
+                console.log("In return(next) of log interceptor. Sent event.");
             }
             else {
-                console.log("In log interceptor. Event type: ", event.type);
+                console.log("In return(next) of log interceptor. Event type: ", event.type);
             }
 
         })
