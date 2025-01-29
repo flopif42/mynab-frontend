@@ -14,7 +14,7 @@ export function LogInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): 
     return next(req).pipe(
         tap(event => {
  //           if (event.type === HttpEventType.Response) {
-                console.log(req.url, 'In interceptor. Server returned a response with status', event.status);
+                console.log('In interceptor. Event type: ', event.type);
  //           }
         })
     );
