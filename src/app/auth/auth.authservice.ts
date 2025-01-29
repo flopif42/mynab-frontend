@@ -6,13 +6,16 @@ import { shareReplay } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
-    const clonedRequest = req.clone({ withCredentials: true, });
-    
-    return next(clonedRequest).pipe(tap(
-        event => {
-            if (event.type === HttpEventType.Response) {
+    req = req.clone({ withCredentials: true, });
+    return next(req);
+}
+
+export function LogInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
+    return next(req).pipe(
+        tap(event => {
+ //           if (event.type === HttpEventType.Response) {
                 console.log(req.url, 'In interceptor. Server returned a response with status', event.status);
-            }
+ //           }
         })
     );
 }

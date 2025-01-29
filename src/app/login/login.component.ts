@@ -31,8 +31,10 @@ export class LoginComponent {
             });
     }
 
+    // log in button
     onSubmit() {
         const val = this.loginForm.value;
+
         if (val.email && val.password) {
             let observable = this.authService.login(val.email, val.password)
             observable.subscribe(
