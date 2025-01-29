@@ -7,15 +7,23 @@ import { environment } from '../../environments/environment';
 
 export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
     req = req.clone({ withCredentials: true, });
+    console.log("In auth interceptor.");
     return next(req);
 }
 
 export function LogInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
     return next(req).pipe(
         tap(event => {
- //           if (event.type === HttpEventType.Response) {
-                console.log('In interceptor. Event type: ', event.type);
- //           }
+            if (event.type === HttpEventType.Response) {
+                console.log("In log interceptor. Response event.");
+            }
+            else if (event.type === HttpEventType.Sent) {
+                console.log("In log interceptor. Sent event.");
+            }
+            else {
+                console.log("In log interceptor. Event type: ", event.type);
+            }
+
         })
     );
 }
