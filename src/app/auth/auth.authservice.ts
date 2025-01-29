@@ -1,4 +1,4 @@
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, catchError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpHandlerFn, HttpEvent, HttpEventType } from "@angular/common/http";
 import { Md5 } from 'ts-md5';
@@ -12,6 +12,14 @@ export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn):
         tap(event => {
             if (event.type === HttpEventType.Response) {
                 console.log(req.url, 'In interceptor. Server returned a response with status', event.status);
+            }
+        }),
+        catchError(error => {
+            // 3. If 401, attempt token refresh
+            if (error.status === 401) {
+                console.log("401 caught");
+            } else {
+                console.log(error);
             }
         })
     );
