@@ -9,11 +9,11 @@ export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn):
     const clonedRequest = req.clone({ withCredentials: true, });
     
     return next(clonedRequest).pipe(
-        event => {
+        tap(event => {
             if (event.type === HttpEventType.Response) {
                 console.log(req.url, 'In interceptor. Server returned a response with status', event.status);
             }
-        }
+        })
     );
 }
 
