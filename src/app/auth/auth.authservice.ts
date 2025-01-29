@@ -8,18 +8,10 @@ import { environment } from '../../environments/environment';
 export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
     const clonedRequest = req.clone({ withCredentials: true, });
     
-    return next(clonedRequest).pipe(
-        tap(event => {
+    return next(clonedRequest).pipe(tap(
+        event => {
             if (event.type === HttpEventType.Response) {
                 console.log(req.url, 'In interceptor. Server returned a response with status', event.status);
-            }
-        }),
-        catchError(error => {
-            // 3. If 401, attempt token refresh
-            if (error.status === 401) {
-                console.log("401 caught");
-            } else {
-                console.log(error);
             }
         })
     );

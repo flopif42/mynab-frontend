@@ -34,7 +34,8 @@ export class LoginComponent {
     onSubmit() {
         const val = this.loginForm.value;
         if (val.email && val.password) {
-            this.authService.login(val.email, val.password).subscribe(
+            let observable = this.authService.login(val.email, val.password)
+            observable.subscribe(
                 (response) => {
                     this.m_bLoginFailed = false;
                 },
