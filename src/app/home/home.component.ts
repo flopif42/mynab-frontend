@@ -10,8 +10,8 @@ import { HttpClient } from "@angular/common/http";
   `
 })
 export class HomeComponent {
-    m_endpoint = environment.apiUrl + "/hello"
-    m_data = ""
+    m_endpoint = environment.apiUrl + "/hello";
+    m_data = {};
 
     constructor(private http: HttpClient) { }
 
@@ -23,7 +23,7 @@ export class HomeComponent {
         let observable = this.http.get<Object>(this.m_endpoint)
         return observable.subscribe(
             (response) => {
-                this.m_data = response[0];
+                this.m_data = response['response'];
             },
             (error) => {
                 console.error('Request failed with error')
