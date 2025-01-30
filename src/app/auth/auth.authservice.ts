@@ -6,23 +6,23 @@ import { shareReplay } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
+    console.log("> auth interceptor");
     req = req.clone({ withCredentials: true, });
-    console.log("In auth interceptor.");
     return next(req);
 }
 
 export function LogInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
-    console.log("In start of log interceptor.");
+    console.log("> log interceptor");
     return next(req).pipe(
         tap(event => {
             if (event.type === HttpEventType.Response) {
-                console.log("In return(next) of log interceptor. Response event.");
+                console.log("< log interceptor : Response event");
             }
             else if (event.type === HttpEventType.Sent) {
-                console.log("In return(next) of log interceptor. Sent event.");
+                console.log("< log interceptor : Sent event");
             }
             else {
-                console.log("In return(next) of log interceptor. Event type: ", event.type);
+                console.log("< log interceptor : Event type=", event.type);
             }
 
         })
