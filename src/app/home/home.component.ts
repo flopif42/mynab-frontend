@@ -20,7 +20,7 @@ export class HomeComponent {
     }
 
     public getHello() {
-        let observable = this.http.get<String>(this.m_endpoint)
+        let observable = this.http.get<string>(this.m_endpoint)
         return observable.subscribe(
             (response) => {
                 this.m_data = response;
