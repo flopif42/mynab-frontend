@@ -7,6 +7,6 @@ import { LogInterceptor } from './auth/auth.authservice'
 
 export const appConfig: ApplicationConfig = {
     providers: [provideRouter(routes), provideHttpClient(
-        withInterceptors([LogInterceptor, AuthInterceptor]),
+       // withInterceptors([LogInterceptor, AuthInterceptor]),
     )],
 };
