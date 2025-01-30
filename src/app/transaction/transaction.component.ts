@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment'
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
@@ -21,7 +22,7 @@ export class Transaction {
     imports: [HttpClientModule, ReactiveFormsModule]
 })
 export class TransactionComponent implements OnInit {
-    m_serviceUrl = 'http://91.134.68.226:5000';
+    m_endpoint = environment.apiUrl + "/user/profile"
     m_transactions: Transaction[];
 
     m_newTransactionForm = new FormGroup({
@@ -40,8 +41,7 @@ export class TransactionComponent implements OnInit {
     }
 
     public getTransactions() {
-        const endpoint = this.m_serviceUrl + "/transactions"
-        return this.http.get<Transaction[]>(endpoint)
+        return this.http.get<Transaction[]>(this.m_endpoint)
             .subscribe(
                 (response) => {
                     console.log('response received')
