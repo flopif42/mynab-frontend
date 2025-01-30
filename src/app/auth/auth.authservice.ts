@@ -13,20 +13,8 @@ export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn):
 
 export function LogInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
     console.log("> log interceptor");
-    return next(req).pipe(
-        tap(event => {
-            if (event.type === HttpEventType.Response) {
-                console.log("< log interceptor : Response event");
-            }
-            else if (event.type === HttpEventType.Sent) {
-                console.log("< log interceptor : Sent event");
-            }
-            else {
-                console.log("< log interceptor : Event type=", event.type);
-            }
-
-        })
-    );
+    console.log(req.url);
+    return next(req);
 }
 
 @Injectable({
