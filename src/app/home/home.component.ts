@@ -11,7 +11,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class HomeComponent {
     m_endpoint = environment.apiUrl + "/hello"
-    m_data = []
+    m_data = ''
 
     constructor(private http: HttpClient) { }
 
