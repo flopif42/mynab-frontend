@@ -35,7 +35,7 @@ export class AuthService {
 
     // Call the refresh endpoint to request a new Access Token, provided the Refresh token is not expired.
     refresh() {
-        var response = this.http.post<Object>(this.m_endpoint + "/refresh", { observe: 'response' })
+        var response = this.http.get<Object>(this.m_endpoint + "/refresh", { observe: 'response' })
             .pipe(shareReplay());
         return response;
     }
