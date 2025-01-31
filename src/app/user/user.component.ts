@@ -24,7 +24,7 @@ export class UserComponent {
                 this.m_data = response[0];
             },
             (error) => {
-//                console.error('Request failed with error')
+                console.log('in getUserProfile() error, calling refresh ...')
 //                alert(error);
                 const newToken = this.authService.refresh()
                 console.log(newToken)
