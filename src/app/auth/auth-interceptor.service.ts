@@ -5,6 +5,7 @@ import { catchError, switchMap, filter, take } from 'rxjs/operators';
 // export function LogInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
 export function AuthInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
     console.log("> in AuthInterceptor:intercept()")
+    req = req.clone({ withCredentials: true, });
     return next(req).pipe(
         catchError((error) => {
             if (error instanceof HttpErrorResponse && error.status === 401) {
