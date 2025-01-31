@@ -10,11 +10,11 @@ import { AuthInterceptorClass } from './auth/auth-interceptor.service'
 
 export const appConfig: ApplicationConfig = {
     providers: [provideRouter(routes),
-//        provideHttpClient(
+        provideHttpClient(
 //        withInterceptors([/*LogInterceptor, */ authInterceptor]),
 //            withInterceptorsFromDi(),
-//        ),
-        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorClass, multi: true }
+        ),
+  //      { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorClass, multi: true }
     ]
 };
 
