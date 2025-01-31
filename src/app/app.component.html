@@ -2,20 +2,20 @@
     <a routerLink="/">Home</a>
     |
     @if (this.m_bLoggedIn) {
-        <a routerLink="/account">Accounts</a>
-        |
-        <a routerLink="/budget">Budget</a>
-        |
-        <a routerLink="/payee">Payees</a>
-        |
-        <a routerLink="/category">Categories</a>
-        |
-        <a routerLink="/transaction">Transactions</a>
-        |
-        <a routerLink="/user">User settings</a>
-        |
-        <a routerLink="/logout">Log out</a>
-        |
+    <a routerLink="/account">Accounts</a>
+    |
+    <a routerLink="/budget">Budget</a>
+    |
+    <a routerLink="/payee">Payees</a>
+    |
+    <a routerLink="/category">Categories</a>
+    |
+    <a routerLink="/transaction">Transactions</a>
+    |
+    <a routerLink="/user">User settings</a>
+    |
+    <a routerLink="/logout">Log out</a>
+    |
     }
     <a routerLink="/login">Login</a>
     |
@@ -27,5 +27,7 @@
     @else {
     Logged out
     }
+    |
+    <a href="javascript:void(0);" (click)="refreshAccessToken()">Refresh access token</a>
 </nav>
 <router-outlet/>

@@ -18,20 +18,6 @@ export class LoginComponent {
     m_bLoginFailed = false;
     constructor(private myApp: AppComponent, private authService: AuthService) { }
 
-    refreshAccessToken() {
-        this.authService.refresh().subscribe(
-            (response) => {
-                console.log("Access token refreshed");
-            },
-
-            (error) => {
-                if (error.status == 401) {
-                    console.log("Refresh token expired. User needs to log in again.");
-                    alert(error);
-                }
-            });
-    }
-
     // log in button
     onSubmit() {
         const val = this.loginForm.value;
