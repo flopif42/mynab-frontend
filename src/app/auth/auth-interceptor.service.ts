@@ -5,14 +5,13 @@ import { catchError, switchMap, filter, take } from 'rxjs/operators';
 import { AuthService } from './auth.authservice';
 
 export function AuthInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
-    console.log("> in AuthInterceptor:intercept()")
+    console.log("> in AuthInterceptor:intercept()", req.url)
     req = req.clone({ withCredentials: true, });
     return next(req).pipe(
         catchError((error) => {
             if (error instanceof HttpErrorResponse && error.status === 401) {
                 console.log("< in AuthInterceptor: catchError(error)")
-                const authService = inject(AuthService);
-                const response = authService.refresh()
+                const response = inject(AuthService).refresh()
                 console.log(response)
                 return next(req);
             }

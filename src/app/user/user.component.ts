@@ -17,21 +17,14 @@ export class UserComponent {
     }
 
     public getUserProfile() {
-        console.log("> getUserProfile");
         let observable = this.http.get<Object>(this.m_endpoint)
         return observable.subscribe(
             (response) => {
-                console.log("< getUserProfile : (response)");
                 this.m_data = response[0];
             },
             (error) => {
-                console.log("< getUserProfile : (error)");
                 console.error('Request failed with error')
                 alert(error);
-            },
-            () => {
-                console.log("< getUserProfile : ()");
-                // stuff to do ?
             }
         )
     }
