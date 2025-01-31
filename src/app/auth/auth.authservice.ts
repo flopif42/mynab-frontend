@@ -26,7 +26,10 @@ export class AuthService {
         console.log('in AuthService.refresh()')
         const observer = {
             next: x => console.log('Observer got a next value: ' + x),
-            error: err => console.error('Observer got an error: ' + err),
+            error: err => {
+                console.error('Observer got an error: ' + err)
+                return false
+            },
             complete: () => console.log('Observer got a complete notification')
         }
         const observable = this.http.get<Object>(this.m_endpoint + "/refresh", { observe: 'response' })
