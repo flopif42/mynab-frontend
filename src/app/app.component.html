@@ -2,27 +2,25 @@
     <a routerLink="/">Home</a>
     |
     @if (this.m_bLoggedIn) {
-    <a routerLink="/account">Accounts</a>
-    |
-    <a routerLink="/budget">Budget</a>
-    |
-    <a routerLink="/payee">Payees</a>
-    |
-    <a routerLink="/category">Categories</a>
-    |
-    <a routerLink="/transaction">Transactions</a>
-    |
-    <a routerLink="/user">User settings</a>
-    |
-    <a routerLink="/logout">Log out</a>
-    |
+        <a routerLink="/account">Accounts</a>
+        |
+        <a routerLink="/budget">Budget</a>
+        |
+        <a routerLink="/payee">Payees</a>
+        |
+        <a routerLink="/category">Categories</a>
+        |
+        <a routerLink="/transaction">Transactions</a>
+        |
+        <a routerLink="/user">User settings</a>
+        |
+        <a routerLink="/logout">Log out</a>
+        |
     }
-    @else {
     <a routerLink="/login">Login</a>
     |
     <a routerLink="/sign-up">Sign up</a>
     |
-    }
     @if (this.m_bLoggedIn) {
     Logged in
     }
