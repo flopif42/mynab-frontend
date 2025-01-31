@@ -14,14 +14,14 @@ export class AuthService {
     constructor(private http: HttpClient) {}
 
     // Login with credentials to request an Access Token and a Refresh Token
-    login(email_address: string, password: string): Observable<Response> {
+    login(email_address: string, password: string) {
         var passphrase_md5 = Md5.hashStr(password);
         return this.http.post<Object>(this.m_endpoint + "/login", { email_address, passphrase_md5 }, { observe: 'response' })
             .pipe(shareReplay());
     }
 
     // Call the refresh endpoint to request a new Access Token, provided the Refresh token is not expired.
-    refresh(): Observable<Response> {
+    refresh() {
         console.log('in AuthService.refresh()')
         return this.http.get(this.m_endpoint + "/refresh", {observe: 'response'})
     }
