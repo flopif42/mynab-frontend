@@ -30,7 +30,7 @@ export class AuthService {
                 console.log('Body:', res.body);
             },
             error => {
-                console.error('Observer got an error: ' + typeof error);
+                console.error('Observer got an error: ', error.status);
             }
         )
     }
