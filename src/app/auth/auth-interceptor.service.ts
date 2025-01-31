@@ -7,9 +7,17 @@ export function authInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Obs
     console.log("> in AuthInterceptor:intercept()", req.url)
     req = req.clone({ withCredentials: true, });
     return next(req).pipe(tap(event => {
-        if (event.type === HttpEventType.Response && event.status == 401) {
-            console.log("< in AuthInterceptor: catchError(error)")
-            return next(req);
+        if (event.type === HttpEventType.Response) {
+            console.log("event type = response")
+            if (event.status == 401) {
+                console.log("event status = 401")
+            }
+            else {
+                console.log("event status = ", event.status)
+            }
+        }
+        else {
+            console.log("event type = ", event.type)
         }
         return next(req);
     }));
