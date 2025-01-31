@@ -1,7 +1,7 @@
 <nav>
     <a routerLink="/">Home</a>
     |
-    @if (this.isLoggedIn) {
+    @if (this.isLoggedIn()) {
     <a routerLink="/account">Accounts</a>
     |
     <a routerLink="/budget">Budget</a>
@@ -23,7 +23,7 @@
     <a routerLink="/sign-up">Sign up</a>
     |
     }
-    @if (this.isLoggedIn) {
+    @if (this.isLoggedIn()) {
     Logged in
     }
     @else {
