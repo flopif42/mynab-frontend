@@ -27,7 +27,7 @@ export class AuthService {
         this.http.get(this.m_endpoint + "/refresh")
             .subscribe( {
                 next: x => console.log('Observer got a next value: ' + x),
-                error: err => console.error('Observer got an error: ' + err)
+                error: err => console.error('Observer got an error: ' + typeof err)
             });
     }
 }
