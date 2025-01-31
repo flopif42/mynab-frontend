@@ -16,6 +16,6 @@ export class AuthInterceptor implements HttpInterceptor {
                 console.log("< in AuthInterceptor: throwError(error)")
                 return throwError(() => error);
             })
-        );
+        ) as Observable<HttpEvent<any>>;
     }
 }
