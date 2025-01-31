@@ -25,9 +25,15 @@ export class UserComponent {
             },
             (error) => {
                 console.log('in getUserProfile() error, calling refresh ...')
-//                alert(error);
-                const newToken = this.authService.refresh()
-                console.log(newToken)
+                const response = this.authService.refresh()
+                if (response.status > 200) {
+                    alert("user must log in again")
+                }
+                else {
+                    this.getUserProfile()
+                }
+                // if the refresh fails, redirect to log-in
+                // else this call again
             }
         )
     }

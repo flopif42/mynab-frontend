@@ -32,11 +32,14 @@ export class AuthService {
 
                 (error) => {
                     if (error.status == 401) {
-                        console.log("Refresh token expired. User needs to log in again.");
-                        alert(error);
+                        const message = "Refresh token expired. User needs to log in again."
+                        console.log(message);
+                        alert(message);
+                        return error.status
                     }
                 }
         );
+        return response
     }
 
     // Function used to test if the user is logged in by checking the existence / validity of the refresh token
