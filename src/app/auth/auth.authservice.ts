@@ -39,4 +39,11 @@ export class AuthService {
             .pipe(shareReplay());
         return response;
     }
+
+    // Function used to test if the user is logged in by checking the existence / validity of the refresh token
+    is_logged() {
+        var response = this.http.get<string>(this.m_endpoint + "/is_logged", { observe: 'response' })
+            .pipe(shareReplay());
+        return response;
+    }
 }

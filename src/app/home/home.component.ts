@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { environment } from '../../environments/environment'
 import { HttpClient } from "@angular/common/http";
+import { environment } from '../../environments/environment'
+import { AuthService } from '../auth/auth.authservice';
 
 @Component({
   selector: 'app-home',
@@ -10,17 +11,31 @@ import { HttpClient } from "@angular/common/http";
   `
 })
 export class HomeComponent {
-    m_endpoint = environment.apiUrl + "/hello";
+    m_endpoint = environment.apiUrl;
     m_data = {};
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private authService: AuthService) { }
 
     ngOnInit() {
-        this.getHello()
+        // this.getHello()
+        this.isLoggedIn()
+    }
+
+    public isLoggedIn() {
+        let observable = this.authService.is_logged()
+        return observable.subscribe(
+            (response) => {
+                this.m_data = response['isLogged'];
+            },
+            (error) => {
+                console.error('Request failed with error')
+                alert(error);
+            }
+        )
     }
 
     public getHello() {
-        let observable = this.http.get<Object>(this.m_endpoint)
+        let observable = this.http.get<Object>(this.m_endpoint + "/hello")
         return observable.subscribe(
             (response) => {
                 this.m_data = response['response'];
