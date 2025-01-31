@@ -1,3 +1,4 @@
+import { Injectable, inject } from '@angular/core';
 import { HttpRequest, HttpHandlerFn, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -11,8 +12,8 @@ export function authInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Obs
             if (error instanceof HttpErrorResponse && error.status === 401) {
                 console.log("< in AuthInterceptor: catchError(error)")
 
-//                const response = inject(AuthService).refresh()
-//                console.log(response)
+                const response = inject(TokenRefreshService).someMethod()
+                console.log(response)
 
                 return next(req);
             }
@@ -20,4 +21,11 @@ export function authInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Obs
             return throwError(() => error);
         })
     );
+}
+
+@Injectable()
+export class TokenRefreshService {
+    someMethod() {
+        console.log("In someMethod()")
+    }
 }

@@ -6,9 +6,10 @@ import { authInterceptor } from './auth/auth-interceptor.service'
 import { logInterceptor } from './log-interceptor.service'
 
 export const appConfig: ApplicationConfig = {
-    providers: [provideRouter(routes),
+    providers: [
+        provideRouter(routes),
         provideHttpClient(
-            withInterceptors([logInterceptor, authInterceptor]),
+            withInterceptors([logInterceptor, authInterceptor])
         ),
     ]
 };
