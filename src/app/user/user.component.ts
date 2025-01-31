@@ -24,16 +24,7 @@ export class UserComponent {
                 this.m_data = response[0];
             },
             (error) => {
-                console.log('in getUserProfile() error, calling refresh ...')
-                const x = this.authService.refresh()
-                if (x == 1) {
-                    alert("user must log in again")
-                }
-                else {
-                    this.getUserProfile()
-                }
-                // if the refresh fails, redirect to log-in
-                // else this call again
+                console.log('in getUserProfile() error')
             }
         )
     }
