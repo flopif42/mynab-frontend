@@ -39,7 +39,6 @@ export class AppComponent {
     }
 
     refreshAccessToken() {
-        const b_refresh = this.authService.refresh()
-        console.log("refresh returned : ", b_refresh)
+        this.authService.refresh()
     }
 }
