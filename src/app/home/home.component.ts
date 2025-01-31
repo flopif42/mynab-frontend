@@ -25,8 +25,8 @@ export class HomeComponent {
         let observable = this.authService.is_logged()
         return observable.subscribe(
             (response) => {
-                console.log(response)
-                if (response['isLogged'] == 'OK')
+                console.log(response.body)
+                if (response.body['isLogged'] == 'OK')
                     this.m_data = "Logged in"
                 else
                     this.m_data = "Logged out"
