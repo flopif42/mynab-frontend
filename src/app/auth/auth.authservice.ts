@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Md5 } from 'ts-md5';
 import { shareReplay } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
@@ -24,16 +24,11 @@ export class AuthService {
     // Call the refresh endpoint to request a new Access Token, provided the Refresh token is not expired.
     refresh() : boolean {
         console.log('in AuthService.refresh()')
-        const observer = {
-            next: x => console.log('Observer got a next value: ' + x),
-            error: err => console.error('Observer got an error: ' + err),
-            complete: () => console.log('Observer got a complete notification')
-        }
-        const observable = this.http.get(this.m_endpoint + "/refresh")
-        const subscription = observable.catch(error => {
-            console.error('Error caught : ' + error)
-            return false
-        }).subscribe(observer);
+        this.http.get<HttpResponse>(this.m_endpoint + "/refresh")
+            .subscribe( {
+                next: x => console.log('Observer got a next value: ' + x),
+                error: err => console.error('Observer got an error: ' + err)
+            });
         return true
     }
 
