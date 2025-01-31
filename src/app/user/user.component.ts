@@ -20,11 +20,14 @@ export class UserComponent {
     public getUserProfile() {
         let observable = this.http.get<Object>(this.m_endpoint)
         return observable.subscribe(
-            (response) => {
+            response => {
                 this.m_data = response[0];
             },
-            (error) => {
-                console.log('in getUserProfile() error')
+            error => {
+                console.error('in getUserProfile() error')
+                if (error.status === 401) {
+                    console.error("This is error 401, should try and refresh access token.")
+                }
             }
         )
     }
