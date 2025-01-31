@@ -25,7 +25,10 @@ export class HomeComponent {
         let observable = this.authService.is_logged()
         return observable.subscribe(
             (response) => {
-                this.m_data = response['isLogged'];
+                if (response['isLogged'] == 'OK')
+                    this.m_data = "Logged in"
+                else
+                    this.m_data = "Logged out"
             },
             (error) => {
                 console.error('Request failed with error')
