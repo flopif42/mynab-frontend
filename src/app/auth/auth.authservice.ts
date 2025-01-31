@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Md5 } from 'ts-md5';
 import { shareReplay } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -21,26 +22,16 @@ export class AuthService {
     }
 
     // Call the refresh endpoint to request a new Access Token, provided the Refresh token is not expired.
-    refresh() {
+    refresh() : boolean {
         console.log('in AuthService.refresh()')
-        var res = this.http.get<Object>(this.m_endpoint + "/refresh", { observe: 'response' })
-            .subscribe(
-                (response) => {
-                    console.log("Access token refreshed");
-                    return 0
-                },
-
-                (error) => {
-                    if (error.status == 401) {
-                        const message = "Refresh token expired. User needs to log in again."
-                        console.log(message);
-                        alert(message);
-                        return 1
-                    }
-                    return 1
-                }
-        );
-        return res
+        const observer = {
+            next: x => console.log('Observer got a next value: ' + x),
+            error: err => console.error('Observer got an error: ' + err),
+            complete: () => console.log('Observer got a complete notification')
+        }
+        const observable = this.http.get<Object>(this.m_endpoint + "/refresh", { observe: 'response' })
+        const subscription = observable.subscribe(observer);
+        return true
     }
 
     // Function used to test if the user is logged in by checking the existence / validity of the refresh token
