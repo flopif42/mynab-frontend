@@ -1,7 +1,6 @@
 <nav>
     <a routerLink="/">Home</a>
     |
-    @if (this.m_bLoggedIn) {
     <a routerLink="/account">Accounts</a>
     |
     <a routerLink="/budget">Budget</a>
@@ -16,17 +15,9 @@
     |
     <a routerLink="/logout">Log out</a>
     |
-    }
     <a routerLink="/login">Login</a>
     |
     <a routerLink="/sign-up">Sign up</a>
-    |
-    @if (this.m_bLoggedIn) {
-    Logged in
-    }
-    @else {
-    Logged out
-    }
     |
     <a href="javascript:void(0);" (click)="refreshAccessToken()">Refresh access token</a>
 </nav>

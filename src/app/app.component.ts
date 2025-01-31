@@ -17,27 +17,6 @@ export class AppComponent {
 
     constructor(private authService: AuthService) { }
 
-    ngOnInit() {
-        this.getLoginStatus()
-    }
-
-    public getLoginStatus() {
-        let observable = this.authService.is_logged()
-        return observable.subscribe(
-            (response) => {
-                console.log(response.body)
-                if (response.body['isLogged'] == 'OK')
-                    this.m_bLoggedIn = true
-                else
-                    this.m_bLoggedIn = false
-            },
-            (error) => {
-                console.error('Request failed with error')
-                alert(error);
-            }
-        )
-    }
-
     refreshAccessToken() {
         this.authService.refresh()
     }
