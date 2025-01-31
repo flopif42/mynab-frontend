@@ -39,16 +39,6 @@ export class AppComponent {
     }
 
     refreshAccessToken() {
-        this.authService.refresh().subscribe(
-            (response) => {
-                console.log("Access token refreshed");
-            },
-
-            (error) => {
-                if (error.status == 401) {
-                    console.log("Refresh token expired. User needs to log in again.");
-                    alert(error);
-                }
-            });
+        this.authService.refresh()
     }
 }

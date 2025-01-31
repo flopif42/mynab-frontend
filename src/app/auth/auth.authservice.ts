@@ -24,9 +24,19 @@ export class AuthService {
     refresh() {
         console.log('in AuthService.refresh()')
         var response = this.http.get<Object>(this.m_endpoint + "/refresh", { observe: 'response' })
-            .pipe(shareReplay());
-        console.log(response)
-        return response;
+            .subscribe(
+                (response) => {
+                    console.log("Access token refreshed");
+                    return response
+                },
+
+                (error) => {
+                    if (error.status == 401) {
+                        console.log("Refresh token expired. User needs to log in again.");
+                        alert(error);
+                    }
+                }
+        );
     }
 
     // Function used to test if the user is logged in by checking the existence / validity of the refresh token
