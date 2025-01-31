@@ -11,5 +11,6 @@ export function authInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Obs
             console.log("< in AuthInterceptor: catchError(error)")
             return next(req);
         }
+        return next(req);
     }));
 }
