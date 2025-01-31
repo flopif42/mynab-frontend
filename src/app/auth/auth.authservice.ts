@@ -24,10 +24,14 @@ export class AuthService {
     // Call the refresh endpoint to request a new Access Token, provided the Refresh token is not expired.
     refresh() {
         console.log('in AuthService.refresh()')
-        this.http.get(this.m_endpoint + "/refresh")
-            .subscribe( {
-                next: x => console.log('Observer got a next value: ' + x),
-                error: err => console.error('Observer got an error: ' + typeof err)
-            });
+        this.http.get(this.m_endpoint + "/refresh", {observe: 'response'}).subscribe(
+            res => {
+                console.log('Response status:', res.status);
+                console.log('Body:', res.body);
+            },
+            error => {
+                console.error('Observer got an error: ' + typeof error);
+            }
+        )
     }
 }
