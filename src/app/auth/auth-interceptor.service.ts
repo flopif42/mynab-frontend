@@ -24,6 +24,9 @@ export function authInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Obs
 */
 
 export class AuthInterceptorClass implements HttpInterceptor {
+
+    constructor(private authService: AuthService) { }
+
     intercept(req: HttpRequest<any>, handler: HttpHandler): Observable<HttpEvent<any>> {
         console.log("> in AuthInterceptor:intercept()", req.url)
         req = req.clone({ withCredentials: true, });
@@ -31,7 +34,7 @@ export class AuthInterceptorClass implements HttpInterceptor {
             catchError((error) => {
                 if (error instanceof HttpErrorResponse && error.status === 401) {
                     console.log("< in AuthInterceptor: catchError(error)")
-                    const response = inject(AuthService).refresh()
+                    const response = this.authService.refresh()
                     console.log(response)
                     return handler.handle(req);
                 }
