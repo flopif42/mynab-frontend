@@ -18,6 +18,14 @@ export class AppComponent {
     constructor(private authService: AuthService) { }
 
     refreshAccessToken() {
-        this.authService.refresh()
+        this.authService.refresh().subscribe(
+            res => {
+                console.log('Response status:', res.status);
+                console.log('Body:', res.body);
+            },
+            error => {
+                console.error('Observer got an error: ', error.status);
+            }
+        )
     }
 }

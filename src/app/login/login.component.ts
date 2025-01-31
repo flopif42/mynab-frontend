@@ -24,8 +24,9 @@ export class LoginComponent {
 
         if (val.email && val.password) {
             this.authService.login(val.email, val.password).subscribe(
-                (response) => { this.m_bLoginFailed = false; },
-
+                (response) => {
+                    this.m_bLoginFailed = false;
+                },
                 (error) => {
                     if (error.status == 401) {
                         this.m_bLoginFailed = true;
