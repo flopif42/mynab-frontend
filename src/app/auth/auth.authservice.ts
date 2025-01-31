@@ -23,11 +23,11 @@ export class AuthService {
     // Call the refresh endpoint to request a new Access Token, provided the Refresh token is not expired.
     refresh() {
         console.log('in AuthService.refresh()')
-        var response = this.http.get<Object>(this.m_endpoint + "/refresh", { observe: 'response' })
+        var res = this.http.get<Object>(this.m_endpoint + "/refresh", { observe: 'response' })
             .subscribe(
                 (response) => {
                     console.log("Access token refreshed");
-                    return response
+                    return 0
                 },
 
                 (error) => {
@@ -35,11 +35,12 @@ export class AuthService {
                         const message = "Refresh token expired. User needs to log in again."
                         console.log(message);
                         alert(message);
-                        return error.status
+                        return 1
                     }
+                    return 1
                 }
         );
-        return response
+        return res
     }
 
     // Function used to test if the user is logged in by checking the existence / validity of the refresh token

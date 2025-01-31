@@ -25,8 +25,8 @@ export class UserComponent {
             },
             (error) => {
                 console.log('in getUserProfile() error, calling refresh ...')
-                const response = this.authService.refresh()
-                if (response.status > 200) {
+                const x = this.authService.refresh()
+                if (x == 1) {
                     alert("user must log in again")
                 }
                 else {
