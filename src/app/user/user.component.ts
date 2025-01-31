@@ -29,7 +29,6 @@ export class UserComponent {
                 if (error.status === 401) {
                     console.error("This is error 401, should try and refresh access token.")
                     this.app.refreshAccessToken()
-                    this.getUserProfile()
                 }
             }
         )
