@@ -1,6 +1,7 @@
 <nav>
     <a routerLink="/">Home</a>
     |
+    @if (this.isLoggedIn) {
     <a routerLink="/account">Accounts</a>
     |
     <a routerLink="/budget">Budget</a>
@@ -13,10 +14,20 @@
     |
     <a routerLink="/user">User settings</a>
     |
+    <a routerLink="/logout">Log out</a>
+    |
+    }
+    @else {
     <a routerLink="/login">Login</a>
     |
     <a routerLink="/sign-up">Sign up</a>
     |
-    <div>{{ logged_in_status }}</div>
+    }
+    @if (this.isLoggedIn) {
+    Logged in
+    }
+    @else {
+    Logged out
+    }
 </nav>
-<router-outlet />
+<router-outlet/>

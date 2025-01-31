@@ -8,23 +8,23 @@ import { AuthService } from './auth/auth.authservice';
     imports: [RouterLink, RouterOutlet],
 })
 export class AppComponent {
-    logged_in_status = 'Unknown'
+    isLoggedIn = false;
 
     constructor(private authService: AuthService) { }
 
     ngOnInit() {
-        this.isLoggedIn()
+        this.getLoginStatus()
     }
 
-    public isLoggedIn() {
+    public getLoginStatus() {
         let observable = this.authService.is_logged()
         return observable.subscribe(
             (response) => {
                 console.log(response.body)
                 if (response.body['isLogged'] == 'OK')
-                    this.logged_in_status = "Logged in"
+                    this.isLoggedIn = true
                 else
-                    this.logged_in_status = "Logged out"
+                    this.isLoggedIn = false
             },
             (error) => {
                 console.error('Request failed with error')
