@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AppComponent } from '../app.component'
 import { AuthService } from '../auth/auth.authservice';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -15,7 +16,7 @@ export class LoginComponent {
         password: new FormControl('', [Validators.required])
     });
     m_bLoginFailed = false;
-    constructor(private authService: AuthService) { }
+    constructor(private myApp: AppComponent, private authService: AuthService) { }
 
     refreshAccessToken() {
         this.authService.refresh().subscribe(
@@ -40,11 +41,13 @@ export class LoginComponent {
             observable.subscribe(
                 (response) => {
                     this.m_bLoginFailed = false;
+                    this.myApp.getLoginStatus()
                 },
 
                 (error) => {
                     if (error.status == 401) {
                         this.m_bLoginFailed = true;
+                        this.myApp.getLoginStatus()
                     }
                 });
         }

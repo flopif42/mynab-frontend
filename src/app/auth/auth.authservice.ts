@@ -1,4 +1,4 @@
-import { Observable, tap, catchError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpHandlerFn, HttpEvent, HttpEventType } from "@angular/common/http";
 import { Md5 } from 'ts-md5';

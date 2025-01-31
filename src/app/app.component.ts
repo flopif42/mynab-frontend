@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from './auth/auth.authservice';
@@ -7,6 +8,10 @@ import { AuthService } from './auth/auth.authservice';
     templateUrl: './app.component.html',
     imports: [RouterLink, RouterOutlet],
 })
+
+@Injectable({
+    providedIn: 'root'
+})
 export class AppComponent {
     m_bLoggedIn = false;
 
@@ -14,11 +19,6 @@ export class AppComponent {
 
     ngOnInit() {
         this.getLoginStatus()
-    }
-
-    public isLoggedIn() {
-        this.getLoginStatus()
-        return this.m_bLoggedIn
     }
 
     public getLoginStatus() {
