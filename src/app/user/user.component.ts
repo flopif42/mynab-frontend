@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from '../../environments/environment'
 import { HttpClient } from "@angular/common/http";
+import { AuthService } from '../auth/auth.authservice';
 
 @Component({
     selector: 'user-home',
@@ -10,7 +11,7 @@ export class UserComponent {
     m_endpoint = environment.apiUrl + "/user/profile"
     m_data = []
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private authService: AuthService) { }
 
     ngOnInit() {
         this.getUserProfile()
@@ -23,8 +24,10 @@ export class UserComponent {
                 this.m_data = response[0];
             },
             (error) => {
-                console.error('Request failed with error')
-                alert(error);
+//                console.error('Request failed with error')
+//                alert(error);
+                const newToken = this.authService.refresh()
+                console.log(newToken)
             }
         )
     }
