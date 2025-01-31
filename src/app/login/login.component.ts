@@ -23,17 +23,12 @@ export class LoginComponent {
         const val = this.loginForm.value;
 
         if (val.email && val.password) {
-            let observable = this.authService.login(val.email, val.password)
-            observable.subscribe(
-                (response) => {
-                    this.m_bLoginFailed = false;
-                    this.myApp.getLoginStatus()
-                },
+            this.authService.login(val.email, val.password).subscribe(
+                (response) => { this.m_bLoginFailed = false; },
 
                 (error) => {
                     if (error.status == 401) {
                         this.m_bLoginFailed = true;
-                        this.myApp.getLoginStatus()
                     }
                 });
         }
