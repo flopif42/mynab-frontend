@@ -40,7 +40,7 @@ export class AuthService {
                     return 1
                 }
         );
-        return 1
+        return res
     }
 
     // Function used to test if the user is logged in by checking the existence / validity of the refresh token
