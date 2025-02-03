@@ -37,6 +37,18 @@ export class AuthInterceptor implements HttpInterceptor {
     constructor(private http: HttpClient) {}
     m_endpoint = environment.apiUrl + "/user"
 
+    attemptRefresh(req: HttpRequest<unknown>, next: HttpHandler) {
+        this.http.get(this.m_endpoint + "/refresh", { observe: 'response' }).subscribe(
+            res => {
+                console.log("Access token successfully refreshed. Retrying the same request ...")
+                req = req.clone({ withCredentials: true })
+                next.handle(req)
+            },
+            error => {
+                console.error("Attempt to refresh the access token failed.");
+            })
+    }
+
     intercept(req: HttpRequest<unknown>, next: HttpHandler) {
         console.log("request log> " + req.url + " " + req.method);
         req = req.clone({ withCredentials: true });
@@ -55,15 +67,7 @@ export class AuthInterceptor implements HttpInterceptor {
                         // TODO: redirect user to login page
                     } else {
                         errorMessage = "This is error 401. Client should try and refresh access token."
-                        this.http.get(this.m_endpoint + "/refresh", { observe: 'response' }).subscribe(
-                            res => {
-                                console.log("Access token successfully refreshed.")
-                                return next.handle(req)
-                            },
-                            error => {
-                                console.error("Attempt to refresh the access token failed.");
-                                return throwError(() => err);
-                            })
+                        this.attemptRefresh(req, next)
                     }
                 } else {
                     errorMessage = "error not 401 log> " + req.url + " " + req.method
