@@ -1,8 +1,8 @@
 import { Observable, tap, catchError, throwError } from 'rxjs';
 import { HttpClient, HttpRequest, HttpHandlerFn, HttpEvent, HttpEventType, HttpErrorResponse } from "@angular/common/http";
 
-function refreshAccessToken() {
-    const http = new HttpClient()
+function refreshAccessToken(next: HttpHandlerFn) {
+    const http = new HttpClient(next)
     console.log('in refreshAccessToken()')
     http.get(this.m_endpoint + "/refresh", { observe: 'response' }).subscribe(
         res => {
@@ -32,7 +32,7 @@ export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
                     errorMessage = "Attempt to refresh the access token failed."
                 } else {
                     errorMessage = "This is error 401. Client should try and refresh access token."
-                    refreshAccessToken()
+                    refreshAccessToken(next)
                 }
             } else {
                 errorMessage = "error not 401 log> " + req.url + " " + req.method
