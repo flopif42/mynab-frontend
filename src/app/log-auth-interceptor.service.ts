@@ -1,19 +1,5 @@
 import { Observable, tap, catchError, throwError } from 'rxjs';
-import { HttpClient, HttpRequest, HttpHandlerFn, HttpEvent, HttpEventType, HttpErrorResponse } from "@angular/common/http";
-
-function refreshAccessToken(next: HttpHandlerFn) {
-    const http = new HttpClient(next)
-    console.log('in refreshAccessToken()')
-    http.get(this.m_endpoint + "/refresh", { observe: 'response' }).subscribe(
-        res => {
-            console.log('Response status:', res.status);
-            console.log('Body:', res.body);
-        },
-        error => {
-            console.error('Observer got an error: ', error.status);
-        }
-    )
-}
+import { HttpInterceptor, HttpClient, HttpRequest, HttpHandlerFn, HttpHandler, HttpEvent, HttpEventType, HttpErrorResponse } from "@angular/common/http";
 
 export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
     console.log("request log> " + req.url + " " + req.method);
@@ -30,9 +16,9 @@ export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
             if (err.status === 401) {
                 if (req.url === "https://budgetizator.ovh:543/user/refresh") {
                     errorMessage = "Attempt to refresh the access token failed."
+                    // TODO: redirect user to login page
                 } else {
                     errorMessage = "This is error 401. Client should try and refresh access token."
-                    refreshAccessToken(next)
                 }
             } else {
                 errorMessage = "error not 401 log> " + req.url + " " + req.method
@@ -42,4 +28,10 @@ export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
             return throwError(() => err);
         })
     );
+}
+
+export class AuthInterceptor implements HttpInterceptor {
+    intercept(req: HttpRequest<unknown>, next: HttpHandler) {
+        return next.handle(req)
+    }
 }
