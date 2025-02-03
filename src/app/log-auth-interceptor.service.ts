@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, tap, catchError, throwError } from 'rxjs';
-import { HttpInterceptor, HttpClient, HttpRequest, HttpHandlerFn, HttpHandler, HttpEvent, HttpEventType, HttpErrorResponse } from "@angular/common/http";
+import { HttpBackend, HttpInterceptor, HttpClient, HttpRequest, HttpHandlerFn, HttpHandler, HttpEvent, HttpEventType, HttpErrorResponse } from "@angular/common/http";
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
 
@@ -37,13 +37,17 @@ export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    constructor(private http: HttpClient, private router: Router) { }
+    private httpBackend: HttpClient;
+
+    constructor(private httpB: HttpBackend, private router: Router) {
+        this.httpBackend = new HttpClient(httpB)
+    }
 
     m_endpoint = environment.apiUrl + "/user"
 
     attemptRefresh(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         console.log("Attempting to refresh the token ...")
-        var obs = this.http.get(this.m_endpoint + "/refresh", { observe: 'response' })
+        var obs = this.httpBackend.get(this.m_endpoint + "/refresh", { observe: 'response' })
         obs.subscribe(
             res => {
                 console.log("Access token successfully refreshed. Retrying the same request ...")
@@ -72,7 +76,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     if (req.url === "https://budgetizator.ovh:543/user/refresh") {
                         errorMessage = "in intercept() : Attempt to refresh the access token failed."
                         console.error(errorMessage)
-                        this.router.navigate(['/login']);
+//                        this.router.navigate(['/login']);
   //                      return throwError(() => err);
                     } else {
                         errorMessage = "This is error 401 on a page that's not the refresh page. Try to refresh the access token."
