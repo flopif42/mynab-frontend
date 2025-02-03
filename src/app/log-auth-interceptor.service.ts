@@ -2,11 +2,11 @@ import { Observable, tap } from 'rxjs';
 import { HttpRequest, HttpHandlerFn, HttpEvent, HttpEventType } from "@angular/common/http";
 
 export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
-    console.log("request log> " + req.urlWithParams);
+    console.log("request log> " + req.urlWithParams + " " + req.method);
     req = req.clone({ withCredentials: true });
     return next(req).pipe(tap(event => {
         if (event.type === HttpEventType.Response) {
-            console.log("response log> " + req.urlWithParams);
+            console.log("response log> " + req.urlWithParams + " " + req.method);
         }
     }
     ));
