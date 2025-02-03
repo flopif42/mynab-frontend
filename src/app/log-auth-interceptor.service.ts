@@ -72,17 +72,19 @@ export class AuthInterceptor implements HttpInterceptor {
                         errorMessage = "Attempt to refresh the access token failed."
                         console.error(errorMessage)
                         this.router.navigate(['/login']);
-//                        return throwError(() => err);
+  //                      return throwError(() => err);
                     } else {
                         errorMessage = "This is error 401 on a page that's not the refresh page. Try to refresh the access token."
                         console.error(errorMessage)
+//                        return throwError(() => err);
   //                      return this.attemptRefresh(req, next)
                     }
                 } else {
                     errorMessage = "error not 401 log> " + req.url + " " + req.method
                     console.error(errorMessage)
-                    return throwError(() => err);
+                    
                 }
+                return throwError(() => err);
             })
         );
     }
