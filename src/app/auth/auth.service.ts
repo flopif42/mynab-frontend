@@ -3,7 +3,6 @@ import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Md5 } from 'ts-md5';
 import { shareReplay } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
