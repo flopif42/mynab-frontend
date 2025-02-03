@@ -26,7 +26,7 @@ export class UserComponent {
             error => {
                 console.error('in getUserProfile() error')
                 if (error.status === 401) {
-                    console.error("This is error 401, should try and refresh access token.")
+                    console.error("This is error 401. Client should try and refresh access token.")
                 }
             }
         )
