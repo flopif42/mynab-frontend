@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AppComponent } from '../app.component'
 import { AuthService } from '../auth/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -16,7 +15,7 @@ export class LoginComponent {
         password: new FormControl('', [Validators.required])
     });
     m_bLoginFailed = false;
-    constructor(private myApp: AppComponent, private authService: AuthService) { }
+    constructor(private authService: AuthService) { }
 
     // log in button
     onSubmit() {
