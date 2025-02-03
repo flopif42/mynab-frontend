@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable, tap, catchError, throwError } from 'rxjs';
 import { HttpInterceptor, HttpClient, HttpRequest, HttpHandlerFn, HttpHandler, HttpEvent, HttpEventType, HttpErrorResponse } from "@angular/common/http";
 import { environment } from '../environments/environment';
+import { Router } from '@angular/router';
 
 export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
     console.log("request log> " + req.url + " " + req.method);
@@ -34,7 +35,8 @@ export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient; private router: Router) { }
+
     m_endpoint = environment.apiUrl + "/user"
 
     attemptRefresh(req: HttpRequest<unknown>, next: HttpHandler) {
@@ -46,6 +48,9 @@ export class AuthInterceptor implements HttpInterceptor {
             },
             error => {
                 console.error("Attempt to refresh the access token failed.");
+                this.router.navigate(['/login']);
+                return throwError(() => error);
+
             })
     }
 
@@ -64,7 +69,8 @@ export class AuthInterceptor implements HttpInterceptor {
                 if (err.status === 401) {
                     if (req.url === "https://budgetizator.ovh:543/user/refresh") {
                         errorMessage = "Attempt to refresh the access token failed."
-                        // TODO: redirect user to login page
+                        this.router.navigate(['/login']);
+                        return throwError(() => err);
                     } else {
                         errorMessage = "This is error 401. Client should try and refresh access token."
                         this.attemptRefresh(req, next)
