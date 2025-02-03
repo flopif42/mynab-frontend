@@ -57,11 +57,13 @@ export class AuthInterceptor implements HttpInterceptor {
                         errorMessage = "This is error 401. Client should try and refresh access token."
                         this.http.get(this.m_endpoint + "/refresh", { observe: 'response' }).subscribe(
                             res => {
-                                console.log('X Response status:', res.status);
-                                console.log('X Body:', res.body);
+                                if (res.status === 200) {
+                                    console.log("Access token successfully refreshed.")
+                                    return next.handle(req)
+                                }
                             },
                             error => {
-                                console.error('X Observer got an error: ', error.status);
+                                console.error("Attempt to refresh the access token failed.");
                             })
                     }
                 } else {
