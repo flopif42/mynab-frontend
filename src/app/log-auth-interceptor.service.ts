@@ -44,7 +44,7 @@ export class AuthInterceptor implements HttpInterceptor {
             res => {
                 console.log("Access token successfully refreshed. Retrying the same request ...")
                 req = req.clone({ withCredentials: true })
-                next.handle(req)
+                return next.handle(req)
             },
             error => {
                 console.error("Attempt to refresh the access token failed.");
@@ -73,14 +73,13 @@ export class AuthInterceptor implements HttpInterceptor {
                         return throwError(() => err);
                     } else {
                         errorMessage = "This is error 401. Client should try and refresh access token."
-                        this.attemptRefresh(req, next)
+                        return this.attemptRefresh(req, next)
                     }
                 } else {
                     errorMessage = "error not 401 log> " + req.url + " " + req.method
                 }
 
                 console.error(errorMessage)
-                return throwError(() => err);
             })
         );
     }
