@@ -53,7 +53,6 @@ export class AuthInterceptor implements HttpInterceptor {
             error => {
                 console.error("in attemptRefresh() : Attempt to refresh the access token failed.");
                 this.router.navigate(['/login']);
-                return throwError(() => error);
             })
         return obs
     }
