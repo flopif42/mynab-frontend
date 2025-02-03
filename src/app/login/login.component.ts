@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AppComponent } from '../app.component'
-import { AuthService } from '../auth/auth.authservice';
+import { AuthService } from '../auth/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
