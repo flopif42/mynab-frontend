@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { environment } from '../../environments/environment'
 import { HttpClient } from "@angular/common/http";
-import { AuthService } from '../auth/auth.service';
 
 @Component({
     selector: 'user-home',
@@ -11,15 +10,14 @@ export class UserComponent {
     m_endpoint = environment.apiUrl + "/user/profile"
     m_data = []
 
-    constructor(private http: HttpClient, private authService: AuthService) { }
+    constructor(private http: HttpClient) { }
 
     ngOnInit() {
         this.getUserProfile()
     }
 
     public getUserProfile() {
-        let observable = this.http.get<Object>(this.m_endpoint)
-        return observable.subscribe(
+        return this.http.get<Object>(this.m_endpoint).subscribe(
             response => {
                 this.m_data = response[0];
             },
