@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable, tap, catchError, throwError } from 'rxjs';
 import { HttpInterceptor, HttpClient, HttpRequest, HttpHandlerFn, HttpHandler, HttpEvent, HttpEventType, HttpErrorResponse } from "@angular/common/http";
+import { environment } from '../environments/environment';
 
 export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
     console.log("request log> " + req.url + " " + req.method);
@@ -33,6 +34,9 @@ export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+    constructor(private http: HttpClient) {}
+    m_endpoint = environment.apiUrl + "/user"
+
     intercept(req: HttpRequest<unknown>, next: HttpHandler) {
         console.log("request log> " + req.url + " " + req.method);
         req = req.clone({ withCredentials: true });
@@ -51,6 +55,14 @@ export class AuthInterceptor implements HttpInterceptor {
                         // TODO: redirect user to login page
                     } else {
                         errorMessage = "This is error 401. Client should try and refresh access token."
+                        this.http.get(this.m_endpoint + "/refresh", { observe: 'response' }).subscribe(
+                            res => {
+                                console.log('X Response status:', res.status);
+                                console.log('X Body:', res.body);
+                            },
+                            error => {
+                                console.error('X Observer got an error: ', error.status);
+                            })
                     }
                 } else {
                     errorMessage = "error not 401 log> " + req.url + " " + req.method
