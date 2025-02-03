@@ -2,7 +2,7 @@ import { AppComponent } from '../app.component';
 import { Component } from '@angular/core';
 import { environment } from '../../environments/environment'
 import { HttpClient } from "@angular/common/http";
-import { AuthService } from '../auth/auth.authservice';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
     selector: 'user-home',
