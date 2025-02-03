@@ -41,7 +41,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     m_endpoint = environment.apiUrl + "/user"
 
-    attemptRefresh(req: HttpRequest<unknown>, next: HttpHandler) {
+    attemptRefresh(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         console.log("Attempting to refresh the token ...")
         this.http.get(this.m_endpoint + "/refresh", { observe: 'response' }).subscribe(
             res => {
