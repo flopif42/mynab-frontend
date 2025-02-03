@@ -1,4 +1,4 @@
-import { Observable, tap, catchError } from 'rxjs';
+import { Observable, tap, catchError, throwError } from 'rxjs';
 import { HttpRequest, HttpHandlerFn, HttpEvent, HttpEventType, HttpErrorResponse } from "@angular/common/http";
 
 export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
@@ -12,8 +12,9 @@ export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
             }
         }),
         */
-        catchError((e: HttpErrorResponse) => {
+        catchError((error: HttpErrorResponse) => {
             console.error("error response log> " + req.urlWithParams + " " + req.method);
+            return throwError(() => error);
         })
     );
 }
