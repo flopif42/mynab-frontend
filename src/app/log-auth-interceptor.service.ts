@@ -5,13 +5,11 @@ export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
     console.log("request log> " + req.urlWithParams + " " + req.method);
     req = req.clone({ withCredentials: true });
     return next(req).pipe(
-        /*
         tap(event => {
             if (event.type === HttpEventType.Response) {
                 console.log("response log> " + req.urlWithParams + " " + req.method);
             }
         }),
-        */
         catchError((error: HttpErrorResponse) => {
             console.error("error response log> " + req.urlWithParams + " " + req.method);
             return throwError(() => error);
