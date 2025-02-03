@@ -43,7 +43,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     attemptRefresh(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         console.log("Attempting to refresh the token ...")
-        this.http.get(this.m_endpoint + "/refresh", { observe: 'response' }).subscribe(
+        return this.http.get(this.m_endpoint + "/refresh", { observe: 'response' }).subscribe(
             res => {
                 console.log("Access token successfully refreshed. Retrying the same request ...")
                 req = req.clone({ withCredentials: true })
