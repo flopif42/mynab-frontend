@@ -31,7 +31,7 @@ export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
     );
 }
 
-@Injectable
+@Injectable()
 export class AuthInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<unknown>, next: HttpHandler) {
         console.log("request log> " + req.url + " " + req.method);
