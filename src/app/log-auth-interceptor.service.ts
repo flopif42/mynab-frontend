@@ -35,7 +35,7 @@ export function logAuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    constructor(private http: HttpClient; private router: Router) { }
+    constructor(private http: HttpClient, private router: Router) { }
 
     m_endpoint = environment.apiUrl + "/user"
 
