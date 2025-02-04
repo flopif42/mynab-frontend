@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
@@ -15,7 +16,7 @@ export class LoginComponent {
         password: new FormControl('', [Validators.required])
     });
     m_bLoginFailed = false;
-    constructor(private authService: AuthService) { }
+    constructor(private router: Router, private authService: AuthService) { }
 
     // log in button
     onSubmit() {
@@ -25,6 +26,7 @@ export class LoginComponent {
             this.authService.login(val.email, val.password).subscribe(
                 (response) => {
                     this.m_bLoginFailed = false;
+                    this.router.navigate(['/hello'])
                 },
                 (error) => {
                     if (error.status == 401) {
