@@ -2,7 +2,6 @@ import { Router } from '@angular/router'
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Account } from './account.model'
 import { AccountService } from './account.service';
 
 @Component({
@@ -38,7 +37,7 @@ export class AccountComponent {
         const val = this.createAccountForm.value;
 
         if (this.createAccountForm && val.account_name && val.account_type) {
-            this.accountService.create(val.account_name, val.account_type)
+            this.accountService.create(val.account_name, 1)
                 .subscribe(
                     (response) => {
                         console.log("Account created");
