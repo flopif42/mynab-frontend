@@ -24,9 +24,7 @@ export class AccountComponent {
         { id: 3, label: 'Closed' }
     ];
     */
-    myForm = new FormGroup({
-        selectedOption: new FormControl('Choose an option')
-    });
+    myForm: FormGroup
 
     // Options for the dropdown list
     options = [];
@@ -34,11 +32,7 @@ export class AccountComponent {
     //_accountList = []
 
     constructor(/*, private router: Router, private accountService: AccountService*/) {
-        this.options = [
-            { value: '1', label: 'Option One' },
-            { value: '2', label: 'Option Two' },
-            { value: '3', label: 'Option Three' }
-        ];
+        
     }
 
     ngOnInit() {
@@ -48,6 +42,17 @@ export class AccountComponent {
             selectedOption: ['']  // Initial value is empty or you can set a default value
         });
         */
+
+        this.options = [
+            { value: '1', label: 'Option One' },
+            { value: '2', label: 'Option Two' },
+            { value: '3', label: 'Option Three' }
+        ];
+
+        this.myForm = new FormGroup({
+            selectedOption: new FormControl('Choose an option')
+        });
+
         console.log(this.options)
     }
 
