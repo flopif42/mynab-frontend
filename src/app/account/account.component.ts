@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-dropdown',
-    templateUrl: './account.component.html'
+    templateUrl: './account.component.html',
+    imports: [ReactiveFormsModule]
 })
 export class AccountComponent implements OnInit {
     myForm: FormGroup;
