@@ -71,6 +71,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 }
             }),
             catchError((err: HttpErrorResponse) => {
+                console.error("in intercept() catchError()")
                 let errorMessage
                 if (err.status === 401) {
                     if (req.url === "https://budgetizator.ovh:543/user/refresh") {
