@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-dropdown',
-    templateUrl: './dropdown.component.html'
+    templateUrl: './account.component.html'
 })
-export class DropdownComponent implements OnInit {
+export class AccountComponent implements OnInit {
     myForm: FormGroup;
     // Options for the dropdown list
     options = [
