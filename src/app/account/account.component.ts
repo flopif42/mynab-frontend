@@ -2,7 +2,7 @@ import { Router } from '@angular/router'
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { confirmPasswordValidator } from '../confirm-password.validator';
+import { Account } from './account.model'
 import { AccountService } from './account.service';
 
 @Component({
@@ -10,10 +10,6 @@ import { AccountService } from './account.service';
     templateUrl: 'account.component.html',
     imports: [ReactiveFormsModule]
 })
-
-export class Account {
-    _name_account: string
-}
 
 export class AccountComponent {
     createAccountForm = new FormGroup({
