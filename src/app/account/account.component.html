@@ -1,10 +1,9 @@
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <label for="dropdown">Choose an option:</label>
     <select id="dropdown" formControlName="selectedOption">
-        <option *ngFor="let name of names" [value]="name">
-            {{ name }}
+        <option *ngFor="let opt of options" [value]="opt.value">
+            {{ opt.label }}
         </option>
-        <option value="plop">test 1 2 3</option>
     </select>
 
     <!-- Optional: Show the selected value -->

@@ -25,28 +25,23 @@ export class AccountComponent {
     ];
     */
     myForm = new FormGroup({
-        selectedOption: new FormControl('toto')
+        selectedOption: new FormControl('Choose an option')
     });
 
     // Options for the dropdown list
-    options = [
-        { value: '1', label: 'Option One' },
-        { value: '2', label: 'Option Two' },
-        { value: '3', label: 'Option Three' }
-    ];
-
-    // Options for the dropdown list
-    names = [
-        "John",
-        "Mike",
-        "Peter"
-    ];
+    options = [];
 
     //_accountList = []
 
-    constructor(/*, private router: Router, private accountService: AccountService*/) { }
+    constructor(/*, private router: Router, private accountService: AccountService*/) {
+        this.options = [
+            { value: '1', label: 'Option One' },
+            { value: '2', label: 'Option Two' },
+            { value: '3', label: 'Option Three' }
+        ];
+    }
 
-    ngOnInit(): void {
+    ngOnInit() {
         //this.listAccounts()
         /*
         this.myForm = this.fb.group({
