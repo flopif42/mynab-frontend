@@ -11,17 +11,19 @@ import { AccountService } from './account.service';
 })
 
 export class AccountComponent {
+    /*
     _createAccountForm = new FormGroup({
         account_name: new FormControl('', [Validators.required]),
         selectedOption: new FormControl('')
     });
-
+    */
+    /*
     _accountTypes = [
         { id: 1, label: 'On-budget' },
         { id: 2, label: 'Off-budget' },
         { id: 3, label: 'Closed' }
     ];
-
+    */
     myForm: FormGroup;
     // Options for the dropdown list
     options = [
@@ -52,7 +54,7 @@ export class AccountComponent {
     }
 
     onSubmit() {
-        const val = this._createAccountForm.value;
+//        const val = this._createAccountForm.value;
         console.log('Selected option:', this.myForm.value.selectedOption);
 
 /*
