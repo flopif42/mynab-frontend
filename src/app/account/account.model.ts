@@ -1,3 +1,4 @@
 export class Account {
-    _name_account: string
+    _name: string
+    _type: string
 }
