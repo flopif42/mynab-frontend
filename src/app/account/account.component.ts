@@ -43,6 +43,10 @@ export class AccountComponent {
         const val = this._createAccountForm.value;
 
         if (this._createAccountForm && val.account_name) {
+            console.log(val.account_type)
+/*
+
+
             this.accountService.create(val.account_name, val.account_type)
                 .subscribe(
                     (response) => {
@@ -50,6 +54,7 @@ export class AccountComponent {
 //                        this.router.navigate(['/']);
                     }
                 );
+                */
         }
     }
 }
