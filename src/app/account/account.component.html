@@ -1,27 +1,27 @@
-<form [formGroup]="_createAccountForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <fieldset>
         <legend>Add account</legend>
         <div class="form-field">
             <label>Account name</label><input name="account_name" formControlName="account_name">
         </div>
         <div class="form-field">
-            <label>Account type</label>
+            <label for="dropdown">Account type</label>
 
             <select id="dropdown" formControleName="selectedOption">
-                <option *ngFor="let accType of _accountTypes" [value]="{{ accType.id }}">
-                    {{ accType.label }}
+                <option *ngFor="let option of options" [value]="option.value">
+                    {{ option.label }}
                 </option>
             </select>
 
         </div>
     </fieldset>
     <div class="form-buttons">
-        <button class="button button-primary" [disabled]="!_createAccountForm.valid">Create</button>
+        <button class="button button-primary" [disabled]="!myForm.valid">Create</button>
     </div>
 </form>
 
 <div>
-    You selected: {{ _createAccountForm.get('selectedOption').value }}
+    You selected: {{ myForm.get('selectedOption').value }}
 </div>
 
 @for (item of _accountList; track item._name) {

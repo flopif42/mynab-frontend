@@ -1,6 +1,6 @@
 import { Router } from '@angular/router'
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './account.service';
 
@@ -22,12 +22,24 @@ export class AccountComponent {
         { id: 3, label: 'Closed' }
     ];
 
+    myForm: FormGroup;
+    // Options for the dropdown list
+    options = [
+        { value: '1', label: 'Option One' },
+        { value: '2', label: 'Option Two' },
+        { value: '3', label: 'Option Three' }
+    ];
+
     _accountList = []
 
-    constructor(private router: Router, private accountService: AccountService) { }
+    constructor(private fb: FormBuilder, private router: Router, private accountService: AccountService) { }
 
     ngOnInit() {
-        this.listAccounts()
+        //this.listAccounts()
+        this.myForm = this.fb.group({
+            selectedOption: ['']  // Initial value is empty or you can set a default value
+        });
+
     }
 
     listAccounts() {
@@ -41,12 +53,10 @@ export class AccountComponent {
 
     onSubmit() {
         const val = this._createAccountForm.value;
+        console.log('Selected option:', this.myForm.value.selectedOption);
 
-        if (this._createAccountForm && val.account_name) {
-            console.log('Selected option:', this._createAccountForm.value.selectedOption);
 /*
-
-
+        if (this._createAccountForm && val.account_name) {
             this.accountService.create(val.account_name, val.account_type)
                 .subscribe(
                     (response) => {
