@@ -21,7 +21,7 @@ export class AuthService {
 
     // Logout
     logout() {
-        return this.http.post<Object>(this.m_endpoint + "/logout", { observe: 'response' })
+        return this.http.post<any>(this.m_endpoint + "/logout", { observe: 'response' })
             .pipe(shareReplay());
     }
 }
