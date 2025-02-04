@@ -21,8 +21,8 @@ export class AccountComponent {
     onSubmit() {
         const val = this.createAccountForm.value;
 
-        if (this.createAccountForm && val.name_account) {
-            this.accountService.create(val.name_account)
+        if (this.createAccountForm && val.account_name) {
+            this.accountService.create(val.account_name)
                 .subscribe(
                     (response) => {
                         console.log("Account created");
