@@ -27,7 +27,7 @@ export class AuthService {
     attemptRefresh(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         console.log("Attempting to refresh the token ...")
         req = req.clone({ withCredentials: true })
-        var obs = this.httpBackend.get(this.m_endpoint + "/refresh", { observe: 'response', withCredentials: true })
+        var obs = this.http.get(this.m_endpoint + "/refresh", { observe: 'response', withCredentials: true })
         obs.subscribe(
             res => {
                 console.log("Access token successfully refreshed. Retrying the same request ...")
