@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { AuthService } from './auth/auth.service';
+// import { AuthService } from './auth/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -13,10 +13,10 @@ import { AuthService } from './auth/auth.service';
     providedIn: 'root'
 })
 export class AppComponent {
-    m_bLoggedIn = false;
+//    m_bLoggedIn = false;
 
-    constructor(private authService: AuthService) { }
-
+    constructor(/*private authService: AuthService*/) { }
+    /*
     refreshAccessToken() {
         this.authService.refresh().subscribe(
             res => {
@@ -28,4 +28,5 @@ export class AppComponent {
             }
         )
     }
+    */
 }
