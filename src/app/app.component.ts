@@ -19,13 +19,12 @@ export class AppComponent {
     logout() {
         this.authService.logout().subscribe(
             res => {
-                console.log('Response status:', res.status);
-                console.log('Body:', res.body);
+                console.log('Response :', res['logout']);
                 this._isLoggedIn = false
                 this.router.navigate(['/login'])
             },
             error => {
-                console.error('Observer got an error: ', error.status);
+                console.error('Observer got an error: ', error);
             }
         )
     }
