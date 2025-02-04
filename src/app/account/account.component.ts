@@ -13,7 +13,7 @@ import { AccountService } from './account.service';
 
 export class AccountComponent {
     createAccountForm = new FormGroup({
-        accountName: new FormControl('', [Validators.required])
+        name_account: new FormControl('', [Validators.required])
     });
 
     constructor(private router: Router, private accountService: AccountService) { }
@@ -21,8 +21,8 @@ export class AccountComponent {
     onSubmit() {
         const val = this.createAccountForm.value;
 
-        if (this.createAccountForm && val.accountName) {
-            this.accountService.create(val.accountName)
+        if (this.createAccountForm && val.name_account) {
+            this.accountService.create(val.name_account)
                 .subscribe(
                     (response) => {
                         console.log("Account created");
