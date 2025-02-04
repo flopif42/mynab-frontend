@@ -13,7 +13,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     providedIn: 'root'
 })
 export class AppComponent {
-//    m_bLoggedIn = false;
+    _isLoggedIn = false;
 
     constructor(/*private authService: AuthService*/) { }
     /*

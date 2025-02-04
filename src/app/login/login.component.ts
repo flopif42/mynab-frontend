@@ -1,8 +1,8 @@
-import { Router } from '@angular/router';
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AppComponent } from '../app.component'
 
 @Component({
     selector: 'login',
@@ -15,8 +15,8 @@ export class LoginComponent {
         email: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required])
     });
-    m_bLoginFailed = false;
-    constructor(private router: Router, private authService: AuthService) { }
+    _displayLoginErrorMessage = false;
+    constructor(private app: AppComponent, private router: Router, private authService: AuthService) { }
 
     // log in button
     onSubmit() {
@@ -25,12 +25,14 @@ export class LoginComponent {
         if (val.email && val.password) {
             this.authService.login(val.email, val.password).subscribe(
                 (response) => {
-                    this.m_bLoginFailed = false;
+                    this._displayLoginErrorMessage = false;
                     this.router.navigate(['/hello'])
+                    this.app._isLoggedIn = true;
                 },
                 (error) => {
                     if (error.status == 401) {
-                        this.m_bLoginFailed = true;
+                        this._displayLoginErrorMessage = true;
+                        this.app._isLoggedIn = false;
                     }
                 });
         }

@@ -1,5 +1,6 @@
 <nav>
     <a routerLink="/">Home</a>
+    @if (_isLoggedIn) {
     |
     <a routerLink="/account">Accounts</a>
     |
@@ -14,9 +15,11 @@
     <a routerLink="/user">User settings</a>
     |
     <a routerLink="/logout">Log out</a>
+    } @else {
     |
     <a routerLink="/login">Login</a>
     |
     <a routerLink="/sign-up">Sign up</a>
+    }
 </nav>
 <router-outlet/>
