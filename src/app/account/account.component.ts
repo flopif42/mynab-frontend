@@ -13,7 +13,7 @@ import { AccountService } from './account.service';
 export class AccountComponent {
     _createAccountForm = new FormGroup({
         account_name: new FormControl('', [Validators.required]),
-        account_type: new FormControl('')
+        selectedOption: new FormControl('')
     });
 
     _accountTypes = [
@@ -43,7 +43,7 @@ export class AccountComponent {
         const val = this._createAccountForm.value;
 
         if (this._createAccountForm && val.account_name) {
-            console.log(val.account_type)
+            console.log('Selected option:', this._createAccountForm.value.selectedOption);
 /*
 
 

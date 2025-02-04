@@ -7,8 +7,8 @@
         <div class="form-field">
             <label>Account type</label>
 
-            <select [(ngModel)]="account_type">
-                <option *ngFor="let accType of _accountTypes" [value]="accType.label">
+            <select id="dropdown" formControleName="selectedOption">
+                <option *ngFor="let accType of _accountTypes" [value]="accType.id">
                     {{ accType.label }}
                 </option>
             </select>
@@ -19,6 +19,11 @@
         <button class="button button-primary" [disabled]="!createAccountForm.valid">Create</button>
     </div>
 </form>
+
+<div>
+    You selected: {{ _createAccountForm.get('selectedOption').value }}
+</div>
+
 @for (item of _accountList; track item._name) {
 <li>{{ item._name }} | {{ item._type }}</li>
 } @empty {
