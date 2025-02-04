@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Md5 } from 'ts-md5';
 import { shareReplay } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
@@ -21,7 +21,7 @@ export class AuthService {
 
     // Logout
     logout() {
-        return this.http.post<Object>(this.m_endpoint + "/logout", { observe: Response })
+        return this.http.post<HttpResponse>(this.m_endpoint + "/logout", { observe: 'response' })
             .pipe(shareReplay());
     }
 }
