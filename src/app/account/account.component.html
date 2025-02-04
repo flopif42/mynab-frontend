@@ -8,7 +8,7 @@
             <label>Account type</label>
 
             <select id="dropdown" formControleName="selectedOption">
-                <option *ngFor="let accType of _accountTypes" [value]="accType.id">
+                <option *ngFor="let accType of _accountTypes" [value]="{{ accType.id }}">
                     {{ accType.label }}
                 </option>
             </select>
