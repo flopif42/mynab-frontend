@@ -13,7 +13,7 @@ import { AccountService } from './account.service';
 export class AccountComponent {
     createAccountForm = new FormGroup({
         account_name: new FormControl('', [Validators.required]),
-        account_type: new FormControl([Validators.required])
+        account_type: new FormControl('On-budget')
     });
 
     _accountList = []
