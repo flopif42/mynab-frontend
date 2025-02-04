@@ -35,6 +35,13 @@ export class AccountComponent {
         { value: '3', label: 'Option Three' }
     ];
 
+    // Options for the dropdown list
+    names = [
+        "John",
+        "Mike",
+        "Peter"
+    ];
+
     //_accountList = []
 
     constructor(/*, private router: Router, private accountService: AccountService*/) { }
