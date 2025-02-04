@@ -30,6 +30,6 @@ export class AuthService {
     refresh() {
         console.log('in AuthService.refresh() called by httpbackend')
         //return this.http.get(this.m_endpoint + "/refresh", {observe: 'response'})
-        return this.http.get(this.m_endpoint + "/refresh", { observe: 'response' })
+        return this.http.get(this.m_endpoint + "/refresh", { observe: 'response' }, { withCredentials: true })
     }
 }
