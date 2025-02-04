@@ -22,7 +22,7 @@ export class AuthService {
     // Login with credentials to request an Access Token and a Refresh Token
     login(email_address: string, password: string) {
         var passphrase_md5 = Md5.hashStr(password);
-        return this.http.post<Object>(this.m_endpoint + "/login", { email_address, passphrase_md5 }, { observe: 'response' })
+        return this.http.post<Object>(this.m_endpoint + "/login", { email_address, passphrase_md5 }, { observe: 'response', withCredentials: true })
             .pipe(shareReplay());
     }
 
@@ -30,6 +30,6 @@ export class AuthService {
     refresh() {
         console.log('in AuthService.refresh() called by httpbackend')
         //return this.http.get(this.m_endpoint + "/refresh", {observe: 'response'})
-        return this.http.get(this.m_endpoint + "/refresh", { observe: 'response' , withCredentials: true })
+        return this.http.get(this.m_endpoint + "/refresh", { observe: 'response', withCredentials: true })
     }
 }
