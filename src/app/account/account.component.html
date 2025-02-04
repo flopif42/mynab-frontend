@@ -10,3 +10,8 @@
     </div>
 </form>
 {{ _accountList }}
+@for (item of _accountList; track item._name) {
+<li>{{ item._name }} | {{ item._type }}</li>
+} @empty {
+<li>There are no items.</li>
+}
