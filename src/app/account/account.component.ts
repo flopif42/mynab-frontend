@@ -1,93 +1,30 @@
-import { Router } from '@angular/router'
-import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AccountService } from './account.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-    selector: 'app-account',
-    templateUrl: 'account.component.html',
-    imports: [ReactiveFormsModule]
+    selector: 'app-dropdown',
+    templateUrl: './dropdown.component.html'
 })
-
-export class AccountComponent {
-    users: any[] = [
-        { name: 'Sam', age: 45 },
-        { name: 'Jim', age: 33 },
-        { name: 'Ana', age: 17 },
-        { name: 'Lou', age: 4 },
-    ]
-
-    /*
-    _createAccountForm = new FormGroup({
-        account_name: new FormControl('', [Validators.required]),
-        selectedOption: new FormControl('')
-    });
-    */
-    /*
-    _accountTypes = [
-        { id: 1, label: 'On-budget' },
-        { id: 2, label: 'Off-budget' },
-        { id: 3, label: 'Closed' }
-    ];
-    */
-    myForm: FormGroup
-
+export class DropdownComponent implements OnInit {
+    myForm: FormGroup;
     // Options for the dropdown list
-    options = [];
+    options = [
+        { value: '1', label: 'Option One' },
+        { value: '2', label: 'Option Two' },
+        { value: '3', label: 'Option Three' }
+    ];
 
-    //_accountList = []
+    constructor(private fb: FormBuilder) { }
 
-    constructor(/*, private router: Router, private accountService: AccountService*/) {
-        
-    }
-
-    ngOnInit() {
-        //this.listAccounts()
-        /*
+    ngOnInit(): void {
+        // Create the form group with a control for the dropdown
         this.myForm = this.fb.group({
             selectedOption: ['']  // Initial value is empty or you can set a default value
         });
-        */
-
-        this.options = [
-            { value: '1', label: 'Option One' },
-            { value: '2', label: 'Option Two' },
-            { value: '3', label: 'Option Three' }
-        ];
-
-        this.myForm = new FormGroup({
-            selectedOption: new FormControl('Choose an option')
-        });
-
-        console.log(this.options)
     }
 
-    /*
-    listAccounts() {
-        return this.accountService.getList()
-            .subscribe(
-                (response) => {
-                    this._accountList = response
-                }
-            )
-    }*/
-
-    onSubmit() {
-//        const val = this._createAccountForm.value;
+    // Optional: For debugging, you can log the selected option
+    onSubmit(): void {
         console.log('Selected option:', this.myForm.value.selectedOption);
-
-/*
-        if (this._createAccountForm && val.account_name) {
-            this.accountService.create(val.account_name, val.account_type)
-                .subscribe(
-                    (response) => {
-                        console.log("Account created");
-//                        this.router.navigate(['/']);
-                    }
-                );
-                
-        }
-        */
     }
 }
