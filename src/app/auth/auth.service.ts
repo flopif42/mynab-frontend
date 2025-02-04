@@ -30,7 +30,7 @@ export class AuthService {
 
     // Call the refresh endpoint to request a new Access Token, provided the Refresh token is not expired.
     refresh() {
-        console.log('in AuthService.refresh()')
+        console.log('in AuthService.refresh() called by httpbackend')
         //return this.http.get(this.m_endpoint + "/refresh", {observe: 'response'})
         return this.httpBackend.get(this.m_endpoint + "/refresh", { observe: 'response' })
     }
