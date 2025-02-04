@@ -64,7 +64,8 @@ export class AccountComponent {
 //                        this.router.navigate(['/']);
                     }
                 );
-                */
+                
         }
+        */
     }
 }
