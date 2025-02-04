@@ -1,8 +1,9 @@
+import { Router } from '@angular/router'
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { confirmPasswordValidator } from '../confirm-password.validator';
-import { SignupService } from './signup.signupservice';
+import { SignupService } from './signup.service';
 
 @Component({
     selector: 'app-signup',
@@ -19,7 +20,7 @@ export class SignupComponent {
         last_name: new FormControl('')
     }, confirmPasswordValidator());
 
-    constructor(private signupService: SignupService) { }
+    constructor(private router: Router, private signupService: SignupService) { }
 
     onSubmit() {
         const val = this.signupForm.value;
@@ -30,7 +31,7 @@ export class SignupComponent {
             ).subscribe(
                 (response) => {
                     console.log("User created");
-                    // this.router.navigateByUrl('/');
+                    this.router.navigate(['/']);
                 }
             );
         }
