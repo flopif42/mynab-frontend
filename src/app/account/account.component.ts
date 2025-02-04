@@ -13,7 +13,7 @@ import { AccountService } from './account.service';
 
 export class AccountComponent {
     createAccountForm = new FormGroup({
-        name_account: new FormControl('', [Validators.required])
+        account_name: new FormControl('', [Validators.required])
     });
 
     constructor(private router: Router, private accountService: AccountService) { }
