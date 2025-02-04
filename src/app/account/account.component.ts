@@ -11,12 +11,31 @@ import { AccountService } from './account.service';
     imports: [ReactiveFormsModule]
 })
 
+export class Account {
+    _name_account: string
+}
+
 export class AccountComponent {
     createAccountForm = new FormGroup({
         account_name: new FormControl('', [Validators.required])
     });
 
+    _accountList = []
+
     constructor(private router: Router, private accountService: AccountService) { }
+
+    ngOnInit() {
+        this.listAccounts()
+    }
+
+    listAccounts() {
+        return this.accountService.getList()
+            .subscribe(
+                (response) => {
+                    this._accountList = response
+                }
+            )
+    }
 
     onSubmit() {
         const val = this.createAccountForm.value;

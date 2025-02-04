@@ -10,9 +10,11 @@ export class AccountService {
 
     constructor(private http: HttpClient) { }
 
-    create(account_name: string){
-        return this.http.post<Object>(this.m_endpoint + '/create', {
-            account_name
-        });
+    create(account_name: string) {
+        return this.http.post<Object>(this.m_endpoint + '/create', { account_name });
+    }
+
+    getList() {
+        return this.http.get<Account[]>(this.m_endpoint + '/list')
     }
 }
