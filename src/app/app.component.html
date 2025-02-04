@@ -14,10 +14,10 @@
     |
     <a routerLink="/user">User settings</a>
     |
-    <a routerLink="/logout">Log out</a>
+    <a href="javascript:void(0);" (click)="logout()">Log out</a>
     } @else {
     |
-    <a routerLink="/login">Login</a>
+    <a routerLink="/login">Log in</a>
     |
     <a routerLink="/sign-up">Sign up</a>
     }

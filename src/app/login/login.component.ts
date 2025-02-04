@@ -26,7 +26,7 @@ export class LoginComponent {
             this.authService.login(val.email, val.password).subscribe(
                 (response) => {
                     this._displayLoginErrorMessage = false;
-                    this.router.navigate(['/hello'])
+                    this.router.navigate(['/'])
                     this.app._isLoggedIn = true;
                 },
                 (error) => {

@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-// import { AuthService } from './auth/auth.service';
+import { Component, Injectable } from '@angular/core';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { AuthService } from './auth/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -15,18 +14,19 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 export class AppComponent {
     _isLoggedIn = false;
 
-    constructor(/*private authService: AuthService*/) { }
-    /*
-    refreshAccessToken() {
-        this.authService.refresh().subscribe(
+    constructor(private router: Router, private authService: AuthService) { }
+
+    logout() {
+        this.authService.logout().subscribe(
             res => {
                 console.log('Response status:', res.status);
                 console.log('Body:', res.body);
+                this._isLoggedIn = false
+                this.router.navigate(['/login'])
             },
             error => {
                 console.error('Observer got an error: ', error.status);
             }
         )
     }
-    */
 }
