@@ -1,5 +1,5 @@
 import { Router } from '@angular/router'
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './account.service';
@@ -10,7 +10,7 @@ import { AccountService } from './account.service';
     imports: [ReactiveFormsModule]
 })
 
-export class AccountComponent {
+export class AccountComponent implements OnInit {
     /*
     _createAccountForm = new FormGroup({
         account_name: new FormControl('', [Validators.required]),
@@ -32,11 +32,11 @@ export class AccountComponent {
         { value: '3', label: 'Option Three' }
     ];
 
-    _accountList = []
+    //_accountList = []
 
-    constructor(private fb: FormBuilder, private router: Router, private accountService: AccountService) { }
+    constructor(private fb: FormBuilder /*, private router: Router, private accountService: AccountService*/) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         //this.listAccounts()
         this.myForm = this.fb.group({
             selectedOption: ['']  // Initial value is empty or you can set a default value
@@ -44,6 +44,7 @@ export class AccountComponent {
 
     }
 
+    /*
     listAccounts() {
         return this.accountService.getList()
             .subscribe(
@@ -51,7 +52,7 @@ export class AccountComponent {
                     this._accountList = response
                 }
             )
-    }
+    }*/
 
     onSubmit() {
 //        const val = this._createAccountForm.value;
