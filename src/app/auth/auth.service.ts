@@ -9,17 +9,15 @@ import { environment } from '../../environments/environment';
 })
 export class AuthService {
 
-    private httpBackend: HttpClient;
+    private http: HttpClient;
 
     m_endpoint = environment.apiUrl + "/user"
 
     // constructor(private http: HttpClient) { }
 
-    constructor(private httpB: HttpBackend, private http: HttpClient) {
-        this.httpBackend = new HttpClient(httpB)
+    constructor(private httpBackend: HttpBackend) {
+        this.http = new HttpClient(httpBackend)
     }
-
-
 
     // Login with credentials to request an Access Token and a Refresh Token
     login(email_address: string, password: string) {
@@ -32,6 +30,6 @@ export class AuthService {
     refresh() {
         console.log('in AuthService.refresh() called by httpbackend')
         //return this.http.get(this.m_endpoint + "/refresh", {observe: 'response'})
-        return this.httpBackend.get(this.m_endpoint + "/refresh", { observe: 'response' })
+        return this.http.get(this.m_endpoint + "/refresh", { observe: 'response' })
     }
 }
