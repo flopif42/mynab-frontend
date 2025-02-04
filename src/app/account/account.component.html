@@ -6,11 +6,13 @@
         </div>
         <div class="form-field">
             <label>Account type</label>
-            <select name="account_type" formControlName="account_type">
-                <option value="1">On-budget</option>
-                <option value="2">Off-budget</option>
-                <option value="3">Closed</option>
+
+            <select [(ngModel)]="account_type">
+                <option *ngFor="let accType of _accountTypes" [value]="accType.label">
+                    {{ accType.label }}
+                </option>
             </select>
+
         </div>
     </fieldset>
     <div class="form-buttons">
