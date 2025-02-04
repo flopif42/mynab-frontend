@@ -1,6 +1,6 @@
 import { Router } from '@angular/router'
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './account.service';
 
@@ -10,7 +10,7 @@ import { AccountService } from './account.service';
     imports: [ReactiveFormsModule]
 })
 
-export class AccountComponent implements OnInit {
+export class AccountComponent {
     /*
     _createAccountForm = new FormGroup({
         account_name: new FormControl('', [Validators.required]),
@@ -24,7 +24,10 @@ export class AccountComponent implements OnInit {
         { id: 3, label: 'Closed' }
     ];
     */
-    myForm: FormGroup;
+    myForm = new FormGroup({
+        selectedOption: new FormControl('toto')
+    });
+
     // Options for the dropdown list
     options = [
         { value: '1', label: 'Option One' },
@@ -34,14 +37,16 @@ export class AccountComponent implements OnInit {
 
     //_accountList = []
 
-    constructor(private fb: FormBuilder /*, private router: Router, private accountService: AccountService*/) { }
+    constructor(/*, private router: Router, private accountService: AccountService*/) { }
 
     ngOnInit(): void {
         //this.listAccounts()
+        /*
         this.myForm = this.fb.group({
             selectedOption: ['']  // Initial value is empty or you can set a default value
         });
-
+        */
+        console.log(options)
     }
 
     /*
