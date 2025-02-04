@@ -31,6 +31,7 @@ export class AuthService {
         obs.subscribe(
             res => {
                 console.log("Access token successfully refreshed. Retrying the same request ...")
+                console.log(req.url)
                 return next.handle(req)
             },
             error => {
