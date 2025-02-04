@@ -1,16 +1,1 @@
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-    <label for="dropdown">Choose an option:</label>
-    <select id="selectedOption" formControlName="selectedOption">
-        <option *ngFor="let opt of options" [value]="opt.value">
-            {{ opt.label }}
-        </option>
-        <option>test 1 2 3</option>
-    </select>
-
-    <!-- Optional: Show the selected value -->
-    <div>
-        You selected: {{ myForm.get('selectedOption').value }}
-    </div>
-
-    <button type="submit">Submit</button>
-</form>
+<p *ngFor="let user of users">{{user.name}} : {{user.age}}</p>

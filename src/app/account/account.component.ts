@@ -11,6 +11,13 @@ import { AccountService } from './account.service';
 })
 
 export class AccountComponent {
+    users: any[] = [
+        { name: 'Sam', age: 45 },
+        { name: 'Jim', age: 33 },
+        { name: 'Ana', age: 17 },
+        { name: 'Lou', age: 4 },
+    ]
+
     /*
     _createAccountForm = new FormGroup({
         account_name: new FormControl('', [Validators.required]),
