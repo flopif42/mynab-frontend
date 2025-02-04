@@ -46,7 +46,7 @@ export class AccountComponent {
             selectedOption: ['']  // Initial value is empty or you can set a default value
         });
         */
-        console.log(options)
+        console.log(this.options)
     }
 
     /*
