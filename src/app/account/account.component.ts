@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './account.service'
 import { Account } from './account.model'
@@ -10,7 +10,25 @@ import { Account } from './account.model'
     imports: [ReactiveFormsModule]
 })
 export class AccountComponent implements OnInit {
-    _newAccountForm: FormGroup;
+    /*
+     * 
+     * signupForm = new FormGroup({
+        email: new FormControl('', [Validators.required]),
+        password: new FormControl('', [Validators.required]),
+        confirm_password: new FormControl('', [Validators.required]),
+        first_name: new FormControl(''),
+        last_name: new FormControl('')
+    }, confirmPasswordValidator());
+     * 
+     * 
+     * */
+
+
+
+    _newAccountForm = new FormGroup({
+        account_type: new FormControl('', [Validators.required]),
+        account_name: new FormControl('', [Validators.required])
+    });
 
     _accountTypes = [
         { value: '1', label: 'On-budget' },
@@ -19,13 +37,15 @@ export class AccountComponent implements OnInit {
 
     _accounts = []
 
-    constructor(private fb: FormBuilder, private accountService: AccountService) { }
+    constructor(/*private fb: FormBuilder, */private accountService: AccountService) { }
 
     ngOnInit(): void {
+        /*
         this._newAccountForm = this.fb.group({
             account_type: ['On-budget'],
             account_name: ['']
         });
+        */
 
         this.listAccounts()
     }
@@ -48,7 +68,7 @@ export class AccountComponent implements OnInit {
         this.accountService.create(this._newAccountForm.value.account_name, this._newAccountForm.value.account_type)
             .subscribe(
                 res => {
-                    console.log("Account created")
+                    console.log("Account created.")
                 },
                 error => {
                     console.error("Error creating account")
