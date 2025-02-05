@@ -12,6 +12,7 @@ export class AccountService {
     constructor(private http: HttpClient) { }
 
     create(account_name: string, account_type: number) {
+        console.log("In AccountService:create()")
         return this.http.post<Object>(this.m_endpoint + '/create', { account_name, account_type });
     }
 
