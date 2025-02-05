@@ -29,5 +29,13 @@ export class AccountComponent implements OnInit {
     onSubmit(): void {
         console.log(this._newAccountForm.value);
         this.accountService.create(this._newAccountForm.value.account_name, this._newAccountForm.value.account_type)
+            .subscribe(
+                res => {
+                    console.log("Account created")
+                },
+                error => {
+                    console.error("Error creating account")
+                }
+        )
     }
 }
