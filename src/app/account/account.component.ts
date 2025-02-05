@@ -19,8 +19,8 @@ export class AccountComponent implements OnInit {
 
     ngOnInit(): void {
         this._newAccountForm = this.fb.group({
-            selectedAccountType: ['On-budget'],
-            accountName: ['']
+            account_type: ['On-budget'],
+            account_name: ['']
         });
     }
 

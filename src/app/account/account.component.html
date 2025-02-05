@@ -1,9 +1,9 @@
 <form [formGroup]="_newAccountForm" (ngSubmit)="onSubmit()">
     <div class="form-field">
-        <label>Account name</label><input name="account_name" formControlName="accountName">
+        <label>Account name</label><input name="account_name" formControlName="account_name">
     </div>
     <label for="dropdown">Account type</label>
-    <select id="dropdown" formControlName="selectedAccountType">
+    <select id="dropdown" formControlName="account_type">
         @for (accType of _accountTypes; track accType) {
         <option [value]="accType.value">{{ accType.label }}</option>
         }
