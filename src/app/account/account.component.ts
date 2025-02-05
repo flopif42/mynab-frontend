@@ -16,6 +16,8 @@ export class AccountComponent implements OnInit {
         { value: '2', label: 'Off-budget' }
     ];
 
+    _accounts = []
+
     constructor(private fb: FormBuilder, private accountService: AccountService) { }
 
     ngOnInit(): void {
@@ -23,6 +25,20 @@ export class AccountComponent implements OnInit {
             account_type: ['On-budget'],
             account_name: ['']
         });
+
+        this.listAccounts()
+    }
+
+    listAccounts() {
+        this.accountService.getList()
+            .subscribe(
+                res => {
+                    this._accounts = res
+                },
+                error => {
+                    console.error("Error fetching accounts")
+                }
+            )
     }
 
     // Optional: For debugging, you can log the selected option
