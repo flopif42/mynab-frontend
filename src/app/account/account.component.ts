@@ -26,13 +26,13 @@ export class AccountComponent implements OnInit {
 
 
     _newAccountForm = new FormGroup({
-        account_type: new FormControl('', [Validators.required]),
+        account_type: new FormControl(1, [Validators.required]),
         account_name: new FormControl('', [Validators.required])
     });
 
     _accountTypes = [
-        { value: '1', label: 'On-budget' },
-        { value: '2', label: 'Off-budget' }
+        { value: 1, label: 'On-budget' },
+        { value: 2, label: 'Off-budget' }
     ];
 
     _accounts = []
