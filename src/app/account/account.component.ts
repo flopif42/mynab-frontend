@@ -8,25 +8,24 @@ import { ReactiveFormsModule } from '@angular/forms';
     imports: [ReactiveFormsModule]
 })
 export class AccountComponent implements OnInit {
-    myForm: FormGroup;
-    // Options for the dropdown list
-    options = [
-        { value: '1', label: 'Option One' },
-        { value: '2', label: 'Option Two' },
-        { value: '3', label: 'Option Three' }
+    _newAccountForm: FormGroup;
+
+    _accountTypes = [
+        { value: '1', label: 'On-budget' },
+        { value: '2', label: 'Off-budget' }
     ];
 
     constructor(private fb: FormBuilder) { }
 
     ngOnInit(): void {
-        // Create the form group with a control for the dropdown
-        this.myForm = this.fb.group({
-            selectedOption: ['']  // Initial value is empty or you can set a default value
+        this._newAccountForm = this.fb.group({
+            selectedAccountType: ['On-budget'],
+            accountName: ['']
         });
     }
 
     // Optional: For debugging, you can log the selected option
     onSubmit(): void {
-        console.log('Selected option:', this.myForm.value.selectedOption);
+        console.log(this._newAccountForm.value);
     }
 }
