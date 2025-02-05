@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './account.service'
-import { Account } from './account.model'
 
 @Component({
     selector: 'app-dropdown',
@@ -10,21 +9,6 @@ import { Account } from './account.model'
     imports: [ReactiveFormsModule]
 })
 export class AccountComponent implements OnInit {
-    /*
-     * 
-     * signupForm = new FormGroup({
-        email: new FormControl('', [Validators.required]),
-        password: new FormControl('', [Validators.required]),
-        confirm_password: new FormControl('', [Validators.required]),
-        first_name: new FormControl(''),
-        last_name: new FormControl('')
-    }, confirmPasswordValidator());
-     * 
-     * 
-     * */
-
-
-
     _newAccountForm = new FormGroup({
         account_type: new FormControl(1, [Validators.required]),
         account_name: new FormControl('', [Validators.required])
@@ -37,16 +21,9 @@ export class AccountComponent implements OnInit {
 
     _accounts = []
 
-    constructor(/*private fb: FormBuilder, */private accountService: AccountService) { }
+    constructor(private accountService: AccountService) { }
 
-    ngOnInit(): void {
-        /*
-        this._newAccountForm = this.fb.group({
-            account_type: ['On-budget'],
-            account_name: ['']
-        });
-        */
-
+    ngOnInit() {
         this.listAccounts()
     }
 
@@ -62,17 +39,18 @@ export class AccountComponent implements OnInit {
             )
     }
 
-    // Optional: For debugging, you can log the selected option
     onSubmit(): void {
-        console.log(this._newAccountForm.value);
-        this.accountService.create(this._newAccountForm.value.account_name, this._newAccountForm.value.account_type)
-            .subscribe(
-                res => {
-                    console.log("Account created.")
-                },
-                error => {
-                    console.error("Error creating account")
-                }
-        )
+        if (this._newAccountForm.value && this._newAccountForm.value.account_name && this._newAccountForm.value.account_type) {
+            console.log(this._newAccountForm.value);
+            this.accountService.create(this._newAccountForm.value.account_name, this._newAccountForm.value.account_type)
+                .subscribe(
+                    res => {
+                        console.log("Account created.")
+                    },
+                    error => {
+                        console.error("Error creating account")
+                    }
+                )
+        }
     }
 }
