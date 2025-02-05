@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment'
@@ -16,7 +17,7 @@ export class AccountService {
         return this.http.post<Object>(this.m_endpoint + '/create', { account_name, account_type });
     }
 
-    getList() {
+    getList(): Observable<Account[]> {
         return this.http.get<Account[]>(this.m_endpoint + '/list')
     }
 }

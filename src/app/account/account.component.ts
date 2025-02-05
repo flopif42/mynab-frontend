@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './account.service'
+import { Account } from './account.model'
 
 @Component({
     selector: 'app-dropdown',
@@ -32,8 +33,8 @@ export class AccountComponent implements OnInit {
     listAccounts() {
         this.accountService.getList()
             .subscribe(
-                res => {
-                    this._accounts = res
+                response => {
+                    this._accounts = response
                 },
                 error => {
                     console.error("Error fetching accounts")
