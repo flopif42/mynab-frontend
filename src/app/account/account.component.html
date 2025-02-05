@@ -12,4 +12,6 @@
     <button type="submit">Create</button>
 </form>
 
-{{ this._accounts }}
+@for (account of _accounts; track account._name) {
+<div>{{ account._name }} ({{ accType._type }})</div>
+}
