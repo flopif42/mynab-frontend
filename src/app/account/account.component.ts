@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AccountService } from './account.service'
 
 @Component({
     selector: 'app-dropdown',
@@ -15,7 +16,7 @@ export class AccountComponent implements OnInit {
         { value: '2', label: 'Off-budget' }
     ];
 
-    constructor(private fb: FormBuilder) { }
+    constructor(private fb: FormBuilder, private accountService: AccountService) { }
 
     ngOnInit(): void {
         this._newAccountForm = this.fb.group({
@@ -27,5 +28,6 @@ export class AccountComponent implements OnInit {
     // Optional: For debugging, you can log the selected option
     onSubmit(): void {
         console.log(this._newAccountForm.value);
+        this.accountService.create(this._newAccountForm.value.account_name, this._newAccountForm.value.account_type)
     }
 }
