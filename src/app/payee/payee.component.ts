@@ -43,6 +43,7 @@ export class PayeeComponent implements OnInit {
                 .subscribe(
                     res => {
                         console.log("Payee created.")
+                        this.listPayees()
                     },
                     error => {
                         console.error("Error creating payee")
