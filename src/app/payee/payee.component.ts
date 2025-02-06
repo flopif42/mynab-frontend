@@ -1,4 +1,3 @@
-import { KeyValuePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -9,7 +8,7 @@ import { Payee } from './payee.model'
     selector: 'app-payee',
     templateUrl: './payee.component.html',
     styleUrl: './payee.component.css',
-    imports: [ReactiveFormsModule, KeyValuePipe]
+    imports: [ReactiveFormsModule]
 })
 export class PayeeComponent implements OnInit {
     _newPayeeForm = new FormGroup({
@@ -40,7 +39,7 @@ export class PayeeComponent implements OnInit {
 
     onSubmit() {
         if (this._newPayeeForm.value && this._newPayeeForm.value.payee_name) {
-            this.payeeService.create(this._newPayeeForm.value.account_name)
+            this.payeeService.create(this._newPayeeForm.value.payee_name)
                 .subscribe(
                     res => {
                         console.log("Payee created.")
