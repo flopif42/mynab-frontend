@@ -1,3 +1,4 @@
+import { KeyValuePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { Account } from './account.model'
 @Component({
     selector: 'app-dropdown',
     templateUrl: './account.component.html',
-    imports: [ReactiveFormsModule]
+    imports: [ReactiveFormsModule, KeyValuePipe]
 })
 export class AccountComponent implements OnInit {
     _newAccountForm = new FormGroup({
