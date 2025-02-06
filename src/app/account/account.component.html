@@ -14,4 +14,5 @@
 
 @for (account of _accounts; track account._name) {
 <div>{{ account._name }} ({{ account._type }})</div>
+<div>{{ account._name }} (@if (account._type == 1) { On-budget } @else { Off-budget })</div>
 }
