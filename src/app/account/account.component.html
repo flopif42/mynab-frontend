@@ -19,10 +19,10 @@
     <legend>List of accounts</legend>
     <div style="font-weight:bold">On-budget accounts:</div>
     @for (account of _accounts.get(1); track account.name) {
-    <div>{{ account.name }} <span class="account_status_open">{{ _accountStatus[account.status] }}</span></div>
+    <div>{{ account.name }} <span class="account_status_{{ _accountStatus[account.status] }}">{{ _accountStatus[account.status] }}</span></div>
     }
     <div style="font-weight:bold">Off-budget accounts:</div>
     @for (account of _accounts.get(2); track account.name) {
-    <div>{{ account.name }} <span class="account_status_closed">{{ _accountStatus[account.status] }}</span></div>
+    <div>{{ account.name }} <span class="account_status_{{ _accountStatus[account.status] }}">{{ _accountStatus[account.status] }}</span></div>
     }
 </fieldset>
