@@ -12,13 +12,11 @@
     <button type="submit">Create</button>
 </form>
 
-@for (account of _accounts; track account._name) {
-<div>
-    {{ account._name }}
-    @if (account._type == 1) {
-    On-budget
-    } @else {
-    Off-budget
+<div>On-budget accounts:</div>
+    @for (account of _accounts.get(1); track account.name) {
+<div>{{ account.name }} {{ account.status }}</div>
     }
- </div>
-}
+<div>Off-budget accounts:</div>
+    @for (account of _accounts.get(2); track account.name) {
+<div>{{ account.name }} {{ account.status }}</div>
+    }
