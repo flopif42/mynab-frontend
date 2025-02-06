@@ -1,0 +1,9 @@
+﻿span.account_status_open {
+    font-weight: bold;
+    color: green;
+}
+
+span.account_status_closed {
+    font-weight: bold;
+    color: red;
+}

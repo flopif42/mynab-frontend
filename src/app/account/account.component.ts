@@ -8,6 +8,7 @@ import { Account } from './account.model'
 @Component({
     selector: 'app-dropdown',
     templateUrl: './account.component.html',
+    styleUrl: './account.component.css',
     imports: [ReactiveFormsModule, KeyValuePipe]
 })
 export class AccountComponent implements OnInit {
@@ -16,12 +17,6 @@ export class AccountComponent implements OnInit {
         account_name: new FormControl('', [Validators.required])
     });
 
-/*
-    _accountTypes = [
-        { value: 1, label: 'On-budget' },
-        { value: 2, label: 'Off-budget' }
-    ];
-*/
     _accountTypes: { [key: number]: string } = {
         1: 'On-budget',
         2: 'Off-budget'
@@ -61,7 +56,6 @@ export class AccountComponent implements OnInit {
 
     onSubmit(): void {
         if (this._newAccountForm.value && this._newAccountForm.value.account_name && this._newAccountForm.value.account_type) {
-            console.log(this._newAccountForm.value);
             this.accountService.create(this._newAccountForm.value.account_name, this._newAccountForm.value.account_type)
                 .subscribe(
                     res => {
