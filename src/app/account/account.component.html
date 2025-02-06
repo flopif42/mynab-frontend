@@ -14,9 +14,9 @@
 
 <div>On-budget accounts:</div>
     @for (account of _accounts.get(1); track account.name) {
-<div>{{ account.name }} {{ account.status }}</div>
+<div>{{ account.name }} {{ _accountStatus[account.status] }}</div>
     }
 <div>Off-budget accounts:</div>
     @for (account of _accounts.get(2); track account.name) {
-<div>{{ account.name }} {{ account.status }}</div>
+<div>{{ account.name }} {{ _accountStatus[account.status] }}</div>
     }

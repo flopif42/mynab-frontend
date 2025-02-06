@@ -20,6 +20,11 @@ export class AccountComponent implements OnInit {
         { value: 2, label: 'Off-budget' }
     ];
 
+    _accountStatus: { [key: number]: string } = {
+        1: "Open",
+        0: "Closed"
+    };
+
     _accounts: Map<number, Account[]> = new Map();
 
     constructor(private accountService: AccountService) { }
@@ -29,23 +34,22 @@ export class AccountComponent implements OnInit {
     }
 
     listAccounts() {
-        this.accountService.getList()
-            .subscribe(
-                response => {
-                    const accountsFromApi: Account[] = response
-                    accountsFromApi.forEach((account: Account) => {
-                        const typeKey = account.type;
-                        if (this._accounts.has(typeKey)) {
-                            this._accounts.get(typeKey)!.push(account);
-                        } else {
-                            this._accounts.set(typeKey, [account])
-                        }
-                    })
-                },
-                error => {
-                    console.error("Error fetching accounts")
-                }
-            )
+        this.accountService.getList().subscribe(
+            response => {
+                const accountsFromApi: Account[] = response
+                accountsFromApi.forEach((account: Account) => {
+                    const typeKey = account.type;
+                    if (this._accounts.has(typeKey)) {
+                        this._accounts.get(typeKey)!.push(account);
+                    } else {
+                        this._accounts.set(typeKey, [account])
+                    }
+                })
+            },
+            error => {
+                console.error("Error fetching accounts")
+            }
+        )
     }
 
     onSubmit(): void {
