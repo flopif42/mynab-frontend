@@ -7,8 +7,8 @@
         <div>
             <label for="dropdown">Account type</label>
             <select id="dropdown" formControlName="account_type">
-                @for (accType of _accountTypes; track accType) {
-                <option [value]="accType.value">{{ accType.label }}</option>
+                @for (accType of _accountType; track accType) {
+                <option [value]="accType.value">{{ _accountType[accType] }}</option>
                 }
             </select>
         </div>

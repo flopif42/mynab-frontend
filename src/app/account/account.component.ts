@@ -15,14 +15,20 @@ export class AccountComponent implements OnInit {
         account_name: new FormControl('', [Validators.required])
     });
 
+/*
     _accountTypes = [
         { value: 1, label: 'On-budget' },
         { value: 2, label: 'Off-budget' }
     ];
+*/
+    _accountType: { [key: number]: string } = {
+        1: 'On-budget',
+        2: 'Off-budget'
+    };
 
     _accountStatus: { [key: number]: string } = {
-        1: "Open",
-        0: "Closed"
+        1: 'Open',
+        0: 'Closed'
     };
 
     _accounts: Map<number, Account[]> = new Map();
