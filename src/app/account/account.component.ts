@@ -39,9 +39,9 @@ export class AccountComponent implements OnInit {
         this.accountService.getList().subscribe(
             response => {
                 const accountsFromApi: Account[] = response
+                this._accounts.clear()
                 accountsFromApi.forEach((account: Account) => {
                     const typeKey = account.type;
-                    this._accounts.clear()
                     if (this._accounts.has(typeKey)) {
                         this._accounts.get(typeKey)!.push(account);
                     } else {
