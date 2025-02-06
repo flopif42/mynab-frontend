@@ -21,7 +21,7 @@ export class AccountComponent implements OnInit {
         { value: 2, label: 'Off-budget' }
     ];
 */
-    _accountType: { [key: number]: string } = {
+    _accountTypes: { [key: number]: string } = {
         1: 'On-budget',
         2: 'Off-budget'
     };
