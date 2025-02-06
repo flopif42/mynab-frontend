@@ -1,22 +1,28 @@
 <form [formGroup]="_newAccountForm" (ngSubmit)="onSubmit()">
-    <div class="form-field">
-        <label>Account name</label><input name="account_name" formControlName="account_name">
-    </div>
-    <label for="dropdown">Account type</label>
-    <select id="dropdown" formControlName="account_type">
-        @for (accType of _accountTypes; track accType) {
-        <option [value]="accType.value">{{ accType.label }}</option>
-        }
-    </select>
-
-    <button type="submit">Create</button>
+    <fieldset>
+        <legend>Add new account</legend>
+        <div class="form-field">
+            <label>Account name</label><input name="account_name" formControlName="account_name">
+        </div>
+        <div>
+            <label for="dropdown">Account type</label>
+            <select id="dropdown" formControlName="account_type">
+                @for (accType of _accountTypes; track accType) {
+                <option [value]="accType.value">{{ accType.label }}</option>
+                }
+            </select>
+        </div>
+        <button type="submit">Create</button>
+    </fieldset>
 </form>
-
-<div>On-budget accounts:</div>
+<fieldset>
+    <legend>List of accounts</legend>
+    <div style="font-weight:bold">On-budget accounts:</div>
     @for (account of _accounts.get(1); track account.name) {
-<div>{{ account.name }} {{ _accountStatus[account.status] }}</div>
+    <div>{{ account.name }} {{ _accountStatus[account.status] }}</div>
     }
-<div>Off-budget accounts:</div>
+    <div style="font-weight:bold">Off-budget accounts:</div>
     @for (account of _accounts.get(2); track account.name) {
-<div>{{ account.name }} {{ _accountStatus[account.status] }}</div>
+    <div>{{ account.name }} {{ _accountStatus[account.status] }}</div>
     }
+</fieldset>
