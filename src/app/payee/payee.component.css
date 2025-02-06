@@ -1,0 +1,16 @@
+﻿.account_status {
+    padding: 2px;
+    font-family: Verdana;
+    border-radius: 2px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff
+}
+
+.open {
+    background: green;
+}
+
+.closed {
+    background: red;
+}
