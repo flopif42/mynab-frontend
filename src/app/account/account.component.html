@@ -21,6 +21,7 @@
     @for (account of _accounts.get(1); track account.name) {
     <div>{{ account.name }} <span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span></div>
     }
+    <br>
     <div style="font-weight:bold">Off-budget accounts:</div>
     @for (account of _accounts.get(2); track account.name) {
     <div>{{ account.name }} <span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span></div>

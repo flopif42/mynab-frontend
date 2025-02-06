@@ -25,6 +25,8 @@ export class AppComponent {
             },
             error => {
                 console.error('Observer got an error: ', error);
+                this._isLoggedIn = false
+                this.router.navigate(['/login'])
             }
         )
     }
