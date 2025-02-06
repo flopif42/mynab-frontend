@@ -1,12 +1,13 @@
 ﻿.account_status {
-    font-weight: bold;
-    font-size: 13px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: white;
 }
 
 .open {
-    color: green;
+    background: green;
 }
 
-.close {
-    color: red;
+.closed {
+    background: red;
 }
