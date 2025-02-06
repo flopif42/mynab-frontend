@@ -27,6 +27,7 @@ export class PayeeComponent implements OnInit {
         this.payeeService.getList().subscribe(
             response => {
                 const payeesFromApi: Payee[] = response
+                this._payees.length = 0;
                 payeesFromApi.forEach((payee: Payee) => {
                     this._payees.push(payee)
                 })

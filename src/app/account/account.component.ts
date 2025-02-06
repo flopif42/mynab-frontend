@@ -41,6 +41,7 @@ export class AccountComponent implements OnInit {
                 const accountsFromApi: Account[] = response
                 accountsFromApi.forEach((account: Account) => {
                     const typeKey = account.type;
+                    this._accounts.clear()
                     if (this._accounts.has(typeKey)) {
                         this._accounts.get(typeKey)!.push(account);
                     } else {
@@ -60,6 +61,7 @@ export class AccountComponent implements OnInit {
                 .subscribe(
                     res => {
                         console.log("Account created.")
+                        this.listAccounts()
                     },
                     error => {
                         console.error("Error creating account")
