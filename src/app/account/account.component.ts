@@ -19,7 +19,7 @@ export class AccountComponent implements OnInit {
         { value: 2, label: 'Off-budget' }
     ];
 
-    _accounts = []
+    _accounts: Map<number, Account[]> = new Map();
 
     constructor(private accountService: AccountService) { }
 
