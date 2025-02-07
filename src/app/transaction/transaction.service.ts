@@ -4,6 +4,16 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment'
 import { Transaction } from './transaction.model'
 
+function formatDate(dateStr: string): string {
+    // Split the input string into parts
+    const parts = dateStr.split('-'); // parts[0] = YYYY, parts[1] = MM, parts[2] = DD
+    if (parts.length !== 3) {
+        throw new Error('Invalid date format');
+    }
+    // Rearrange and return as "dd/mm/yyyy"
+    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -19,7 +29,7 @@ export class TransactionService {
             "flow": formData.flow,
             "amount": formData.amount * 100,
             "memo": formData.memo,
-            "date": "30/10/1980"
+            "date": formatDate(formData.date)
         }
         return this.http.post<Object>(this.m_endpoint + '/create', newTransaction);
     }
@@ -28,13 +38,3 @@ export class TransactionService {
         return this.http.get<Transaction[]>(this.m_endpoint + '/list')
     }
 }
-
-
-/*
- *     "id_payee":10,
-    "id_account":13,
-    "flow":-1,
-    "amount":1025,
-    "memo":"Menu",
-    "date":"07/02/2025"
- * */

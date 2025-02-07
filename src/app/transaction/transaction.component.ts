@@ -84,7 +84,5 @@ export class TransactionComponent implements OnInit {
                     console.error("Error adding transaction")
                 }
             )
-
-
     }
 }
