@@ -23,7 +23,7 @@ export class TransactionComponent implements OnInit {
 
     _transactions: Transaction[]
     _accounts: Account[]
-  //  _payees: Payee[]
+    _payees: Payee[]
 
     constructor(private txnService: TransactionService,
         private accountService: AccountService,
@@ -33,7 +33,7 @@ export class TransactionComponent implements OnInit {
     ngOnInit() {
         // We need to fetch the lists of accounts and payees to fill the dropdown lists
         this.fetchAccounts()
-//        this.fetchPayees()
+        this.fetchPayees()
 
         // Display the list of all transactions
         this.listTransactions()
@@ -48,7 +48,7 @@ export class TransactionComponent implements OnInit {
                 console.error("Error fetching accounts")
             })
     }
-    /*
+    
     fetchPayees() {
         this.payeeService.getList().subscribe(
             response => {
@@ -58,7 +58,7 @@ export class TransactionComponent implements OnInit {
                 console.error("Error fetching payees")
             })
     }
-*/
+
     listTransactions() {
         this.txnService.getList().subscribe(
                 response => {
