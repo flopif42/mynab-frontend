@@ -1,15 +1,15 @@
 <form [formGroup]="_newPayeeForm" (ngSubmit)="onSubmit()">
     <fieldset>
         <legend>Add new payee</legend>
-        <div class="form-field">
-            <label>Payee name</label><input name="payee_name" formControlName="payee_name">
+        <div>
+            <label>Payee name</label><formControlName="payee_name">
         </div>
         <button type="submit">Create</button>
     </fieldset>
 </form>
 <fieldset>
     <legend>List of payees</legend>
-    @for (payee of _payees; track $index) {
+    @for (payee of _payees; track payee.id) {
     <div>{{ payee.name }} </div>
     }
 </fieldset>

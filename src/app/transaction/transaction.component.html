@@ -2,14 +2,24 @@
     <fieldset>
         <legend>Add transaction</legend>
         <div>
-
             <label>Account</label>
             <select formControlName="account_name">
-                @for (account of (_accounts); track account.id) {
+                @for (account of _accounts; track account.id) {
                 <option [value]="account.id">{{ account.name }}</option>
                 }
             </select>
-
+        </div>
+        <div>
+            <label>Date</label>
+            <input type="date" formControlName="txn_date">
+        </div>
+        <div>
+            <label>Payee</label>
+            <select formControlName="payee">
+                @for (payee of _payees; track payee.id) {
+                <option [value]="payee.id">{{ payee.name }}</option>
+                }
+            </select>
         </div>
         <button type="submit">Add</button>
     </fieldset>

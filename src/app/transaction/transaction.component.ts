@@ -3,8 +3,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { Account } from '../account/account.model'
 import { AccountService } from '../account/account.service'
-import { TransactionService } from './transaction.service'
 import { Transaction } from './transaction.model'
+import { TransactionService } from './transaction.service'
+import { Payee } from '../payee/payee.model'
+import { PayeeService } from '../payee/payee.service'
 
 @Component({
     selector: 'app-transaction',
@@ -14,13 +16,19 @@ import { Transaction } from './transaction.model'
 })
 export class TransactionComponent implements OnInit {
     _newTxnForm = new FormGroup({
-        account_name: new FormControl('', [Validators.required])
+        account_name: new FormControl('', [Validators.required]),
+        payee_name: new FormControl('', [Validators.required]),
+        txn_date: new FormControl('', [Validators.required])
     });
 
-    _transactions: Transaction[];
+    _transactions: Transaction[]
     _accounts: Account[]
+    _payees: Payee[]
 
-    constructor(private txnService: TransactionService, private accountService: AccountService) { }
+    constructor(private txnService: TransactionService,
+        private accountService: AccountService,
+        private payeeService: PayeeService
+    ) { }
 
     ngOnInit() {
         // We need to fetch the lists of accounts and payees to fill the dropdown lists
@@ -37,6 +45,16 @@ export class TransactionComponent implements OnInit {
             },
             error => {
                 console.error("Error fetching accounts")
+            })
+    }
+
+    fetchPayees() {
+        this.payeeService.getList().subscribe(
+            response => {
+                this._payees = response;
+            },
+            error => {
+                console.error("Error fetching payees")
             })
     }
 
