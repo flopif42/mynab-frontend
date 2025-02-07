@@ -64,16 +64,28 @@ export class TransactionComponent implements OnInit {
 
     listTransactions() {
         this.txnService.getList().subscribe(
-                response => {
-                    this._transactions = response;
-                },
-                error => {
-                    console.error("Error fetching transactions")
-                })
+            response => {
+                this._transactions.length = 0
+                this._transactions = response;
+            },
+            error => {
+                console.error("Error fetching transactions")
+            })
     }
 
     onSubmit() {
         const formData = this._newTxnForm.value;
-        console.log(formData)
+        this.txnService.create(formData)
+            .subscribe(
+                res => {
+                    console.log("Transaction added")
+                    this.listTransactions()
+                },
+                error => {
+                    console.error("Error adding transaction")
+                }
+            )
+
+
     }
 }
