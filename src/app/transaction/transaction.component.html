@@ -1,3 +1,20 @@
+<form [formGroup]="_newTxnForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+        <legend>Add transaction</legend>
+        <div>
+
+            <label>Account</label>
+            <select formControlName="account_name">
+                @for (item of (_accounts | keyvalue); track item.key) {
+                <option [value]="item.key">{{ item.value }}</option>
+                }
+            </select>
+
+        </div>
+        <button type="submit">Add</button>
+    </fieldset>
+</form>
+
 <div>Transactions</div>
 <table>
     <tr><th>Account</th><th>Date</th><th>Payee</th><th>Memo</th><th>Outflow</th><th>Inflow</th></tr>

@@ -18,12 +18,12 @@
 <fieldset>
     <legend>List of accounts</legend>
     <div style="font-weight:bold">On-budget accounts:</div>
-    @for (account of _accounts.get(1); track account.name) {
+    @for (account of _accounts.get(1); track account.id) {
     <div>{{ account.name }} <span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span></div>
     }
     <br>
     <div style="font-weight:bold">Off-budget accounts:</div>
-    @for (account of _accounts.get(2); track account.name) {
+    @for (account of _accounts.get(2); track account.id) {
     <div>{{ account.name }} <span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span></div>
     }
 </fieldset>
