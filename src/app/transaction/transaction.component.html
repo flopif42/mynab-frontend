@@ -1,34 +1,37 @@
 <form [formGroup]="_newTxnForm" (ngSubmit)="onSubmit()">
     <fieldset>
         <legend>Add transaction</legend>
-        <div>
-            <label>Account</label>
-            <select formControlName="id_account">
-                @for (account of _accounts; track account.id) {
-                <option [value]="account.id">{{ account.name }}</option>
-                }
-            </select>
-            <label>Date</label>
-            <input type="date" formControlName="date">
-            <label>Payee</label>
-            <select formControlName="id_payee">
-                @for (payee of _payees; track payee.id) {
-                <option [value]="payee.id">{{ payee.name }}</option>
-                }
-            </select>
-            <label>Amount</label>
-            <input formControlName="amount">
-            <input formControlName="flow" type="radio" id="outflow" value="-1">
-            <label for="outflow">Outflow</label>
-            <input formControlName="flow" type="radio" id="inflow" value="1">
-            <label for="inflow">Inflow</label>
-            <label>Memo</label>
-            <input formControlName="memo">
-        </div>
+        <table>
+            <tr><th>Account</th><th>Date</th><th>Payee</th><th>Memo</th><th>Amount and Flow</th></tr>
+            <tr>
+                <th>
+                    <select formControlName="id_account">
+                        @for (account of _accounts; track account.id) {
+                        <option [value]="account.id">{{ account.name }}</option>
+                        }
+                    </select>
+                </th>
+                <th><input type="date" formControlName="date"></th>
+                <th>
+                    <select formControlName="id_payee">
+                        @for (payee of _payees; track payee.id) {
+                        <option [value]="payee.id">{{ payee.name }}</option>
+                        }
+                    </select>
+                </th>
+                <th><input formControlName="memo"></th>
+                <th>
+                    <input formControlName="amount">&nbsp;
+                    <input formControlName="flow" type="radio" id="outflow" value="-1">
+                    <label for="outflow">Outflow</label>
+                    <input formControlName="flow" type="radio" id="inflow" value="1">
+                    <label for="inflow">Inflow</label>
+                </th>
+            </tr>
+        </table>
         <button type="submit">Add</button>
     </fieldset>
 </form>
-
 
 <div>Transactions</div>
 <table>
