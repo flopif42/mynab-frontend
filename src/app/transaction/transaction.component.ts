@@ -65,7 +65,6 @@ export class TransactionComponent implements OnInit {
     listTransactions() {
         this.txnService.getList().subscribe(
             response => {
-                this._transactions.length = 0
                 this._transactions = response;
             },
             error => {
