@@ -17,7 +17,7 @@ import { PayeeService } from '../payee/payee.service'
 export class TransactionComponent implements OnInit {
     _newTxnForm = new FormGroup({
         account_name: new FormControl('', [Validators.required]),
-//        payee_name: new FormControl('', [Validators.required]),
+        payee_name: new FormControl('', [Validators.required]),
         txn_date: new FormControl('', [Validators.required])
     });
 
@@ -71,6 +71,6 @@ export class TransactionComponent implements OnInit {
 
     onSubmit() {
         const formData = this._newTxnForm.value;
-        console.log(formData.account_name + ' ' + formData.txn_date)
+        console.log(formData.account_name + ' ' + formData.txn_date + ' ' + formData.payee_name)
     }
 }

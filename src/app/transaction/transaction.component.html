@@ -13,16 +13,16 @@
             <label>Date</label>
             <input type="date" formControlName="txn_date">
         </div>
-        <!--
+
         <div>
             <label>Payee</label>
-            <select formControlName="payee">
+            <select formControlName="payee_name">
                 @for (payee of _payees; track payee.id) {
                 <option [value]="payee.id">{{ payee.name }}</option>
                 }
             </select>
         </div>
-        -->
+
         <button type="submit">Add</button>
     </fieldset>
 </form>
