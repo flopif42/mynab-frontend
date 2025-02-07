@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
+import { AccountService } from '../account/account.service'
 import { TransactionService } from './transaction.service'
 import { Transaction } from './transaction.model'
 
@@ -10,12 +12,27 @@ import { Transaction } from './transaction.model'
     imports: [ReactiveFormsModule]
 })
 export class TransactionComponent implements OnInit {
-    _transactions: Transaction[];
+    _newTxnForm = new FormGroup({
+        account_name: new FormControl('', [Validators.required])
+    });
 
-    constructor(private txnService: TransactionService) { }
+    _transactions: Transaction[];
+    _accounts: Account[]
+
+    constructor(private txnService: TransactionService, private accountService: AccountService) { }
 
     ngOnInit() {
         this.listTransactions()
+    }
+
+    fetchAccounts() {
+        this.accountService.getList().subscribe(
+            response => {
+                this._accounts = response;
+            },
+            error => {
+                console.error("Error fetching accounts")
+            })
     }
 
     listTransactions() {

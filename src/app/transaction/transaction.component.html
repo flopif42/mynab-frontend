@@ -5,8 +5,8 @@
 
             <label>Account</label>
             <select formControlName="account_name">
-                @for (item of (_accounts | keyvalue); track item.key) {
-                <option [value]="item.key">{{ item.value }}</option>
+                @for (account of (_accounts); track account.id) {
+                <option [value]="account.id">{{ account.name }}</option>
                 }
             </select>
 
