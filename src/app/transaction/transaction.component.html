@@ -13,7 +13,6 @@
             <label>Date</label>
             <input type="date" formControlName="txn_date">
         </div>
-
         <div>
             <label>Payee</label>
             <select formControlName="payee_name">
@@ -21,6 +20,17 @@
                 <option [value]="payee.id">{{ payee.name }}</option>
                 }
             </select>
+        </div>
+        <div>
+            <label>Amount</label>
+            <input formControlName="amount">
+        </div>
+
+        <div>
+            <input formControlName="flow" type="radio" id="outflow" value="-1">
+            <label for="outflow">Outflow</label>
+            <input formControlName="flow" type="radio" id="inflow" value="1">
+            <label for="inflow">Inflow</label>
         </div>
 
         <button type="submit">Add</button>

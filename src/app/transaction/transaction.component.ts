@@ -18,7 +18,9 @@ export class TransactionComponent implements OnInit {
     _newTxnForm = new FormGroup({
         account_name: new FormControl('', [Validators.required]),
         payee_name: new FormControl('', [Validators.required]),
-        txn_date: new FormControl('01/01/1970', [Validators.required])
+        txn_date: new FormControl('', [Validators.required]),
+        amount: new FormControl('', [Validators.required]),
+        flow: new FormControl('-1', [Validators.required])
     });
 
     _transactions: Transaction[]
@@ -71,6 +73,6 @@ export class TransactionComponent implements OnInit {
 
     onSubmit() {
         const formData = this._newTxnForm.value;
-        console.log(formData.account_name + ' ' + formData.txn_date + ' ' + formData.payee_name)
+        console.log(formData)
     }
 }
