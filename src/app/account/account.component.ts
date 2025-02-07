@@ -6,7 +6,7 @@ import { AccountService } from './account.service'
 import { Account } from './account.model'
 
 @Component({
-    selector: 'app-dropdown',
+    selector: 'app-account',
     templateUrl: './account.component.html',
     styleUrl: './account.component.css',
     imports: [ReactiveFormsModule, KeyValuePipe]
