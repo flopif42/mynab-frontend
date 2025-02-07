@@ -8,11 +8,11 @@ import { Transaction } from './transaction.model'
     providedIn: 'root'
 })
 export class TransactionService {
-    m_endpoint = environment.apiUrl + "/transaction/list"
+    m_endpoint = environment.apiUrl + "/transaction"
 
     constructor(private http: HttpClient) { }
 
     getList(): Observable<Transaction[]> {
-        return this.http.get<Transaction[]>(this.m_endpoint + '/listX')
+        return this.http.get<Transaction[]>(this.m_endpoint + '/list')
     }
 }
