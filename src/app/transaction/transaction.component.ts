@@ -23,6 +23,10 @@ export class TransactionComponent implements OnInit {
     constructor(private txnService: TransactionService, private accountService: AccountService) { }
 
     ngOnInit() {
+        // We need to fetch the lists of accounts and payees to fill the dropdown lists
+        this.fetchAccounts()
+
+        // Display the list of all transactions
         this.listTransactions()
     }
 
