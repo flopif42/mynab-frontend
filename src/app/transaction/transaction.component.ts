@@ -17,13 +17,13 @@ import { PayeeService } from '../payee/payee.service'
 export class TransactionComponent implements OnInit {
     _newTxnForm = new FormGroup({
         account_name: new FormControl('', [Validators.required]),
-        payee_name: new FormControl('', [Validators.required]),
-        txn_date: new FormControl('', [Validators.required])
+//        payee_name: new FormControl('', [Validators.required]),
+  //      txn_date: new FormControl('', [Validators.required])
     });
 
     _transactions: Transaction[]
-    _accounts: Account[]
-    _payees: Payee[]
+//    _accounts: Account[]
+  //  _payees: Payee[]
 
     constructor(private txnService: TransactionService,
         private accountService: AccountService,
@@ -32,13 +32,13 @@ export class TransactionComponent implements OnInit {
 
     ngOnInit() {
         // We need to fetch the lists of accounts and payees to fill the dropdown lists
-        this.fetchAccounts()
-        this.fetchPayees()
+//        this.fetchAccounts()
+//        this.fetchPayees()
 
         // Display the list of all transactions
         this.listTransactions()
     }
-
+    /*
     fetchAccounts() {
         this.accountService.getList().subscribe(
             response => {
@@ -68,8 +68,10 @@ export class TransactionComponent implements OnInit {
                     console.error("Error fetching transactions")
                 })
     }
-
+    */
+    /*
     onSubmit() {
         console.log(this._newTxnForm.value.account_name)
     }
+    */
 }
