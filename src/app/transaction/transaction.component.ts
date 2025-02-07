@@ -70,6 +70,6 @@ export class TransactionComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(this._newTxnForm.value.account_name + ' ' + this._newTxnForm.value.txn_date)
+        console.log(this._newTxnForm.value.account_name/* + ' ' + this._newTxnForm.value.txn_date*/)
     }
 }
