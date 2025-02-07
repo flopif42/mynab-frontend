@@ -1,4 +1,5 @@
 export class Transaction {
+    id: number;
     account: String;
     amount: String;
     date: String;

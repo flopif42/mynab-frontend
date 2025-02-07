@@ -12,12 +12,6 @@ export class TransactionService {
 
     constructor(private http: HttpClient) { }
 
-/*
-    create(account_name: string, account_type: number) {
-        return this.http.post<Object>(this.m_endpoint + '/create', { account_name, account_type });
-    }
-*/
-
     getList(): Observable<Transaction[]> {
         return this.http.get<Transaction[]>(this.m_endpoint + '/list')
     }
