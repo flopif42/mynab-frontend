@@ -33,6 +33,7 @@ export class TransactionComponent implements OnInit {
     ngOnInit() {
         // We need to fetch the lists of accounts and payees to fill the dropdown lists
         this.fetchAccounts()
+        this.fetchPayees()
 
         // Display the list of all transactions
         this.listTransactions()
