@@ -16,11 +16,12 @@ import { PayeeService } from '../payee/payee.service'
 })
 export class TransactionComponent implements OnInit {
     _newTxnForm = new FormGroup({
-        account_name: new FormControl('', [Validators.required]),
-        payee_name: new FormControl('', [Validators.required]),
-        txn_date: new FormControl('', [Validators.required]),
+        id_payee: new FormControl('', [Validators.required]),
+        id_account: new FormControl('', [Validators.required]),
+        flow: new FormControl('-1', [Validators.required]),
         amount: new FormControl('', [Validators.required]),
-        flow: new FormControl('-1', [Validators.required])
+        memo: new FormControl('', [Validators.required]),
+        date: new FormControl('', [Validators.required])
     });
 
     _transactions: Transaction[]
