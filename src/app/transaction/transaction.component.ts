@@ -44,4 +44,8 @@ export class TransactionComponent implements OnInit {
                     console.error("Error fetching transactions")
                 })
     }
+
+    onSubmit() {
+        console.log(this._newTxnForm.value.account_name)
+    }
 }
