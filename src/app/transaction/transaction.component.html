@@ -8,30 +8,20 @@
                 <option [value]="account.id">{{ account.name }}</option>
                 }
             </select>
-        </div>
-        <div>
             <label>Date</label>
             <input type="date" formControlName="date">
-        </div>
-        <div>
             <label>Payee</label>
             <select formControlName="id_payee">
                 @for (payee of _payees; track payee.id) {
                 <option [value]="payee.id">{{ payee.name }}</option>
                 }
             </select>
-        </div>
-        <div>
             <label>Amount</label>
             <input formControlName="amount">
-        </div>
-        <div>
             <input formControlName="flow" type="radio" id="outflow" value="-1">
             <label for="outflow">Outflow</label>
             <input formControlName="flow" type="radio" id="inflow" value="1">
             <label for="inflow">Inflow</label>
-        </div>
-        <div>
             <label>Memo</label>
             <input formControlName="memo">
         </div>
