@@ -18,7 +18,7 @@ export class TransactionComponent implements OnInit {
     _newTxnForm = new FormGroup({
         account_name: new FormControl('', [Validators.required]),
         payee_name: new FormControl('', [Validators.required]),
-        txn_date: new FormControl('', [Validators.required])
+        txn_date: new FormControl(new Date(), [Validators.required])
     });
 
     _transactions: Transaction[]
