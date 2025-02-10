@@ -7,6 +7,8 @@ import { Transaction } from './transaction.model'
 import { TransactionService } from './transaction.service'
 import { Payee } from '../payee/payee.model'
 import { PayeeService } from '../payee/payee.service'
+import { Category } from '../category/category.model'
+import { CategoryService } from '../category/category.service'
 
 @Component({
     selector: 'app-transaction',
@@ -18,6 +20,7 @@ export class TransactionComponent implements OnInit {
     _newTxnForm = new FormGroup({
         id_payee: new FormControl('', [Validators.required]),
         id_account: new FormControl('', [Validators.required]),
+        id_category: new FormControl('', [Validators.required]),
         flow: new FormControl('-1', [Validators.required]),
         amount: new FormControl('', [Validators.required]),
         memo: new FormControl('', [Validators.required]),
@@ -27,16 +30,19 @@ export class TransactionComponent implements OnInit {
     _transactions: Transaction[]
     _accounts: Account[]
     _payees: Payee[]
+    _categories: Category[]
 
     constructor(private txnService: TransactionService,
         private accountService: AccountService,
-        private payeeService: PayeeService
+        private payeeService: PayeeService,
+        private categoryService: CategoryService
     ) { }
 
     ngOnInit() {
-        // We need to fetch the lists of accounts and payees to fill the dropdown lists
+        // We need to fetch the lists of accounts, payees and categories to fill the dropdown lists
         this.fetchAccounts()
         this.fetchPayees()
+        this.fetchCategories()
 
         // Display the list of all transactions
         this.listTransactions()
@@ -49,6 +55,16 @@ export class TransactionComponent implements OnInit {
             },
             error => {
                 console.error("Error fetching accounts")
+            })
+    }
+
+    fetchCategories() {
+        this.categoryService.getList().subscribe(
+            response => {
+                this._categories = response;
+            },
+            error => {
+                console.error("Error fetching categories")
             })
     }
     

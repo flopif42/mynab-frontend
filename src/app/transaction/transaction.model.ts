@@ -6,4 +6,5 @@ export class Transaction {
     flow: String;
     memo: String;
     payee: String;
+    category: String;
 }
