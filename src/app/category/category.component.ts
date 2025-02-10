@@ -41,6 +41,7 @@ export class CategoryComponent implements OnInit {
                 this._categories.clear();
 
                 categoriesFromApi.forEach((cat: Category) => {
+                    this._parentCategories[cat.id_parent] = cat.parent_name
                     const idParent = cat.id_parent;
                     if (this._categories.has(idParent)) {
                         this._categories.get(idParent)!.push(cat);
