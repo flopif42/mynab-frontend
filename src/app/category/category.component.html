@@ -14,8 +14,8 @@
             <label>Category name</label><input formControlName="category_name">
         </div>
         <select formControlName="id_parent">
-            @for (parent_cat of _parent_categories; track parent_cat.id) {
-            <option [value]="parent_cat.id">{{ parent_cat.parent_name }}</option>
+            @for (item of (_parentCategories | keyvalue); track item.key) {
+            <option [value]="item.key">{{ item.value }}</option>
             }
         </select>
         <button type="submit">Create category</button>

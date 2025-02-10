@@ -1,14 +1,15 @@
+import { KeyValuePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryService } from './category.service'
-import { Category } from './category.model'
+import { ParentCategory, Category } from './category.model'
 
 @Component({
     selector: 'app-category',
     templateUrl: './category.component.html',
     styleUrl: './category.component.css',
-    imports: [ReactiveFormsModule]
+    imports: [ReactiveFormsModule, KeyValuePipe]
 })
 export class CategoryComponent implements OnInit {
     _newMasterCategoryForm = new FormGroup({
@@ -21,7 +22,7 @@ export class CategoryComponent implements OnInit {
     });
 
     _categories = [];
-    _parent_categories = [];
+    _parentCategories: { [key: number]: string } = {};
 
     constructor(private categoryService: CategoryService) { }
 
@@ -36,7 +37,7 @@ export class CategoryComponent implements OnInit {
                 this._categories.length = 0;
                 categoriesFromApi.forEach((cat: Category) => {
                     this._categories.push(cat)
-                    this._parent_categories.push({ "id_parent": cat.id_parent, "parent_name": cat.parent_name })
+                    this._parentCategories[cat.id_parent] = cat.parent_name
                 })
             },
             error => {
