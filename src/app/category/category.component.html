@@ -25,7 +25,7 @@
     <legend>List of categories</legend>
     @for (parent of (_parentCategories | keyvalue); track parent.key) {
     <div>{{ parent.value }}</div>
-        @for (category of _categories.get(parent.key); track category.id) {
+        @for (category of _categories.get(Number(parent.key)); track category.id) {
         <div>{{ category.name }}</div>
         }
     }
