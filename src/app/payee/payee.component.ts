@@ -33,7 +33,7 @@ export class PayeeComponent implements OnInit {
                 })
             },
             error => {
-                console.error("Error fetching accounts")
+                console.error("Error fetching payees")
             }
         )
     }

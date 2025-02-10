@@ -1,0 +1,26 @@
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { environment } from '../../environments/environment'
+import { Category } from './category.model'
+
+@Injectable({
+    providedIn: 'root'
+})
+export class CategoryService {
+    m_endpoint = environment.apiUrl + "/category"
+
+    constructor(private http: HttpClient) { }
+
+    create_parent(parent_category_name: string) {
+        return this.http.post<Object>(this.m_endpoint + '/create_parent', { parent_category_name });
+    }
+
+    create(id_parent: number, category_name: string) {
+        return this.http.post<Object>(this.m_endpoint + '/create', { id_parent, category_name });
+    }
+
+    getList(): Observable<Category[]> {
+        return this.http.get<Category[]>(this.m_endpoint + '/list')
+    }
+}
