@@ -1,10 +1,24 @@
+<form [formGroup]="_newMasterCategoryForm" (ngSubmit)="onSubmitMaster()">
+    <fieldset>
+        <legend>Add new master category</legend>
+        <div>
+            <label>Master category name</label><input formControlName="master_category_name">
+        </div>
+        <button type="submit">Create master category</button>
+    </fieldset>
+</form>
 <form [formGroup]="_newCategoryForm" (ngSubmit)="onSubmit()">
     <fieldset>
         <legend>Add new category</legend>
         <div>
             <label>Category name</label><input formControlName="category_name">
         </div>
-        <button type="submit">Create</button>
+        <select formControlName="id_parent">
+            @for (parent_cat of _parent_categories; track parent.id) {
+            <option [value]="parent.id">{{ parent_name }}</option>
+            }
+        </select>
+        <button type="submit">Create category</button>
     </fieldset>
 </form>
 <fieldset>

@@ -11,11 +11,17 @@ import { Category } from './category.model'
     imports: [ReactiveFormsModule]
 })
 export class CategoryComponent implements OnInit {
+    _newMasterCategoryForm = new FormGroup({
+        master_category_name: new FormControl('', [Validators.required])
+    });
+
     _newCategoryForm = new FormGroup({
-        category_name: new FormControl('', [Validators.required])
+        category_name: new FormControl('', [Validators.required]),
+        id_parent: new FormControl('', [Validators.required])
     });
 
     _categories = [];
+    _parent_categories = [];
 
     constructor(private categoryService: CategoryService) { }
 
@@ -30,6 +36,7 @@ export class CategoryComponent implements OnInit {
                 this._categories.length = 0;
                 categoriesFromApi.forEach((cat: Category) => {
                     this._categories.push(cat)
+                    this._parent_categories.push({ "id_parent": cat.id_parent, "parent_name": cat.parent_name })
                 })
             },
             error => {
@@ -38,9 +45,25 @@ export class CategoryComponent implements OnInit {
         )
     }
 
+    onSubmitMaster() {
+        if (this._newMasterCategoryForm.value && this._newMasterCategoryForm.value.master_category_name) {
+            this.categoryService.create_parent(this._newMasterCategoryForm.value.master_category_name)
+                .subscribe(
+                    res => {
+                        console.log("Master category created.")
+                        this.listCategories()
+                    },
+                    error => {
+                        console.error("Error creating master category")
+                    }
+                )
+        }
+    }
+
     onSubmit() {
-        if (this._newCategoryForm.value && this._newCategoryForm.value.category_name) {
-            this.categoryService.create_parent(this._newCategoryForm.value.category_name)
+        const formData = this._newCategoryForm.value
+        if (formData && formData.category_name && formData.id_parent) {
+            this.categoryService.create(formData.category_name, formData.id_parent)
                 .subscribe(
                     res => {
                         console.log("Category created.")
