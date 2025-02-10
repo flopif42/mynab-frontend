@@ -15,7 +15,7 @@
         </div>
         <select formControlName="id_parent">
             @for (parent_cat of _parent_categories; track parent_cat.id) {
-            <option [value]="parent.id">{{ parent_name }}</option>
+            <option [value]="parent_cat.id">{{ parent_cat.parent_name }}</option>
             }
         </select>
         <button type="submit">Create category</button>
