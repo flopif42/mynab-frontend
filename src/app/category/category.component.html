@@ -14,7 +14,7 @@
             <label>Category name</label><input formControlName="category_name">
         </div>
         <select formControlName="id_parent">
-            @for (parent_cat of _parent_categories; track parent.id) {
+            @for (parent_cat of _parent_categories; track parent_cat.id) {
             <option [value]="parent.id">{{ parent_name }}</option>
             }
         </select>
