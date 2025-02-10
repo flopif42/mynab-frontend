@@ -63,7 +63,7 @@ export class CategoryComponent implements OnInit {
     onSubmit() {
         const formData = this._newCategoryForm.value
         if (formData && formData.category_name && formData.id_parent) {
-            this.categoryService.create(formData.category_name, formData.id_parent)
+            this.categoryService.create(formData.id_parent, formData.category_name)
                 .subscribe(
                     res => {
                         console.log("Category created.")
