@@ -48,7 +48,13 @@
         <td>{{ txn.account }}</td>
         <td>{{ txn.date }}</td>
         <td>{{ txn.payee }}</td>
-        <td>{{ txn.category }}</td>
+        <td>
+            @if (txn.category == null) {
+            <p>List of cats here</p>
+            } @else {
+            {{ txn.category }}
+            }
+        </td>
         <td>{{ txn.memo }}</td>
         @if (txn.flow == 'Outflow') {
         <td class="amount">{{ txn.amount }}</td>
