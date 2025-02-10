@@ -51,7 +51,7 @@
         <td>
             @if (txn.category == null) {
 
-            <select formControlName="id_category">
+            <select id="id_category_update">
                 @for (cat of _categories; track cat.id) {
                 <option [value]="cat.id">{{ cat.name }}</option>
                 }
