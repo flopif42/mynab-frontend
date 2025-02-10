@@ -30,6 +30,10 @@ export class CategoryComponent implements OnInit {
         this.listCategories()
     }
 
+    convertNumber(str: string): number {
+        return Number(str)
+    }
+
     listCategories() {
         this.categoryService.getList().subscribe(
             response => {
