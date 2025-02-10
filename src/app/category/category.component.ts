@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryService } from './category.service'
-import { ParentCategory, Category } from './category.model'
+import { Category } from './category.model'
 
 @Component({
     selector: 'app-category',
@@ -21,7 +21,7 @@ export class CategoryComponent implements OnInit {
         id_parent: new FormControl('', [Validators.required])
     });
 
-    _categories = [];
+    _categories: Map<number, Category[]> = new Map();
     _parentCategories: { [key: number]: string } = {};
 
     constructor(private categoryService: CategoryService) { }
@@ -34,10 +34,17 @@ export class CategoryComponent implements OnInit {
         this.categoryService.getList().subscribe(
             response => {
                 const categoriesFromApi: Category[] = response
-                this._categories.length = 0;
+                this._categories.clear();
+
                 categoriesFromApi.forEach((cat: Category) => {
-                    this._categories.push(cat)
-                    this._parentCategories[cat.id_parent] = cat.parent_name
+
+                    const idParent = cat.id_parent;
+
+                    if (this._categories.has(idParent)) {
+                        this._categories.get(idParent)!.push(cat);
+                    } else {
+                        this._categories.set(idParent, [cat])
+                    }
                 })
             },
             error => {

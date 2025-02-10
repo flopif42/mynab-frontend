@@ -1,8 +1,3 @@
-export class ParentCategory {
-    id: number;
-    name: string;
-}
-
 export class Category {
     id: number;
     id_parent: number;

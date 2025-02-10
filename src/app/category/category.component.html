@@ -23,7 +23,10 @@
 </form>
 <fieldset>
     <legend>List of categories</legend>
-    @for (cat of _categories; track cat.id) {
-    <div>{{ cat.name }} {{ cat.parent_name }}</div>
+    @for (parent of (_parentCategories | keyvalue); track parent.key) {
+    <div>{{ parent.value }}</div>
+        @for (category of _categories.get(parent.key); track category.id) {
+        <div>{{ category.name }}</div>
+        }
     }
 </fieldset>
