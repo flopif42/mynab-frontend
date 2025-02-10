@@ -25,6 +25,7 @@ export class TransactionService {
     create(formData) {
         const newTransaction = {
             "id_payee": formData.id_payee,
+            "id_category": formData.id_category,
             "id_account": formData.id_account,
             "flow": formData.flow,
             "amount": formData.amount * 100,
