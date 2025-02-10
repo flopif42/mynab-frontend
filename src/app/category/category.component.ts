@@ -41,15 +41,14 @@ export class CategoryComponent implements OnInit {
                 this._categories.clear();
 
                 categoriesFromApi.forEach((cat: Category) => {
-
                     const idParent = cat.id_parent;
-
                     if (this._categories.has(idParent)) {
                         this._categories.get(idParent)!.push(cat);
                     } else {
                         this._categories.set(idParent, [cat])
                     }
                 })
+                console.log(this._categories)
             },
             error => {
                 console.error("Error fetching categories")
