@@ -47,16 +47,23 @@
     <tr>
         <td>{{ txn.account }}</td>
         <td>{{ txn.date }}</td>
-        <td>{{ txn.payee }}</td>
+        <td>
+            @if (txn.payee == null) {
+            <span class="system">Transfer</span>
+            } @else {
+            {{ txn.payee }}
+            }
+        </td>
         <td>
             @if (txn.category == null) {
-
-            <select id="id_category_update">
-                @for (cat of _categories; track cat.id) {
-                <option [value]="cat.id">{{ cat.name }}</option>
-                }
-            </select>
-
+            <span class="system">No category</span>
+            <!--
+    <select id="id_category_update">
+        @for (cat of _categories; track cat.id) {
+        <option [value]="cat.id">{{ cat.name }}</option>
+        }
+    </select>
+        -->
             } @else {
             {{ txn.category }}
             }
