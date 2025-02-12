@@ -35,6 +35,17 @@ export class TransactionService {
         return this.http.post<Object>(this.m_endpoint + '/create', newTransaction);
     }
 
+    create_transfer(formData) {
+        const newTransfer = {
+            "id_account_outflow": formData.id_account_outflow,
+            "id_account_inflow": formData.id_account_inflow,
+            "amount": formData.amount * 100,
+            "memo": formData.memo,
+            "date": formatDate(formData.date)
+        }
+        return this.http.post<Object>(this.m_endpoint + '/create_transfer', newTransfer);
+    }
+
     getList(): Observable<Transaction[]> {
         return this.http.get<Transaction[]>(this.m_endpoint + '/list')
     }

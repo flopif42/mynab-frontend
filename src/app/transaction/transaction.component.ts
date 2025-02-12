@@ -27,6 +27,14 @@ export class TransactionComponent implements OnInit {
         date: new FormControl('', [Validators.required])
     });
 
+    _newTsfForm = new FormGroup({
+        id_account_outflow: new FormControl('', [Validators.required]),
+        id_account_inflow: new FormControl('', [Validators.required]),
+        amount: new FormControl('', [Validators.required]),
+        memo: new FormControl('', [Validators.required]),
+        date: new FormControl('', [Validators.required])
+    });
+
     _transactions: Transaction[]
     _accounts: Account[]
     _payees: Payee[]
@@ -98,6 +106,20 @@ export class TransactionComponent implements OnInit {
                 },
                 error => {
                     console.error("Error adding transaction")
+                }
+            )
+    }
+
+    onSubmitTransfer() {
+        const formData = this._newTsfForm.value;
+        this.txnService.create_transfer(formData)
+            .subscribe(
+                res => {
+                    console.log("Transfer added")
+                    this.listTransactions()
+                },
+                error => {
+                    console.error("Error adding transfer")
                 }
             )
     }
