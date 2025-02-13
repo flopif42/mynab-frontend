@@ -8,7 +8,6 @@ export const appConfig: ApplicationConfig = {
     providers: [
         provideRouter(routes),
         provideHttpClient(
-          //  withInterceptors([logAuthInterceptor])
             withInterceptorsFromDi(),
         ),
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
