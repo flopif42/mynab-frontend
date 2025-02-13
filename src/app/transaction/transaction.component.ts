@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
-import { HighlightDirective } from '../numbers-only.directive';
+// import { HighlightDirective } from '../numbers-only.directive';
 import { Account } from '../account/account.model'
 import { AccountService } from '../account/account.service'
 import { Transaction } from './transaction.model'
@@ -10,6 +10,18 @@ import { Payee } from '../payee/payee.model'
 import { PayeeService } from '../payee/payee.service'
 import { Category } from '../category/category.model'
 import { CategoryService } from '../category/category.service'
+
+import { Directive, ElementRef } from '@angular/core';
+
+
+@Directive({
+    selector: '[appHighlight]',
+})
+export class HighlightDirective {
+    constructor(private el: ElementRef) {
+        this.el.nativeElement.style.backgroundColor = 'yellow';
+    }
+}
 
 @Component({
     selector: 'app-transaction',
