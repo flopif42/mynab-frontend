@@ -108,7 +108,7 @@
         <td>&nbsp;</td>
         <td class="amount">{{ txn.amount }}</td>
         }
-        <td><a href="javascript:void(0);" (click)="deleteTransaction( {{ txn.id }} )">Delete</a></td>
+        <td><a href="javascript:void(0);" (click)="deleteTransaction( txn.id )">Delete</a></td>
     </tr>
     }
 </table>
