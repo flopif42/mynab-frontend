@@ -1,7 +1,7 @@
 import { Directive, HostListener } from '@angular/core';
 
 @Directive({
-    selector: '[numbersOnly]'
+    selector: 'numbersOnly'
 })
 export class numbersOnlyDirective {
     // Allow numbers only
