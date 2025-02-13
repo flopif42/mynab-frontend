@@ -11,15 +11,20 @@ import { PayeeService } from '../payee/payee.service'
 import { Category } from '../category/category.model'
 import { CategoryService } from '../category/category.service'
 
-import { Directive, ElementRef } from '@angular/core';
-
-
+import { Directive, ElementRef, HostListener } from '@angular/core';
 @Directive({
     selector: '[appHighlight]',
 })
 export class HighlightDirective {
-    constructor(private el: ElementRef) {
-        this.el.nativeElement.style.backgroundColor = 'yellow';
+    constructor(private el: ElementRef) { }
+    @HostListener('mouseenter') onMouseEnter() {
+        this.highlight('yellow');
+    }
+    @HostListener('mouseleave') onMouseLeave() {
+        this.highlight('');
+    }
+    private highlight(color: string) {
+        this.el.nativeElement.style.backgroundColor = color;
     }
 }
 
