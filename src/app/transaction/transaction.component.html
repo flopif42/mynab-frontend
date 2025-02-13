@@ -73,7 +73,7 @@
 
 <div>Transactions</div>
 <table>
-    <tr><th>Account</th><th>Date</th><th>Payee</th><th>Category</th><th>Memo</th><th>Outflow</th><th>Inflow</th></tr>
+    <tr><th>Account</th><th>Date</th><th>Payee</th><th>Category</th><th>Memo</th><th>Outflow</th><th>Inflow</th><th>Actions</th></tr>
     @for (txn of this._transactions; track txn.id) {
     <tr>
         <td>{{ txn.account }}</td>
@@ -89,12 +89,12 @@
             @if (txn.category == null) {
             <span class="system">No category</span>
             <!--
-    <select id="id_category_update">
-        @for (cat of _categories; track cat.id) {
-        <option [value]="cat.id">{{ cat.name }}</option>
-        }
-    </select>
-        -->
+        <select id="id_category_update">
+            @for (cat of _categories; track cat.id) {
+            <option [value]="cat.id">{{ cat.name }}</option>
+            }
+        </select>
+            -->
             } @else {
             {{ txn.category }}
             }
@@ -108,6 +108,7 @@
         <td>&nbsp;</td>
         <td class="amount">{{ txn.amount }}</td>
         }
+        <td><a href="javascript:void(0);" (click)="deleteTransaction()">Delete</a></td>
     </tr>
     }
 </table>
