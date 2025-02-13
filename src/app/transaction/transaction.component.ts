@@ -40,11 +40,8 @@ export class TransactionComponent implements OnInit {
     _payees: Payee[]
     _categories: Category[]
 
-    constructor(private txnService: TransactionService,
-        private accountService: AccountService,
-        private payeeService: PayeeService,
-        private categoryService: CategoryService
-    ) { }
+    constructor(private txnService: TransactionService, private accountService: AccountService,
+        private payeeService: PayeeService, private categoryService: CategoryService) { }
 
     ngOnInit() {
         // We need to fetch the lists of accounts, payees and categories to fill the dropdown lists
