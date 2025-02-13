@@ -124,8 +124,8 @@ export class TransactionComponent implements OnInit {
             )
     }
 
-    deleteTransaction() {
-        console.log("Clicked delete")
+    deleteTransaction(transactionId) {
+        console.log("Clicked delete " + transactionId)
     }
 
 }
