@@ -23,7 +23,7 @@ export class TransactionComponent implements OnInit {
         id_category: new FormControl('', [Validators.required]),
         flow: new FormControl('-1', [Validators.required]),
         amount: new FormControl('', [Validators.required]),
-        memo: new FormControl('', [Validators.required]),
+        memo: new FormControl(''),
         date: new FormControl('', [Validators.required])
     });
 
@@ -98,8 +98,14 @@ export class TransactionComponent implements OnInit {
 
     onSubmit() {
         const formData = this._newTxnForm.value;
-
-        if (formData && formData.date) {
+        if (formData &&
+            formData.id_payee &&
+            formData.id_account &&
+            formData.id_category &&
+            formData.flow &&
+            formData.amount &&
+            formData.memo &&
+            formData.date) {
             this.txnService.create(formData)
                 .subscribe(
                     res => {
