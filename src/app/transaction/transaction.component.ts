@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
-import { numbersOnlyDirective } from '../numbers-only.directive';
+import { HighlightDirective } from '../numbers-only.directive';
 import { Account } from '../account/account.model'
 import { AccountService } from '../account/account.service'
 import { Transaction } from './transaction.model'
