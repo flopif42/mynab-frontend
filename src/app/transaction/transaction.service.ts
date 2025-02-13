@@ -28,7 +28,7 @@ export class TransactionService {
             "id_category": formData.id_category,
             "id_account": formData.id_account,
             "flow": formData.flow,
-            "amount": formData.amount * 100,
+            "amount": formData.amount.replace(',', '.') * 100,
             "memo": formData.memo,
             "date": formatDate(formData.date)
         }
