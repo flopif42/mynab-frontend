@@ -99,7 +99,7 @@ export class TransactionComponent implements OnInit {
     onSubmit() {
         const formData = this._newTxnForm.value;
 
-        if (formData) {
+        if (formData && formData.date) {
             this.txnService.create(formData)
                 .subscribe(
                     res => {
