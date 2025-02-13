@@ -18,7 +18,7 @@ function formatDate(dateStr: string): string {
     providedIn: 'root'
 })
 export class TransactionService {
-    m_endpoint = environment.apiUrl + "/transaction"
+    m_endpoint = environment.apiUrl
 
     constructor(private http: HttpClient) { }
 
@@ -32,7 +32,7 @@ export class TransactionService {
             "memo": formData.memo,
             "date": formatDate(formData.date)
         }
-        return this.http.post<Object>(this.m_endpoint + '/create', newTransaction);
+        return this.http.post<Object>(this.m_endpoint + "/transaction/create", newTransaction);
     }
 
     create_transfer(formData) {
@@ -43,10 +43,10 @@ export class TransactionService {
             "memo": formData.memo,
             "date": formatDate(formData.date)
         }
-        return this.http.post<Object>(this.m_endpoint + '/create_transfer', newTransfer);
+        return this.http.post<Object>(this.m_endpoint + '/transfer/create', newTransfer);
     }
 
     getList(): Observable<Transaction[]> {
-        return this.http.get<Transaction[]>(this.m_endpoint + '/list')
+        return this.http.get<Transaction[]>(this.m_endpoint + '/transaction/list')
     }
 }
