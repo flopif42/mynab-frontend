@@ -10,24 +10,6 @@ import { PayeeService } from '../payee/payee.service'
 import { Category } from '../category/category.model'
 import { CategoryService } from '../category/category.service'
 
-import { Directive, HostListener } from '@angular/core';
-
-
-@Directive({
-    selector: '[appAlphanumericOnly]'
-})
-export class AlphanumericOnlyDirective {
-    private regex: RegExp = /^[A-Za-z0-9]*$/;
-
-    @HostListener('keypress', ['$event'])
-    onKeyPress(event: KeyboardEvent) {
-        const key = String.fromCharCode(event.which);
-        if (!this.regex.test(key)) {
-            event.preventDefault();
-        }
-    }
-}
-
 @Component({
     selector: 'app-transaction',
     templateUrl: 'transaction.component.html',
@@ -40,7 +22,7 @@ export class TransactionComponent implements OnInit {
         id_account: new FormControl('', [Validators.required]),
         id_category: new FormControl('', [Validators.required]),
         flow: new FormControl('-1', [Validators.required]),
-        amount: new FormControl('', [Validators.required]),
+        amount: new FormControl('', [Validators.required, Validators.pattern('[0-9]+')]),
         memo: new FormControl(''),
         date: new FormControl('', [Validators.required])
     });
