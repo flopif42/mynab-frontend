@@ -10,16 +10,13 @@ import { PayeeService } from '../payee/payee.service'
 import { Category } from '../category/category.model'
 import { CategoryService } from '../category/category.service'
 
-import {  HostListener } from '@angular/core';
+import { Directive, HostListener } from '@angular/core';
 
-@Component({
-    selector: 'app-transaction',
-    templateUrl: 'transaction.component.html',
-    styleUrl: 'transaction.component.css',
-    imports: [ReactiveFormsModule]
+
+@Directive({
+    selector: '[appAlphanumericOnly]'
 })
-export class TransactionComponent implements OnInit {
-
+export class AlphanumericOnlyDirective {
     private regex: RegExp = /^[A-Za-z0-9]*$/;
 
     @HostListener('keypress', ['$event'])
@@ -29,7 +26,15 @@ export class TransactionComponent implements OnInit {
             event.preventDefault();
         }
     }
+}
 
+@Component({
+    selector: 'app-transaction',
+    templateUrl: 'transaction.component.html',
+    styleUrl: 'transaction.component.css',
+    imports: [ReactiveFormsModule]
+})
+export class TransactionComponent implements OnInit {
     _newTxnForm = new FormGroup({
         id_payee: new FormControl('', [Validators.required]),
         id_account: new FormControl('', [Validators.required]),
