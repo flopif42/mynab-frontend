@@ -22,7 +22,7 @@ export class TransactionComponent implements OnInit {
         id_account: new FormControl('', [Validators.required]),
         id_category: new FormControl('', [Validators.required]),
         flow: new FormControl('-1', [Validators.required]),
-        amount: new FormControl('', [Validators.required, Validators.pattern('[0-9]+')]),
+        amount: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
         memo: new FormControl(''),
         date: new FormControl('', [Validators.required])
     });
