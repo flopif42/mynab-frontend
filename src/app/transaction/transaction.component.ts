@@ -125,7 +125,6 @@ export class TransactionComponent implements OnInit {
     }
 
     deleteTransaction(transactionId) {
-        console.log("Clicked delete " + transactionId)
         this.txnService.delete(transactionId)
             .subscribe(
                 res => {
