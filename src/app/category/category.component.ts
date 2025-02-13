@@ -49,7 +49,6 @@ export class CategoryComponent implements OnInit {
                         this._categories.set(idParent, [cat])
                     }
                 })
-                console.log(this._categories)
             },
             error => {
                 console.error("Error fetching categories")
