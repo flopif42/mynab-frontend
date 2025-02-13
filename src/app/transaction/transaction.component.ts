@@ -96,30 +96,21 @@ export class TransactionComponent implements OnInit {
             })
     }
 
-    onSubmit() {
+    onAddTransactionClick() {
         const formData = this._newTxnForm.value;
-        if (formData &&
-            formData.id_payee &&
-            formData.id_account &&
-            formData.id_category &&
-            formData.flow &&
-            formData.amount &&
-            formData.memo &&
-            formData.date) {
-            this.txnService.create(formData)
-                .subscribe(
-                    res => {
-                        console.log("Transaction added")
-                        this.listTransactions()
-                    },
-                    error => {
-                        console.error("Error adding transaction")
-                    }
-                )
-        }
+        this.txnService.create(formData)
+            .subscribe(
+                res => {
+                    console.log("Transaction added")
+                    this.listTransactions()
+                },
+                error => {
+                    console.error("Error adding transaction")
+                }
+            )
     }
 
-    onSubmitTransfer() {
+    onAddTransferClick() {
         const formData = this._newTsfForm.value;
         this.txnService.create_transfer(formData)
             .subscribe(
