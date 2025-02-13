@@ -29,7 +29,7 @@
                 <th><input formControlName="memo"></th>
                 <th>
                     <input formControlName="amount">&nbsp;
-                    @if (_newTxnForm.value.amount.valid) {
+                    @if (_newTxnForm[amount].valid) {
                     <p style="color:green;">OK</p>
                     } @else {
                     <p style="color:orangered;">KO</p>
