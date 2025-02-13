@@ -29,15 +29,15 @@
                 <th><input formControlName="memo"></th>
                 <th>
                     <input formControlName="amount">&nbsp;
+                    @if (_newTxnForm.amount.valid) {
+                    <p style="color:green;">OK</p>
+                    } @else {
+                    <p style="color:orangered;">KO</p>
+                    }
                     <input formControlName="flow" type="radio" id="outflow" value="-1">
                     <label for="outflow">Outflow</label>
                     <input formControlName="flow" type="radio" id="inflow" value="1">
                     <label for="inflow">Inflow</label>
-                    @if (!_newTxnForm.valid) {
-                    Invalid
-                    } @else {
-                    OK
-                    }
                 </th>
             </tr>
         </table>
