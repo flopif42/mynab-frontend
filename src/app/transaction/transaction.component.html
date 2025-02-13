@@ -1,5 +1,3 @@
-<p appHighlight>Highlight me!</p>
-
 <form [formGroup]="_newTxnForm" (ngSubmit)="onAddTransactionClick()">
     <fieldset>
         <legend>Add transaction</legend>
@@ -30,7 +28,7 @@
                 </th>
                 <th><input formControlName="memo"></th>
                 <th>
-                    <input appHighlight formControlName="amount">&nbsp;
+                    <input formControlName="amount">&nbsp;
                     <input formControlName="flow" type="radio" id="outflow" value="-1">
                     <label for="outflow">Outflow</label>
                     <input formControlName="flow" type="radio" id="inflow" value="1">

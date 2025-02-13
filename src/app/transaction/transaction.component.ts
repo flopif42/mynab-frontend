@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
-// import { HighlightDirective } from '../numbers-only.directive';
 import { Account } from '../account/account.model'
 import { AccountService } from '../account/account.service'
 import { Transaction } from './transaction.model'
@@ -11,22 +10,7 @@ import { PayeeService } from '../payee/payee.service'
 import { Category } from '../category/category.model'
 import { CategoryService } from '../category/category.service'
 
-import { Directive, ElementRef, HostListener } from '@angular/core';
-@Directive({
-    selector: '[appHighlight]',
-})
-export class HighlightDirective {
-    constructor(private el: ElementRef) { }
-    @HostListener('mouseenter') onMouseEnter() {
-        this.highlight('yellow');
-    }
-    @HostListener('mouseleave') onMouseLeave() {
-        this.highlight('');
-    }
-    private highlight(color: string) {
-        this.el.nativeElement.style.backgroundColor = color;
-    }
-}
+import {  HostListener } from '@angular/core';
 
 @Component({
     selector: 'app-transaction',
@@ -35,6 +19,17 @@ export class HighlightDirective {
     imports: [ReactiveFormsModule]
 })
 export class TransactionComponent implements OnInit {
+
+    private regex: RegExp = /^[A-Za-z0-9]*$/;
+
+    @HostListener('keypress', ['$event'])
+    onKeyPress(event: KeyboardEvent) {
+        const key = String.fromCharCode(event.which);
+        if (!this.regex.test(key)) {
+            event.preventDefault();
+        }
+    }
+
     _newTxnForm = new FormGroup({
         id_payee: new FormControl('', [Validators.required]),
         id_account: new FormControl('', [Validators.required]),
