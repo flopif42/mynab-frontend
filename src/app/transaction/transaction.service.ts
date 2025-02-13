@@ -39,7 +39,7 @@ export class TransactionService {
         const newTransfer = {
             "id_account_outflow": formData.id_account_outflow,
             "id_account_inflow": formData.id_account_inflow,
-            "amount": formData.amount * 100,
+            "amount": formData.amount.replace(',', '.') * 100,
             "memo": formData.memo,
             "date": formatDate(formData.date)
         }

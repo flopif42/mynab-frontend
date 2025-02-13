@@ -67,7 +67,7 @@
                 </th>
             </tr>
         </table>
-        <button type="submit">Add</button>
+        <button type="submit" [disabled]="!_newTsfForm.valid">Add</button>
     </fieldset>
 </form>
 

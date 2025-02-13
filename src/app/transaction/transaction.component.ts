@@ -30,8 +30,8 @@ export class TransactionComponent implements OnInit {
     _newTsfForm = new FormGroup({
         id_account_outflow: new FormControl('', [Validators.required]),
         id_account_inflow: new FormControl('', [Validators.required]),
-        amount: new FormControl('', [Validators.required]),
-        memo: new FormControl('', [Validators.required]),
+        amount: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+(?:[.,][0-9]{1,2})?$')]),
+        memo: new FormControl(''),
         date: new FormControl('', [Validators.required])
     });
 
