@@ -35,6 +35,7 @@ export class AccountComponent implements OnInit {
     constructor(private route: ActivatedRoute, private accountService: AccountService) { }
 
     ngOnInit() {
+        console.log("In account ngOnInit()")
         this.listAccounts()
         this._selectedAccount = this.route.snapshot.paramMap.get('id_account');
     }
