@@ -1,29 +1,38 @@
-<form [formGroup]="_newAccountForm" (ngSubmit)="onSubmit()">
-    <fieldset>
-        <legend>Add new account</legend>
-        <div class="form-field">
-            <label>Account name</label><input name="account_name" formControlName="account_name">
-        </div>
-        <div>
-            <label for="dropdown">Account type</label>
-            <select id="dropdown" formControlName="account_type">
-                @for (item of (_accountTypes | keyvalue); track item.key) {
-                <option [value]="item.key">{{ item.value }}</option>
+<table>
+    <tr>
+        <td>
+            <fieldset>
+                <legend>List of accounts</legend>
+                <div style="font-weight:bold">On-budget accounts:</div>
+                @for (account of _accounts.get(1); track account.id) {
+                <div><span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span> {{ account.name }} {{ account.balance }}</div>
                 }
-            </select>
-        </div>
-        <button type="submit">Create</button>
-    </fieldset>
-</form>
-<fieldset>
-    <legend>List of accounts</legend>
-    <div style="font-weight:bold">On-budget accounts:</div>
-    @for (account of _accounts.get(1); track account.id) {
-    <div><span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span> {{ account.name }} {{ account.balance }}</div>
-    }
-    <br>
-    <div style="font-weight:bold">Off-budget accounts:</div>
-    @for (account of _accounts.get(2); track account.id) {
-    <div><span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span> {{ account.name }} {{ account.balance }}</div>
-    }
-</fieldset>
+                <br>
+                <div style="font-weight:bold">Off-budget accounts:</div>
+                @for (account of _accounts.get(2); track account.id) {
+                <div><span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span> {{ account.name }} {{ account.balance }}</div>
+                }
+            </fieldset>
+            <form [formGroup]="_newAccountForm" (ngSubmit)="onSubmit()">
+                <fieldset>
+                    <legend>Add new account</legend>
+                    <div class="form-field">
+                        <label>Account name</label><input name="account_name" formControlName="account_name">
+                    </div>
+                    <div>
+                        <label for="dropdown">Account type</label>
+                        <select id="dropdown" formControlName="account_type">
+                            @for (item of (_accountTypes | keyvalue); track item.key) {
+                            <option [value]="item.key">{{ item.value }}</option>
+                            }
+                        </select>
+                    </div>
+                    <button type="submit">Create</button>
+                </fieldset>
+            </form>
+        </td>
+        <td>
+            List of transactions here
+        </td>
+    </tr>
+</table>
