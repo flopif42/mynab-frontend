@@ -1,3 +1,44 @@
+<table>
+    <tr><th>Account</th><th>Date</th><th>Payee</th><th>Category</th><th>Memo</th><th>Outflow</th><th>Inflow</th><th>Actions</th></tr>
+    @for (txn of this._transactions; track txn.id) {
+    <tr>
+        <td>{{ txn.account }}</td>
+        <td>{{ txn.date }}</td>
+        <td>
+            @if (txn.payee == null) {
+            <span class="system">Transfer</span>
+            } @else {
+            {{ txn.payee }}
+            }
+        </td>
+        <td>
+            @if (txn.category == null) {
+            <span class="system">No category</span>
+            <!--
+            <select id="id_category_update">
+                @for (cat of _categories; track cat.id) {
+                <option [value]="cat.id">{{ cat.name }}</option>
+                }
+            </select>
+                -->
+            } @else {
+            {{ txn.category }}
+            }
+        </td>
+        <td>{{ txn.memo }}</td>
+        @if (txn.flow == 'Outflow') {
+        <td class="amount">{{ txn.amount }}</td>
+        <td>&nbsp;</td>
+        }
+        @else {
+        <td>&nbsp;</td>
+        <td class="amount">{{ txn.amount }}</td>
+        }
+        <td><a href="javascript:void(0);" (click)="deleteTransaction(txn.id)">Delete</a></td>
+    </tr>
+    }
+</table>
+
 <form [formGroup]="_newTxnForm" (ngSubmit)="onAddTransactionClick()">
     <fieldset>
         <legend>New transaction</legend>
@@ -71,44 +112,3 @@
     </fieldset>
 </form>
 
-<div>Transactions</div>
-<table>
-    <tr><th>Account</th><th>Date</th><th>Payee</th><th>Category</th><th>Memo</th><th>Outflow</th><th>Inflow</th><th>Actions</th></tr>
-    @for (txn of this._transactions; track txn.id) {
-    <tr>
-        <td>{{ txn.account }}</td>
-        <td>{{ txn.date }}</td>
-        <td>
-            @if (txn.payee == null) {
-            <span class="system">Transfer</span>
-            } @else {
-            {{ txn.payee }}
-            }
-        </td>
-        <td>
-            @if (txn.category == null) {
-            <span class="system">No category</span>
-            <!--
-        <select id="id_category_update">
-            @for (cat of _categories; track cat.id) {
-            <option [value]="cat.id">{{ cat.name }}</option>
-            }
-        </select>
-            -->
-            } @else {
-            {{ txn.category }}
-            }
-        </td>
-        <td>{{ txn.memo }}</td>
-        @if (txn.flow == 'Outflow') {
-        <td class="amount">{{ txn.amount }}</td>
-        <td>&nbsp;</td>
-        }
-        @else {
-        <td>&nbsp;</td>
-        <td class="amount">{{ txn.amount }}</td>
-        }
-        <td><a href="javascript:void(0);" (click)="deleteTransaction(txn.id)">Delete</a></td>
-    </tr>
-    }
-</table>
