@@ -5,13 +5,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './account.service'
 import { Account } from './account.model'
 import { TransactionComponent } from '../transaction/transaction.component';
-import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-account',
     templateUrl: './account.component.html',
     styleUrl: './account.component.css',
-    imports: [ReactiveFormsModule, KeyValuePipe, TransactionComponent, RouterLink, RouterOutlet]
+    imports: [ReactiveFormsModule, KeyValuePipe, TransactionComponent, RouterLink]
 })
 export class AccountComponent implements OnInit {
     _newAccountForm = new FormGroup({
