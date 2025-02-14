@@ -41,8 +41,8 @@ export class AccountComponent implements OnInit {
         });
     }
 
-    isSelectedAccount(accountId: string): boolean {
-        return accountId == this._selectedAccount
+    isSelectedAccount(accountId: number): boolean {
+        return accountId == parseInt(this._selectedAccount)
     }
 
     listAccounts() {
