@@ -16,7 +16,7 @@ export const routes: Routes = [
         component: HomeComponent,
     },
     {
-        path: 'account',
+        path: 'account/:id_account',
         title: 'Accounts',
         component: AccountComponent,
     },
