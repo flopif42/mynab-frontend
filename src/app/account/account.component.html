@@ -5,12 +5,12 @@
                 <legend>List of accounts</legend>
                 <div style="font-weight:bold">On-budget accounts:</div>
                 @for (account of _accounts.get(1); track account.id) {
-                <div><span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span> <a routerLink="/account/account.id" class="account_name;">{{ account.name }} {{ account.balance }}</a></div>
+                <div><span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span> <a routerLink="/account/{{account.id}}" class="account_name;">{{ account.name }} {{ account.balance }}</a></div>
                 }
                 <br>
                 <div style="font-weight:bold">Off-budget accounts:</div>
                 @for (account of _accounts.get(2); track account.id) {
-                <div><span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span> <a routerLink="/account/account.id" class="account_name;">{{ account.name }} {{ account.balance }}</a></div>
+                <div><span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span> <a routerLink="/account/{{account.id}}" class="account_name;">{{ account.name }} {{ account.balance }}</a></div>
                 }
             </fieldset>
             <form [formGroup]="_newAccountForm" (ngSubmit)="onSubmit()">
