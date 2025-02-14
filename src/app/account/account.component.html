@@ -4,7 +4,7 @@
             <fieldset>
                 <legend>List of accounts</legend>
                 @for (accountType of (_accountTypes | keyvalue); track accountType.key) {
-                <div">{{ accountType.value }} accounts</div>
+                <div>{{ accountType.value }} accounts</div>
                 <table>
                     @for (account of _accounts.get(parseInt(accountType.key)); track account.id) {
                     <tr>
