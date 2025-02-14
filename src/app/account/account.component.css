@@ -4,7 +4,8 @@
     border-radius: 2px;
     font-size: 10px;
     font-weight: bold;
-    color: #fff
+    color: #fff;
+    text-decoration: none;
 }
 
 .open {
@@ -12,7 +13,7 @@
 }
 
 .closed {
-    background: red;
+    background-color: #d90909;
 }
 
 a:hover {
