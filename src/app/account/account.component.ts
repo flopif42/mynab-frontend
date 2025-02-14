@@ -11,7 +11,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
     selector: 'app-account',
     templateUrl: './account.component.html',
     styleUrl: './account.component.css',
-    imports: [ReactiveFormsModule, KeyValuePipe, TransactionComponent]
+    imports: [ReactiveFormsModule, KeyValuePipe, TransactionComponent, RouterLink, RouterOutlet]
 })
 export class AccountComponent implements OnInit {
     _newAccountForm = new FormGroup({
