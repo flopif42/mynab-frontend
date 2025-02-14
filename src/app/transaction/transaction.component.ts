@@ -84,7 +84,7 @@ export class TransactionComponent implements OnInit {
     }
 
     listTransactions() {
-        this.txnService.getList().subscribe(
+        this.txnService.getList(1).subscribe(
             response => {
                 this._transactions = response;
             },

@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './account.service'
 import { Account } from './account.model'
 import { TransactionComponent } from '../transaction/transaction.component';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-account',
@@ -29,12 +29,14 @@ export class AccountComponent implements OnInit {
         0: 'Closed'
     };
 
-    _accounts: Map<number, Account[]> = new Map();
+    _accounts: Map<number, Account[]> = new Map();    
+    _selectedAccount: string | null = '';
 
-    constructor(private accountService: AccountService) { }
+    constructor(private route: ActivatedRoute, private accountService: AccountService) { }
 
     ngOnInit() {
         this.listAccounts()
+        this._selectedAccount = this.route.snapshot.paramMap.get('id_account');
     }
 
     listAccounts() {
