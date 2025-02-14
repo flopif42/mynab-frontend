@@ -52,4 +52,19 @@ export class PayeeComponent implements OnInit {
                 )
         }
     }
+
+    okClickDeletePayee(payeeId) {
+        if (confirm("Are you sure you want to delete this payee ?")) {
+            this.payeeService.delete(payeeId)
+                .subscribe(
+                    res => {
+                        console.log("Payee deleted")
+                        this.listPayees()
+                    },
+                    error => {
+                        console.error("Error deleting payee")
+                    }
+                )
+        }
+    }
 }

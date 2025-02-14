@@ -19,4 +19,8 @@ export class PayeeService {
     getList(): Observable<Payee[]> {
         return this.http.get<Payee[]>(this.m_endpoint + '/list')
     }
+
+    delete(payeeId) {
+        return this.http.post<Object>(this.m_endpoint + "/payee/delete", { "id_payee": payeeId });
+    }
 }
