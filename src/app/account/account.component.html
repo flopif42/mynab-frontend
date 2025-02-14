@@ -1,3 +1,5 @@
+<div>Selected account : {{ this._selectedAccount }}</div>
+
 <table>
     <tr>
         <td style="vertical-align:top;">
@@ -32,7 +34,7 @@
             </form>
         </td>
         <td>
-            <app-transaction></app-transaction>
+            <app-transaction [selectedAccount]="{{ this._selectedAccount }}"></app-transaction>
         </td>
     </tr>
 </table>
