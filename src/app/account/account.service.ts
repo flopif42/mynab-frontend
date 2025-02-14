@@ -19,4 +19,8 @@ export class AccountService {
     getList(): Observable<Account[]> {
         return this.http.get<Account[]>(this.m_endpoint + '/list')
     }
+
+    delete(accountId) {
+        return this.http.post<Object>(this.m_endpoint + "/delete", { "id_account": accountId });
+    }
 }

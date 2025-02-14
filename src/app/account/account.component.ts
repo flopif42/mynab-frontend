@@ -79,4 +79,19 @@ export class AccountComponent implements OnInit {
                 )
         }
     }
+
+    okClickDeleteAccount(accountId) {
+        if (confirm("Are you sure you want to delete this account ?")) {
+            this.accountService.delete(accountId)
+                .subscribe(
+                    res => {
+                        console.log("Account deleted")
+                        this.listAccounts()
+                    },
+                    error => {
+                        console.error("Error deleting account")
+                    }
+                )
+        }
+    }
 }
