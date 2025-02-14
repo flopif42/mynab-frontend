@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { Account } from '../account/account.model'
@@ -17,6 +17,8 @@ import { CategoryService } from '../category/category.service'
     imports: [ReactiveFormsModule]
 })
 export class TransactionComponent implements OnInit {
+    @Input() _selectedAccount: any;
+
     _newTxnForm = new FormGroup({
         id_payee: new FormControl('', [Validators.required]),
         id_account: new FormControl('', [Validators.required]),
@@ -84,7 +86,7 @@ export class TransactionComponent implements OnInit {
     }
 
     listTransactions() {
-        this.txnService.getList(1).subscribe(
+        this.txnService.getList().subscribe(
             response => {
                 this._transactions = response;
             },
