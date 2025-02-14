@@ -53,7 +53,8 @@ export class TransactionService {
         return this.http.post<Object>(this.m_endpoint + "/transaction/delete", transactionToDelete);
     }
 
-    getList(accountId?: number): Observable<Transaction[]> {
+    getList(accountId?: string): Observable<Transaction[]> {
+        console.log("getList() called with parameter : [" + accountId + "]")
         let endpoint = this.m_endpoint + '/transaction/list'
         if (typeof accountId !== 'undefined') {
             endpoint += '?id_account=' + accountId
