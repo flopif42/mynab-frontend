@@ -3,7 +3,7 @@
         <td style="vertical-align:top;">
             <fieldset>
                 <legend>List of accounts</legend>
-                @for (accountType of (_accountTypes | keyvalue); track item.key) {
+                @for (accountType of (_accountTypes | keyvalue); track accountType.key) {
                 <div style="font-weight:bold">{{ accountType.value }} accounts:</div>
                 <table>
                     <tr><th>Status</th><th>Name</th><th>Balance</th><th>Actions</th></tr>
