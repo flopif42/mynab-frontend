@@ -7,7 +7,7 @@
                 <div style="font-weight:bold">{{ accountType.value }} accounts:</div>
                 <table>
                     <tr><th>Status</th><th>Name</th><th>Balance</th><th>Actions</th></tr>
-                    @for (account of _accounts.get(accountType.key); track account.id) {
+                    @for (account of _accounts.get(parseInt(accountType.key)); track account.id) {
                     <tr>
                         <td class="account_status {{ _accountStatus[account.status].toLowerCase() }}"> {{ _accountStatus[account.status].toUpperCase() }}</td>
                         <td><a routerLink="/account/{{account.id}}" class="account_name" [ngClass]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
