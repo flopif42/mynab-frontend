@@ -98,4 +98,17 @@ export class AccountComponent implements OnInit {
                 )
         }
     }
+
+    okClickStatusAccount(accountId) {
+        this.accountService.toggleStatus(accountId)
+            .subscribe(
+                res => {
+                    console.log("Account opened/closed")
+                    this.listAccounts()
+                },
+                error => {
+                    console.error("Error opening/closing account")
+                }
+            )
+    }
 }
