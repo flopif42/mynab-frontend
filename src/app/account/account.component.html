@@ -5,7 +5,7 @@
                 <legend>List of accounts</legend>
                 <div style="font-weight:bold">On-budget accounts:</div>
                 @for (account of _accounts.get(1); track account.id) {
-                <div><span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span> <a href="" class="account_name;">{{ account.name }} {{ account.balance }}</a></div>
+                <div><span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span> <a routerLink="/account/1" class="account_name;">{{ account.name }} {{ account.balance }}</a></div>
                 }
                 <br>
                 <div style="font-weight:bold">Off-budget accounts:</div>

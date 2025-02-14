@@ -21,6 +21,11 @@ export const routes: Routes = [
         component: AccountComponent,
     },
     {
+        path: 'accounts',
+        title: 'All accounts',
+        component: AccountComponent,
+    },
+    {
         path: 'budget',
         title: 'Budget',
         component: BudgetComponent,
