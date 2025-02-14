@@ -54,7 +54,6 @@ export class TransactionService {
     }
 
     getList(accountId?: string): Observable<Transaction[]> {
-        console.log("getList() called with parameter : [" + accountId + "]")
         let endpoint = this.m_endpoint + '/transaction/list'
         if (accountId != null) {
             endpoint += '?id_account=' + accountId

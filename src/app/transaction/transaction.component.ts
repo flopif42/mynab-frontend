@@ -56,13 +56,7 @@ export class TransactionComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        // Check if the 'accountId' property has changed.
         if (changes['_selectedAccount']) {
-            const prev = changes['_selectedAccount'].previousValue;
-            const curr = changes['_selectedAccount'].currentValue;
-            console.log(`_selectedAccount changed from ${prev} to ${curr}`);
-
-            // Call a method to update data or state based on the new accountId.
             this.listTransactions();
         }
     }
