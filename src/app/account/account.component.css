@@ -14,3 +14,7 @@
 .closed {
     background: red;
 }
+
+a:hover.account_name {
+    background-color:cadetblue;
+}
