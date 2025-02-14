@@ -11,7 +11,10 @@
     <legend>List of payees</legend>
     @for (payee of _payees; track payee.id) {
     <div>
-        {{ payee.name }}&nbsp;<a href="javascript:void(0);" (click)="okClickDeletePayee(payee.id)">Delete</a>
+        {{ payee.name }}&nbsp;
+        @if (payee.can_be_deleted) {
+        <a href="javascript:void(0);" (click)="okClickDeletePayee(payee.id)">Delete</a>
+        }
     </div>
     }
 </fieldset>
