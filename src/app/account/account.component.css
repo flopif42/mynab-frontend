@@ -18,3 +18,7 @@
 a:hover {
     background-color:cadetblue;
 }
+
+.selected {
+    background-color:chartreuse;
+}
