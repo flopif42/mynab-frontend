@@ -22,3 +22,7 @@ a:hover {
 .selected {
     background-color:chartreuse;
 }
+
+td.account_list {
+    vertical-align:top;
+}
