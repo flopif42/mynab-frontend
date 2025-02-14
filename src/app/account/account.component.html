@@ -3,30 +3,22 @@
         <td style="vertical-align:top;">
             <fieldset>
                 <legend>List of accounts</legend>
-                <div style="font-weight:bold">On-budget accounts:</div>
+                @for (accountType of (_accountTypes | keyvalue); track item.key) {
+                <div style="font-weight:bold">{{ accountType.value }} accounts:</div>
                 <table>
                     <tr><th>Status</th><th>Name</th><th>Balance</th><th>Actions</th></tr>
-
-                    @for (accountType of [1, 2]; track $index) {
-                        @for (account of _accounts.get(accountType); track account.id) {
-                        <tr>
-                            <td class="account_status {{ _accountStatus[account.status].toLowerCase() }}"> {{ _accountStatus[account.status].toUpperCase() }}</td>
-                            <td><a routerLink="/account/{{account.id}}" class="account_name" [ngClass]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
-                            <td>{{ account.balance }}</td>
-                            <td><a href="javascript:void(0);" (click)="okClickDeleteAccount(account.id)">Delete</a></td>
-                        </tr>
-                        }
+                    @for (account of _accounts.get(accountType.key); track account.id) {
+                    <tr>
+                        <td class="account_status {{ _accountStatus[account.status].toLowerCase() }}"> {{ _accountStatus[account.status].toUpperCase() }}</td>
+                        <td><a routerLink="/account/{{account.id}}" class="account_name" [ngClass]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
+                        <td>{{ account.balance }}</td>
+                        <td><a href="javascript:void(0);" (click)="okClickDeleteAccount(account.id)">Delete</a></td>
+                    </tr>
                     }
-
-
-
                 </table>
-                        <br>
-                        <div style="font-weight:bold">Off-budget accounts:</div>
-                        @for (account of _accounts.get(2); track account.id) {
-                        <div><span class="account_status {{ _accountStatus[account.status].toLowerCase() }}">{{ _accountStatus[account.status].toUpperCase() }}</span> <a routerLink="/account/{{account.id}}" class="account_name" [ngClass]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }} {{ account.balance }}</a></div>
-                        }
-</fieldset>
+                <br>
+                }
+            </fieldset>
             <form [formGroup]="_newAccountForm" (ngSubmit)="onSubmit()">
                 <fieldset>
                     <legend>Add new account</legend>
