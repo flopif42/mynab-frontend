@@ -4,4 +4,5 @@ export class Account {
     type: number;
     status: number;
     balance: number;
+    can_be_deleted: number;
 }

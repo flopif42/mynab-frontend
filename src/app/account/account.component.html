@@ -6,13 +6,16 @@
                 @for (accountType of (_accountTypes | keyvalue); track accountType.key) {
                 <div style="font-weight:bold">{{ accountType.value }} accounts:</div>
                 <table>
-                    <tr><th>Status</th><th>Name</th><th>Balance</th><th>Actions</th></tr>
                     @for (account of _accounts.get(parseInt(accountType.key)); track account.id) {
                     <tr>
                         <td class="account_status {{ _accountStatus[account.status].toLowerCase() }}"> {{ _accountStatus[account.status].toUpperCase() }}</td>
                         <td><a routerLink="/account/{{account.id}}" class="account_name" [ngClass]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
                         <td>{{ account.balance }}</td>
-                        <td><a href="javascript:void(0);" (click)="okClickDeleteAccount(account.id)">Delete</a></td>
+                        <td>
+                            @if (account.can_be_deleted) {
+                            <a href="javascript:void(0);" (click)="okClickDeleteAccount(account.id)">Delete</a>
+                            }
+                        </td>
                     </tr>
                     }
                 </table>
