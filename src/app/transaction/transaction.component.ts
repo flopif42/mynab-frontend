@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges , Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { Account } from '../account/account.model'
@@ -16,7 +16,7 @@ import { CategoryService } from '../category/category.service'
     styleUrl: 'transaction.component.css',
     imports: [ReactiveFormsModule]
 })
-export class TransactionComponent implements OnInit {
+export class TransactionComponent implements OnInit, OnChanges {
     @Input() _selectedAccount: any;
 
     _newTxnForm = new FormGroup({
@@ -54,7 +54,19 @@ export class TransactionComponent implements OnInit {
         // Display the list of all transactions
         this.listTransactions()
     }
-    
+
+    ngOnChanges(changes: SimpleChanges): void {
+        // Check if the 'accountId' property has changed.
+        if (changes['_selectedAccount']) {
+            const prev = changes['_selectedAccount'].previousValue;
+            const curr = changes['_selectedAccount'].currentValue;
+            console.log(`_selectedAccount changed from ${prev} to ${curr}`);
+
+            // Call a method to update data or state based on the new accountId.
+            this.listTransactions();
+        }
+    }
+
     fetchAccounts() {
         this.accountService.getList().subscribe(
             response => {
