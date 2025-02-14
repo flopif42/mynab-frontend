@@ -45,6 +45,10 @@ export class AccountComponent implements OnInit {
         return accountId == parseInt(this._selectedAccount)
     }
 
+    parseInt(someNumber: string): number {
+        return parseInt(someNumber)
+    }
+
     listAccounts() {
         this.accountService.getList().subscribe(
             response => {
