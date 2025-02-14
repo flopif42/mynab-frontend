@@ -4,12 +4,13 @@ import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './account.service'
 import { Account } from './account.model'
+import { TransactionComponent } from '../transaction/transaction.component';
 
 @Component({
     selector: 'app-account',
     templateUrl: './account.component.html',
     styleUrl: './account.component.css',
-    imports: [ReactiveFormsModule, KeyValuePipe]
+    imports: [ReactiveFormsModule, KeyValuePipe, TransactionComponent]
 })
 export class AccountComponent implements OnInit {
     _newAccountForm = new FormGroup({
