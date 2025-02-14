@@ -41,6 +41,10 @@ export class AccountComponent implements OnInit {
         });
     }
 
+    isSelectedAccount(accountId: string): boolean {
+        return accountId == this._selectedAccount
+    }
+
     listAccounts() {
         this.accountService.getList().subscribe(
             response => {
