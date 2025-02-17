@@ -11,8 +11,8 @@ import { Category } from './category.model'
     imports: [ReactiveFormsModule]
 })
 export class CategoryComponent implements OnInit {
-    _newMasterCategoryForm = new FormGroup({
-        master_category_name: new FormControl('', [Validators.required])
+    _newParentCategoryForm = new FormGroup({
+        parent_category_name: new FormControl('', [Validators.required])
     });
 
     _newCategoryForm = new FormGroup({
@@ -52,16 +52,17 @@ export class CategoryComponent implements OnInit {
         )
     }
 
-    onSubmitMaster() {
-        if (this._newMasterCategoryForm.value && this._newMasterCategoryForm.value.master_category_name) {
-            this.categoryService.create_parent(this._newMasterCategoryForm.value.master_category_name)
+    onSubmitParent() {
+        const formData = this._newParentCategoryForm.value
+        if (formData && formData.parent_category_name) {
+            this.categoryService.create_parent(formData.parent_category_name)
                 .subscribe(
                     res => {
-                        console.log("Master category created.")
+                        console.log("Parent category created.")
                         this.listCategories()
                     },
                     error => {
-                        console.error("Error creating master category")
+                        console.error("Error creating parent category")
                     }
                 )
         }

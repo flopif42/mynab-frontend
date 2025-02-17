@@ -1,10 +1,10 @@
-<form [formGroup]="_newMasterCategoryForm" (ngSubmit)="onSubmitMaster()">
+<form [formGroup]="_newParentCategoryForm" (ngSubmit)="onSubmitParent()">
     <fieldset>
-        <legend>Add new master category</legend>
+        <legend>Add a parent category</legend>
         <div>
-            <label>Master category name</label><input formControlName="master_category_name">
+            <label>Parent category name</label><input formControlName="parent_category_name">
         </div>
-        <button type="submit">Create master category</button>
+        <button type="submit">Add parent category</button>
     </fieldset>
 </form>
 <form [formGroup]="_newCategoryForm" (ngSubmit)="onSubmit()">
@@ -13,11 +13,13 @@
         <div>
             <label>Category name</label><input formControlName="category_name">
         </div>
+        <div><label>Parent category</label>
         <select formControlName="id_parent">
             @for (parentId of _parentCategories.keys(); track parentId) {
             <option [value]="parentId">{{ _parentCategories.get(parentId) }}</option>
             }
         </select>
+        </div>
         <button type="submit">Create category</button>
     </fieldset>
 </form>
@@ -25,7 +27,7 @@
 <fieldset>
     <legend>Categories</legend>
     @for (parentId of _parentCategories.keys(); track parentId) {
-        <div class="master_cat">{{ _parentCategories.get(parentId) }} <a href="javascript:void(0);" (click)="okClickDeleteParentCategory(parentId)">Delete</a></div>
+        <div class="parent_cat">{{ _parentCategories.get(parentId) }} <a href="javascript:void(0);" (click)="okClickDeleteParentCategory(parentId)">Delete</a></div>
         @for (category of _categories.get(parentId); track category.id) {
         <div>
             {{ category.name }}
