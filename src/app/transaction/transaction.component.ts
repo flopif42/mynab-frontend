@@ -112,7 +112,7 @@ export class TransactionComponent implements OnInit, OnChanges {
         const formData = this._newTxnForm.value;
 
         console.log("In onAddTransactionClick()");
-        console.log(formData['id_account'])
+        console.log(formData)
 
         this.txnService.create(formData)
             .subscribe(
