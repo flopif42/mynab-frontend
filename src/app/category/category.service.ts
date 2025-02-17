@@ -23,4 +23,8 @@ export class CategoryService {
     getList(): Observable<Category[]> {
         return this.http.get<Category[]>(this.m_endpoint + '/list')
     }
+
+    delete(categoryId) {
+        return this.http.post<Object>(this.m_endpoint + "/delete", { "id_category": categoryId });
+    }
 }

@@ -26,7 +26,7 @@
     @for (parent of (_parentCategories | keyvalue); track parent.key) {
     <div class="master_cat">{{ parent.value }}</div>
         @for (category of _categories.get(convertNumber(parent.key)); track category.id) {
-        <div>{{ category.name }}</div>
+        <div>{{ category.name }} <a href="javascript:void(0);" (click)="okClickDeleteCategory(category.id)">Delete</a></div>
         }
     }
 </fieldset>
