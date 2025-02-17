@@ -1,6 +1,6 @@
 <table>
     <tr>
-        @if (this._selectedAccount == '') {
+        @if (this._selectedAccount is null) {
         <th>Account</th>
         }
         <th>Date</th>
@@ -13,7 +13,7 @@
     </tr>
     @for (txn of this._transactions; track txn.id) {
     <tr>
-        @if (this._selectedAccount == '') {
+        @if (this._selectedAccount is null) {
         <td>{{ txn.account }}</td>
         }
         <td>{{ txn.date }}</td>
