@@ -101,4 +101,19 @@ export class CategoryComponent implements OnInit {
                 )
         }
     }
+
+    okClickDeleteParentCategory(parentId) {
+        if (confirm("Are you sure you want to delete this parent category ?")) {
+            this.categoryService.deleteParent(parentId)
+                .subscribe(
+                    res => {
+                        console.log("Parent category deleted")
+                        this.listCategories()
+                    },
+                    error => {
+                        console.error("Error deleting parent category")
+                    }
+                )
+        }
+    }
 }
