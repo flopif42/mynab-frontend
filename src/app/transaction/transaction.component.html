@@ -112,31 +112,43 @@
 <form [formGroup]="_newTsfForm" (ngSubmit)="onAddTransferClick()">
     <fieldset>
         <legend>New transfer</legend>
+        @if (this._selectedAccount != null) {
+        <input formControlName="id_account_outflow" type="hidden">
+        }
         <table>
-            <tr><th>From account</th><th>To account</th><th>Date</th><th>Memo</th><th>Amount</th></tr>
             <tr>
-                <th>
+                @if (this._selectedAccount == null) {
+                <th>From account</th>
+                }
+                <th>To account</th>
+                <th>Date</th>
+                <th>Memo</th>
+                <th>Amount</th>
+            </tr>
+            <tr>
+                @if (this._selectedAccount == null) {
+                <td>
                     <select formControlName="id_account_outflow">
                         @for (account of _accounts; track account.id) {
                         <option [value]="account.id">{{ account.name }}</option>
                         }
                     </select>
-                </th>
-                <th>
+                </td>
+                }
+                <td>
                     <select formControlName="id_account_inflow">
                         @for (account of _accounts; track account.id) {
                         <option [value]="account.id">{{ account.name }}</option>
                         }
                     </select>
-                </th>
-                <th><input type="date" formControlName="date"></th>
-                <th><input formControlName="memo"></th>
-                <th>
+                </td>
+                <td><input type="date" formControlName="date"></td>
+                <td><input formControlName="memo"></td>
+                <td>
                     <input formControlName="amount">
-                </th>
+                </td>
             </tr>
         </table>
         <button type="submit" [disabled]="!_newTsfForm.valid">Add transfer</button>
     </fieldset>
 </form>
-
