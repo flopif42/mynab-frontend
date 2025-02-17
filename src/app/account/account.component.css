@@ -27,3 +27,7 @@ a:hover {
 td.account_list {
     vertical-align:top;
 }
+
+td.txn_list {
+    vertical-align: top;
+}
