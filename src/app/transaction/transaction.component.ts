@@ -43,16 +43,9 @@ export class TransactionComponent implements OnInit, OnChanges {
     _categories: Category[]
 
     constructor(private txnService: TransactionService, private accountService: AccountService, private payeeService: PayeeService, private categoryService: CategoryService) {
-        console.log("In constructor()");
-        console.log(this._newTxnForm);
-        console.log("Selected account: " + this._selectedAccount)
     }
 
     ngOnInit() {
-        console.log("In ngOnInit()");
-        console.log(this._newTxnForm);
-        console.log("Selected account: " + this._selectedAccount)
-
         // We need to fetch the lists of accounts, payees and categories to fill the dropdown lists
         this.fetchAccounts()
         this.fetchPayees()
@@ -117,6 +110,10 @@ export class TransactionComponent implements OnInit, OnChanges {
 
     onAddTransactionClick() {
         const formData = this._newTxnForm.value;
+
+        console.log("In onAddTransactionClick()");
+        console.log(formData['id_account'])
+
         this.txnService.create(formData)
             .subscribe(
                 res => {
