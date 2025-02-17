@@ -55,12 +55,13 @@
 <form [formGroup]="_newTxnForm" (ngSubmit)="onAddTransactionClick()">
     <fieldset>
         <legend>New transaction</legend>
+        @if (this._selectedAccount != null) {
+        <input formControlName="id_account">
+        }
         <table>
             <tr>
                 @if (this._selectedAccount == null) {
                 <th>Account</th>
-                } @else {
-                <th>Account*</th>
                 }
                 <th>Date</th>
                 <th>Payee</th>
@@ -69,21 +70,16 @@
                 <th>Amount</th>
             </tr>
             <tr>
+                @if (this._selectedAccount == null) {
                 <td>
-                    @if (this._selectedAccount == null)
-                    {
-                        <select formControlName="id_account">
+                    <select formControlName="id_account">
                         @for (account of _accounts; track account.id)
                         {
-                            <option [value]="account.id">{{ account.name }}</option>
+                        <option [value]="account.id">{{ account.name }}</option>
                         }
-                        </select>
-                    }
-                    @else
-                    {
-                        <input formControlName="id_account">
-                    }
+                    </select>
                 </td>
+                }
                 <td><input type="date" formControlName="date"></td>
                 <td>
                     <select formControlName="id_payee">
