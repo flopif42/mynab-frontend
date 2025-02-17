@@ -70,21 +70,30 @@
             </tr>
             <tr>
                 <td>
-                    @if (this._selectedAccount == null) {
-                    <select formControlName="id_account">
-                        @for (account of _accounts; track account.id) {
-                        <option [value]="account.id">{{ account.name }}</option>
+                    @if (this._selectedAccount == null)
+                    {
+                        <select formControlName="id_account">
+                        @for (account of _accounts; track account.id)
+                        {
+                            <option [value]="account.id">{{ account.name }}</option>
                         }
-                    </select>
-                    } @else {
-                    <select formControlName="id_account">
-                        @for (account of _accounts; track account.id) {
-                        @if (this._selectedAccount == account.id) {
-                        <option [value]="account.id" selected>{{ account.name }}</option>
-                        } @else {
-                        <option [value]="account.id">{{ account.name }}</option>
+                        </select>
+                    }
+                    @else
+                    {
+                        <select formControlName="id_account">
+                        @for (account of _accounts; track account.id)
+                        {
+                            @if (this._selectedAccount == account.id)
+                            {
+                                <option [value]="account.id" selected>{{ account.name }}</option>
+                            }
+                            @else
+                            {
+                                <option [value]="account.id">{{ account.name }}</option>
+                            }
                         }
-                    </select>
+                        </select>
                     }
                 </td>
                 <td><input type="date" formControlName="date"></td>
