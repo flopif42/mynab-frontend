@@ -87,9 +87,9 @@ export class CategoryComponent implements OnInit {
         }
     }
 
-    okClickDeleteAccount(accountId) {
+    okClickDeleteCategory(categoryId) {
         if (confirm("Are you sure you want to delete this category ?")) {
-            this.categoryService.delete(accountId)
+            this.categoryService.delete(categoryId)
                 .subscribe(
                     res => {
                         console.log("Category deleted")
