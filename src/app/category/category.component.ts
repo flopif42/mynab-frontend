@@ -39,6 +39,7 @@ export class CategoryComponent implements OnInit {
             response => {
                 const categoriesFromApi: Category[] = response
                 this._categories.clear();
+                this._parentCategories = {}
 
                 categoriesFromApi.forEach((cat: Category) => {
                     this._parentCategories[cat.id_parent] = cat.parent_name
