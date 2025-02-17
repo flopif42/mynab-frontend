@@ -46,6 +46,10 @@ export class TransactionComponent implements OnInit, OnChanges {
         private payeeService: PayeeService, private categoryService: CategoryService) { }
 
     ngOnInit() {
+        if (this._selectedAccount != null) {
+            this._newTxnForm.id_account.removeValidators(Validators.required);
+        }
+
         // We need to fetch the lists of accounts, payees and categories to fill the dropdown lists
         this.fetchAccounts()
         this.fetchPayees()
