@@ -69,17 +69,24 @@
                 <th>Amount</th>
             </tr>
             <tr>
-                @if (this._selectedAccount == null) {
                 <td>
+                    @if (this._selectedAccount == null) {
                     <select formControlName="id_account">
                         @for (account of _accounts; track account.id) {
                         <option [value]="account.id">{{ account.name }}</option>
                         }
                     </select>
+                    } @else {
+                    <select formControlName="id_account">
+                        @for (account of _accounts; track account.id) {
+                        @if (this._selectedAccount == account.id) {
+                        <option [value]="account.id" selected>{{ account.name }}</option>
+                        } @else {
+                        <option [value]="account.id">{{ account.name }}</option>
+                        }
+                    </select>
+                    }
                 </td>
-                } @else {
-                <td><input type="hidden" name="id_account" formControlName="id_account" value="{{ this._selectedAccount }}"></td>
-                }
                 <td><input type="date" formControlName="date"></td>
                 <td>
                     <select formControlName="id_payee">
