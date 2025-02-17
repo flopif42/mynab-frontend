@@ -22,7 +22,7 @@ export class CategoryComponent implements OnInit {
     });
 
     _categories: Map<number, Category[]> = new Map();
-    _parentCategories: { [key: number]: string } = {};
+    _parentCategories: Map<number, string>;
 
     constructor(private categoryService: CategoryService) { }
 
@@ -39,11 +39,11 @@ export class CategoryComponent implements OnInit {
             response => {
                 const categoriesFromApi: Category[] = response
                 this._categories.clear();
-                this._parentCategories = {}
+                this._parentCategories.clear();
 
                 categoriesFromApi.forEach((cat: Category) => {
-                    this._parentCategories[cat.id_parent] = cat.parent_name
                     const idParent = cat.id_parent;
+                    this._parentCategories.set(idParent, cat.parent_name)
                     if (this._categories.has(idParent)) {
                         this._categories.get(idParent)!.push(cat);
                     } else {

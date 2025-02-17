@@ -14,13 +14,14 @@
             <label>Category name</label><input formControlName="category_name">
         </div>
         <select formControlName="id_parent">
-            @for (item of (_parentCategories | keyvalue); track item.key) {
-            <option [value]="item.key">{{ item.value }}</option>
+            @for (parentId of _parentCategories.keys(); track parentId) {
+            <option [value]="parentId">{{ _parentCategories.get(parentId) }}</option>
             }
         </select>
         <button type="submit">Create category</button>
     </fieldset>
 </form>
+<!--
 <fieldset>
     <legend>Categories</legend>
     @for (parent of (_parentCategories | keyvalue); track parent.key) {
@@ -30,3 +31,4 @@
         }
     }
 </fieldset>
+-->
