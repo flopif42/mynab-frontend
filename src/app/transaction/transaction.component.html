@@ -81,19 +81,7 @@
                     }
                     @else
                     {
-                        <select formControlName="id_account">
-                        @for (account of _accounts; track account.id)
-                        {
-                            @if (this._selectedAccount == account.id)
-                            {
-                                <option [value]="account.id" selected>{{ account.name }}</option>
-                            }
-                            @else
-                            {
-                                <option [value]="account.id">{{ account.name }}</option>
-                            }
-                        }
-                        </select>
+                        <input type="text" formControlName="id_account" [value]="this._selectedAccount">
                     }
                 </td>
                 <td><input type="date" formControlName="date"></td>
