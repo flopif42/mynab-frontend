@@ -21,7 +21,7 @@ export class TransactionComponent implements OnInit, OnChanges {
 
     _newTxnForm = new FormGroup({
         id_payee: new FormControl('', [Validators.required]),
-        id_account: new FormControl(this._selectedAccount, [Validators.required]),
+        id_account: new FormControl('', [Validators.required]),
         id_category: new FormControl('', [Validators.required]),
         flow: new FormControl('-1', [Validators.required]),
         amount: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+(?:[.,][0-9]{1,2})?$')]),
@@ -59,6 +59,7 @@ export class TransactionComponent implements OnInit, OnChanges {
         if (changes['_selectedAccount']) {
             if (this._selectedAccount != null) {
                 this._newTxnForm.controls.id_account.removeValidators(Validators.required);
+                this._newTxnForm.controls.id_account.setValue(this._selectedAccount);
             }
             this.listTransactions();
         }
