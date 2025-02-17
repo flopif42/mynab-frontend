@@ -57,13 +57,10 @@ export class TransactionComponent implements OnInit, OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['_selectedAccount']) {
-            console.log("In ngOnChanges()");
-
-            this._newTxnForm.controls.id_account.removeValidators(Validators.required);
-
-            console.log(this._newTxnForm.controls.id_account);
-            console.log("Selected account: " + this._selectedAccount)
-
+            if (this._selectedAccount != null) {
+                this._newTxnForm.controls.id_account.removeValidators(Validators.required);
+                this._newTxnForm.controls.id_account.value = this._selectedAccount;
+            }
             this.listTransactions();
         }
     }
