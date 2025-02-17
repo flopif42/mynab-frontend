@@ -1,4 +1,3 @@
-import { KeyValuePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -9,7 +8,7 @@ import { Category } from './category.model'
     selector: 'app-category',
     templateUrl: './category.component.html',
     styleUrl: './category.component.css',
-    imports: [ReactiveFormsModule, KeyValuePipe]
+    imports: [ReactiveFormsModule]
 })
 export class CategoryComponent implements OnInit {
     _newMasterCategoryForm = new FormGroup({
@@ -30,9 +29,11 @@ export class CategoryComponent implements OnInit {
         this.listCategories()
     }
 
+/*
     convertNumber(str: string): number {
         return Number(str)
     }
+*/
 
     listCategories() {
         this.categoryService.getList().subscribe(
