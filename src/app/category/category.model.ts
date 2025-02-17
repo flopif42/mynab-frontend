@@ -3,4 +3,5 @@ export class Category {
     id_parent: number;
     name: string;
     parent_name: string;
+    can_be_deleted: number;
 }
