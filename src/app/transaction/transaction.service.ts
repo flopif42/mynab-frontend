@@ -54,10 +54,12 @@ export class TransactionService {
     }
 
     getList(accountId?: string): Observable<Transaction[]> {
-        let endpoint = this.m_endpoint + '/transaction/list'
+        var requestParams = {}
         if (accountId != null) {
-            endpoint += '?id_account=' + accountId
+            requestParams = {
+                "id_account": accountId
+            }
         }
-        return this.http.get<Transaction[]>(endpoint)
+        return this.http.post<Transaction[]>(this.m_endpoint + '/transaction/list', requestParams)
     }
 }
