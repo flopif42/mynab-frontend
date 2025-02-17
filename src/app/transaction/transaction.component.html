@@ -59,6 +59,8 @@
             <tr>
                 @if (this._selectedAccount == null) {
                 <th>Account</th>
+                } @else {
+                <th>Account*</th>
                 }
                 <th>Date</th>
                 <th>Payee</th>
@@ -68,39 +70,39 @@
             </tr>
             <tr>
                 @if (this._selectedAccount == null) {
-                <th>
+                <td>
                     <select formControlName="id_account">
                         @for (account of _accounts; track account.id) {
                         <option [value]="account.id">{{ account.name }}</option>
                         }
                     </select>
-                </th>
+                </td>
                 } @else {
-                <input type="hidden" formControlName="id_account" value="this._selectedAccount">
+                <td><input type="text" formControlName="id_account" value="this._selectedAccount"></td>
                 }
-                <th><input type="date" formControlName="date"></th>
-                <th>
+                <td><input type="date" formControlName="date"></td>
+                <td>
                     <select formControlName="id_payee">
                         @for (payee of _payees; track payee.id) {
                         <option [value]="payee.id">{{ payee.name }}</option>
                         }
                     </select>
-                </th>
-                <th>
+                </td>
+                <td>
                     <select formControlName="id_category">
                         @for (cat of _categories; track cat.id) {
                         <option [value]="cat.id">{{ cat.name }}</option>
                         }
                     </select>
-                </th>
-                <th><input formControlName="memo"></th>
-                <th>
+                </td>
+                <td><input formControlName="memo"></td>
+                <td>
                     <input formControlName="amount">&nbsp;
                     <input formControlName="flow" type="radio" id="outflow" value="-1">
                     <label for="outflow">Outflow</label>
                     <input formControlName="flow" type="radio" id="inflow" value="1">
                     <label for="inflow">Inflow</label>
-                </th>
+                </td>
             </tr>
         </table>
         <button type="submit" [disabled]="!_newTxnForm.valid">Add transaction</button>

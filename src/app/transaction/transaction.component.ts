@@ -43,9 +43,6 @@ export class TransactionComponent implements OnInit, OnChanges {
     _categories: Category[]
 
     constructor(private txnService: TransactionService, private accountService: AccountService, private payeeService: PayeeService, private categoryService: CategoryService) {
-        if (this._selectedAccount != null) {
-            this._newTxnForm['id_account'].removeValidators(Validators.required);
-        }
     }
 
     ngOnInit() {
