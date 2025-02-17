@@ -30,7 +30,8 @@ export class TransactionService {
             "flow": formData.flow,
             "amount": formData.amount.replace(',', '.') * 100,
             "memo": formData.memo,
-            "date": formatDate(formData.date)
+            "date": formatDate(formData.date),
+            "is_transfer": 0
         }
         return this.http.post<Object>(this.m_endpoint + "/transaction/create", newTransaction);
     }
