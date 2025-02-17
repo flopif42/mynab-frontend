@@ -9,13 +9,13 @@
                     @for (account of _accounts.get(parseInt(accountType.key)); track account.id) {
                     <tr>
                         <td>
-                            <a class="account_status {{ _accountStatus[account.status].toLowerCase() }}" href="javascript:void(0);" (click)="okClickStatusAccount(account.id)">{{ _accountStatus[account.status].toUpperCase() }}</a>
+                            <a class="account_status {{ _accountStatus[account.status].toLowerCase() }}" href="javascript:void(0);" (click)="onClickStatusAccount(account.id)">{{ _accountStatus[account.status].toUpperCase() }}</a>
                         </td>
                         <td><a routerLink="/account/{{account.id}}" class="account_name" [ngClass]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
                         <td>{{ account.balance }}</td>
                         <td>
                             @if (account.can_be_deleted) {
-                            <a href="javascript:void(0);" (click)="okClickDeleteAccount(account.id)">Delete</a>
+                            <a href="javascript:void(0);" (click)="onClickDeleteAccount(account.id)">Delete</a>
                             }
                         </td>
                     </tr>
@@ -24,7 +24,7 @@
                 <br>
                 }
             </fieldset>
-            <form [formGroup]="_newAccountForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="_newAccountForm" (ngSubmit)="onClickCreateAccount()">
                 <fieldset>
                     <legend>Add new account</legend>
                     <div class="form-field">
@@ -43,7 +43,7 @@
             </form>
         </td>
         <td class="txn_list">
-            <app-transaction [_selectedAccount]="this._selectedAccount"></app-transaction>
+            <app-transaction (_transactionChanged)="onTransactionsChanged($event)" [_selectedAccount]="this._selectedAccount"></app-transaction>
         </td>
     </tr>
 </table>

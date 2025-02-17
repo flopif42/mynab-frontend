@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges , Input } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { Account } from '../account/account.model'
@@ -18,6 +18,7 @@ import { CategoryService } from '../category/category.service'
 })
 export class TransactionComponent implements OnInit, OnChanges {
     @Input() _selectedAccount: any;
+    @Output() _transactionChanged = new EventEmitter();
 
     _newTxnForm = new FormGroup({
         id_payee: new FormControl('', [Validators.required]),
@@ -99,6 +100,7 @@ export class TransactionComponent implements OnInit, OnChanges {
         this.txnService.getList(this._selectedAccount).subscribe(
             response => {
                 this._transactions = response;
+                this._transactionChanged.emit();
             },
             error => {
                 console.error("Error fetching transactions")

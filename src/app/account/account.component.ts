@@ -69,7 +69,11 @@ export class AccountComponent implements OnInit {
         )
     }
 
-    onSubmit() {
+    onTransactionsChanged() {
+        this.listAccounts()
+    }
+
+    onClickCreateAccount() {
         if (this._newAccountForm.value && this._newAccountForm.value.account_name && this._newAccountForm.value.account_type) {
             this.accountService.create(this._newAccountForm.value.account_name, this._newAccountForm.value.account_type)
                 .subscribe(
@@ -84,7 +88,7 @@ export class AccountComponent implements OnInit {
         }
     }
 
-    okClickDeleteAccount(accountId) {
+    onClickDeleteAccount(accountId) {
         if (confirm("Are you sure you want to delete this account ?")) {
             this.accountService.delete(accountId)
                 .subscribe(
@@ -99,7 +103,7 @@ export class AccountComponent implements OnInit {
         }
     }
 
-    okClickStatusAccount(accountId) {
+    onClickStatusAccount(accountId) {
         this.accountService.toggleStatus(accountId)
             .subscribe(
                 res => {
