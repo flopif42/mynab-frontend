@@ -22,7 +22,7 @@
     </fieldset>
 </form>
 <fieldset>
-    <legend>List of categories</legend>
+    <legend>Categories</legend>
     @for (parent of (_parentCategories | keyvalue); track parent.key) {
     <div class="master_cat">{{ parent.value }}</div>
         @for (category of _categories.get(convertNumber(parent.key)); track category.id) {
