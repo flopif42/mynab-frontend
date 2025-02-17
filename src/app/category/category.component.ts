@@ -22,7 +22,7 @@ export class CategoryComponent implements OnInit {
     });
 
     _categories: Map<number, Category[]> = new Map();
-    _parentCategories: Map<number, string>;
+    _parentCategories: Map<number, string> = new Map();
 
     constructor(private categoryService: CategoryService) { }
 
