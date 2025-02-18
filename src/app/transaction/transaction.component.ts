@@ -30,7 +30,7 @@ export class TransactionComponent implements OnInit, OnChanges {
         flow: new FormControl('-1', [Validators.required]),
         amount: new FormControl('', [Validators.required, Validators.pattern(this._amountRegex)]),
         memo: new FormControl(''),
-        date: new FormControl('18/02/2025', [Validators.required])
+        date: new FormControl('', [Validators.required])
     });
 
     // Form used to add a new transfer
