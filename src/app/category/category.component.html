@@ -1,0 +1,41 @@
+<fieldset>
+    <legend>Categories</legend>
+    @for (parentId of _parentCategories.keys(); track parentId) {
+    <div class="parent_cat">{{ _parentCategories.get(parentId) }} <a href="javascript:void(0);" (click)="okClickDeleteParentCategory(parentId)">Delete</a></div>
+    @for (category of _categories.get(parentId); track category.id) {
+    <div>
+        {{ category.name }}
+        @if (category.can_be_deleted) {
+        <a href="javascript:void(0);" (click)="okClickDeleteCategory(category.id)">Delete</a>
+        }
+    </div>
+    }
+    }
+</fieldset>
+
+<form [formGroup]="_newParentCategoryForm" (ngSubmit)="onSubmitParent()">
+    <fieldset>
+        <legend>Add a parent category</legend>
+        <div>
+            <label>Parent category name</label><input formControlName="parent_category_name">
+        </div>
+        <button type="submit">Add parent category</button>
+    </fieldset>
+</form>
+<form [formGroup]="_newCategoryForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+        <legend>Add new category</legend>
+        <div>
+            <label>Category name</label><input formControlName="category_name">
+        </div>
+        <div>
+            <label>Parent category</label>
+            <select formControlName="id_parent">
+                @for (parentId of _parentCategories.keys(); track parentId) {
+                <option [value]="parentId">{{ _parentCategories.get(parentId) }}</option>
+                }
+            </select>
+        </div>
+        <button type="submit">Create category</button>
+    </fieldset>
+</form>

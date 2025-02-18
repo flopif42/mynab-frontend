@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+        <legend>Login credentials</legend>
+        <div class="form-field">
+            <label>Email:</label>
+            <input name="email" formControlName="email">
+        </div>
+        <div class="form-field">
+            <label>Password:</label>
+            <input name="password" formControlName="password" type="password">
+        </div>
+    </fieldset>
+    @if (this._displayLoginErrorMessage) {
+    <div class="error-message">Email and/or password incorrect.</div>
+    }
+    <div class="form-buttons">
+        <button class="button button-primary">Login</button>
+    </div>
+</form>
+

@@ -1,0 +1,20 @@
+table, td, th {
+    border: 1px solid;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    background-color: burlywood;
+}
+
+.amount {
+    text-align: right;
+}
+
+.system {
+    font-style: italic;
+    color: darkslategray;
+}

@@ -1,0 +1,49 @@
+<table>
+    <tr>
+        <td class="account_list">
+            <fieldset>
+                <legend>List of accounts</legend>
+                @for (accountType of (_accountTypes | keyvalue); track accountType.key) {
+                <div>{{ accountType.value }} accounts</div>
+                <table>
+                    @for (account of _accounts.get(parseInt(accountType.key)); track account.id) {
+                    <tr>
+                        <td>
+                            <a class="account_status {{ _accountStatus[account.status].toLowerCase() }}" href="javascript:void(0);" (click)="onClickStatusAccount(account.id)">{{ _accountStatus[account.status].toUpperCase() }}</a>
+                        </td>
+                        <td><a routerLink="/account/{{account.id}}" class="account_name" [ngClass]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
+                        <td>{{ account.balance }}</td>
+                        <td>
+                            @if (account.can_be_deleted) {
+                            <a href="javascript:void(0);" (click)="onClickDeleteAccount(account.id)">Delete</a>
+                            }
+                        </td>
+                    </tr>
+                    }
+                </table>
+                <br>
+                }
+            </fieldset>
+            <form [formGroup]="_newAccountForm" (ngSubmit)="onClickCreateAccount()">
+                <fieldset>
+                    <legend>Add new account</legend>
+                    <div class="form-field">
+                        <label>Account name</label><input name="account_name" formControlName="account_name">
+                    </div>
+                    <div>
+                        <label for="dropdown">Account type</label>
+                        <select id="dropdown" formControlName="account_type">
+                            @for (item of (_accountTypes | keyvalue); track item.key) {
+                            <option [value]="item.key">{{ item.value }}</option>
+                            }
+                        </select>
+                    </div>
+                    <button type="submit">Create</button>
+                </fieldset>
+            </form>
+        </td>
+        <td class="txn_list">
+            <app-transaction (_transactionChanged)="onTransactionsChanged()" [_selectedAccount]="this._selectedAccount"></app-transaction>
+        </td>
+    </tr>
+</table>

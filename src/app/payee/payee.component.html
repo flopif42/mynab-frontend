@@ -1,0 +1,20 @@
+<form [formGroup]="_newPayeeForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+        <legend>Add new payee</legend>
+        <div>
+            <label>Payee name</label><input formControlName="payee_name">
+        </div>
+        <button type="submit">Create</button>
+    </fieldset>
+</form>
+<fieldset>
+    <legend>List of payees</legend>
+    @for (payee of _payees; track payee.id) {
+    <div>
+        {{ payee.name }}&nbsp;
+        @if (payee.can_be_deleted) {
+        <a href="javascript:void(0);" (click)="okClickDeletePayee(payee.id)">Delete</a>
+        }
+    </div>
+    }
+</fieldset>

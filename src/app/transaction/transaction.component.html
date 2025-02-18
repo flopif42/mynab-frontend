@@ -1,0 +1,90 @@
+<table>
+    <tr>
+        @if (this._selectedAccount == null) { <th>Account</th> } <th>Date</th><th>Payee</th><th>Category</th><th>Memo</th><th>Outflow</th><th>Inflow</th><th>Actions</th>
+    </tr>
+    @for (txn of this._transactions; track txn.id) {
+    <tr>
+        @if (this._selectedAccount == null) {
+        <td>{{ txn.account }}</td>
+        }
+        <td>{{ txn.date }}</td>
+        <td> @if (txn.payee == null) { <span class="system">Transfer</span> } @else { {{ txn.payee }} } </td>
+        <td>
+            @if (txn.category == null) {
+            <span class="system">No category</span>
+            <!--
+            <select id="id_category_update">
+                @for (cat of _categories; track cat.id) {
+                <option [value]="cat.id">{{ cat.name }}</option>
+                }
+            </select>
+                -->
+            } @else { {{ txn.category }} }
+        </td>
+        <td>{{ txn.memo }}</td>
+        @if (txn.flow == 'Outflow') { <td class="amount">{{ txn.amount }}</td> <td>&nbsp;</td> } @else {
+        <td>&nbsp;</td> <td class="amount">{{ txn.amount }}</td> }
+        <td><a href="javascript:void(0);" (click)="deleteTransaction(txn.id)">Delete</a></td>
+    </tr>
+    }
+</table>
+
+<form [formGroup]="_newTxnForm" (ngSubmit)="onAddTransactionClick()">
+    <fieldset>
+        <legend>New transaction</legend>
+        @if (this._selectedAccount != null) { <input formControlName="id_account" type="hidden"> }
+        <table>
+            <tr>@if (this._selectedAccount == null) { <th>Account</th> } <th>Date</th><th>Payee</th><th>Category</th><th>Memo</th><th>Amount</th></tr>
+            <tr>
+                @if (this._selectedAccount == null) {
+                <td><select formControlName="id_account">
+                    @for (account of _accounts; track account.id) { <option [value]="account.id">{{ account.name }}</option> }
+                    </select> </td> }
+                <td><input type="date" formControlName="date"></td>
+                <td><select formControlName="id_payee">
+                    @for (payee of _payees; track payee.id) {
+                    <option [value]="payee.id">{{ payee.name }}</option> }
+                </select></td>
+                <td><select formControlName="id_category">
+                    @for (cat of _categories; track cat.id) {
+                    <option [value]="cat.id">{{ cat.name }}</option>}
+                    </select></td>
+                <td><input formControlName="memo"></td>
+                <td>
+                    <input formControlName="amount">&nbsp;
+                    <input formControlName="flow" type="radio" id="outflow" value="-1"><label for="outflow">Outflow</label>
+                    <input formControlName="flow" type="radio" id="inflow" value="1"><label for="inflow">Inflow</label>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" [disabled]="!_newTxnForm.valid">Add transaction</button>
+    </fieldset>
+</form>
+
+<form [formGroup]="_newTsfForm" (ngSubmit)="onAddTransferClick()">
+    <fieldset>
+        <legend>New transfer</legend>
+        @if (this._selectedAccount != null) { <input formControlName="id_account_outflow" type="hidden"> }
+        <table>
+            <tr>@if (this._selectedAccount == null) { <th>From account</th> } <th>To account</th><th>Date</th><th>Memo</th><th>Amount</th></tr>
+            <tr>
+                @if (this._selectedAccount == null) {
+                <td><select formControlName="id_account_outflow">
+                    @for (account of this._filteredOutflowAccounts; track account.id) {
+                    <option [value]="account.id">{{ account.name }}</option> }
+                </select></td>}
+                <td><select formControlName="id_account_inflow">
+                    @for (account of this._filteredInflowAccounts; track account.id) {
+                        @if (account.id != this._selectedAccount) {
+                            <option [value]="account.id">{{ account.name }}</option>
+                        }
+                    }
+                </select></td>
+                <td><input type="date" formControlName="date"></td>
+                <td><input formControlName="memo"></td>
+                <td><input formControlName="amount"></td>
+            </tr>
+        </table>
+        <button type="submit" [disabled]="!_newTsfForm.valid">Add transfer</button>
+    </fieldset>
+</form>
