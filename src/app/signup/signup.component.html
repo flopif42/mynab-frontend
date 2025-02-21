@@ -3,14 +3,14 @@
         <legend>Sign-up form</legend>
         <div class="form-field">
             <label>Email</label><input name="email" formControlName="email"><input name="email_OK" formControlName="email_OK">&nbsp;
-            @if (_signupForm.get('email').value != '' && _emailAdressAvailable == 'no') { <p class="error-message">This email address is already used.</p> }
+            @if (_signupForm.get('email').value != '' && _emailAdressAvailable == 'no') { <span class="error-message">This email address is already used.</span> }
         </div>
         <div class="form-field">
             <label>Password</label><input name="password" formControlName="password" type="password">
         </div>
         <div class="form-field">
             <label>Confirm password</label><input name="confirm_password" formControlName="confirm_password" type="password">
-            @if (_signupForm.errors?.['PasswordNoMatch']) { <p class="error-message">Passwords don't match.</p> }
+            @if (_signupForm.errors?.['PasswordNoMatch']) { <span class="error-message">Passwords don't match.</span> }
         </div>
         <div class="form-field">
             <label>First name</label><input name="first_name" formControlName="first_name">

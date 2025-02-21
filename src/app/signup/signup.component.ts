@@ -8,6 +8,7 @@ import { SignupService, checkEmailResponse } from './signup.service';
 @Component({
     selector: 'app-signup',
     templateUrl: 'signup.component.html',
+    styleUrl: 'signup.component.css',
     imports: [ReactiveFormsModule]
 })
 export class SignupComponent {
