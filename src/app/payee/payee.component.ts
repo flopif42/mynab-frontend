@@ -31,6 +31,9 @@ export class PayeeComponent implements OnInit {
                 payeesFromApi.forEach((payee: Payee) => {
                     this._payees.push(payee)
                 })
+                this._payees.sort((a, b) =>
+                    a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+                );
             },
             error => {
                 console.error("Error fetching payees")
