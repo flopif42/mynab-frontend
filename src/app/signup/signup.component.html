@@ -3,8 +3,8 @@
         <legend>Sign-up form</legend>
         <div class="form-field">
             <label>Email</label><input name="email" formControlName="email">
-            <input name="emailAdressAvailable" formControlName="emailAdressAvailable">
-            @if (!_signupForm._emailAdressAvailable) {
+            <input name="email_OK" formControlName="emailAdressAvailable">
+            @if (!this._emailAdressAvailable) {
             <p>This email address is already used.</p>
             }
         </div>

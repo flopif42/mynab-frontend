@@ -17,7 +17,7 @@ export class SignupComponent {
         confirm_password: new FormControl('', [Validators.required]),
         first_name: new FormControl(''),
         last_name: new FormControl(''),
-        emailAdressAvailable: new FormControl('no', [Validators.pattern('yes')])
+        email_OK: new FormControl('no', [Validators.pattern('yes')])
     }, confirmPasswordValidator());
 
     _emailAdressAvailable = 'no'
@@ -50,7 +50,7 @@ export class SignupComponent {
             (response) => {
                 const resp: checkEmailResponse = response;
                 this._emailAdressAvailable = resp['available']
-                this._signupForm.get('emailAdressAvailable').setValue(this._emailAdressAvailable)
+                this._signupForm.get('email_OK').setValue(this._emailAdressAvailable)
             }
         );
     }
