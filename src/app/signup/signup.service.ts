@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Md5 } from 'ts-md5';
 import { environment } from '../../environments/environment'
 
-export class emailAdressAvail {
+export class checkEmailResponse {
     available: string;
 }
 
@@ -23,8 +23,8 @@ export class SignupService {
         });
     }
 
-    checkEmailAvailableForSignup(email_address: string): Observable<emailAdressAvail> {
-        return this.http.post<emailAdressAvail>(this.m_endpoint + "/available", {
+    checkEmailAvailableForSignup(email_address: string): Observable<checkEmailResponse> {
+        return this.http.post<checkEmailResponse>(this.m_endpoint + "/available", {
             email_address
         });
     }

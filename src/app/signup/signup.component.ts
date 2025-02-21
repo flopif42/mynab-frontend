@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { confirmPasswordValidator } from '../confirm-password.validator';
 import { SignupService } from './signup.service';
 
-export class emailAdressAvail {
+export class checkEmailResponse {
     available: string;
 }
 
@@ -23,11 +23,13 @@ export class SignupComponent {
         last_name: new FormControl('')
     }, confirmPasswordValidator());
 
+    _emailAdressAvailable = 'no'
+
     constructor(private router: Router, private signupService: SignupService) { }
 
     ngOnInit() {
         this._signupForm.get('email')?.valueChanges.subscribe(txt => {
-            console.log("Text changed :" + txt);
+//            console.log("Text changed :" + txt);
             this.onEmailAdressChanged(txt);
         });
     }
@@ -50,8 +52,9 @@ export class SignupComponent {
     onEmailAdressChanged(txt: string) {
         this.signupService.checkEmailAvailableForSignup(txt).subscribe(
             (response) => {
-                const isAvailable: emailAdressAvail = response;
-                console.log("response from server:" + isAvailable['available'])
+                const isAvailable: checkEmailResponse = response;
+                // console.log("response from server:" + isAvailable['available'])
+                this._emailAdressAvailable = isAvailable['available']
             }
         );
     }
