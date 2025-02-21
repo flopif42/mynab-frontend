@@ -11,6 +11,10 @@ import { SignupService } from './signup.service';
     imports: [ReactiveFormsModule]
 })
 
+export class emailAdressAvail {
+    available: string;
+}
+
 export class SignupComponent {
     _signupForm = new FormGroup({
         email: new FormControl('', [Validators.required]),
@@ -47,7 +51,8 @@ export class SignupComponent {
     onEmailAdressChanged(txt: string) {
         this.signupService.checkEmailAvailableForSignup(txt).subscribe(
             (response) => {
-                console.log("response from server:" + response)
+                const isAvailable: emailAdressAvail = response;
+                console.log("response from server:" + isAvailable['available'])
             }
         );
     }
