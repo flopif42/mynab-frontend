@@ -24,7 +24,8 @@ export class SignupComponent {
 
     ngOnInit() {
         this._signupForm.get('email')?.valueChanges.subscribe(txt => {
-            console.log(txt);
+            console.log("Text changed :" + txt);
+            this.onEmailAdressChanged(txt);
         });
     }
 
@@ -41,5 +42,13 @@ export class SignupComponent {
                 }
             );
         }
+    }
+
+    onEmailAdressChanged(txt: string) {
+        this.signupService.checkEmailAvailableForSignup(txt).subscribe(
+            (response) => {
+                console.log("response from server:" + response)
+            }
+        );
     }
 }
