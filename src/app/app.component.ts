@@ -17,17 +17,7 @@ export class AppComponent {
     constructor(private router: Router, private authService: AuthService) { }
 
     logout() {
-        this.authService.logout().subscribe(
-            res => {
-                console.log('Response :', res['logout']);
-                this._isLoggedIn = false
-                this.router.navigate(['/login'])
-            },
-            error => {
-                console.error('Observer got an error: ', error);
-                this._isLoggedIn = false
-                this.router.navigate(['/login'])
-            }
-        )
+        this._isLoggedIn = false
+        this.router.navigate(['/login'])
     }
 }
