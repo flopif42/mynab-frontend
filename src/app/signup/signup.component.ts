@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { confirmPasswordValidator } from '../confirm-password.validator';
+import { emailAvailableValidator } from '../email-available.validator';
 import { SignupService, checkEmailResponse } from './signup.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class SignupComponent {
         first_name: new FormControl(''),
         last_name: new FormControl(''),
         emailAdressAvailable: new FormControl('no')
-    }, confirmPasswordValidator());
+    }, confirmPasswordValidator(), emailAvailableValidator());
 
     constructor(private router: Router, private signupService: SignupService) { }
 
