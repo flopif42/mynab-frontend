@@ -16,10 +16,9 @@ export class SignupComponent {
         password: new FormControl('', [Validators.required]),
         confirm_password: new FormControl('', [Validators.required]),
         first_name: new FormControl(''),
-        last_name: new FormControl('')
+        last_name: new FormControl(''),
+        emailAdressAvailable: new FormControl('no')
     }, confirmPasswordValidator());
-
-    _emailAdressAvailable = 'no'
 
     constructor(private router: Router, private signupService: SignupService) { }
 
@@ -50,7 +49,7 @@ export class SignupComponent {
             (response) => {
                 const isAvailable: checkEmailResponse = response;
                 // console.log("response from server:" + isAvailable['available'])
-                this._emailAdressAvailable = isAvailable['available']
+                this._signupForm.get('emailAdressAvailable').setValue(isAvailable['available'])
             }
         );
     }
