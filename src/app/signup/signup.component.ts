@@ -5,16 +5,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { confirmPasswordValidator } from '../confirm-password.validator';
 import { SignupService } from './signup.service';
 
+export class emailAdressAvail {
+    available: string;
+}
+
 @Component({
     selector: 'app-signup',
     templateUrl: 'signup.component.html',
     imports: [ReactiveFormsModule]
 })
-
-export class emailAdressAvail {
-    available: string;
-}
-
 export class SignupComponent {
     _signupForm = new FormGroup({
         email: new FormControl('', [Validators.required]),
