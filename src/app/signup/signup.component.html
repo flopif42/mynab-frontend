@@ -2,14 +2,14 @@
     <fieldset>
         <legend>Sign-up form</legend>
         <div class="form-field">
-            <label>Email</label><input name="email" formControlName="email"><input name="email_OK" formControlName="email_OK">&nbsp;
+            <label>Email</label><input name="email" formControlName="email"><input type="hidden" name="email_OK" formControlName="email_OK">&nbsp;
             @if (_signupForm.get('email').value != '' && _emailAdressAvailable == 'no') { <span class="error-message">This email address is already used.</span> }
         </div>
         <div class="form-field">
             <label>Password</label><input name="password" formControlName="password" type="password">
         </div>
         <div class="form-field">
-            <label>Confirm password</label><input name="confirm_password" formControlName="confirm_password" type="password">
+            <label>Confirm password</label><input name="confirm_password" formControlName="confirm_password" type="password">&nbsp;
             @if (_signupForm.errors?.['PasswordNoMatch']) { <span class="error-message">Passwords don't match.</span> }
         </div>
         <div class="form-field">
