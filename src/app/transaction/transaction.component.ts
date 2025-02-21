@@ -111,6 +111,9 @@ export class TransactionComponent implements OnInit, OnChanges {
         this.payeeService.getList().subscribe(
             response => {
                 this._payees = response;
+                this._payees.sort((a, b) =>
+                    a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+                );
             },
             error => {
                 console.error("Error fetching payees")
