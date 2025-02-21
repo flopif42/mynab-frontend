@@ -5,10 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { confirmPasswordValidator } from '../confirm-password.validator';
 import { SignupService } from './signup.service';
 
-export class checkEmailResponse {
-    available: string;
-}
-
 @Component({
     selector: 'app-signup',
     templateUrl: 'signup.component.html',
