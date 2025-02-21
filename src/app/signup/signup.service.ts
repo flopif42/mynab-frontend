@@ -1,7 +1,12 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Md5 } from 'ts-md5';
 import { environment } from '../../environments/environment'
+
+export class emailAdressAvail {
+    available: string;
+}
 
 @Injectable({
     providedIn: 'root'
@@ -18,8 +23,8 @@ export class SignupService {
         });
     }
 
-    checkEmailAvailableForSignup(email_address: string) {
-        return this.http.post<Object>(this.m_endpoint + "/available", {
+    checkEmailAvailableForSignup(email_address: string): Observable<emailAdressAvail> {
+        return this.http.post<emailAdressAvail>(this.m_endpoint + "/available", {
             email_address
         });
     }
