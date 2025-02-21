@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { confirmPasswordValidator } from '../confirm-password.validator';
-import { SignupService } from './signup.service';
+import { SignupService, checkEmailResponse } from './signup.service';
 
 @Component({
     selector: 'app-signup',
