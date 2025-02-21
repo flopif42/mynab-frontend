@@ -4,7 +4,7 @@
         <div class="form-field">
             <label>Email</label><input name="email" formControlName="email">
             <input name="emailAdressAvailable" formControlName="emailAdressAvailable">
-            @if (_signupForm.errors?.['EmailUnavailable']) {
+            @if (!_signupForm._emailAdressAvailable) {
             <p>This email address is already used.</p>
             }
         </div>

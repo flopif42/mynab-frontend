@@ -20,11 +20,12 @@ export class SignupComponent {
         emailAdressAvailable: new FormControl('no', [Validators.pattern('yes')])
     }, confirmPasswordValidator());
 
+    _emailAdressAvailable = 'no'
+
     constructor(private router: Router, private signupService: SignupService) { }
 
     ngOnInit() {
         this._signupForm.get('email')?.valueChanges.subscribe(txt => {
-//            console.log("Text changed :" + txt);
             this.onEmailAdressChanged(txt);
         });
     }
@@ -47,9 +48,9 @@ export class SignupComponent {
     onEmailAdressChanged(txt: string) {
         this.signupService.checkEmailAvailableForSignup(txt).subscribe(
             (response) => {
-                const isAvailable: checkEmailResponse = response;
-                // console.log("response from server:" + isAvailable['available'])
-                this._signupForm.get('emailAdressAvailable').setValue(isAvailable['available'])
+                const resp: checkEmailResponse = response;
+                this._emailAdressAvailable = resp['available']
+                this._signupForm.get('emailAdressAvailable').setValue(this._emailAdressAvailable)
             }
         );
     }
