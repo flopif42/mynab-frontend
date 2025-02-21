@@ -1,5 +1,5 @@
 import { Router } from '@angular/router'
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { confirmPasswordValidator } from '../confirm-password.validator';
@@ -12,7 +12,7 @@ import { SignupService } from './signup.service';
 })
 
 export class SignupComponent {
-    signupForm = new FormGroup({
+    _signupForm = new FormGroup({
         email: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required]),
         confirm_password: new FormControl('', [Validators.required]),
@@ -22,10 +22,16 @@ export class SignupComponent {
 
     constructor(private router: Router, private signupService: SignupService) { }
 
-    onSubmit() {
-        const val = this.signupForm.value;
+    ngOnInit() {
+        this._signupForm.get('email')?.valueChanges.subscribe(txt => {
+            console.log(txt);
+        });
+    }
 
-        if (this.signupForm && val.email && val.password && val.confirm_password) {
+    onSubmit() {
+        const val = this._signupForm.value;
+
+        if (this._signupForm && val.email && val.password && val.confirm_password) {
             this.signupService.signup(
                 val.first_name, val.last_name, val.email, val.password
             ).subscribe(
