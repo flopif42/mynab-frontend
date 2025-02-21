@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment'
     providedIn: 'root'
 })
 export class SignupService {
-    m_endpoint = environment.apiUrl + "/sign-up"
+    m_endpoint = environment.apiUrl + "/user/sign-up"
 
     constructor(private http: HttpClient) { }
 
