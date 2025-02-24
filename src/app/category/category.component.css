@@ -1,16 +1,23 @@
 ﻿table, td {
     border: 1px solid;
     border-collapse: collapse;
+    border-color: black;
 }
 
 .parent_cat {
     background-color: navy;
-    color: white;
-    font-family: Arial;
+    color: #fff;
+    font-family: Arial
 }
 
 .child_cat {
-    background-color: white;
-    color: black;
+    background-color: #fff;
+    color: #000;
     font-family: Arial;
+    font-size: 14px;
+}
+
+a.arrow {
+    text-decoration: none;
+    color: white;
 }

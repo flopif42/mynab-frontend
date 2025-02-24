@@ -3,6 +3,8 @@
     <table class="parent_cat">
         @for (parent_cat of _parentCategories; track parent_cat.id) {
         <tr>
+            <!--           <td class="parent_cat">{{ parent_cat.position }}</td> -->
+            <td class="parent_cat">{{ parent_cat.name }}</td>
             <td class="parent_cat">
                 @if (parent_cat.position > 1) {
                 <a class="arrow" href="javascript:void(0);" (click)="okMoveParentCategory(parent_cat.id, parent_cat.position-1)">&#8593;</a>
@@ -13,13 +15,10 @@
                 <a class="arrow" href="javascript:void(0);" (click)="okMoveParentCategory(parent_cat.id, parent_cat.position+1)">&#8595;</a>
                 } @else { &nbsp; }
             </td>
-            <td class="parent_cat">{{ parent_cat.position }}</td>
-            <td class="parent_cat">{{ parent_cat.name }}</td>
         </tr>
             @for (category of parent_cat['child_categories']; track category.id) {
         <tr>
-            <td class="child_cat" colspan="3">&nbsp;</td>
-            <td class="child_cat">
+            <td class="child_cat" colspan="3">
                 {{ category.name }} @if (category.can_be_deleted) {
                     <a class="arrow" href="javascript:void(0);" (click)="okClickDeleteCategory(category.id)">[X]</a>
                 }
