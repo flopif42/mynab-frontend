@@ -4,17 +4,14 @@
 
         @for (parent_cat of _parentCategories; track parent_cat.id) {
         <tr><td class="parent_cat">{{ parent_cat.position }}</td><td class="parent_cat">{{ parent_cat.name }}</td></tr>
-        @for (category of parent_cat['child_categories']; track category.id) {
-        <tr>
-            <td colspan="2">
-                {{ category.name }}
-                @if (category.can_be_deleted) {
-                <a href="javascript:void(0);" (click)="okClickDeleteCategory(category.id)">Delete</a>
+            @for (category of parent_cat['child_categories']; track category.id) {
+            <tr><td colspan="2">
+                {{ category.name }} @if (category.can_be_deleted) {
+                    <a href="javascript:void(0);" (click)="okClickDeleteCategory(category.id)">Delete</a>
                 }
-            </td>
-            }
-            }
-        </tr>
+            </td></tr>
+             }
+         }
         </table>
 </fieldset>
 
