@@ -1,12 +1,16 @@
-﻿.parent_cat {
-    background-color: navy;
-    color: white;
-    font-weight: bold;
+﻿table, td {
+    border: 1px solid;
+    border-collapse: collapse;
 }
 
-a.arrow {
+.parent_cat {
+    background-color: navy;
     color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 22px;
+    font-family: Arial;
+}
+
+.child_cat {
+    background-color: white;
+    color: black;
+    font-family: Arial;
 }
