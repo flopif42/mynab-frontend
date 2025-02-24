@@ -31,7 +31,7 @@ export class CategoryComponent implements OnInit {
     listCategories() {
         this.categoryService.getList().subscribe(
             response => {
-                this._parentCategories = response.sort((a, b) => a.position < b.position)
+                this._parentCategories = response.sort((a, b) => a.position - b.position)
             },
             error => {
                 console.error("Error fetching categories")
