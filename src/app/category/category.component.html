@@ -2,16 +2,14 @@
     <legend>Categories</legend>
     @for (parent_cat of _parentCategories; track parent_cat.id) {
     <div class="parent_cat">{{ parent_cat.name }}</div>
-    <!--
-        @for (category of _categories.get(parentId); track category.id) {
-        <div>
-            {{ category.name }}
-            @if (category.can_be_deleted) {
-            <a href="javascript:void(0);" (click)="okClickDeleteCategory(category.id)">Delete</a>
-            }
-        </div>
+    @for (category of parent_cat['child_categories']; track category.id) {
+    <div>
+        {{ category.name }}
+        @if (category.can_be_deleted) {
+        <a href="javascript:void(0);" (click)="okClickDeleteCategory(category.id)">Delete</a>
         }
-    -->
+    </div>
+    }
     }
 </fieldset>
 <!--

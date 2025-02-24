@@ -32,7 +32,6 @@ export class CategoryComponent implements OnInit {
         this.categoryService.getList().subscribe(
             response => {
                 this._parentCategories = response
-                console.log("test")
             },
             error => {
                 console.error("Error fetching categories")
