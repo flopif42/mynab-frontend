@@ -36,6 +36,7 @@ export class CategoryComponent implements OnInit {
 
                 categoriesFromApi.forEach((parent_cat: ParentCategory) => {
                     const idParent = parent_cat.id;
+                    console.log(parent_cat)
                 })
             },
             error => {
