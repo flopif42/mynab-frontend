@@ -35,7 +35,7 @@ export class CategoryService {
     setParentCategoryPosition(parentId, newPosition) {
         return this.http.post<Object>(this.m_endpoint + "/move_parent",
             {
-                "id_parent": parentId,
+                "id_parent_category": parentId,
                 "new_position": newPosition
             });
     }
