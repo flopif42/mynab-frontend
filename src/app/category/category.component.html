@@ -20,7 +20,7 @@
         <tr>
             <td class="child_cat" colspan="3">
                 {{ category.name }} @if (category.can_be_deleted) {
-                    <a class="arrow" href="javascript:void(0);" (click)="okClickDeleteCategory(category.id)">[X]</a>
+                    <a class="delete" href="javascript:void(0);" (click)="okClickDeleteCategory(category.id)">[X]</a>
                 }
             </td>
         </tr>

@@ -17,7 +17,14 @@
     font-size: 14px;
 }
 
-a.arrow {
+a {
     text-decoration: none;
+}
+
+.arrow {
     color: white;
+}
+
+.delete {
+    color: red;
 }
