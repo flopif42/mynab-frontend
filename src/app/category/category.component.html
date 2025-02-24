@@ -10,7 +10,7 @@
                 } @else { &nbsp; }
             </td>
             <td class="parent_cat">
-                @if (parent_cat.position < _parentCategories.length()) {
+                @if (parent_cat.position < _parentCategories.length) {
                 <a href="javascript:void(0);" (click)="okMoveParentCategory(parent_cat.id, parent_cat.position+1)">down</a>
                 } @else { &nbsp; }
             </td>
