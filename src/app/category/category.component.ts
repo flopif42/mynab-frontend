@@ -31,13 +31,8 @@ export class CategoryComponent implements OnInit {
     listCategories() {
         this.categoryService.getList().subscribe(
             response => {
-                const categoriesFromApi: ParentCategory[] = response
-                this._parentCategories.length = 0
-
-                categoriesFromApi.forEach((parent_cat: ParentCategory) => {
-                    const idParent = parent_cat.id;
-                    console.log(parent_cat)
-                })
+                this._parentCategories = response
+                console.log("test")
             },
             error => {
                 console.error("Error fetching categories")
