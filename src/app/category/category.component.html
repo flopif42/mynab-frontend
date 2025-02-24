@@ -6,12 +6,12 @@
         <tr>
             <td class="parent_cat">
                 @if (parent_cat.position > 1) {
-                <a href="javascript:void(0);" (click)="okMoveParentCategory(parent_cat.id, parent_cat.position-1)">&#8593;</a>
+                <a class="arrow" href="javascript:void(0);" (click)="okMoveParentCategory(parent_cat.id, parent_cat.position-1)">&#8593;</a>
                 } @else { &nbsp; }
             </td>
             <td class="parent_cat">
                 @if (parent_cat.position < _parentCategories.length) {
-                <a href="javascript:void(0);" (click)="okMoveParentCategory(parent_cat.id, parent_cat.position+1)">&#8595;</a>
+                <a class="arrow" href="javascript:void(0);" (click)="okMoveParentCategory(parent_cat.id, parent_cat.position+1)">&#8595;</a>
                 } @else { &nbsp; }
             </td>
             <td class="parent_cat">{{ parent_cat.position }}</td>
