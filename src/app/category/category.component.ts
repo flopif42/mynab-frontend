@@ -100,4 +100,17 @@ export class CategoryComponent implements OnInit {
                 )
         }
     }
+
+    okMoveParentCategory(parentId, newPosition) {
+        this.categoryService.setParentCategoryPosition(parentId, newPosition)
+            .subscribe(
+                res => {
+                    console.log("Parent category moved")
+                    this.listCategories()
+                },
+                error => {
+                    console.error("Error moving parent category")
+                }
+            )
+    }
 }

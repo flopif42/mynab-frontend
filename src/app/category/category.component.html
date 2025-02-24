@@ -4,8 +4,8 @@
 
         @for (parent_cat of _parentCategories; track parent_cat.id) {
         <tr>
-            <td><a href="/">up</a></td>
-            <td><a href="/">down</a></td>
+            <td class="parent_cat"><a href="javascript:void(0);" (click)="okMoveParentCategory(parent_cat.id, parent_cat.position-1)">up</a></td>
+            <td class="parent_cat"><a href="javascript:void(0);" (click)="okMoveParentCategory(parent_cat.id, parent_cat.position+1)">down</a></td>
             <td class="parent_cat">{{ parent_cat.position }}</td>
             <td class="parent_cat">{{ parent_cat.name }}</td>
         </tr>

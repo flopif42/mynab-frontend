@@ -31,4 +31,12 @@ export class CategoryService {
     deleteParent(parentId) {
         return this.http.post<Object>(this.m_endpoint + "/delete_parent", { "id_parent": parentId });
     }
+
+    setParentCategoryPosition(parentId, newPosition) {
+        return this.http.post<Object>(this.m_endpoint + "/move_parent",
+            {
+                "id_parent": parentId,
+                "new_position": newPosition
+            });
+    }
 }
