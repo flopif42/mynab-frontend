@@ -7,7 +7,7 @@ import { Transaction } from './transaction.model'
 import { TransactionService } from './transaction.service'
 import { Payee } from '../payee/payee.model'
 import { PayeeService } from '../payee/payee.service'
-import { Category } from '../category/category.model'
+import { ParentCategory } from '../category/parent.category.model'
 import { CategoryService } from '../category/category.service'
 
 @Component({
@@ -44,7 +44,7 @@ export class TransactionComponent implements OnInit, OnChanges {
 
     _transactions: Transaction[]
     _payees: Payee[]
-    _categories: Category[]
+    _parentCategories: ParentCategory[]
     _accounts: Account[]
     _filteredInflowAccounts: Account[]
     _filteredOutflowAccounts: Account[]
@@ -100,7 +100,7 @@ export class TransactionComponent implements OnInit, OnChanges {
     fetchCategories() {
         this.categoryService.getList().subscribe(
             response => {
-                this._categories = response;
+                this._parentCategories = response;
             },
             error => {
                 console.error("Error fetching categories")
