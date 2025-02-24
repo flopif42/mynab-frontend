@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment'
-import { Category } from './category.model'
+import { ParentCategory } from './parent.category.model'
 
 @Injectable({
     providedIn: 'root'
@@ -20,8 +20,8 @@ export class CategoryService {
         return this.http.post<Object>(this.m_endpoint + '/create', { id_parent, category_name });
     }
 
-    getList(): Observable<Category[]> {
-        return this.http.get<Category[]>(this.m_endpoint + '/list')
+    getList(): Observable<ParentCategory[]> {
+        return this.http.get<ParentCategory[]>(this.m_endpoint + '/list')
     }
 
     delete(categoryId) {
