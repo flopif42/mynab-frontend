@@ -52,6 +52,6 @@
                 }
             </select>
         </div>
-        <button type="submit">Add category</button>
+        <button type="submit" [disabled]="!_newCategoryForm.valid">Add category</button>
     </fieldset>
 </form>
