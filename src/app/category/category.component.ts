@@ -62,6 +62,7 @@ export class CategoryComponent implements OnInit {
                 .subscribe(
                     res => {
                         console.log("Category created.")
+                        this._newCategoryForm['category_name'] = ''
                         this.listCategories()
                     },
                     error => {
