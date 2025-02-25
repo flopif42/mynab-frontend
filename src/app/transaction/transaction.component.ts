@@ -100,7 +100,7 @@ export class TransactionComponent implements OnInit, OnChanges {
     fetchCategories() {
         this.categoryService.getList().subscribe(
             response => {
-                this._parentCategories = response;
+                this._parentCategories = response.sort((a, b) => a.position - b.position)
             },
             error => {
                 console.error("Error fetching categories")
