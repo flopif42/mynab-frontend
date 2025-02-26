@@ -1,7 +1,7 @@
 export class Transaction {
     id: number;
     account: String;
-    amount: String;
+    amount: number;
     date: String;
     flow: String;
     memo: String;
