@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrencyPipe } from '@angular/common';
 import { BudgetService } from './budget.service';
 import { Budget } from './budget.model'
 
 @Component({
     selector: 'budget-home',
     templateUrl: './budget.component.html',
-    styleUrl: './budget.component.css',
-    imports: [CurrencyPipe]
+    styleUrl: './budget.component.css'
 })
 export class BudgetComponent implements OnInit {
     _budget: Budget[]
@@ -27,5 +25,9 @@ export class BudgetComponent implements OnInit {
                 console.error("Error fetching budget")
             }
         )
+    }
+
+    formatAmount(cents_amount: number): string {
+        return (cents_amount / 100).toFixed(2).toString()
     }
 }
