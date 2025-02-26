@@ -1,6 +1,6 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { Validators, FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core'
+import { ReactiveFormsModule } from '@angular/forms'
+import { Validators, FormGroup, FormControl } from '@angular/forms'
 import { FormatAmountPipe } from '../format-amount.pipe';
 import { Account } from '../account/account.model'
 import { AccountService } from '../account/account.service'
@@ -15,7 +15,7 @@ import { CategoryService } from '../category/category.service'
     selector: 'app-transaction',
     templateUrl: 'transaction.component.html',
     styleUrl: 'transaction.component.css',
-    imports: [ReactiveFormsModule]
+    imports: [ReactiveFormsModule, FormatAmountPipe]
 })
 export class TransactionComponent implements OnInit, OnChanges {
     @Input() _selectedAccount: any;
