@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BudgetService } from './budget.service';
 import { Budget } from './budget.model'
-import { formatAmount } from '../utils/helpers'
 
 @Component({
     selector: 'budget-home',
