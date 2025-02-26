@@ -2,9 +2,9 @@
     <tr>
         <th>id</th>
         <th>Category</th>
-        <th>Funded</th>
-        <th>Spent</th>
-        <th>Remaining</th>
+        <th>Budgeted</th>
+        <th>Outflows</th>
+        <th>Balance</th>
     </tr>
     @for (budget_line of _budget; track budget_line.id_month) {
     <tr><td class="budget_month_year" colspan="5">{{ budget_line.id_month }}</td></tr>
