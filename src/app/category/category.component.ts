@@ -39,7 +39,7 @@ export class CategoryComponent implements OnInit {
         )
     }
 
-    onSubmitParent() {
+    onAddParentCategory() {
         const formData = this._newParentCategoryForm.value
         if (formData && formData.parent_category_name) {
             this.categoryService.create_parent(formData.parent_category_name)
@@ -55,7 +55,7 @@ export class CategoryComponent implements OnInit {
         }
     }
 
-    onSubmit() {
+    onAddCategory() {
         const formData = this._newCategoryForm.value
         if (formData && formData.category_name && formData.id_parent) {
             this.categoryService.create(Number(formData.id_parent), formData.category_name)
@@ -72,7 +72,7 @@ export class CategoryComponent implements OnInit {
         }
     }
 
-    okClickDeleteCategory(categoryId) {
+    onDeleteCategory(categoryId) {
         if (confirm("Are you sure you want to delete this category ?")) {
             this.categoryService.delete(categoryId)
                 .subscribe(
@@ -87,7 +87,7 @@ export class CategoryComponent implements OnInit {
         }
     }
 
-    okClickDeleteParentCategory(parentId) {
+    onDeleteParentCategory(parentId) {
         if (confirm("Are you sure you want to delete this parent category ?")) {
             this.categoryService.deleteParent(parentId)
                 .subscribe(
@@ -102,7 +102,7 @@ export class CategoryComponent implements OnInit {
         }
     }
 
-    okMoveParentCategory(parentId, newPosition) {
+    onMoveParentCategory(parentId, newPosition) {
         this.categoryService.setParentCategoryPosition(parentId, newPosition)
             .subscribe(
                 res => {

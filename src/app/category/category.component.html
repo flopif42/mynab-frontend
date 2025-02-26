@@ -6,12 +6,12 @@
             <td class="parent_cat">{{ parent_cat.name }}</td>
             <td class="parent_cat">
                 @if (parent_cat.position > 1) {
-                <a class="arrow" href="javascript:void(0);" (click)="okMoveParentCategory(parent_cat.id, parent_cat.position-1)">&#8593;</a>
+                <a class="arrow" href="javascript:void(0);" (click)="onMoveParentCategory(parent_cat.id, parent_cat.position-1)">&#8593;</a>
                 } @else { &nbsp; }
             </td>
             <td class="parent_cat">
                 @if (parent_cat.position < _parentCategories.length) {
-                <a class="arrow" href="javascript:void(0);" (click)="okMoveParentCategory(parent_cat.id, parent_cat.position+1)">&#8595;</a>
+                <a class="arrow" href="javascript:void(0);" (click)="onMoveParentCategory(parent_cat.id, parent_cat.position+1)">&#8595;</a>
                 } @else { &nbsp; }
             </td>
         </tr>
@@ -19,7 +19,7 @@
             <tr>
                 @if (category.can_be_deleted) {
                     <td class="child_cat" colspan="2">{{ category.name }}</td>
-                    <td class="child_cat"><a class="delete" href="javascript:void(0);" (click)="okClickDeleteCategory(category.id)">X</a></td>
+                    <td class="child_cat"><a class="delete" href="javascript:void(0);" (click)="onDeleteCategory(category.id)">X</a></td>
                 } @else {
                     <td class="child_cat" colspan="3">{{ category.name }}</td>
                 }
@@ -29,21 +29,17 @@
         </table>
 </fieldset>
 
-<form [formGroup]="_newParentCategoryForm" (ngSubmit)="onSubmitParent()">
+<form [formGroup]="_newParentCategoryForm" (ngSubmit)="onAddParentCategory()">
     <fieldset>
-        <legend>Add a parent category</legend>
+        <legend>Add parent category</legend>
         <div>
-            <label>Parent category name</label><input formControlName="parent_category_name">
+            <label>Parent category name</label><input formControlName="parent_category_name"><button type="submit" [disabled]="!_newParentCategoryForm.valid">Add</button>
         </div>
-        <button type="submit">Add parent category</button>
     </fieldset>
 </form>
-<form [formGroup]="_newCategoryForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="_newCategoryForm" (ngSubmit)="onAddCategory()">
     <fieldset>
-        <legend>Add new category</legend>
-        <div>
-            <label>Category name</label><input formControlName="category_name">
-        </div>
+        <legend>Add category</legend>
         <div>
             <label>Parent category</label>
             <select formControlName="id_parent">
@@ -52,6 +48,8 @@
                 }
             </select>
         </div>
-        <button type="submit" [disabled]="!_newCategoryForm.valid">Add category</button>
+        <div>
+            <label>Category name</label><input formControlName="category_name"><button type="submit" [disabled]="!_newCategoryForm.valid">Add</button>
+        </div>
     </fieldset>
 </form>

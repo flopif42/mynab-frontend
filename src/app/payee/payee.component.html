@@ -16,10 +16,9 @@
 
 <form [formGroup]="_newPayeeForm" (ngSubmit)="onSubmit()">
     <fieldset>
-        <legend>Add new payee</legend>
+        <legend>Add payee</legend>
         <div>
-            <label>Payee name</label><input formControlName="payee_name">
+            <label>Payee name</label><input formControlName="payee_name"><button type="submit">Add payee</button>
         </div>
-        <button type="submit">Create</button>
     </fieldset>
 </form>
