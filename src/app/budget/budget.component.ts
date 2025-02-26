@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 import { BudgetService } from './budget.service';
 import { Budget } from './budget.model'
 
 @Component({
     selector: 'budget-home',
     templateUrl: './budget.component.html',
-    styleUrl: './budget.component.css'
+    styleUrl: './budget.component.css',
+    imports: [CurrencyPipe]
 })
 export class BudgetComponent implements OnInit {
     _budget: Budget[]
@@ -26,6 +28,4 @@ export class BudgetComponent implements OnInit {
             }
         )
     }
-
-    Number(value) { return parseFloat(value); }
 }
