@@ -12,7 +12,7 @@
                             <a class="account_status {{ _accountStatus[account.status].toLowerCase() }}" href="javascript:void(0);" (click)="onClickStatusAccount(account.id)">{{ _accountStatus[account.status].toUpperCase() }}</a>
                         </td>
                         <td><a routerLink="/account/{{account.id}}" class="account_name" [ngClass]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
-                        <td>{{ account.balance }}</td>
+                        <td>{{ formatAmount(account.balance) }}</td>
                         <td>
                             @if (account.can_be_deleted) {
                             <a href="javascript:void(0);" (click)="onClickDeleteAccount(account.id)">Delete</a>

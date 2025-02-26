@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BudgetService } from './budget.service';
 import { Budget } from './budget.model'
+import { formatAmount } from '../utils/helpers'
 
 @Component({
     selector: 'budget-home',
@@ -25,9 +26,5 @@ export class BudgetComponent implements OnInit {
                 console.error("Error fetching budget")
             }
         )
-    }
-
-    formatAmount(cents_amount: number): string {
-        return (cents_amount / 100).toFixed(2).toString()
     }
 }
