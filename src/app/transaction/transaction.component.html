@@ -22,8 +22,8 @@
             } @else { {{ txn.category }} }
         </td>
         <td>{{ txn.memo }}</td>
-        @if (txn.flow == 'Outflow') { <td class="amount">{{ txn.amount }}</td> <td>&nbsp;</td> } @else {
-        <td>&nbsp;</td> <td class="amount">{{ txn.amount }}</td> }
+        @if (txn.flow == 'Outflow') { <td class="amount">{{ txn.amount | formatAmount }}</td> <td>&nbsp;</td> } @else {
+        <td>&nbsp;</td> <td class="amount">{{ txn.amount | formatAmount }}</td> }
         <td><a href="javascript:void(0);" (click)="deleteTransaction(txn.id)">Delete</a></td>
     </tr>
     }
