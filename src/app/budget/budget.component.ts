@@ -30,8 +30,4 @@ export class BudgetComponent implements OnInit {
     formatAmount(cents_amount: number): string {
         return (cents_amount / 100).toFixed(2).toString()
     }
-
-    isNegative(a) {
-        return a < 0
-    }
 }

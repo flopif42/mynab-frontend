@@ -22,7 +22,6 @@ th {
 
 .overspent {
     color: red;
-    font-weight:bold;
 }
 
 tr:nth-child(even) {
