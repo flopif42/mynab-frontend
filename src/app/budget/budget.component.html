@@ -1,11 +1,20 @@
 <table>
+    <tr>
+        <th>id</th>
+        <th>Category</th>
+        <th>Funded</th>
+        <th>Spent</th>
+        <th>Remaining</th>
+    </tr>
     @for (budget_line of _budget; track budget_line.id_month) {
     <tr>
-        <td colspan="3">{{ budget_line.id_month }}</td>
+        <td colspan="5">{{ budget_line.id_month }}</td>
     </tr>
         @for (category of budget_line.categories; track category.id) {
         <tr>
-            <td>{{ category.id }}</td><td>{{ category.funded }}</td><td>{{ category.spent }}</td>
+            <td>{{ category.id }}</td><td>{{ category.name }}</td>
+            <td>{{ category.funded }}</td><td>{{ category.spent }}</td>
+            <td>{{ category.funded - category.spent }}</td>
         </tr>
         }
     }
