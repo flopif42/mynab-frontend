@@ -13,7 +13,7 @@
             <td>{{ category.id }}</td><td>{{ category.name }}</td>
             <td class="budget_amount">{{ formatAmount(category.funded) }}</td>
             <td class="budget_amount">{{ formatAmount(category.spent) }}</td>
-            <td [class.overspent]="category.funded < category.spent" class="budget_amount">{{ formatAmount(category.funded + category.spent) }}</td>
+            <td [class.overspent]="(category.funded < category.spent)" class="budget_amount">{{ formatAmount(category.funded + category.spent) }}</td>
         </tr>
         }
     }
