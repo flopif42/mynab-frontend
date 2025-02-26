@@ -26,4 +26,6 @@ export class BudgetComponent implements OnInit {
             }
         )
     }
+
+    Number(value) { return parseFloat(value); }
 }
