@@ -1,0 +1,7 @@
+<table class="budget">
+    @for (budget_line of _budget; track budget_line.id_month) {
+    <tr>
+        <td class="">{{ budget_line.id_month }}</td>
+    </tr>
+    }
+</table>

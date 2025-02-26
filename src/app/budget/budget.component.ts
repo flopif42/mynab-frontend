@@ -3,11 +3,9 @@ import { BudgetService } from './budget.service';
 import { Budget } from './budget.model'
 
 @Component({
-  selector: 'budget-home',
-  template: `
-    <div>Budgets Home Page</div>
-    {{ this._budget }}
-  `
+    selector: 'budget-home',
+    templateUrl: './budget.component.html',
+    styleUrl: './budget.component.css'
 })
 export class BudgetComponent implements OnInit {
     _budget: Budget[]
