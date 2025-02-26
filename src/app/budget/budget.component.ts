@@ -31,7 +31,7 @@ export class BudgetComponent implements OnInit {
         return (cents_amount / 100).toFixed(2).toString()
     }
 
-    isNegative(a, b) {
-        return a - b > 0
+    isNegative(a) {
+        return a < 0
     }
 }
