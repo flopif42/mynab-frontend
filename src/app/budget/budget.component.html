@@ -11,9 +11,9 @@
         @for (category of budget_line.categories; track category.id) {
         <tr>
             <td>{{ category.id }}</td><td>{{ category.name }}</td>
-            <td class="budget_amount">{{ formatAmount(category.funded) }}</td>
-            <td class="budget_amount">{{ formatAmount(category.spent) }}</td>
-            <td class="budget_amount" [class.overspent]="category.funded + category.spent < 0">{{ formatAmount(category.funded + category.spent) }}</td>
+            <td class="budget_amount">{{ category.funded }}</td>
+            <td class="budget_amount">{{ category.spent }}</td>
+            <td class="budget_amount" [class.overspent]="category.funded + category.spent < 0">{{ category.funded + category.spent }}</td>
         </tr>
         }
     }

@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormControl } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { FormatAmountPipe } from '../format-amount.pipe';
 import { AccountService } from './account.service'
 import { Account } from './account.model'
 import { TransactionComponent } from '../transaction/transaction.component';
-import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-account',
     templateUrl: './account.component.html',
     styleUrl: './account.component.css',
-    imports: [ReactiveFormsModule, TransactionComponent, RouterLink, CommonModule]
+    imports: [ReactiveFormsModule, TransactionComponent, RouterLink, CommonModule, FormatAmountPipe]
 })
 export class AccountComponent implements OnInit {
     _newAccountForm = new FormGroup({
