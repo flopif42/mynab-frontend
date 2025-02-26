@@ -1,1 +1,36 @@
-﻿
+﻿table, td {
+    border: 1px solid;
+    border-collapse: collapse;
+    border-color: black;
+    font-family: Arial;
+}
+
+tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.parent_cat {
+    background-color: navy;
+    color: #fff;
+}
+
+.child_cat {
+    color: #000;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.arrow {
+    color: white;
+}
+
+.delete {
+    color: red;
+}
