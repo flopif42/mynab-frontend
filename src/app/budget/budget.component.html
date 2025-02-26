@@ -1,7 +1,7 @@
 <table>
     @for (budget_line of _budget; track budget_line.id_month) {
     <tr>
-        <td>{{ budget_line.id_month }}</td>
+        <td colspan="3">{{ budget_line.id_month }}</td>
     </tr>
         @for (category of budget_line.categories; track category.id) {
         <tr>
