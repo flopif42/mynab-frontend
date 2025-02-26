@@ -17,6 +17,7 @@ th {
 
 .budget_amount {
     text-align: right;
+    width: 90px;
 }
 
 tr:nth-child(even) {
