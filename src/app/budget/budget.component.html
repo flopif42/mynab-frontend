@@ -1,7 +1,7 @@
 <br/>
 <table class="budget">
     <tr>
-        <th>&nbsp;</th>
+        <th class="empty">&nbsp;</th>
         @for (budget_line of _budget; track budget_line.id_period) {
             <th class="period" colspan="3">{{ budget_line.id_period }}</th>
         }

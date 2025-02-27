@@ -1,4 +1,4 @@
-﻿table, td {
+﻿table, td, th {
     border: 1px solid;
     border-collapse: collapse;
     border-color: black;
@@ -8,12 +8,20 @@
 
 td.parent_cat {
     background-color: navy;
-    color: #fff;
+    color: white;
+}
+
+th.empty {
+    background-color: #ffffff;
 }
 
 th {
     background-color: navy;
     color: #fff;
+}
+
+th.empty {
+    background-color: #ffffff;
 }
 
 th.period {
