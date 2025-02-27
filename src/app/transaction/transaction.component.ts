@@ -101,14 +101,15 @@ export class TransactionComponent implements OnInit, OnChanges {
 
     fetchCategories() {
         const incomeCategory = new Category(0, "Income")
-        const incomeParentCategory = new ParentCategory(0, "Income (parent)")
+        const incomeParentCategory = new ParentCategory(0, "Income (parent)", 1)
         incomeParentCategory.addChild(incomeCategory)
         this._parentCategories = []
         this._parentCategories.push(incomeParentCategory)
 
         this.categoryService.getList().subscribe(
             response => {
-                this._parentCategories.concat(response).sort((a, b) => a.position - b.position)
+
+                this._parentCategories = this._parentCategories + response; // .sort((a, b) => a.position - b.position)
             },
             error => {
                 console.error("Error fetching categories from transaction")

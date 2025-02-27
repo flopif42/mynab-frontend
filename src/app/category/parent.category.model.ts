@@ -6,7 +6,8 @@ export class ParentCategory {
     position: number;
     child_categories;
 
-    constructor(parentCatName, parentCatPosition) {
+    constructor(parentCatId, parentCatName, parentCatPosition) {
+        this.id = parentCatId;
         this.name = parentCatName;
         this.position = parentCatPosition;
         this.child_categories = [];
