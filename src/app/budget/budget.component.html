@@ -1,6 +1,34 @@
 @for (budget_line of _budget; track budget_line.id_period) {
 <div>{{ budget_line.id_period }}</div>
 <table>
+    <tr>
+        <td>
+
+            <table class="parent_cat">
+                @for (parent_cat of _parentCategories; track parent_cat.id) {
+                    <tr><td class="parent_cat">{{ parent_cat.name }}</td></tr>
+                    @for (category of parent_cat['child_categories']; track category.id) {
+                        @if (cat = getCategoryBudgetLine(budget_line.id_period, category.id) != null) {
+                            <tr><td class="child_cat">{{ cat.spent }} / {{ cat.funded }}</td></tr>
+                        } @else {
+                            <tr><td class="child_cat">{{ category.name }}</td></tr>
+                        }
+                    }
+                }
+            </table>
+
+
+        </td>
+    </tr>
+
+    }
+</table>
+}
+
+<!--
+@for (budget_line of _budget; track budget_line.id_period) {
+<div>{{ budget_line.id_period }}</div>
+<table>
     <tr><th>id</th><th>Category</th><th>Budgeted</th><th>Outflows</th><th>Balance</th></tr>
     @for (category of budget_line.categories; track category.id) {
     <tr>
@@ -13,12 +41,5 @@
     }
 </table>
 }
+-->
 
-<table class="parent_cat">
-    @for (parent_cat of _parentCategories; track parent_cat.id) {
-    <tr><td class="parent_cat">{{ parent_cat.name }}</td></tr>
-    @for (category of parent_cat['child_categories']; track category.id) {
-    <tr><td class="child_cat">{{ category.name }}</td></tr>
-    }
-    }
-</table>
