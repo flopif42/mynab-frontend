@@ -104,7 +104,7 @@ export class TransactionComponent implements OnInit, OnChanges {
                 this._parentCategories = response.sort((a, b) => a.position - b.position)
             },
             error => {
-                console.error("Error fetching categories")
+                console.error("Error fetching categories from transaction")
             })
     }
     
