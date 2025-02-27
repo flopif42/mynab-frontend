@@ -37,7 +37,6 @@ export class BudgetComponent implements OnInit {
         this.budgetService.getList().subscribe(
             response => {
                 this._budget = response
-                console.log("Test : " + this.getCategoryBudgetLine("2025_03", 5))
             },
             error => {
                 console.error("Error fetching budget")
