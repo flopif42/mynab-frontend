@@ -27,11 +27,15 @@
                 @for (budget_line of _budget; track budget_line.id_period) {
                     @let budgetedCat = getCategoryBudgetLine(budget_line.id_period, allCat.id);
                     @if (budgetedCat) {
-                        <td class="budget_amount">{{ budgetedCat.funded | formatAmount }}</td>
+                        <td class="budget_amount">
+                        @if (budgetedCat.funded > 0) {
+                            {{ budgetedCat.funded | formatAmount }}
+                        } @else { &nbsp; }
+                        </td>
                         <td class="budget_amount">{{ budgetedCat.spent | formatAmount }}</td>
                         <td class="budget_amount" [class.overspent]="budgetedCat.remaining < 0">{{ budgetedCat.remaining | formatAmount }}</td>
                     } @else {
-                        <td class="budget_amount">{{ 0 | formatAmount }}</td>
+                        <td class="budget_amount">&nbsp;</td>
                         <td class="budget_amount">{{ 0 | formatAmount }}</td>
                         <td class="budget_amount">{{ 0 | formatAmount }}</td>
                     }
