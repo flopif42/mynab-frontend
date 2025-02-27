@@ -6,9 +6,19 @@
     font-size: 14px;
 }
 
+td.parent_cat {
+    background-color: navy;
+    color: #fff;
+}
+
 th {
     background-color: navy;
     color: #fff;
+}
+
+th.period {
+    background-color: darkcyan;
+    color: white;
 }
 
 tr:nth-child(even) {
@@ -40,7 +50,3 @@ td.subcategory:hover {
     color: red;
 }
 
-td.parent_cat {
-    background-color: darkcyan;
-    color: white;
-}

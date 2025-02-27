@@ -3,7 +3,7 @@
     <tr>
         <th>&nbsp;</th>
         @for (budget_line of _budget; track budget_line.id_period) {
-            <th colspan="3">{{ budget_line.id_period }}</th>
+            <th class="period" colspan="3">{{ budget_line.id_period }}</th>
         }
     </tr>
 
@@ -18,7 +18,7 @@
     <tr>
         <td class="parent_cat">{{ parent_cat.name }}</td>
         @for (budget_line of _budget; track budget_line.id_period) {
-            <td colspan="3">TODO</td>
+            <td class="parent_cat" colspan="3">&nbsp;</td>
         }
     </tr>
         @for (allCat of parent_cat['child_categories']; track allCat.id) {
