@@ -15,8 +15,8 @@
     </tr>
 
     @for (parent_cat of _parentCategories; track parent_cat.id) {
-    <tr class="parent_cat">
-        <td>{{ parent_cat.name }}</td>
+    <tr>
+        <td class="parent_cat">{{ parent_cat.name }}</td>
         @for (budget_line of _budget; track budget_line.id_period) {
             <td colspan="3">TODO</td>
         }
@@ -27,7 +27,7 @@
                 @for (budget_line of _budget; track budget_line.id_period) {
                     @let budgetedCat = getCategoryBudgetLine(budget_line.id_period, allCat.id);
                     @if (budgetedCat) {
-                        <td class="budget_amount">
+                        <td class="budget_amount subcategory">
                         @if (budgetedCat.funded > 0) {
                             {{ budgetedCat.funded | formatAmount }}
                         } @else { &nbsp; }
@@ -35,7 +35,7 @@
                         <td class="budget_amount">{{ budgetedCat.spent | formatAmount }}</td>
                         <td class="budget_amount" [class.overspent]="budgetedCat.remaining < 0">{{ budgetedCat.remaining | formatAmount }}</td>
                     } @else {
-                        <td class="budget_amount">&nbsp;</td>
+                        <td class="budget_amount subcategory">&nbsp;</td>
                         <td class="budget_amount">{{ 0 | formatAmount }}</td>
                         <td class="budget_amount">{{ 0 | formatAmount }}</td>
                     }

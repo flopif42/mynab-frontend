@@ -40,7 +40,7 @@ td.subcategory:hover {
     color: red;
 }
 
-.parent_cat {
+td.parent_cat {
     background-color: darkcyan;
     color: white;
 }
