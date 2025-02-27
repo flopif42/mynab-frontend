@@ -1,60 +1,59 @@
-﻿table, td, th {
-    border: 1px solid;
+﻿table {
     border-collapse: collapse;
-    border-color: black;
+}
+
+td, th {
+    border: 1px solid;
+    border-color: #000;
     font-family: Arial;
-    font-size: 14px;
+    font-size: 14px
 }
 
 td.parent_cat {
     background-color: navy;
-    color: white;
-}
-
-th.empty {
-    background-color: #ffffff;
+    color: #fff
 }
 
 th {
     background-color: navy;
-    color: #fff;
-}
-
-th.empty {
-    background-color: #ffffff;
+    color: #fff
 }
 
 th.period {
-    background-color: darkcyan;
-    color: white;
+    background-color: #008b8b;
+    color: #fff
 }
 
-tr:nth-child(even) {
-    background-color: #f0f0f0;
+tr:nth-child(2n) {
+    background-color: #f0f0f0
 }
 
 tr:nth-child(odd) {
-    background-color: #ffffff;
+    background-color: #fff
 }
 
 tr.subcategory:hover {
-    background-color: coral;
+    background-color: coral
 }
 
 td.subcategory:hover {
-    background-color: yellow;
+    background-color: #ff0
 }
 
 .budget_month_year {
-    text-align: center;
+    text-align: center
 }
 
 .budget_amount {
     text-align: right;
-    width: 90px;
+    width: 90px
 }
 
 .overspent {
-    color: red;
+    color: red
 }
 
+.empty {
+    background-color: #fff;
+    border: 0px solid;
+}
