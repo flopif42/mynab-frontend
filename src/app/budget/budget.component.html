@@ -8,7 +8,7 @@
     </tr>
 
     @for (parent_cat of _parentCategories; track parent_cat.id) {
-    <tr><td>{{ allCat.name }}</td><td colspan="3">TODO</td></tr>
+    <tr><td class="parent_cat">{{ parent_cat.name }}</td><td colspan="3">TODO</td></tr>
         @for (allCat of parent_cat['child_categories']; track allCat.id) {
             <tr>
                 <td>{{ allCat.name }}</td>
