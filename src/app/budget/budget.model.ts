@@ -1,6 +1,6 @@
 import { Category } from '../category/category.model'
 
 export class Budget {
-    id_month: number;
+    id_period: string; // format : "YYYY_MM"
     categories: Category[];
 }
