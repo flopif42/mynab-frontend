@@ -34,4 +34,5 @@ tr:nth-child(odd) {
 
 .parent_cat {
     background-color: darkcyan;
+    color: white;
 }
