@@ -7,6 +7,13 @@
         }
     </tr>
 
+    <tr>
+        <td>&nbsp;</td>
+        @for (budget_line of _budget; track budget_line.id_period) {
+            <td>Budgeted</td><td>Outflows</td><td>Remaining</td>
+        }
+    </tr>
+
     @for (parent_cat of _parentCategories; track parent_cat.id) {
     <tr>
         <td class="parent_cat">{{ parent_cat.name }}</td>
@@ -22,7 +29,7 @@
                     @if (budgetedCat) {
                         <td class="budget_amount">{{ budgetedCat.funded | formatAmount }}</td>
                         <td class="budget_amount">{{ budgetedCat.spent | formatAmount }}</td>
-                        <td class="budget_amount" [class.overspent]="budgetedCat.funded + budgetedCat.spent < 0">{{ (budgetedCat.funded + budgetedCat.spent) | formatAmount }}</td>
+                        <td class="budget_amount" [class.overspent]="budgetedCat.remaining < 0">{{ budgetedCat.remaining | formatAmount }}</td>
                     } @else {
                         <td class="budget_amount">{{ 0 | formatAmount }}</td>
                         <td class="budget_amount">{{ 0 | formatAmount }}</td>

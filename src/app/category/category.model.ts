@@ -5,6 +5,7 @@ export class Category {
     can_be_deleted: number;
     funded: number;
     spent: number;
+    remaining: number;
 
     constructor(categoryId, categoryName) {
         this.id = categoryId;
