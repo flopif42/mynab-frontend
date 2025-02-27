@@ -15,7 +15,6 @@ import { CategoryService } from '../category/category.service'
 export class BudgetComponent implements OnInit {
     _parentCategories: ParentCategory[]
     _budget: Budget[]
-    _budgetCat: Category
 
     constructor(private budgetService: BudgetService, private categoryService: CategoryService) { }
 

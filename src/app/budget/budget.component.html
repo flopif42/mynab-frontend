@@ -4,20 +4,18 @@
     @for (parent_cat of _parentCategories; track parent_cat.id) {
         <tr><td class="parent_cat">{{ parent_cat.name }}</td></tr>
         @for (category of parent_cat['child_categories']; track category.id) {
-            _budgetCat = getCategoryBudgetLine(budget_line.id_period, category.id)
             <tr>
                 <td>
 
                     <table>
                         <tr><th>id</th><th>Category</th><th>Budgeted</th><th>Outflows</th><th>Balance</th></tr>
                         <tr>
-                            <td>{{ _budgetCat.id }}</td>
-                            <td>{{ _budgetCat.name }}</td>
-                            <td class="budget_amount">{{ _budgetCat.funded | formatAmount }}</td>
-                            <td class="budget_amount">{{ _budgetCat.spent | formatAmount }}</td>
-                            <td class="budget_amount" [class.overspent]="category.funded + category.spent < 0">{{ (_budgetCat.funded + _budgetCat.spent) | formatAmount }}</td>
+                            <td>{{ getCategoryBudgetLine(budget_line.id_period, category.id).id }}</td>
+                            <td>{{ getCategoryBudgetLine(budget_line.id_period, category.id).name }}</td>
+                            <td class="budget_amount">{{ getCategoryBudgetLine(budget_line.id_period, category.id).funded | formatAmount }}</td>
+                            <td class="budget_amount">{{ getCategoryBudgetLine(budget_line.id_period, category.id).spent | formatAmount }}</td>
+                            <td class="budget_amount" [class.overspent]="category.funded + category.spent < 0">{{ (getCategoryBudgetLine(budget_line.id_period, category.id).funded + getCategoryBudgetLine(budget_line.id_period, category.id).spent) | formatAmount }}</td>
                         </tr>
-
                     </table>
 
                 </td>
