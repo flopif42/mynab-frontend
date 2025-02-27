@@ -6,16 +6,16 @@
         <th>Outflows</th>
         <th>Balance</th>
     </tr>
-    @for (budget_line of _budget; track budget_line.id_month) {
+    @for (budget_line of _budget; track budget_line.id_period) {
     <tr><td class="budget_month_year" colspan="5">{{ budget_line.id_period }}</td></tr>
-        @for (category of budget_line.categories; track category.id) {
-        <tr>
-            <td>{{ category.id }}</td>
-            <td>{{ category.name }}</td>
-            <td class="budget_amount">{{ category.funded | formatAmount }}</td>
-            <td class="budget_amount">{{ category.spent | formatAmount }}</td>
-            <td class="budget_amount" [class.overspent]="category.funded + category.spent < 0">{{ (category.funded + category.spent) | formatAmount }}</td>
-        </tr>
-        }
+    @for (category of budget_line.categories; track category.id) {
+    <tr>
+        <td>{{ category.id }}</td>
+        <td>{{ category.name }}</td>
+        <td class="budget_amount">{{ category.funded | formatAmount }}</td>
+        <td class="budget_amount">{{ category.spent | formatAmount }}</td>
+        <td class="budget_amount" [class.overspent]="category.funded + category.spent < 0">{{ (category.funded + category.spent) | formatAmount }}</td>
+    </tr>
+    }
     }
 </table>
