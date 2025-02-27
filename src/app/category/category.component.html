@@ -3,7 +3,7 @@
     <table class="parent_cat">
         @for (parent_cat of _parentCategories; track parent_cat.id) {
         <tr>
-            <td class="parent_cat">{{ parent_cat.name }} ({{ parent_cat.position }})</td>
+            <td class="parent_cat">{{ parent_cat.name }}</td>
             <td class="parent_cat">
                 @if (parent_cat.position > 2) {
                 <a class="arrow" href="javascript:void(0);" (click)="onMoveParentCategory(parent_cat.id, parent_cat.position-1)">&#8593;</a>
