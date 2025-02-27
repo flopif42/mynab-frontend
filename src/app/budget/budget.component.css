@@ -19,6 +19,14 @@ tr:nth-child(odd) {
     background-color: #ffffff;
 }
 
+tr.subcategory:hover {
+    background-color: coral;
+}
+
+td.subcategory:hover {
+    background-color: yellow;
+}
+
 .budget_month_year {
     text-align: center;
 }

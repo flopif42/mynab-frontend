@@ -15,14 +15,14 @@
     </tr>
 
     @for (parent_cat of _parentCategories; track parent_cat.id) {
-    <tr>
-        <td class="parent_cat">{{ parent_cat.name }}</td>
+    <tr class="parent_cat">
+        <td>{{ parent_cat.name }}</td>
         @for (budget_line of _budget; track budget_line.id_period) {
             <td colspan="3">TODO</td>
         }
     </tr>
         @for (allCat of parent_cat['child_categories']; track allCat.id) {
-            <tr>
+            <tr class="subcategory">
                 <td>{{ allCat.name }}</td>
                 @for (budget_line of _budget; track budget_line.id_period) {
                     @let budgetedCat = getCategoryBudgetLine(budget_line.id_period, allCat.id);
