@@ -11,6 +11,14 @@ th {
     color: #fff;
 }
 
+tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
 .budget_month_year {
     text-align: center;
 }
@@ -24,19 +32,7 @@ th {
     color: red;
 }
 
-tr:nth-child(even) {
-    background-color: #f0f0f0;
-}
-
-tr:nth-child(odd) {
-    background-color: #ffffff;
-}
-
 .parent_cat {
     background-color: darkcyan;
     color: white;
-}
-
-.hovertable tr:hover {
-    background-color: yellow;
 }
