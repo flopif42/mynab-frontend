@@ -10,6 +10,7 @@ import { Payee } from '../payee/payee.model'
 import { PayeeService } from '../payee/payee.service'
 import { ParentCategory } from '../category/parent.category.model'
 import { CategoryService } from '../category/category.service'
+import { Category } from '../category/category.model';
 
 @Component({
     selector: 'app-transaction',
@@ -99,9 +100,14 @@ export class TransactionComponent implements OnInit, OnChanges {
     }
 
     fetchCategories() {
+        const incomeCategory = new Category(0, "Income")
+        const incomeParentCategory = new ParentCategory(0, "Income (parent)")
+        incomeParentCategory.addChild(incomeCategory)
+        this._parentCategories.push(incomeParentCategory)
+
         this.categoryService.getList().subscribe(
             response => {
-                this._parentCategories = response.sort((a, b) => a.position - b.position)
+                this._parentCategories.concat(response).sort((a, b) => a.position - b.position)
             },
             error => {
                 console.error("Error fetching categories from transaction")
