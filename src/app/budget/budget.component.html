@@ -7,7 +7,7 @@
         <table class="parent_cat">
             <tr><th>id</th><th>Category</th><th>Budgeted</th><th>Outflows</th><th>Balance</th></tr>
             @for (parent_cat of _parentCategories; track parent_cat.id) {
-                <tr><td colspan="5" class="parent_cat">{{ parent_cat.name }}</td></tr>
+                <tr><td colspan="5" class="parent_cat">{{ parent_cat.name }} ({{ parent_cat.position }})</td></tr>
                 @for (allCat of parent_cat['child_categories']; track allCat.id) {
                     @let budgetedCat = getCategoryBudgetLine(budget_line.id_period, allCat.id);
                     @if (budgetedCat) {
