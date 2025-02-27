@@ -7,34 +7,30 @@
         }
     </tr>
 
-    @for (allCat of parent_cat['child_categories']; track allCat.id) {
-        <tr>
-            <td>{{ allCat.name }}</td>
-            @for (budget_line of _budget; track budget_line.id_period) {
-                @let budgetedCat = getCategoryBudgetLine(budget_line.id_period, allCat.id);
-                @if (budgetedCat) {
-                    <tr>
-                        <td>{{ budgetedCat.id }}</td>
-                        <td>{{ budgetedCat.name }}</td>
-                        <td class="budget_amount">{{ budgetedCat.funded | formatAmount }}</td>
-                        <td class="budget_amount">{{ budgetedCat.spent | formatAmount }}</td>
-                        <td class="budget_amount" [class.overspent]="budgetedCat.funded + budgetedCat.spent < 0">{{ (budgetedCat.funded + budgetedCat.spent) | formatAmount }}</td>
-                    </tr>
-                } @else {
-                    <tr>
-                        <td>{{ allCat.id }}</td>
-                        <td>{{ allCat.name }}</td>
-                        <td class="budget_amount">{{ 0 | formatAmount }}</td>
-                        <td class="budget_amount">{{ 0 | formatAmount }}</td>
-                        <td class="budget_amount">{{ 0 | formatAmount }}</td>
-                    </tr>
+    @for (parent_cat of _parentCategories; track parent_cat.id) {
+    <tr><td>{{ allCat.name }}</td><td colspan="3">TODO</td></tr>
+        @for (allCat of parent_cat['child_categories']; track allCat.id) {
+            <tr>
+                <td>{{ allCat.name }}</td>
+                @for (budget_line of _budget; track budget_line.id_period) {
+                    @let budgetedCat = getCategoryBudgetLine(budget_line.id_period, allCat.id);
+                    @if (budgetedCat) {
+                        <tr>
+                            <td class="budget_amount">{{ budgetedCat.funded | formatAmount }}</td>
+                            <td class="budget_amount">{{ budgetedCat.spent | formatAmount }}</td>
+                            <td class="budget_amount" [class.overspent]="budgetedCat.funded + budgetedCat.spent < 0">{{ (budgetedCat.funded + budgetedCat.spent) | formatAmount }}</td>
+                        </tr>
+                    } @else {
+                        <tr>
+                            <td class="budget_amount">{{ 0 | formatAmount }}</td>
+                            <td class="budget_amount">{{ 0 | formatAmount }}</td>
+                            <td class="budget_amount">{{ 0 | formatAmount }}</td>
+                        </tr>
+                    }
                 }
-            }
-        </tr>
+            </tr>
+        }
     }
-    
-
-
 </table>
 
 <br/>
