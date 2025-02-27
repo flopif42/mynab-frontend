@@ -1,30 +1,24 @@
-<table>
-    <tr>
-        <th>id</th>
-        <th>Category</th>
-        <th>Budgeted</th>
-        <th>Outflows</th>
-        <th>Balance</th>
-    </tr>
-    @for (budget_line of _budget; track budget_line.id_period) {
-    <tr><td class="budget_month_year" colspan="5">{{ budget_line.id_period }}</td></tr>
-    @for (category of budget_line.categories; track category.id) {
-    <tr>
-        <td>{{ category.id }}</td>
-        <td>{{ category.name }}</td>
-        <td class="budget_amount">{{ category.funded | formatAmount }}</td>
-        <td class="budget_amount">{{ category.spent | formatAmount }}</td>
-        <td class="budget_amount" [class.overspent]="category.funded + category.spent < 0">{{ (category.funded + category.spent) | formatAmount }}</td>
-    </tr>
-    }
-    }
-</table>
+@for (budget_line of _budget; track budget_line.id_period) {
+    <div>{{ budget_line.id_period }}</div>
+    <table>
+        <tr><th>id</th><th>Category</th><th>Budgeted</th><th>Outflows</th><th>Balance</th></tr>
+        @for (category of budget_line.categories; track category.id) {
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td class="budget_amount">{{ category.funded | formatAmount }}</td>
+                <td class="budget_amount">{{ category.spent | formatAmount }}</td>
+                <td class="budget_amount" [class.overspent]="category.funded + category.spent < 0">{{ (category.funded + category.spent) | formatAmount }}</td>
+            </tr>
+        }
+    </table>
+}
 
 <table class="parent_cat">
     @for (parent_cat of _parentCategories; track parent_cat.id) {
-        <tr><td class="parent_cat">{{ parent_cat.name }}</td></tr>
-        @for (category of parent_cat['child_categories']; track category.id) {
-            <tr><td class="child_cat">{{ category.name }}</td></tr>
-        }
+    <tr><td class="parent_cat">{{ parent_cat.name }}</td></tr>
+    @for (category of parent_cat['child_categories']; track category.id) {
+    <tr><td class="child_cat">{{ category.name }}</td></tr>
+    }
     }
 </table>
