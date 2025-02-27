@@ -103,6 +103,7 @@ export class TransactionComponent implements OnInit, OnChanges {
         const incomeCategory = new Category(0, "Income")
         const incomeParentCategory = new ParentCategory(0, "Income (parent)")
         incomeParentCategory.addChild(incomeCategory)
+        this._parentCategories = []
         this._parentCategories.push(incomeParentCategory)
 
         this.categoryService.getList().subscribe(
