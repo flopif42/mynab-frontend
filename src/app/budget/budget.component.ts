@@ -3,6 +3,7 @@ import { FormatAmountPipe } from '../format-amount.pipe'
 import { BudgetService } from './budget.service'
 import { Budget } from './budget.model'
 import { ParentCategory } from '../category/parent.category.model'
+import { Category } from '../category/category.model'
 import { CategoryService } from '../category/category.service'
 
 @Component({
@@ -20,6 +21,7 @@ export class BudgetComponent implements OnInit {
     ngOnInit() {
         this.listBudget()
         this.fetchCategories()
+        console.log("Test : " + this.getCategoryBudgetLine("2025_03", 5))
     }
 
     fetchCategories() {
@@ -41,5 +43,18 @@ export class BudgetComponent implements OnInit {
                 console.error("Error fetching budget")
             }
         )
+    }
+
+    getCategoryBudgetLine(id_period: string, id_category: number): Category {
+        for (const budgetLine of this._budget) {
+            if (budgetLine.id_period == id_period) {
+                for (const cat of budgetLine.categories) {
+                    if (cat.id == id_category) {
+                        return cat;
+                    }
+                }
+            }
+        }
+        return null
     }
 }

@@ -15,10 +15,10 @@
 }
 
 <table class="parent_cat">
-    @for (parent_cat of _parentCategories; track parent_cat.id) {
+@for (parent_cat of _parentCategories; track parent_cat.id) {
     <tr><td class="parent_cat">{{ parent_cat.name }}</td></tr>
     @for (category of parent_cat['child_categories']; track category.id) {
-    <tr><td class="child_cat">{{ category.name }}</td></tr>
+        <tr><td class="child_cat">{{ category.name }}</td></tr>
     }
-    }
+}
 </table>
