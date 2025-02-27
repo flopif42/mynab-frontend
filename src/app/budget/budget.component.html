@@ -8,7 +8,12 @@
     </tr>
 
     @for (parent_cat of _parentCategories; track parent_cat.id) {
-    <tr><td class="parent_cat">{{ parent_cat.name }}</td><td colspan="3">TODO</td></tr>
+    <tr>
+        <td class="parent_cat">{{ parent_cat.name }}</td>
+        @for (budget_line of _budget; track budget_line.id_period) {
+            <td colspan="3">TODO</td>
+        }
+    </tr>
         @for (allCat of parent_cat['child_categories']; track allCat.id) {
             <tr>
                 <td>{{ allCat.name }}</td>
@@ -35,7 +40,7 @@
     @for (budget_line of _budget; track budget_line.id_period) {
     <td>
         <div>{{ budget_line.id_period }}</div>
-        <table class="parent_cat">
+        <table>
             <tr><th>id</th><th>Category</th><th>Budgeted</th><th>Outflows</th><th>Balance</th></tr>
             @for (parent_cat of _parentCategories; track parent_cat.id) {
                 <tr><td colspan="5" class="parent_cat">{{ parent_cat.name }} ({{ parent_cat.position }})</td></tr>
