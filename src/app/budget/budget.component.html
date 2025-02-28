@@ -31,7 +31,7 @@
                         <input type="text" (keydown.enter)="myFunction($event)" class="budget_amount editable" name="funded" [value]="(budgetedCat && budgetedCat.funded) ? (budgetedCat.funded | formatAmount) : null">
 			        </td>
                     <td class="budget_amount">@if (budgetedCat && budgetedCat.spent) { {{ budgetedCat.spent | formatAmount }} }</td>
-                    <td class="budget_amount" [class.overspent]="budgetedCat.remaining < 0">@if (budgetedCat && budgetedCat.remaining) { {{ budgetedCat.remaining | formatAmount }} }</td>
+                    <td class="budget_amount" [class.overspent]="budgetedCat && budgetedCat.remaining && (budgetedCat.remaining < 0)">@if (budgetedCat && budgetedCat.remaining) { {{ budgetedCat.remaining | formatAmount }} }</td>
                 }
 	        </tr>
         }
