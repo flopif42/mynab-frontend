@@ -36,7 +36,7 @@ export class BudgetComponent implements OnInit {
     listBudget() {
         this.budgetService.getList().subscribe(
             response => {
-                this._budget = response
+                this._budget = response.sort((a, b) => a.id_period - b.id_period)
             },
             error => {
                 console.error("Error fetching budget")
