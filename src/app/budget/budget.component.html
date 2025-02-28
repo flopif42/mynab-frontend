@@ -32,7 +32,7 @@
 				            <input class="budget_amount editable" name="funded" value="{{ budgetedCat.funded | formatAmount }}">
 			            </td>
 			            <td class="budget_amount">{{ budgetedCat.spent | formatAmount }}</td>
-			            <td class="budget_amount">{{ budgetedCat.remaining | formatAmount }}</td>
+			            <td class="budget_amount" [class.overspent]="budgetedCat.remaining < 0">{{ budgetedCat.remaining | formatAmount }}</td>
                     } @else {
                         <td class="budget_amount">
 				            <input class="budget_amount editable" name="funded">
