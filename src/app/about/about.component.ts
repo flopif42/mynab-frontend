@@ -26,11 +26,11 @@ export class AboutComponent {
     public getServerInfo() {
         return this.http.get<Object>(this.m_endpoint + "/hello").subscribe(
             (response) => {
-                this._serverStatus = response['Server status'];
+                this._serverStatus = 'Up';
                 this._serverVersion = response['Version'];
             },
             (error) => {
-                this._serverStatus = 'Stopped'
+                this._serverStatus = 'Down'
             }
         )
     }
