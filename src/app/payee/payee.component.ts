@@ -46,7 +46,7 @@ export class PayeeComponent implements OnInit {
             this.payeeService.create(this._newPayeeForm.value.payee_name)
                 .subscribe(
                     res => {
-                        console.log("Payee created.")
+                        console.log("Payee created")
                         this.listPayees()
                     },
                     error => {
