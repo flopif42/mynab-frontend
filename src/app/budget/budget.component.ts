@@ -60,5 +60,24 @@ export class BudgetComponent implements OnInit {
     onBudgetedAmountSet(event) {
         const params = event.target.id.split("-")
         console.log("id_period: " + params[0] + ", id_category: " + params[1] + ", amount: " + event.target.value);
+
+        const formData = {
+            "id_period": params[0],
+            "id_category": params[1],
+            "funded": event.target.value
+        }
+        this.budgetService.setFunded(formData)
+            .subscribe(
+                res => {
+                    console.log("Budget line set")
+                    this.listBudget()
+                },
+                error => {
+                    console.error("Error setting budget line")
+                }
+            )
+
+
+
     }
 }
