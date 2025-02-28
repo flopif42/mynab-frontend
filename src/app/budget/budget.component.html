@@ -36,8 +36,8 @@
                         <td class="budget_amount" [class.overspent]="budgetedCat.remaining < 0">{{ budgetedCat.remaining | formatAmount }}</td>
                     } @else {
                         <td class="budget_amount subcategory">&nbsp;</td>
-                        <td class="budget_amount">{{ 0 | formatAmount }}</td>
-                        <td class="budget_amount">{{ 0 | formatAmount }}</td>
+                        <td class="budget_amount">&nbsp;</td>
+                        <td class="budget_amount">&nbsp;</td>
                     }
                 }
             </tr>
