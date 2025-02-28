@@ -138,7 +138,7 @@ export class TransactionComponent implements OnInit, OnChanges {
     listTransactions() {
         this.txnService.getList(this._selectedAccount).subscribe(
             response => {
-                this._transactions = response.sort((a, b) => this.compareDates(a, b));
+                this._transactions = response.sort((a, b) => this.compareDates(a.date, b.date));
                 this._transactionChanged.emit();
             },
             error => {
