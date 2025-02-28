@@ -37,13 +37,14 @@
                     } @else {
                         <td class="budget_amount"></td>
                     }
-                <!--
-                    @if (budgetedCat && budgetedCat.remaining) {
-                        <td class="budget_amount" [class.overspent]="budgetedCat.remaining < 0">{{ budgetedCat.remaining | formatAmount }}</td>
+                    @if (budgetedCat) {
+                        @if (budgetedCat.remaining) {
+                            <td class="budget_amount" [class.overspent]="budgetedCat.remaining < 0">{{ budgetedCat.remaining | formatAmount }}</td>
+                        }
                     } @else {
-                        <td class="budget_amount" [class.overspent]="budgetedCat.remaining < 0"></td>
+                        <td class="budget_amount"></td>
                     }
-                    -->
+                
                 }
 	        </tr>
         }
