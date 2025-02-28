@@ -57,10 +57,8 @@ export class BudgetComponent implements OnInit {
         return null
     }
 
-    myFunction(event) {
+    onBudgetedAmountSet(event) {
         const params = event.target.id.split("-")
-        const periodId = params[0]
-        const categoryId = params[1]
-        console.log("id_period: " + periodId + ", id_category: " + categoryId + ", amount: " + event.target.value);
+        console.log("id_period: " + params[0] + ", id_category: " + params[1] + ", amount: " + event.target.value);
     }
 }
