@@ -129,10 +129,13 @@ export class TransactionComponent implements OnInit, OnChanges {
     }
 
     compareDates(a: string, b: string) {
+        console.log("in compareDates()")
         const tmpStr = a.split("/")
         const dateA = new Date(tmpStr[2] + "-" + tmpStr[1] + "-" + tmpStr[0])
         const dateB = new Date(tmpStr[2] + "-" + tmpStr[1] + "-" + tmpStr[0])
-        return dateA.getTime() - dateB.getTime()
+        const result = dateA.getTime() - dateB.getTime()
+        console.log("returning result: " + result)
+        return result
     }
 
     listTransactions() {
