@@ -57,7 +57,7 @@ export class BudgetComponent implements OnInit {
         return null
     }
 
-    myFunction() {
-        console.log("Enter key pressed!");
+    myFunction(event) {
+        console.log("Enter key pressed ! " + event.target.value);
     }
 }
