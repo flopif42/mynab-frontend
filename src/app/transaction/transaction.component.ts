@@ -129,20 +129,17 @@ export class TransactionComponent implements OnInit, OnChanges {
     }
 
     compareDates(a: string, b: string) {
-        console.log("in compareDates() comparing " + a + " with " + b)
         var tmpStr = a.split("/")
         const date_a = new Date(tmpStr[2] + "-" + tmpStr[1] + "-" + tmpStr[0])
         tmpStr = b.split("/")
         const date_b = new Date(tmpStr[2] + "-" + tmpStr[1] + "-" + tmpStr[0])
-        const result = date_a.getTime() - date_b.getTime()
-        console.log("returning result: " + result)
-        return result
+        return date_a.getTime() - date_b.getTime()
     }
 
     listTransactions() {
         this.txnService.getList(this._selectedAccount).subscribe(
             response => {
-                this._transactions = response.sort((a, b) => this.compareDates(a.date, b.date));
+                this._transactions = response.sort((b, a) => this.compareDates(a.date, b.date));
                 this._transactionChanged.emit();
             },
             error => {
