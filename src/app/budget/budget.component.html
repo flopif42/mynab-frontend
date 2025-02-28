@@ -28,18 +28,19 @@
                 @for (budget_line of _budget; track budget_line.id_period) {
                     @let budgetedCat = getCategoryBudgetLine(budget_line.id_period, allCat.id);
                     @if (budgetedCat) {
-                        <td class="budget_amount subcategory">
-                            @if (budgetedCat.funded > 0) { <input class="budget_amount" name="funded" value="{{ budgetedCat.funded | formatAmount }}"> } @else { &nbsp; }
-                        </td>
-                        <td class="budget_amount">
-                            @if (budgetedCat.funded > 0) { {{ budgetedCat.spent | formatAmount }} } @else { &nbsp; }
-                        </td>
-                        <td class="budget_amount" [class.overspent]="budgetedCat.remaining < 0">{{ budgetedCat.remaining | formatAmount }}</td>
+                        @let funded = budgetedCat.funded | formatAmount
+                        @let spent = budgetedCat.spent | formatAmount
+                        @let remaining = budgetedCat.remaining | formatAmount
                     } @else {
-                        <td class="budget_amount subcategory"><input name="funded" class="budget_amount"></td>
-                        <td class="budget_amount">&nbsp;</td>
-                        <td class="budget_amount">&nbsp;</td>
+                        @let funded = ""
+                        @let spent = ""
+                        @let remaining = ""
                     }
+                    <td class="budget_amount editable">
+                        <input class="budget_amount editable" name="funded" value="{{ funded }}">
+                    </td>
+                    <td class="budget_amount">{{ spent }}</td>
+                    <td class="budget_amount">{{ remaining }}</td>
                 }
             </tr>
         }

@@ -24,20 +24,12 @@ th.period {
     color: #fff
 }
 
-tr:nth-child(2n) {
-    background-color: #f0f0f0
-}
-
-tr:nth-child(odd) {
-    background-color: #fff
-}
-
 tr.subcategory:hover {
-    background-color: coral
+    background-color: #f0f0f0;
 }
 
-td.subcategory:hover {
-    background-color: #ff0
+.editable:hover {
+    background-color: #ff0;
 }
 
 .budget_month_year {
