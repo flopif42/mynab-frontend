@@ -58,6 +58,7 @@ export class BudgetComponent implements OnInit {
     }
 
     myFunction(event) {
-        console.log("Enter key pressed ! " + event.target.value);
+        const budgetedInput = event.target
+        console.log("id: " + budgetedInput.id + ", value: " + budgetedInput.value);
     }
 }
