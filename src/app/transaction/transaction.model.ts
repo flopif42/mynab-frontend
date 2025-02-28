@@ -2,7 +2,7 @@ export class Transaction {
     id: number;
     account: String;
     amount: number;
-    date: String;
+    date: string;
     flow: String;
     memo: String;
     payee: String;
