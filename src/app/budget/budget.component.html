@@ -27,13 +27,16 @@
 		        <td>{{ allCat.name }}</td>
 		        @for (budget_line of _budget; track budget_line.id_period) {
 			        @let budgetedCat = getCategoryBudgetLine(budget_line.id_period, allCat.id);
-                    <td class="budget_amount">
-				        <input class="budget_amount editable" name="funded" value="@if(budgetedCat) { {{ budgetedCat.funded | formatAmount }} }">
-			        </td>
 			        @if (budgetedCat) {
+                        <td class="budget_amount">
+				            <input (keydown.enter)="myFunction()" type="text" class="budget_amount editable" name="funded" value="{{ budgetedCat.funded | formatAmount }}">
+			            </td>
 			            <td class="budget_amount">{{ budgetedCat.spent | formatAmount }}</td>
 			            <td class="budget_amount" [class.overspent]="budgetedCat.remaining < 0">{{ budgetedCat.remaining | formatAmount }}</td>
                     } @else {
+                        <td class="budget_amount">
+				            <input class="budget_amount editable" name="funded">
+			            </td>
 			            <td class="budget_amount"></td>
 			            <td class="budget_amount"></td>    
                     }
