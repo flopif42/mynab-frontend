@@ -57,13 +57,16 @@ export class BudgetComponent implements OnInit {
         return null
     }
 
-    onBudgetedAmountSet(event) {
+    onSetBudget(event) {
         const params = event.target.id.split("-")
         const formData = {
             "id_period": params[0],
             "id_category": params[1],
             "funded": event.target.value.replace(',', '.') * 100
         }
+
+        console.log(formData)
+
         this.budgetService.setFunded(formData)
             .subscribe(
                 res => {

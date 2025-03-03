@@ -43,7 +43,7 @@
 			        @let budgetedCat = getCategoryBudgetLine(budget_line.id_period, allCat.id);
                     <td class="budget_amount">
                         <input [id]="budget_line.id_period + '-' + allCat.id" name="budgeted" 
-                               type="text" class="budget_amount editable" (keydown.enter)="onBudgetedAmountSet($event)" 
+                               type="text" class="budget_amount editable" (keydown.enter)="onSetBudget($event)" 
                                [value]="(budgetedCat && budgetedCat.funded) ? (budgetedCat.funded | formatAmount) : null">
 			        </td>
                     <td class="budget_amount">@if (budgetedCat && budgetedCat.spent) { {{ budgetedCat.spent | formatAmount }} }</td>
