@@ -57,6 +57,7 @@ export class BudgetComponent implements OnInit {
         return null
     }
 
+/*
     onSetBudget(event) {
         const params = event.target.id.split("-")
         const formData = {
@@ -66,7 +67,7 @@ export class BudgetComponent implements OnInit {
         }
 
         console.log(formData)
-        /*
+
         this.budgetService.setFunded(formData)
             .subscribe(
                 res => {
@@ -77,6 +78,7 @@ export class BudgetComponent implements OnInit {
                     console.error("Error setting budget line")
                 }
             )
-            */
+
     }
+    */
 }
