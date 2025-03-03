@@ -1,4 +1,4 @@
-<input name="budgeted" type="text" class="budget_amount editable" (keydown.enter)="onSetBudget($event)">
+<input [id]="input_id" name="budgeted" type="text" class="budget_amount editable" (keydown.enter)="onSetBudget($event)" [value]="(budgetedCat && budgetedCat.funded) ? (budgetedCat.funded | formatAmount) : null">
 
 <br/>
 <form>
