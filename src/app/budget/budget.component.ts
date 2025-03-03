@@ -26,7 +26,10 @@ export class BudgetComponent implements OnInit {
     fetchCategories() {
         this.categoryService.getList().subscribe(
             response => {
-                this._parentCategories = response.sort((a, b) => a.position - b.position)
+                // this._parentCategories = response.sort((a, b) => a.position - b.position)
+                var parent = new ParentCategory(1, "Parent", 2)
+
+                this._parentCategories.push(parent)
             },
             error => {
                 console.error("Error fetching categories from budget")
