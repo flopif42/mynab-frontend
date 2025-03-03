@@ -6,28 +6,24 @@
             <th class="period" colspan="3">{{ budget_line.id_period }}</th>
         }
     </tr>
-
     <tr>
         <th class="empty">&nbsp;</th>
         @for (budget_line of _budget; track budget_line.id_period) {
             <td class="total_income" colspan="3">Income for this month: {{ budget_line.total_income | formatAmount }}</td>
         }
     </tr>
-
     <tr>
         <th class="empty">&nbsp;</th>
         @for (budget_line of _budget; track budget_line.id_period) {
             <td class="available" colspan="3">Available to budget: {{ budget_line.available | formatAmount }}</td>
         }
     </tr>
-
     <tr>
         <td class="empty">&nbsp;</td>
         @for (budget_line of _budget; track budget_line.id_period) {
             <td>Budgeted</td><td>Outflows</td><td>Remaining</td>
         }
     </tr>
-
     @for (parent_cat of _parentCategories; track parent_cat.id) {
         <tr>
             <td class="parent_cat">{{ parent_cat.name }}</td>
