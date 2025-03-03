@@ -1,5 +1,16 @@
-<input [id]="input_id" name="budgeted" type="text" class="budget_amount editable" (keydown.enter)="onSetBudget($event)" [value]="(budgetedCat && budgetedCat.funded) ? (budgetedCat.funded | formatAmount) : null">
+ @for (parent_cat of _parentCategories; track parent_cat.id) {
+        @for (allCat of parent_cat['child_categories']; track allCat.id) {
+		        <div>{{ allCat.name }}</div>
+		        @for (budget_line of _budget; track budget_line.id_period) {
+			        @let budgetedCat = getCategoryBudgetLine(budget_line.id_period, allCat.id);
+                    @let input_id = budget_line.id_period + '-' + allCat.id;
+<p>{{ input_id }} </p><input [id]="input_id" name="budgeted" type="text" class="budget_amount editable" (keydown.enter)="onSetBudget($event)" [value]="(budgetedCat && budgetedCat.funded) ? (budgetedCat.funded | formatAmount) : null">
+                }
+        }
+    }
 
+
+<!--
 <br/>
 <form>
 <table class="budget">
@@ -55,3 +66,4 @@
     }
 </table>
 </form>
+-->
