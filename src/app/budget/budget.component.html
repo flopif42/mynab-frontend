@@ -11,7 +11,7 @@
     <tr>
         <th class="empty">&nbsp;</th>
         @for (budget_line of _budget; track budget_line.id_period) {
-            <th class="period" colspan="3">Income for this month: {{ budget_line.total_income }}</th>
+            <td class="total_income" colspan="3">Income for this month: {{ budget_line.total_income | formatAmount }}</td>
         }
     </tr>
 
