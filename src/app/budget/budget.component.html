@@ -9,6 +9,13 @@
     </tr>
 
     <tr>
+        <th class="empty">&nbsp;</th>
+        @for (budget_line of _budget; track budget_line.id_period) {
+            <th class="period" colspan="3">Income for this month: {{ budget_line.total_income }}</th>
+        }
+    </tr>
+
+    <tr>
         <td class="empty">&nbsp;</td>
         @for (budget_line of _budget; track budget_line.id_period) {
             <td>Budgeted</td><td>Outflows</td><td>Remaining</td>
