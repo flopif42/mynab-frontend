@@ -57,11 +57,6 @@ export class BudgetComponent implements OnInit {
         return null
     }
 
-    onPressEnter() {
-        console.log("Enter was pressed")
-    }
-
-/*
     onSetBudget(event) {
         const params = event.target.id.split("-")
         const formData = {
@@ -69,8 +64,6 @@ export class BudgetComponent implements OnInit {
             "id_category": params[1],
             "funded": event.target.value.replace(',', '.') * 100
         }
-
-        console.log(formData)
 
         this.budgetService.setFunded(formData)
             .subscribe(
@@ -82,7 +75,5 @@ export class BudgetComponent implements OnInit {
                     console.error("Error setting budget line")
                 }
             )
-
     }
-    */
 }
