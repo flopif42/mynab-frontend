@@ -8,12 +8,12 @@ export class AuthInterceptor implements HttpInterceptor {
     constructor(private router: Router) {}
 
     intercept(req: HttpRequest<unknown>, next: HttpHandler) {
-        // console.log("request log> " + req.url + " " + req.method);
+        console.log("request log> " + req.url + " " + req.method);
         req = req.clone({ withCredentials: true });
         return next.handle(req).pipe(
             tap(event => {
                 if (event.type === HttpEventType.Response) {
-                    // console.log("response log> " + req.url + " " + req.method);
+                    console.log("response log> " + req.url + " " + req.method);
                 }
             }),
             catchError((err: HttpErrorResponse) => {

@@ -15,8 +15,9 @@ export class BudgetService {
     getList(): Observable<Budget[]> {
         return this.http.get<Budget[]>(this.m_endpoint + '/list')
     }
-
+    /*
     setFunded(requestParams) {
         return this.http.post<Object>(this.m_endpoint + '/set_funded', requestParams)
     }
+    */
 }
