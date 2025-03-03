@@ -57,6 +57,10 @@ export class BudgetComponent implements OnInit {
         return null
     }
 
+    onPressEnter() {
+        console.log("Enter was pressed")
+    }
+
 /*
     onSetBudget(event) {
         const params = event.target.id.split("-")
