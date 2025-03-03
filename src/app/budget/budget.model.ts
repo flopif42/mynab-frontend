@@ -4,4 +4,5 @@ export class Budget {
     id_period: string; // format : "YYYY_MM"
     categories: Category[];
     total_income: number;
+    available: number;
 }
