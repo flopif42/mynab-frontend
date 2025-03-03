@@ -66,7 +66,7 @@ export class BudgetComponent implements OnInit {
         }
 
         console.log(formData)
-
+        /*
         this.budgetService.setFunded(formData)
             .subscribe(
                 res => {
@@ -77,5 +77,6 @@ export class BudgetComponent implements OnInit {
                     console.error("Error setting budget line")
                 }
             )
+            */
     }
 }
