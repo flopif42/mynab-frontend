@@ -76,4 +76,8 @@ export class BudgetComponent implements OnInit {
                 }
             )
     }
+
+    selectText(event: FocusEvent) {
+        (event.target as HTMLInputElement).select();
+    }
 }
