@@ -1,4 +1,3 @@
-import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core'
 import { FormatAmountPipe } from '../format-amount.pipe'
 import { BudgetService } from './budget.service'
@@ -11,7 +10,7 @@ import { CategoryService } from '../category/category.service'
     selector: 'budget-home',
     templateUrl: './budget.component.html',
     styleUrl: './budget.component.css',
-    imports: [FormatAmountPipe, CdkDropList, CdkDrag]
+    imports: [FormatAmountPipe]
 })
 export class BudgetComponent implements OnInit {
     _parentCategories: ParentCategory[]
