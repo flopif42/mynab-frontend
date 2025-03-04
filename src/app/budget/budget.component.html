@@ -1,5 +1,5 @@
 <br/>
-<table class="budget">
+<table class="budget" cdkDropList>
     <tr>
         <th class="empty">&nbsp;</th>
         @for (budget_line of _budget; track budget_line.id_period) {
@@ -25,7 +25,7 @@
         }
     </tr>
     @for (parent_cat of _parentCategories; track parent_cat.id) {
-        <tr>
+        <tr cdkDrag>
             <td class="parent_cat">{{ parent_cat.name }}</td>
             @for (budget_line of _budget; track budget_line.id_period) {
                 <td class="parent_cat" colspan="3">&nbsp;</td>
