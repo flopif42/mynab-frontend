@@ -57,7 +57,15 @@ export class BudgetComponent implements OnInit {
         return null
     }
 
-    onSetBudget(event) {
+    onPressEnter(event) {
+        const currentInput = event.target as HTMLInputElement;
+        const formElements = Array.from(document.querySelectorAll('input'));
+
+        const currentIndex = formElements.indexOf(currentInput);
+        if (currentIndex >= 0 && currentIndex < formElements.length - 1) {
+            (formElements[currentIndex + 1] as HTMLInputElement).focus();
+        }
+
         const params = event.target.id.split("-")
         const formData = {
             "id_period": params[0],

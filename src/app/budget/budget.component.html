@@ -38,7 +38,9 @@
 			        @let budgetedCat = getCategoryBudgetLine(budget_line.id_period, allCat.id);
                     @let input_id = budget_line.id_period + '-' + allCat.id;
                     <td class="budget_amount">
-<input (focus)="selectText($event)" [id]="input_id" name="budgeted" type="text" class="budget_amount editable" (keydown.enter)="onSetBudget($event)" [value]="(budgetedCat && budgetedCat.funded) ? (budgetedCat.funded | formatAmount) : null">
+                    <input [id]="input_id" name="budgeted" type="text" class="budget_amount editable"
+                           [value]="(budgetedCat && budgetedCat.funded) ? (budgetedCat.funded | formatAmount) : null"
+                           (focus)="selectText($event)" (keydown.enter)="onPressEnter($event)">
 			        </td>
                     <td class="budget_amount">@if (budgetedCat && budgetedCat.spent) { {{ budgetedCat.spent | formatAmount }} }</td>
                     <td class="budget_amount" [class.overspent]="budgetedCat && budgetedCat.remaining && (budgetedCat.remaining < 0)">@if (budgetedCat) { {{ budgetedCat.remaining | formatAmount }} }</td>
