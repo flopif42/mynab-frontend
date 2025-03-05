@@ -10,15 +10,10 @@
         <td>{{ txn.date }}</td>
         <td> @if (txn.payee == null) { <span class="system">Transfer</span> } @else { {{ txn.payee }} } </td>
         <td>
-            @if (txn.category == null || txn.category == "Income") {
-            <span class="system">No category</span>
-            <!--
-            <select id="id_category_update">
-                @for (cat of _categories; track cat.id) {
-                <option [value]="cat.id">{{ cat.name }}</option>
-                }
-            </select>
-                -->
+            @if (txn.category == null) {
+                <span class="system">No category needed</span>
+            } @else if (txn.category == "Income") {
+                <span class="system">Income</span>
             } @else { {{ txn.category }} }
         </td>
         <td>{{ txn.memo }}</td>
