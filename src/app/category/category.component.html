@@ -2,24 +2,25 @@
     <legend>Categories</legend>
     <table class="parent_cat">
         @for (parent_cat of _parentCategories; track parent_cat.id) {
-        <tr>
-            @if (parent_cat.can_be_deleted) {
-                <td class="parent_cat" colspan="2">{{ parent_cat.name }}</td>
-                <td class="parent_cat"><a class="delete" href="javascript:void(0);" (click)="onDeleteParentCategory(parent_cat.id)">X</a></td>
-            } @else {
-                <td class="parent_cat" colspan="3">{{ parent_cat.name }}</td>
-            }
-            <td class="parent_cat">
-                @if (parent_cat.position > 2) {
-                <a class="arrow" href="javascript:void(0);" (click)="onMoveParentCategory(parent_cat.id, parent_cat.position-1)">&#8593;</a>
-                } @else { &nbsp; }
-            </td>
-            <td class="parent_cat">
-                @if (parent_cat.position < _parentCategories.length + 1) {
-                <a class="arrow" href="javascript:void(0);" (click)="onMoveParentCategory(parent_cat.id, parent_cat.position+1)">&#8595;</a>
-                } @else { &nbsp; }
-            </td>
-        </tr>
+            @let colspan = parent_cat.can_be_deleted ? 2 : 3
+            <tr>
+                <td class="parent_cat" [attr.colspan]="colspan">{{ parent_cat.name }}</td>
+                @if (parent_cat.can_be_deleted) {
+                    <td class="parent_cat">
+                        <a class="delete" href="javascript:void(0);" (click)="onDeleteParentCategory(parent_cat.id)">X</a>
+                    </td>
+                }
+                <td class="parent_cat">
+                    @if (parent_cat.position > 2) {
+                    <a class="arrow" href="javascript:void(0);" (click)="onMoveParentCategory(parent_cat.id, parent_cat.position-1)">&#8593;</a>
+                    } @else { &nbsp; }
+                </td>
+                <td class="parent_cat">
+                    @if (parent_cat.position < _parentCategories.length + 1) {
+                    <a class="arrow" href="javascript:void(0);" (click)="onMoveParentCategory(parent_cat.id, parent_cat.position+1)">&#8595;</a>
+                    } @else { &nbsp; }
+                </td>
+            </tr>
             @for (category of parent_cat['child_categories']; track category.id) {
                 @let colspan = category.can_be_deleted ? 4 : 5;
                 <tr>
