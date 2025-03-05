@@ -21,16 +21,14 @@
             </td>
         </tr>
             @for (category of parent_cat['child_categories']; track category.id) {
-            <tr>
                 @let colSpanValue = 5;
-                @if (category.can_be_deleted) {
-                    colSpanValue = 4;
-                }
-                <td class="child_cat" colspan="colSpanValue">{{ category.name }}</td>
-                @if (category.can_be_deleted) {
-                    <td class="child_cat"><a class="delete" href="javascript:void(0);" (click)="onDeleteCategory(category.id)">X</a></td>
-                }
-            </tr>
+                <tr>
+                    @if (category.can_be_deleted) { colSpanValue = 4; }
+                    <td class="child_cat" colspan="colSpanValue">{{ category.name }}</td>
+                    @if (category.can_be_deleted) {
+                        <td class="child_cat"><a class="delete" href="javascript:void(0);" (click)="onDeleteCategory(category.id)">X</a></td>
+                    }
+                </tr>
              }
          }
         </table>
