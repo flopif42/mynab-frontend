@@ -41,13 +41,14 @@ export class PayeeComponent implements OnInit {
         )
     }
 
-    onSubmit() {
+    onClickAddPayee() {
         if (this._newPayeeForm.value && this._newPayeeForm.value.payee_name) {
             this.payeeService.create(this._newPayeeForm.value.payee_name)
                 .subscribe(
                     res => {
                         console.log("Payee created")
                         this.listPayees()
+                        this._newPayeeForm.get('payee_name').setValue('')
                     },
                     error => {
                         console.error("Error creating payee")

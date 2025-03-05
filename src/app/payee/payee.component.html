@@ -1,20 +1,19 @@
-<fieldset>
-    <legend>List of payees</legend>
-    <table class="parent_cat">
-        @for (payee of _payees; track payee.id) {
+<table>
+    <tr><th class="parent_cat" colspan="2">Payees</th></tr>
+    @for (payee of _payees; track payee.id) {
+        @let colspan = payee.can_be_deleted ? 1 : 2;
         <tr>
+            <td class="child_cat" [attr.colspan]="colspan">{{ payee.name }}</td>
             @if (payee.can_be_deleted) {
-            <td class="child_cat">{{ payee.name }}</td>
-            <td class="child_cat"><a class="delete" href="javascript:void(0);" (click)="okClickDeletePayee(payee.id)">X</a></td>
-            } @else {
-            <td class="child_cat" colspan="2">{{ payee.name }}</td>
+                <td class="child_cat">
+                    <a class="delete" href="javascript:void(0);" (click)="okClickDeletePayee(payee.id)">X</a>
+                </td>
             }
         </tr>
-        }
-        </table>
-</fieldset>
+    }
+</table>
 
-<form [formGroup]="_newPayeeForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="_newPayeeForm" (ngSubmit)="onClickAddPayee()">
     <fieldset>
         <legend>Add payee</legend>
         <div>
