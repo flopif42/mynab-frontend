@@ -4,6 +4,18 @@
         @for (parent_cat of _parentCategories; track parent_cat.id) {
         <tr>
             <td class="parent_cat">{{ parent_cat.name }}({{ parent_cat.can_be_deleted }})</td>
+            
+            
+            @if (parent_cat.can_be_deleted) {
+                <td class="parent_cat" colspan="2">{{ parent_cat.name }}</td>
+                <td class="parent_cat"><a class="delete" href="javascript:void(0);" (click)="onDeleteParentCategory(parent_cat.id)">X</a></td>
+            } @else {
+                <td class="parent_cat" colspan="3">{{ parent_cat.name }}</td>
+            }
+            
+            
+            
+            
             <td class="parent_cat">
                 @if (parent_cat.position > 2) {
                 <a class="arrow" href="javascript:void(0);" (click)="onMoveParentCategory(parent_cat.id, parent_cat.position-1)">&#8593;</a>
