@@ -22,9 +22,9 @@
         </tr>
             @for (category of parent_cat['child_categories']; track category.id) {
             <tr>
-                @let colSpanValue = 5
+                @let colSpanValue = 5;
                 @if (category.can_be_deleted) {
-                    colSpanValue = 4
+                    colSpanValue = 4;
                 }
                 <td class="child_cat" colspan="colSpanValue">{{ category.name }}</td>
                 @if (category.can_be_deleted) {
