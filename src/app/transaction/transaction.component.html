@@ -10,7 +10,7 @@
         <td>{{ txn.date }}</td>
         <td> @if (txn.payee == null) { <span class="system">Transfer</span> } @else { {{ txn.payee }} } </td>
         <td>
-            @if (txn.category == null) {
+            @if (txn.category == null || txn.category == "Income") {
             <span class="system">No category</span>
             <!--
             <select id="id_category_update">
