@@ -4,17 +4,22 @@ import { environment } from '../../environments/environment'
 
 @Component({
   selector: 'app-about',
-  template: `
-    <div>Server status : {{ this._serverStatus }}</div>
-    <div>API Version : {{ this._serverVersion }}</div>
+    template: `
     <div>Client version (Jenkins build number) : {{ this._clientVersion }}<div>
+    <div>API server status : {{ this._apiServerStatus }}</div>
+    <div>API version : {{ this._apiVersion }}</div>
+    <div>Database server status : {{ this._dbServerStatus }}</div>
+    <div>Database version : {{ this._dbVersion }}</div>
+    
   `
 })
 export class AboutComponent {
     m_endpoint = environment.apiUrl;
-    _serverStatus: string;
-    _serverVersion: string;
     _clientVersion: string;
+    _apiServerStatus: string;
+    _apiVersion: string;
+    _dbServerStatus: string;
+    _dbVersion: string;
 
     constructor(private http: HttpClient) { }
 
@@ -24,13 +29,15 @@ export class AboutComponent {
     }
 
     public getServerInfo() {
-        return this.http.get<Object>(this.m_endpoint + "/hello").subscribe(
+        return this.http.get<Object>(this.m_endpoint + "/about").subscribe(
             (response) => {
-                this._serverStatus = 'Up';
-                this._serverVersion = response['Version'];
+                this._apiServerStatus = 'Up';
+                this._apiVersion = response['API version'];
+                this._dbServerStatus = response['Database server status']
+                this._dbVersion = response['Database version']
             },
             (error) => {
-                this._serverStatus = 'Down'
+                this._apiServerStatus = 'Down'
             }
         )
     }
