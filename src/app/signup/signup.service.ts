@@ -5,7 +5,7 @@ import { Md5 } from 'ts-md5';
 import { environment } from '../../environments/environment'
 
 export class checkEmailResponse {
-    available: Boolean;
+    available: boolean;
 }
 
 @Injectable({
