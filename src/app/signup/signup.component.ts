@@ -50,8 +50,9 @@ export class SignupComponent {
         this.signupService.checkEmailAvailable(txt).subscribe(
             (response) => {
                 const resp: checkEmailResponse = response;
-                this._emailAdressAvailable = resp['available']
-               // this._signupForm.get('email_OK').setValue(this._emailAdressAvailable)
+                this._emailAdressAvailable = resp['available'];
+                let email_OK_value = this._emailAdressAvailable ? "yes" : "no";
+                this._signupForm.get('email_OK').setValue(email_OK_value);
             }
         );
     }
