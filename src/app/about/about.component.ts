@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment'
     <div>Client version (Jenkins build number) : {{ this._clientVersion }}<div>
     <div>API server status : {{ this._apiServerStatus }}</div>
     <div>API version : {{ this._apiVersion }}</div>
-    <div><a href="apidocs/">API Documentation</a></div>
+    <div><a href="https://budgetizator.ovh:543/apidocs/">API Documentation</a></div>
     <div>Database server status : {{ this._dbServerStatus }}</div>
     <div>Database version : {{ this._dbVersion }}</div>
     
