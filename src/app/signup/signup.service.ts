@@ -1,11 +1,11 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Md5 } from 'ts-md5';
 import { environment } from '../../environments/environment'
 
 export class checkEmailResponse {
-    available: string;
+    available: Boolean;
 }
 
 @Injectable({
@@ -23,9 +23,8 @@ export class SignupService {
         });
     }
 
-    checkEmailAvailableForSignup(email_address: string): Observable<checkEmailResponse> {
-        return this.http.post<checkEmailResponse>(this.m_endpoint + "/available", {
-            email_address
-        });
+    checkEmailAvailable(email_address: string): Observable<checkEmailResponse> {
+        let params = new HttpParams().set("email_address", email_address)
+        return this.http.get<checkEmailResponse>(this.m_endpoint + "/check_email_available", { params: params });
     }
 }

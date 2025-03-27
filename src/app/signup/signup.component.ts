@@ -21,7 +21,7 @@ export class SignupComponent {
         email_OK: new FormControl('no', [Validators.pattern('yes')])
     }, confirmPasswordValidator());
 
-    _emailAdressAvailable = 'no'
+    _emailAdressAvailable = false
 
     constructor(private router: Router, private signupService: SignupService) { }
 
@@ -47,7 +47,7 @@ export class SignupComponent {
     }
 
     onEmailAdressChanged(txt: string) {
-        this.signupService.checkEmailAvailableForSignup(txt).subscribe(
+        this.signupService.checkEmailAvailable(txt).subscribe(
             (response) => {
                 const resp: checkEmailResponse = response;
                 this._emailAdressAvailable = resp['available']
