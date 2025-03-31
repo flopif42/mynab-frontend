@@ -1,8 +1,19 @@
-<ul id="sortable-list">
-    @for (account of accounts; track account.id) {
-        <li>{{ account.name }}</li>
-    }
-</ul>
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Account Name</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody #tableBody>
+    <tr *ngFor="let account of accounts">
+      <td>{{ account.id }}</td>
+      <td>{{ account.name }}</td>
+      <td>{{ account.balance | currency }}</td>
+    </tr>
+  </tbody>
+</table>
 
 <br/>
 
