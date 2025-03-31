@@ -19,7 +19,7 @@ export class UserComponent {
     public getUserProfile() {
         return this.http.get<Object>(this.m_endpoint).subscribe(
             response => {
-                this.m_data = response[0];
+                this.m_data = response;
             },
             error => {
                 console.error('in getUserProfile() error')
