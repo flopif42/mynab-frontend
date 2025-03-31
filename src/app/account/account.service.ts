@@ -20,7 +20,7 @@ export class AccountService {
     }
 
     delete(accountId) {
-        return this.http.delete<Object>(this.m_endpoint + "/delete", { "id_account": accountId });
+        return this.http.delete<Object>(this.m_endpoint + "/delete", { body: { "id_account": accountId }});
     }
 
     toggleStatus(accountId) {
