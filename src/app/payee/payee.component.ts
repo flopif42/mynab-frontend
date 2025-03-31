@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PayeeService } from './payee.service'
 import { Payee } from './payee.model'
-import Sortable from 'sortablejs';
+import { Sortable } from 'sortablejs';
+
+interface Account {
+    id: number;
+    name: string;
+    balance: number;
+}
 
 @Component({
     selector: 'app-payee',
@@ -11,15 +17,15 @@ import Sortable from 'sortablejs';
     styleUrl: './payee.component.css',
     imports: [ReactiveFormsModule]
 })
-export class PayeeComponent implements OnInit {
+export class PayeeComponent implements OnInit, AfterViewInit {
     _newPayeeForm = new FormGroup({
         payee_name: new FormControl('', [Validators.required])
     });
 
-    accounts = [
-        { id: 1, name: 'Checking Account' },
-        { id: 2, name: 'Savings Account' },
-        { id: 3, name: 'Investment Account' },
+    accounts: Account[] = [
+        { id: 1, name: 'Checking Account', balance: 1000 },
+        { id: 2, name: 'Savings Account', balance: 5000 },
+        { id: 3, name: 'Business Account', balance: 12000 }
     ];
 
     _payees = [];
@@ -79,17 +85,18 @@ export class PayeeComponent implements OnInit {
         }
     }
 
+    @ViewChild('tableBody', { static: false }) tableBody: any;
+
     ngAfterViewInit() {
-        const list = document.getElementById('sortable-list');
-        if (list) {
-            Sortable.create(list, {
-                animation: 150,
-                onEnd: (event) => {
-                    const [movedItem] = this.accounts.splice(event.oldIndex!, 1);
-                    this.accounts.splice(event.newIndex!, 0, movedItem);
-                    console.log('Updated order:', this.accounts);
-                },
-            });
-        }
+        new Sortable(this.tableBody.nativeElement, {
+            animation: 150,
+            onEnd: (event) => {
+                const { oldIndex, newIndex } = event;
+                if (oldIndex !== newIndex) {
+                    const movedItem = this.accounts.splice(oldIndex, 1)[0];
+                    this.accounts.splice(newIndex, 0, movedItem);
+                }
+            }
+        });
     }
 }
