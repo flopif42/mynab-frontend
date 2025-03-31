@@ -8,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class UserComponent {
     m_endpoint = environment.apiUrl + "/user/profile"
-    m_data = []
+    m_data = {}
 
     constructor(private http: HttpClient) { }
 
