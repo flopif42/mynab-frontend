@@ -3,6 +3,7 @@ import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PayeeService } from './payee.service'
 import { Payee } from './payee.model'
+import Sortable from 'sortablejs';
 
 @Component({
     selector: 'app-payee',
@@ -14,6 +15,12 @@ export class PayeeComponent implements OnInit {
     _newPayeeForm = new FormGroup({
         payee_name: new FormControl('', [Validators.required])
     });
+
+    accounts = [
+        { id: 1, name: 'Checking Account' },
+        { id: 2, name: 'Savings Account' },
+        { id: 3, name: 'Investment Account' },
+    ];
 
     _payees = [];
 
@@ -69,6 +76,20 @@ export class PayeeComponent implements OnInit {
                         console.error("Error deleting payee")
                     }
                 )
+        }
+    }
+
+    ngAfterViewInit() {
+        const list = document.getElementById('sortable-list');
+        if (list) {
+            Sortable.create(list, {
+                animation: 150,
+                onEnd: (event) => {
+                    const [movedItem] = this.accounts.splice(event.oldIndex!, 1);
+                    this.accounts.splice(event.newIndex!, 0, movedItem);
+                    console.log('Updated order:', this.accounts);
+                },
+            });
         }
     }
 }

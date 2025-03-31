@@ -1,3 +1,10 @@
+<ul id="sortable-list">
+    @for (account of accounts; track account.id)
+    <li>{{ account.name }}</li>
+</ul>
+
+<br/>
+
 <table>
     <tr><th class="parent_cat" colspan="2">Payees</th></tr>
     @for (payee of _payees; track payee.id) {
