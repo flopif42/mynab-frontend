@@ -9,7 +9,7 @@
                     @for (account of _accounts.get(parseInt(accountType.key)); track account.id) {
                     <tr>
                         <td>
-                            <a class="account_status {{ _accountStatus[account.status].toLowerCase() }}" href="javascript:void(0);" (click)="onClickStatusAccount(account.id)">{{ _accountStatus[account.status].toUpperCase() }}</a>
+                            <a class="account_status {{ _accountStatus[account.status].toLowerCase() }}" href="javascript:void(0);" (click)="onClickStatusAccount(account.id, account.status)">{{ _accountStatus[account.status].toUpperCase() }}</a>
                         </td>
                         <td><a routerLink="/account/{{account.id}}" class="account_name" [ngClass]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
                         <td>{{ account.balance | formatAmount  }}</td>

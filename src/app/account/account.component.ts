@@ -103,8 +103,9 @@ export class AccountComponent implements OnInit {
         }
     }
 
-    onClickStatusAccount(accountId) {
-        this.accountService.toggleStatus(accountId)
+    onClickStatusAccount(accountId, accountStatus) {
+        accountStatus = accountStatus == 0 ? 1 : 0;
+        this.accountService.setStatus(accountId, accountStatus)
             .subscribe(
                 res => {
                     console.log("Account opened/closed")

@@ -23,7 +23,12 @@ export class AccountService {
         return this.http.delete<Object>(this.m_endpoint + "/delete", { body: { "id_account": accountId }});
     }
 
-    toggleStatus(accountId) {
-        return this.http.post<Object>(this.m_endpoint + "/toggle_status", { "id_account": accountId });
+    setStatus(accountId, accountStatus) {
+        return this.http.put<Object>(this.m_endpoint + "/toggle_status",
+            {
+                "id_account": accountId,
+                "account_status": accountStatus
+            }
+        );
     }
 }
