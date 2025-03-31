@@ -1,24 +1,8 @@
 <table border="1">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Account Name</th>
-    </tr>
-  </thead>
-  <tbody #tableBody>
-    @for (payee of _payees; track payee.id) {
-    <tr>
-        <td>{{ payee.id }}</td>
-        <td>{{ payee.name }}</td>
-    </tr>
-    }
-  </tbody>
-</table>
-
-<br/>
-
-<table>
-    <tr><th class="parent_cat" colspan="2">Payees</th></tr>
+    <thead>
+        <tr><th class="parent_cat" colspan="2">Payees</th></tr>
+    </thead>
+    <tbody #tableBody>
     @for (payee of _payees; track payee.id) {
         @let colspan = payee.can_be_deleted ? 1 : 2;
         <tr>
@@ -30,8 +14,8 @@
             }
         </tr>
     }
+    </tbody>
 </table>
-
 <form [formGroup]="_newPayeeForm" (ngSubmit)="onClickAddPayee()">
     <fieldset>
         <legend>Add payee</legend>
