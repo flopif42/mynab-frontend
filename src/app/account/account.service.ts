@@ -24,7 +24,7 @@ export class AccountService {
     }
 
     setStatus(accountId, accountStatus) {
-        return this.http.put<Object>(this.m_endpoint + "/toggle_status",
+        return this.http.put<Object>(this.m_endpoint + "/set_status",
             {
                 "id_account": accountId,
                 "account_status": accountStatus
