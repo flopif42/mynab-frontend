@@ -87,8 +87,8 @@ export class PayeeComponent implements OnInit, AfterViewInit {
             onEnd: (event) => {
                 const { oldIndex, newIndex } = event;
                 if (oldIndex !== newIndex) {
-                    const movedItem = this.accounts.splice(oldIndex, 1)[0];
-                    this.accounts.splice(newIndex, 0, movedItem);
+                    const movedItem = this._payees.splice(oldIndex, 1)[0];
+                    this._payees.splice(newIndex, 0, movedItem);
                 }
             }
         });
