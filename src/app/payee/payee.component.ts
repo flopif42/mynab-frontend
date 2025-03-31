@@ -22,12 +22,6 @@ export class PayeeComponent implements OnInit, AfterViewInit {
         payee_name: new FormControl('', [Validators.required])
     });
 
-    accounts: Account[] = [
-        { id: 1, name: 'Checking Account', balance: 1000 },
-        { id: 2, name: 'Savings Account', balance: 5000 },
-        { id: 3, name: 'Business Account', balance: 12000 }
-    ];
-
     _payees = [];
 
     constructor(private payeeService: PayeeService) { }

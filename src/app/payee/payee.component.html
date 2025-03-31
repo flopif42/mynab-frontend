@@ -3,15 +3,13 @@
     <tr>
       <th>ID</th>
       <th>Account Name</th>
-      <th>Balance</th>
     </tr>
   </thead>
   <tbody #tableBody>
-    @for (account of accounts; track account.id) {
+    @for (payee of _payees; track payee.id) {
     <tr>
-        <td>{{ account.id }}</td>
-        <td>{{ account.name }}</td>
-        <td>{{ account.balance }}</td>
+        <td>{{ payee.id }}</td>
+        <td>{{ payee.name }}</td>
     </tr>
     }
   </tbody>
