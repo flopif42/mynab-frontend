@@ -25,7 +25,7 @@ export class CategoryService {
     }
 
     delete(categoryId) {
-        return this.http.post<Object>(this.m_endpoint + "/delete", { "id_category": categoryId });
+        return this.http.delete<Object>(this.m_endpoint + "/delete", { body: { "id_category": categoryId } });
     }
 
     deleteParent(parentId) {
