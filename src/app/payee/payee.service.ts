@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from '../../environments/environment'
 import { Payee } from './payee.model'
 
@@ -21,6 +21,7 @@ export class PayeeService {
     }
 
     delete(payeeId) {
-        return this.http.delete<Object>(this.m_endpoint + "/delete", { "id_payee": payeeId });
+        let params = new HttpParams().set("id_payee", payeeId)
+        return this.http.delete<Object>(this.m_endpoint + "/delete", { params: params });
     }
 }
