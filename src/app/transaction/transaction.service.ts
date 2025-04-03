@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from '../../environments/environment'
 import { Transaction } from './transaction.model'
 
@@ -55,12 +55,10 @@ export class TransactionService {
     }
 
     getList(accountId?: string): Observable<Transaction[]> {
-        var requestParams = {}
+        let params = {}
         if (accountId != null) {
-            requestParams = {
-                "id_account": accountId
-            }
+            params = new HttpParams().set("id_account", accountId)
         }
-        return this.http.post<Transaction[]>(this.m_endpoint + '/transaction/list', requestParams)
+        return this.http.get<Transaction[]>(this.m_endpoint + '/transaction/list', { params: params })
     }
 }
