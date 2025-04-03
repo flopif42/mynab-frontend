@@ -48,10 +48,8 @@ export class TransactionService {
     }
 
     delete(transactionId) {
-        const transactionToDelete = {
-            "id_transaction": transactionId
-        }
-        return this.http.delete<Object>(this.m_endpoint + "/transaction/delete", transactionToDelete);
+        let params = new HttpParams().set("id_transaction", transactionId)
+        return this.http.delete<Object>(this.m_endpoint + "/transaction/delete", { params: params });
     }
 
     getList(accountId?: string): Observable<Transaction[]> {
