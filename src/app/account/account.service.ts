@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from '../../environments/environment'
 import { Account } from './account.model'
 
@@ -20,7 +20,8 @@ export class AccountService {
     }
 
     delete(accountId) {
-        return this.http.delete<Object>(this.m_endpoint + "/delete", { body: { "id_account": accountId }});
+        let params = new HttpParams().set("id_account", accountId)
+        return this.http.delete<Object>(this.m_endpoint + "/delete", { params: params });
     }
 
     setStatus(accountId, accountStatus) {

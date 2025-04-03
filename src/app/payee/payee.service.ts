@@ -21,6 +21,6 @@ export class PayeeService {
     }
 
     delete(payeeId) {
-        return this.http.post<Object>(this.m_endpoint + "/delete", { "id_payee": payeeId });
+        return this.http.delete<Object>(this.m_endpoint + "/delete", { "id_payee": payeeId });
     }
 }
