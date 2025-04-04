@@ -70,7 +70,7 @@ export class BudgetComponent implements OnInit {
         const formData = {
             "id_period": params[0],
             "id_category": params[1],
-            "funded": event.target.value.replace(',', '.') * 100
+            "amount": event.target.value.replace(',', '.') * 100
         }
 
         this.budgetService.setFunded(formData)
