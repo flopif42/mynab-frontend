@@ -17,7 +17,7 @@ export class BudgetService {
     }
     
     setFunded(requestParams) {
-        return this.http.post<Object>(this.m_endpoint + '/set_funded', requestParams)
+        return this.http.put<Object>(this.m_endpoint + '/set_funded', requestParams)
     }
 
 }
