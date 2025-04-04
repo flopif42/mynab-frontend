@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from '../../environments/environment'
 import { ParentCategory } from './parent.category.model'
 
@@ -29,14 +29,7 @@ export class CategoryService {
     }
 
     deleteParent(parentId) {
-        return this.http.delete<Object>(this.m_endpoint + "/delete_parent", { body: { "id_parent": parentId } });
-    }
-
-    setParentCategoryPosition(parentId, newPosition) {
-        return this.http.post<Object>(this.m_endpoint + "/move_parent",
-            {
-                "id_parent_category": parentId,
-                "new_position": newPosition
-            });
+        let params = new HttpParams().set("id_parent", parentId)
+        return this.http.delete<Object>(this.m_endpoint + "/delete_parent", { params: params });
     }
 }
