@@ -25,7 +25,8 @@ export class CategoryService {
     }
 
     delete(categoryId) {
-        return this.http.delete<Object>(this.m_endpoint + "/delete", { body: { "id_category": categoryId } });
+        let params = new HttpParams().set("id_category", categoryId)
+        return this.http.delete<Object>(this.m_endpoint + "/delete", { params: params });
     }
 
     deleteParent(parentId) {
