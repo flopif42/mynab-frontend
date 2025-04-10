@@ -18,6 +18,10 @@ function formatDate(dateStr: string): string {
     providedIn: 'root'
 })
 export class TransactionService {
+    convertAmount(strAmount: string): number {
+        return Math.floor(parseFloat(strAmount.replace(',', '.')) * 100)
+    }
+
     m_endpoint = environment.apiUrl
 
     constructor(private http: HttpClient) { }
@@ -28,7 +32,7 @@ export class TransactionService {
             "id_category": formData.id_category,
             "id_account": formData.id_account,
             "flow": formData.flow,
-            "amount": formData.amount.replace(',', '.') * 100,
+            "amount": this.convertAmount(formData.amount),
             "memo": formData.memo,
             "date": formatDate(formData.date),
             "is_transfer": 0
@@ -40,7 +44,7 @@ export class TransactionService {
         const newTransfer = {
             "id_account_outflow": formData.id_account_outflow,
             "id_account_inflow": formData.id_account_inflow,
-            "amount": formData.amount.replace(',', '.') * 100,
+            "amount": this.convertAmount(formData.amount),
             "memo": formData.memo,
             "date": formatDate(formData.date)
         }
