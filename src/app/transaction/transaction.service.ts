@@ -19,7 +19,7 @@ function formatDate(dateStr: string): string {
 })
 export class TransactionService {
     convertAmount(strAmount: string): number {
-        return Math.floor(parseFloat(strAmount.replace(',', '.')) * 100)
+        return Math.ceil(parseFloat(strAmount.replace(',', '.')) * 100)
     }
 
     m_endpoint = environment.apiUrl
