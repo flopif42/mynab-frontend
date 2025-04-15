@@ -12,7 +12,7 @@
         <td>
             @if (txn.category == "Income") {
                 <span class="system">Income</span>
-            } @else { this.getCategoryDisplay(txn); }
+            } @else { {{ this.getCategoryDisplay(txn) }} }
         </td>
         <td>{{ txn.memo }}</td>
         @if (txn.flow == 'Outflow') { <td class="amount">{{ txn.amount | formatAmount }}</td> <td>&nbsp;</td> } @else {
