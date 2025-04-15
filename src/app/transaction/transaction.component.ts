@@ -188,10 +188,6 @@ export class TransactionComponent implements OnInit, OnChanges {
     }
 
     onAddTransactionClick() {
-        
-    }
-
-    onEditTransactionClick() {
         const formData = this._newTxnForm.value;
         this.txnService.create(formData)
             .subscribe(
@@ -203,6 +199,10 @@ export class TransactionComponent implements OnInit, OnChanges {
                     console.error("Error adding transaction")
                 }
             )
+    }
+
+    onUpdateTransactionClick() {
+
     }
 
     onAddTransferClick() {
