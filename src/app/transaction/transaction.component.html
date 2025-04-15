@@ -10,9 +10,7 @@
         <td>{{ txn.date }}</td>
         <td> @if (txn.payee == null) { <span class="system">Transfer</span> } @else { {{ txn.payee }} } </td>
         <td>
-            @if (txn.category == null) {
-                <span class="system">No category needed</span>
-            } @else if (txn.category == "Income") {
+            if (txn.category == "Income") {
                 <span class="system">Income</span>
             } @else { {{ txn.category }} }
         </td>
