@@ -87,6 +87,13 @@ export class TransactionComponent implements OnInit, OnChanges {
         }
     }
 
+    getCategoryDisplay(transaction: Transaction): string {
+        if (transaction.category === null) {
+            return "Oh la la it's null !"
+        }
+        return transaction.category
+    }
+
     fetchAccounts() {
         this.accountService.getList().subscribe(
             response => {

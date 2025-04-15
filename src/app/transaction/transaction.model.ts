@@ -1,13 +1,13 @@
 export class Transaction {
     id: number;
-    account: String;
+    account: string;
     account_type: number;
     amount: number;
     date: string;
-    flow: String;
-    memo: String;
-    payee: String;
-    category: String;
+    flow: string;
+    memo: string;
+    payee: string;
+    category: string;
     is_transfer: number;
     linked_account_type: number;
 }
