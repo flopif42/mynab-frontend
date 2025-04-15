@@ -10,7 +10,7 @@
         <td>{{ txn.date }}</td>
         <td> @if (txn.payee == null) { <span class="system">Transfer</span> } @else { {{ txn.payee }} } </td>
         <td [ngClass]="getCategoryClass(txn)">
-             {{ getCategoryDisplay(txn) }}
+             {{ getCategoryLabel(txn) }}
         </td>
         <td>{{ txn.memo }}</td>
         @if (txn.flow == 'Outflow') { <td class="amount">{{ txn.amount | formatAmount }}</td> <td>&nbsp;</td> } @else {
