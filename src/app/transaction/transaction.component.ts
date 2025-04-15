@@ -87,11 +87,15 @@ export class TransactionComponent implements OnInit, OnChanges {
         }
     }
 
-    getCategoryDisplay(transaction: Transaction): string {
-        if (transaction.category === null) {
-            return "Oh la la it's null !"
+    getCategoryDisplay(txn: Transaction): string {
+        if (txn.category === null) {
+            if (txn.is_transfer && txn.account_type === txn.linked_account_type) {
+                return "Category not needed";
+            } else {
+                return "Uncategorized";
+            }
         }
-        return transaction.category
+        return txn.category
     }
 
     fetchAccounts() {
