@@ -9,7 +9,7 @@
             <td>{{ txn.account_name }}</td>
             }
             <td>{{ txn.date }}</td>
-            <td> @if (txn.payee == null) { <span class="system">Transfer</span> } @else { {{ txn.payee_name }} } </td>
+            <td>{{ txn.payee_name }}</td>
 
             <td [ngClass]="getCategoryClass(txn)" (click)="beginEditCategory(txn)" style="cursor: pointer;">
                   <!-- If this transaction is in edit mode, show a select dropdown -->
