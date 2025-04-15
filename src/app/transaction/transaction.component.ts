@@ -17,7 +17,7 @@ import { Category } from '../category/category.model';
     selector: 'app-transaction',
     templateUrl: 'transaction.component.html',
     styleUrl: 'transaction.component.css',
-    imports: [ReactiveFormsModule, FormatAmountPipe]
+    imports: [CommonModule, ReactiveFormsModule, FormatAmountPipe]
 })
 export class TransactionComponent implements OnInit, OnChanges {
     @Input() _selectedAccount: any;
