@@ -127,6 +127,20 @@ export class TransactionComponent implements OnInit, OnChanges {
         }
     }
 
+    cancelEditCategory(): void {
+        this._currentlyEditingTxnId = null;
+    }
+
+    onCategoryChanged(txn: Transaction): void {
+        this.cancelEditCategory();
+
+        // You might want to:
+        // - Update the transaction in your database
+        // - Emit an event to the parent
+        // - Recalculate the budget, etc.
+        console.log('Category updated:', txn.category);
+    }
+
     fetchAccounts() {
         this.accountService.getList().subscribe(
             response => {

@@ -14,7 +14,7 @@
             <td [ngClass]="getCategoryClass(txn)" (click)="beginEditCategory(txn)" style="cursor: pointer;">
                   <!-- If this transaction is in edit mode, show a select dropdown -->
                   <ng-container *ngIf="_currentlyEditingTxnId === txn.id && getCategoryStatus(txn) === 'uncategorized'; else showLabel">
-	                <select formControlName="id_category">
+	                <select formControlName="id_category" (change)="onCategoryChanged(txn)" (blur)="cancelEditCategory()">
 	                @for (parent_cat of _parentCategories; track parent_cat.id) {
 		                @if (parent_cat.id != 0) {
 			                <option [disabled]="true" [value]="parent_cat.id">{{ parent_cat.name }}</option>
