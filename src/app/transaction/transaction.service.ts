@@ -40,6 +40,14 @@ export class TransactionService {
         return this.http.post<Object>(this.m_endpoint + "/transaction/create", newTransaction);
     }
 
+    update(formData) {
+        const transaction = {
+            "id_transaction": formData.id_transaction,
+            "id_category": formData.id_category
+        }
+        return this.http.put<Object>(this.m_endpoint + "/transaction/update", transaction);
+    }
+
     create_transfer(formData) {
         const newTransfer = {
             "id_account_outflow": formData.id_account_outflow,

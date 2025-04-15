@@ -147,6 +147,17 @@ export class TransactionComponent implements OnInit, OnChanges {
 
         console.log(params);
 
+        this.txnService.update(params)
+            .subscribe(
+                res => {
+                    console.log("Transaction updated")
+                    this.listTransactions()
+                },
+                error => {
+                    console.error("Error updating transaction")
+                }
+            )
+
         // You might want to:
         // - Update the transaction in your database
         // - Emit an event to the parent
