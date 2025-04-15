@@ -28,7 +28,7 @@ export class TransactionComponent implements OnInit, OnChanges {
     _newTxnForm = new FormGroup({
         id_payee: new FormControl('', [Validators.required]),
         id_account: new FormControl('', [Validators.required]),
-        id_category: new FormControl('', [Validators.required]),
+        id_category: new FormControl(''),
         flow: new FormControl('-1', [Validators.required]),
         amount: new FormControl('', [Validators.required, Validators.pattern(this._amountRegex)]),
         memo: new FormControl(''),

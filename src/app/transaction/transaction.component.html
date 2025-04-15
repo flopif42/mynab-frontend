@@ -23,7 +23,8 @@
     </tr>
     }
 </table>
-<!-- test -->
+
+<!-- New transaction form -->
 <form [formGroup]="_newTxnForm" (ngSubmit)="onAddTransactionClick()">
     <fieldset>
         <legend>New transaction</legend>
@@ -62,6 +63,7 @@
     </fieldset>
 </form>
 
+<!-- New transfer form -->
 <form [formGroup]="_newTsfForm" (ngSubmit)="onAddTransferClick()">
     <fieldset>
         <legend>New transfer</legend>
