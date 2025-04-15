@@ -24,6 +24,7 @@ export class TransactionComponent implements OnInit, OnChanges {
     @Output() _transactionChanged = new EventEmitter();
 
     _amountRegex: string = '^[0-9]+(?:[.,][0-9]{1,2})?$'
+    _currentlyEditingTxnId: number | null = null;
 
     // Form used to add a new transaction
     _newTxnForm = new FormGroup({
@@ -113,6 +114,12 @@ export class TransactionComponent implements OnInit, OnChanges {
             'uncategorized': 'category-uncategorized',
             'normal': 'category-normal'
         }[this.getCategoryStatus(txn)];
+    }
+
+    beginEditCategory(txn: Transaction): void {
+        if (this.getCategoryStatus(txn) === 'uncategorized') {
+            this._currentlyEditingTxnId = txn.id;
+        }
     }
 
     fetchAccounts() {
