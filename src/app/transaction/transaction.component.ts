@@ -87,15 +87,31 @@ export class TransactionComponent implements OnInit, OnChanges {
         }
     }
 
-    getCategoryDisplay(txn: Transaction): string {
+    getCategoryStatus(txn: Transaction): 'not-needed' | 'uncategorized' | 'normal' {
         if (txn.category === null) {
             if (txn.is_transfer && txn.account_type === txn.linked_account_type) {
-                return "Category not needed";
+                return 'not-needed';
             } else {
-                return "Uncategorized";
+                return 'uncategorized';
             }
         }
-        return txn.category
+        return 'normal';
+    }
+
+    getCategoryLabel(txn: Transaction): string {
+        switch (this.getCategoryStatus(txn)) {
+            case 'not-needed': return 'Category not needed';
+            case 'uncategorized': return 'Uncategorized';
+            case 'normal': return txn.category;
+        }
+    }
+
+    getCategoryClass(txn: Transaction): string {
+        return {
+            'not-needed': 'category-not-needed',
+            'uncategorized': 'category-uncategorized',
+            'normal': 'category-normal'
+        }[this.getCategoryStatus(txn)];
     }
 
     fetchAccounts() {

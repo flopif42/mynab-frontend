@@ -18,3 +18,17 @@ th {
     font-style: italic;
     color: darkslategray;
 }
+
+.category-not-needed {
+    color: gray;
+    font-style: italic;
+}
+
+.category-uncategorized {
+    color: red;
+    font-weight: bold;
+}
+
+.category-normal {
+    color: black;
+}
