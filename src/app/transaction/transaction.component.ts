@@ -140,7 +140,8 @@ export class TransactionComponent implements OnInit, OnChanges {
             "amount": txn.amount,
             "memo": txn.memo,
             "date": txn.date,
-            "is_transfer": txn.is_transfer
+            "is_transfer": txn.is_transfer,
+            "id_category": this._editTxnForm.value.id_category
         }
 
         console.log(params);
