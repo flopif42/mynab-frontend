@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
 import { Validators, FormGroup, FormControl } from '@angular/forms'
