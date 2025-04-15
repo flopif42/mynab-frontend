@@ -134,6 +134,7 @@ export class TransactionComponent implements OnInit, OnChanges {
     onCategoryChanged(txn: Transaction): void {
         this.cancelEditCategory();
         let params = {
+            "id_transaction": txn.id,
             "id_payee": txn.id_payee,
             "id_account": txn.id_account,
             "flow": txn.flow,
