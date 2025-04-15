@@ -6,10 +6,10 @@
         @for (txn of this._transactions; track txn.id) {
         <tr>
             @if (this._selectedAccount == null) {
-            <td>{{ txn.account }}</td>
+            <td>{{ txn.account_name }}</td>
             }
             <td>{{ txn.date }}</td>
-            <td> @if (txn.payee == null) { <span class="system">Transfer</span> } @else { {{ txn.payee }} } </td>
+            <td> @if (txn.payee == null) { <span class="system">Transfer</span> } @else { {{ txn.payee_name }} } </td>
 
             <td [ngClass]="getCategoryClass(txn)" (click)="beginEditCategory(txn)" style="cursor: pointer;">
                   <!-- If this transaction is in edit mode, show a select dropdown -->
@@ -38,7 +38,7 @@
             </td>
                 -->
             <td>{{ txn.memo }}</td>
-            @if (txn.flow == 'Outflow') { <td class="amount">{{ txn.amount | formatAmount }}</td> <td>&nbsp;</td> } @else {
+            @if (txn.flow == -1) { <td class="amount">{{ txn.amount | formatAmount }}</td> <td>&nbsp;</td> } @else {
             <td>&nbsp;</td> <td class="amount">{{ txn.amount | formatAmount }}</td> }
             <td><a href="javascript:void(0);" (click)="deleteTransaction(txn.id)">Delete</a></td>
         </tr>

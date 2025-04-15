@@ -95,7 +95,7 @@ export class TransactionComponent implements OnInit, OnChanges {
     }
 
     getCategoryStatus(txn: Transaction): 'not-needed' | 'uncategorized' | 'normal' {
-        if (txn.category === null) {
+        if (txn.id_category === null) {
             if (txn.is_transfer && txn.account_type === txn.linked_account_type) {
                 return 'not-needed';
             } else {
@@ -109,7 +109,7 @@ export class TransactionComponent implements OnInit, OnChanges {
         switch (this.getCategoryStatus(txn)) {
             case 'not-needed': return 'Category not needed';
             case 'uncategorized': return 'Uncategorized';
-            case 'normal': return txn.category;
+            case 'normal': return txn.category_name;
         }
     }
 
@@ -133,12 +133,23 @@ export class TransactionComponent implements OnInit, OnChanges {
 
     onCategoryChanged(txn: Transaction): void {
         this.cancelEditCategory();
+        let params = {
+            "id_payee": txn.id_payee,
+            "id_account": txn.id_account,
+            "flow": txn.flow,
+            "amount": txn.amount,
+            "memo": txn.memo,
+            "date": txn.date,
+            "is_transfer": txn.is_transfer
+        }
+
+        console.log(params);
 
         // You might want to:
         // - Update the transaction in your database
         // - Emit an event to the parent
         // - Recalculate the budget, etc.
-        console.log('Category updated:', txn.category);
+//        console.log('Category updated:', txn.category_name);
     }
 
     fetchAccounts() {
