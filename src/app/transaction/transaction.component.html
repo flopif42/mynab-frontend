@@ -1,50 +1,50 @@
-<table>
-    <tr>
-        @if (this._selectedAccount == null) { <th>Account</th> } <th>Date</th><th>Payee</th><th>Category</th><th>Memo</th><th>Outflow</th><th>Inflow</th><th>Actions</th>
-    </tr>
-    @for (txn of this._transactions; track txn.id) {
-    <tr>
-        @if (this._selectedAccount == null) {
-        <td>{{ txn.account }}</td>
-        }
-        <td>{{ txn.date }}</td>
-        <td> @if (txn.payee == null) { <span class="system">Transfer</span> } @else { {{ txn.payee }} } </td>
+<form [formGroup]="_editTxnForm" (ngSubmit)="onUpdateTransactionClick()">
+    <table>
+        <tr>
+            @if (this._selectedAccount == null) { <th>Account</th> } <th>Date</th><th>Payee</th><th>Category</th><th>Memo</th><th>Outflow</th><th>Inflow</th><th>Actions</th>
+        </tr>
+        @for (txn of this._transactions; track txn.id) {
+        <tr>
+            @if (this._selectedAccount == null) {
+            <td>{{ txn.account }}</td>
+            }
+            <td>{{ txn.date }}</td>
+            <td> @if (txn.payee == null) { <span class="system">Transfer</span> } @else { {{ txn.payee }} } </td>
 
-        <td [ngClass]="getCategoryClass(txn)" (click)="beginEditCategory(txn)" style="cursor: pointer;">
-              <!-- If this transaction is in edit mode, show a select dropdown -->
-              <ng-container *ngIf="_currentlyEditingTxnId === txn.id && getCategoryStatus(txn) === 'uncategorized'; else showLabel">
-	            <select formControlName="id_category">
-	            @for (parent_cat of _parentCategories; track parent_cat.id) {
-		            @if (parent_cat.id != 0) {
-			            <option [disabled]="true" [value]="parent_cat.id">{{ parent_cat.name }}</option>
-		            }
-		            @for (category of parent_cat["child_categories"]; track category.id) {
-			            <option [value]="category.id">{{ category.name }}</option>
-		            }
-	            }
-	            </select>
-              </ng-container>
+            <td [ngClass]="getCategoryClass(txn)" (click)="beginEditCategory(txn)" style="cursor: pointer;">
+                  <!-- If this transaction is in edit mode, show a select dropdown -->
+                  <ng-container *ngIf="_currentlyEditingTxnId === txn.id && getCategoryStatus(txn) === 'uncategorized'; else showLabel">
+	                <select formControlName="id_category">
+	                @for (parent_cat of _parentCategories; track parent_cat.id) {
+		                @if (parent_cat.id != 0) {
+			                <option [disabled]="true" [value]="parent_cat.id">{{ parent_cat.name }}</option>
+		                }
+		                @for (category of parent_cat["child_categories"]; track category.id) {
+			                <option [value]="category.id">{{ category.name }}</option>
+		                }
+	                }
+	                </select>
+                  </ng-container>
 
-              <!-- Otherwise show the label -->
-              <ng-template #showLabel>
-                {{ getCategoryLabel(txn) }}
-              </ng-template>
+                  <!-- Otherwise show the label -->
+                  <ng-template #showLabel>
+                    {{ getCategoryLabel(txn) }}
+                  </ng-template>
+                </td>
+
+            <!--
+            <td [ngClass]="getCategoryClass(txn)">
+                 {{ getCategoryLabel(txn) }}
             </td>
-
-
-
-        <!--
-        <td [ngClass]="getCategoryClass(txn)">
-             {{ getCategoryLabel(txn) }}
-        </td>
-            -->
-        <td>{{ txn.memo }}</td>
-        @if (txn.flow == 'Outflow') { <td class="amount">{{ txn.amount | formatAmount }}</td> <td>&nbsp;</td> } @else {
-        <td>&nbsp;</td> <td class="amount">{{ txn.amount | formatAmount }}</td> }
-        <td><a href="javascript:void(0);" (click)="deleteTransaction(txn.id)">Delete</a></td>
-    </tr>
-    }
-</table>
+                -->
+            <td>{{ txn.memo }}</td>
+            @if (txn.flow == 'Outflow') { <td class="amount">{{ txn.amount | formatAmount }}</td> <td>&nbsp;</td> } @else {
+            <td>&nbsp;</td> <td class="amount">{{ txn.amount | formatAmount }}</td> }
+            <td><a href="javascript:void(0);" (click)="deleteTransaction(txn.id)">Delete</a></td>
+        </tr>
+        }
+    </table>
+</form>
 
 <!-- New transaction form -->
 <form [formGroup]="_newTxnForm" (ngSubmit)="onAddTransactionClick()">

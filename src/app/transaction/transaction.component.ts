@@ -37,6 +37,11 @@ export class TransactionComponent implements OnInit, OnChanges {
         date: new FormControl('', [Validators.required])
     });
 
+    // Form used to update a new transaction
+    _editTxnForm = new FormGroup({
+        id_category: new FormControl(''),
+    });
+
     // Form used to add a new transfer
     _newTsfForm = new FormGroup({
         id_account_outflow: new FormControl('', [Validators.required]),
