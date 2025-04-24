@@ -11,7 +11,7 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/budget">
         <mat-icon matListItemIcon>account_balance_wallet</mat-icon>
-        <span [visible]="!collapsed">Budget</span>
+        <span *ngIf="!collapsed">Budget</span>
       </a>
       <a mat-list-item routerLink="/payee">Payees</a>
       <a mat-list-item routerLink="/category">Categories</a>
