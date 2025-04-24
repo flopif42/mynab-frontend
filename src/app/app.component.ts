@@ -1,15 +1,12 @@
 import { Component, Injectable } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { materialImports } from './material';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    imports: [RouterLink, RouterOutlet, MatSidenavModule, MatListModule, MatIconModule, MatButtonModule]
+    imports: [RouterLink, RouterOutlet, materialImports]
 })
 
 @Injectable({
