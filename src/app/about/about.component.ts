@@ -1,10 +1,13 @@
+/* about.component.ts */
 import { Component } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment'
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'app-about',
-    templateUrl: 'about.component.html'
+    templateUrl: 'about.component.html',
+    imports: [MatButtonModule]
 })
 export class AboutComponent {
     m_endpoint = environment.apiUrl;

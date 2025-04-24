@@ -1,6 +1,15 @@
+<!-- about.component.html -->
+<div>
+  <!-- a simple Angular Material raised button -->
+  <button mat-raised-button color="primary" (click)="getServerInfo()">
+    Refresh Status
+  </button>
+</div>
+
 <div>Client version (Jenkins build number) : {{ this._clientVersion }}<div>
 <div>API server status : {{ this._apiServerStatus }}</div>
 <div>API version : {{ this._apiVersion }}</div>
 <div><a href="{{ this._apiDocUrl }}">API Documentation (Swagger)</a></div>
 <div>Database server status : {{ this._dbServerStatus }}</div>
 <div>Database version : {{ this._dbVersion }}</div>
+
