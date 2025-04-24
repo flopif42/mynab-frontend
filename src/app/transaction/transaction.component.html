@@ -32,11 +32,6 @@
                   </ng-template>
                 </td>
 
-            <!--
-            <td [ngClass]="getCategoryClass(txn)">
-                 {{ getCategoryLabel(txn) }}
-            </td>
-                -->
             <td>{{ txn.memo }}</td>
             @if (txn.flow == -1) { <td class="amount">{{ txn.amount | formatAmount }}</td> <td>&nbsp;</td> } @else {
             <td>&nbsp;</td> <td class="amount">{{ txn.amount | formatAmount }}</td> }
