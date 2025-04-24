@@ -13,13 +13,22 @@
         <mat-icon matListItemIcon>account_balance_wallet</mat-icon>
         <span *ngIf="!_collapsed">Budget</span>
       </a>
-      <a mat-list-item routerLink="/payee">Payees</a>
-      <a mat-list-item routerLink="/category">Categories</a>
-      <a mat-list-item routerLink="/accounts">All accounts</a>
+      <a mat-list-item routerLink="/payee">
+        <mat-icon matListItemIcon>person_apron</mat-icon>
+        <span *ngIf="!_collapsed">Payees</span>
+      </a>
+      <a mat-list-item routerLink="/category">
+        <mat-icon matListItemIcon>label</mat-icon>
+        <span *ngIf="!_collapsed">Categories</span>
+      </a>
+      <a mat-list-item routerLink="/accounts">
+        <mat-icon matListItemIcon>account_balance</mat-icon>
+        <span *ngIf="!_collapsed">All accounts</span>
+      </a>
     </mat-nav-list>
 
     <!-- “Add account” button -->
-    <div class="add-account">
+    <div *ngIf="!_collapsed" class="add-account">
       <button mat-stroked-button color="primary" class="full-width">
         Add account
       </button>
