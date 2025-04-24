@@ -6,7 +6,7 @@
                 @for (accountType of _accountTypes; track accountType.id) {
                 <div>{{ accountType.label }} accounts</div>
                 <table>
-                    @for (account of _accounts.get(parseInt(accountType.id)); track account.id) {
+                    @for (account of _accounts.get(accountType.id); track account.id) {
                     <tr>
                         <td>
                             <a class="account_status {{ _accountStatuses[account.status].toLowerCase() }}" href="javascript:void(0);" (click)="onClickStatusAccount(account.id, account.status)">{{ _accountStatuses[account.status].toUpperCase() }}</a>
