@@ -2,11 +2,12 @@ import { Component, Injectable } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    imports: [RouterLink, RouterOutlet, MatSidenavModule, MatListModule]
+    imports: [RouterLink, RouterOutlet, MatSidenavModule, MatListModule, MatIconModule]
 })
 
 @Injectable({
