@@ -1,23 +1,38 @@
-<nav>
-    @if (_isLoggedIn) {
-    <a routerLink="/accounts">All accounts</a>
-    |
-    <a routerLink="/budget">Budget</a>
-    |
-    <a routerLink="/payee">Payees</a>
-    |
-    <a routerLink="/category">Categories</a>
-    |
-    <!-- <a routerLink="/transaction">Transactions</a>| -->
-    <a routerLink="/user">User settings</a>
-    |
-    <a href="javascript:void(0);" (click)="logout()">Log out</a>
-    } @else {
-    <a routerLink="/login">Log in</a>
-    |
-    <a routerLink="/sign-up">Sign up</a>
-    }
-    |
-    <a routerLink="/">About</a>
-</nav>
-<router-outlet/>
+<mat-sidenav-container class="app-shell">
+
+  <mat-sidenav
+    #drawer
+    mode="side"
+    [opened]="!collapsed"
+    [style.width.px]="collapsed ? 60 : 200"
+    class="side-nav"
+  >
+    <!-- Main nav items -->
+    <mat-nav-list>
+      <mat-list-item>Budget</mat-list-item>
+      <mat-list-item>Reports</mat-list-item>
+      <mat-list-item>All accounts</mat-list-item>
+    </mat-nav-list>
+
+    <!-- “Add account” button -->
+    <div class="add-account">
+      <button mat-stroked-button color="primary" class="full-width">
+        Add account
+      </button>
+    </div>
+
+    <!-- Collapse/expand toggle at bottom -->
+    <div class="toggle-btn">
+      <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>
+          {{ collapsed ? 'chevron_right' : 'chevron_left' }}
+        </mat-icon>
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <!-- Your page content goes here -->
+  <mat-sidenav-content class="app-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
