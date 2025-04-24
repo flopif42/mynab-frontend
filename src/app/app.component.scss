@@ -1,0 +1,31 @@
+.app-shell {
+    height: 100vh;
+}
+
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fafafa;
+}
+
+mat-nav-list {
+    flex: 1;
+}
+
+.add-account {
+    padding: 8px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.toggle-btn {
+    text-align: center;
+    padding: 8px 0;
+}
+
+.app-content {
+    padding: 16px;
+}
