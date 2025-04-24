@@ -3,13 +3,13 @@
         <td class="account_list">
             <fieldset>
                 <legend>List of accounts</legend>
-                @for (accountType of (_accountTypes | keyvalue); track accountType.key) {
-                <div>{{ accountType.value }} accounts</div>
+                @for (accountType of _accountTypes; track accountType.id) {
+                <div>{{ accountType.label }} accounts</div>
                 <table>
-                    @for (account of _accounts.get(parseInt(accountType.key)); track account.id) {
+                    @for (account of _accounts.get(parseInt(accountType.id)); track account.id) {
                     <tr>
                         <td>
-                            <a class="account_status {{ _accountStatus[account.status].toLowerCase() }}" href="javascript:void(0);" (click)="onClickStatusAccount(account.id, account.status)">{{ _accountStatus[account.status].toUpperCase() }}</a>
+                            <a class="account_status {{ _accountStatuses[account.status].toLowerCase() }}" href="javascript:void(0);" (click)="onClickStatusAccount(account.id, account.status)">{{ _accountStatuses[account.status].toUpperCase() }}</a>
                         </td>
                         <td><a routerLink="/account/{{account.id}}" class="account_name" [ngClass]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
                         <td>{{ account.balance | formatAmount  }}</td>
@@ -33,8 +33,8 @@
                     <div>
                         <label for="dropdown">Account type</label>
                         <select id="dropdown" formControlName="account_type">
-                            @for (item of (_accountTypes | keyvalue); track item.key) {
-                            <option [value]="item.key">{{ item.value }}</option>
+                            @for (accountType of _accountTypes; track accountType.id) {
+                            <option [value]="accountType.label">{{ accountType.label }}</option>
                             }
                         </select>
                     </div>

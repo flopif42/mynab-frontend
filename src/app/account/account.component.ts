@@ -19,12 +19,12 @@ export class AccountComponent implements OnInit {
         account_name: new FormControl('', [Validators.required])
     });
 
-    _accountTypes: { [key: number]: string } = {
-        1: 'On-budget',
-        2: 'Off-budget'
-    };
+    _accountTypes = [
+        { "id": 1, "label": 'On-budget' },
+        { "id": 2, "label": 'Off-budget' }
+    ];
 
-    _accountStatus: { [key: number]: string } = {
+    _accountStatuses = {
         1: 'Open',
         0: 'Closed'
     };
