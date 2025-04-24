@@ -14,8 +14,8 @@ pipeline {
             steps {
 		            echo 'Build step ...'                
 		            sh 'npm install'
-                    sh 'npm install ts-md5'
-                    sh 'npm install sortablejs @angular-skyhook/sortable'
+                    sh 'npm install ts-md5 sortablejs'
+                    sh 'npm install @angular-skyhook/sortable @angular/material'
 		            sh 'npm run ng build'
             }
         }
