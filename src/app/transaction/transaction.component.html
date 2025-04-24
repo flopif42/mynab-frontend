@@ -14,7 +14,6 @@
             <td [class]="getCategoryClass(txn)" (click)="beginEditCategory(txn)" style="cursor: pointer;">
                 @if (_currentlyEditingTxnId === txn.id && getCategoryStatus(txn) === 'uncategorized') {
                   <!-- If this transaction is in edit mode, show a select dropdown -->
-                  <ng-container>
 	                <select formControlName="id_category" (change)="onCategoryChanged(txn)" (blur)="cancelEditCategory()">
 	                @for (parent_cat of _parentCategories; track parent_cat.id) {
 		                @if (parent_cat.id != 0) {
@@ -25,14 +24,9 @@
 		                }
 	                }
 	                </select>
-                  </ng-container>
                 } @else {
-                  <!-- Otherwise show the label -->
-                  <ng-template>
                     {{ getCategoryLabel(txn) }}
-                  </ng-template>
                 }
-                  
                 </td>
 
             <td>{{ txn.memo }}</td>
