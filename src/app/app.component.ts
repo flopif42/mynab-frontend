@@ -1,7 +1,6 @@
 import { Component, Injectable } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { AuthService } from './auth/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -14,11 +13,16 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent {
     _isLoggedIn = false;
-
-    constructor(private router: Router, private authService: AuthService) { }
+    _collapsed = false;
+    
+    constructor(private router: Router) { }
 
     logout() {
         this._isLoggedIn = false
         this.router.navigate(['/login'])
+    }
+
+    toggleSidenav() {
+        this._collapsed = !this._collapsed;
     }
 }

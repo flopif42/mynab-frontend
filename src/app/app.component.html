@@ -3,8 +3,8 @@
   <mat-sidenav
     #drawer
     mode="side"
-    [opened]="!collapsed"
-    [style.width.px]="collapsed ? 60 : 200"
+    [opened]="!_collapsed"
+    [style.width.px]="_collapsed ? 60 : 200"
     class="side-nav"
   >
     <!-- Main nav items -->
@@ -25,7 +25,7 @@
     <div class="toggle-btn">
       <button mat-icon-button (click)="toggleSidenav()">
         <mat-icon>
-          {{ collapsed ? 'chevron_right' : 'chevron_left' }}
+          {{ _collapsed ? 'chevron_right' : 'chevron_left' }}
         </mat-icon>
       </button>
     </div>
