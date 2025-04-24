@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+// import { CommonModule } from '@angular/common';
 import { Component, Injectable } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { materialImports } from './material';
@@ -7,7 +7,7 @@ import { materialImports } from './material';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    imports: [CommonModule, RouterLink, RouterOutlet, materialImports]
+    imports: [/* CommonModule, */RouterLink, RouterOutlet, materialImports]
 })
 
 @Injectable({

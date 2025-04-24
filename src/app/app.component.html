@@ -15,24 +15,23 @@
       </a>
       <a mat-list-item routerLink="/payee">
         <mat-icon matListItemIcon>person_apron</mat-icon>
-        <span *ngIf="!_collapsed">Payees</span>
+        @if (!_collapsed) { <span>Payees</span> }
       </a>
       <a mat-list-item routerLink="/category">
         <mat-icon matListItemIcon>label</mat-icon>
-        <span *ngIf="!_collapsed">Categories</span>
+        @if (!_collapsed) { <span>Categories</span> }
       </a>
       <a mat-list-item routerLink="/accounts">
         <mat-icon matListItemIcon>account_balance</mat-icon>
-        <span *ngIf="!_collapsed">All accounts</span>
+        @if (!_collapsed) { <span>All accounts</span> }
       </a>
     </mat-nav-list>
 
-    <!-- “Add account” button -->
-    <div *ngIf="!_collapsed" class="add-account">
-      <button mat-stroked-button color="primary" class="full-width">
-        Add account
-      </button>
-    </div>
+    @if (!_collapsed) {
+        <div class="add-account">
+          <button mat-stroked-button color="primary" class="full-width">Add account</button>
+        </div>
+    }
 
     <!-- Collapse/expand toggle at bottom -->
     <div class="toggle-btn">
