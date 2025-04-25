@@ -33,6 +33,13 @@ mat-nav-list {
     height: 40px
 }
 
+.account-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* ensure it fills the mat-list-item’s width */
+}
+
 .account_name {
     display: inline;
     color: blue;
