@@ -18,7 +18,7 @@ export enum AccountLabel {
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    imports: [RouterLink, RouterOutlet, materialImports, AccountListComponent, ReactiveFormsModule, FormatAmountPipe]
+    imports: [RouterLink, RouterOutlet, materialImports, ReactiveFormsModule, FormatAmountPipe]
 })
 
 @Injectable({
