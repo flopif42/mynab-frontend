@@ -50,18 +50,20 @@
             }
         }
         </mat-nav-list>
-        <div class="add-account">
-          <button mat-stroked-button color="primary" class="full-width">Add account</button>
-        </div>
-
+      }
+    <div class="add-account">
+        <button mat-stroked-button color="primary" class="full-width">Add account</button>
+    </div>
+      
         <!-- Collapse/expand toggle at bottom -->
-        <div class="toggle-btn">
-        <button mat-icon-button (click)="toggleSidenav()">
-            <mat-icon>
-            {{ _collapsed ? 'chevron_right' : 'chevron_left' }}
-            </mat-icon>
-        </button>
-        </div>
+    <div class="toggle-btn">
+    <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>
+        {{ _collapsed ? 'chevron_right' : 'chevron_left' }}
+        </mat-icon>
+    </button>
+    </div>
+      
     }
   </mat-sidenav>
 
