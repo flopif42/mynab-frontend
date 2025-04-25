@@ -1,15 +1,22 @@
 <mat-nav-list>
 @for (label of _accountLabelKeys; track label) {
-    <a mat-list-item>{{ AccountLabel[label] }}</a>
+    <a mat-list-item (click)="toggle(label)" style="cursor: pointer;">
+        <mat-icon matListIcon>
+            {{ isExpanded(label) ? 'expand_more' : 'chevron_right' }}
+        </mat-icon>
+        {{ AccountLabel[label] }}
+    </a>
     @for (account of _accounts.get(label); track account.id) {
-        <a mat-list-item routerLink="/account/{{account.id}}">
-            <div matLine class="account_name">
-                {{ account.name }}
-            </div>
-            <div matLine class="account_balance">
-                {{ account.balance | formatAmount }}
-            </div>
-        </a>
+        @if (isExpanded(label)) {
+            <a mat-list-item routerLink="/account/{{account.id}}">
+                <div matLine class="account_name">
+                    {{ account.name }}
+                </div>
+                <div matLine class="account_balance">
+                    {{ account.balance | formatAmount }}
+                </div>
+            </a>
+        }
     }
 }
 </mat-nav-list>

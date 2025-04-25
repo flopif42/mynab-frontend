@@ -28,6 +28,7 @@ export class AccountListComponent implements OnInit {
     ];
 
     _accounts: Map<AccountLabel, Account[]> = new Map();    
+    _expandedSections = new Set<AccountLabel>();
     _selectedAccount: string | null = '';
 
     constructor(private route: ActivatedRoute, private accountService: AccountService) { }
@@ -41,6 +42,18 @@ export class AccountListComponent implements OnInit {
 
     isSelectedAccount(accountId: number): boolean {
         return accountId == parseInt(this._selectedAccount)
+    }
+
+    isExpanded(label: AccountLabel): boolean {
+        return this._expandedSections.has(label);
+    }
+
+    toggle(label: AccountLabel) {
+        if (this._expandedSections.has(label)) {
+            this._expandedSections.delete(label);
+        } else {
+            this._expandedSections.add(label);
+        }
     }
 
     parseInt(someNumber: string): number {
