@@ -27,43 +27,21 @@
       </a>
     </mat-nav-list>
 
+    <!-- If the sidenav is not collapsed, display "Add account" button and list of accounts -->
     @if (!_collapsed) {
-        <mat-nav-list>
-        @for (label of _accountLabelKeys; track label) {
-            <a mat-list-item (click)="toggle(label)" style="cursor: pointer;">
-                <mat-icon matListIcon>
-                    {{ isExpanded(label) ? 'expand_more' : 'chevron_right' }}
-                </mat-icon>
-                {{ AccountLabel[label] }}
-            </a>
-            @for (account of _accounts.get(label); track account.id) {
-                @if (isExpanded(label)) {
-                    <a mat-list-item routerLink="/account/{{account.id}}">
-                        <div matLine class="account_name">
-                            {{ account.name }}
-                        </div>
-                        <div matLine class="account_balance">
-                            {{ account.balance | formatAmount }}
-                        </div>
-                    </a>
-                }
-            }
-        }
-        </mat-nav-list>
-      }
-    <div class="add-account">
-        <button mat-stroked-button color="primary" class="full-width">Add account</button>
-    </div>
+        <div class="add-account">
+            <button mat-stroked-button color="primary" class="full-width">Add account</button>
+        </div>  
+    }
       
-        <!-- Collapse/expand toggle at bottom -->
+    <!-- Collapse/expand toggle at bottom -->
     <div class="toggle-btn">
-    <button mat-icon-button (click)="toggleSidenav()">
-        <mat-icon>
-        {{ _collapsed ? 'chevron_right' : 'chevron_left' }}
-        </mat-icon>
-    </button>
+        <button mat-icon-button (click)="toggleSidenav()">
+            <mat-icon>
+                {{ _collapsed ? 'chevron_right' : 'chevron_left' }}
+            </mat-icon>
+        </button>
     </div>
-      
     }
   </mat-sidenav>
 
