@@ -21,10 +21,11 @@ export class UserComponent implements OnInit {
     constructor(private userService: UserService) { }
 
     ngOnInit() {
-       // this.getUserProfile()
+       this.getUserProfile()
     }
-    /*
+    
     getUserProfile() {
+        /*
         this.userService.getProfile().subscribe(
             response => {
                 this._user = response;
@@ -32,7 +33,6 @@ export class UserComponent implements OnInit {
             error => {
                 console.error('in getUserProfile() error')
             }
-        )
+        )*/
     };
-    */
 }
