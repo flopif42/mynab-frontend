@@ -47,7 +47,7 @@ export const routes: Routes = [
     },
     {
         path: 'user',
-        title: 'User Settings',
+        title: 'User profile',
         component: UserComponent,
     },
     {
