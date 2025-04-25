@@ -6,7 +6,7 @@ import { AccountService } from './account.service'
 import { Account } from './account.model'
 import { TransactionComponent } from '../transaction/transaction.component';
 
-enum AccountLabel {
+export enum AccountLabel {
     CASH,
     TRACKING,
     CLOSED
