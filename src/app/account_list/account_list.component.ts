@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { materialImports } from '../material';
 import { FormatAmountPipe } from '../format-amount.pipe';
 import { AccountService } from '../account/account.service'
 import { Account } from '../account/account.model'
@@ -15,7 +16,7 @@ export enum AccountLabel {
     selector: 'app-account_list',
     templateUrl: './account_list.component.html',
     styleUrl: './account_list.component.css',
-    imports: [ReactiveFormsModule, RouterLink, FormatAmountPipe]
+    imports: [ReactiveFormsModule, RouterLink, FormatAmountPipe, materialImports]
 })
 export class AccountListComponent implements OnInit {
     AccountLabel = AccountLabel;

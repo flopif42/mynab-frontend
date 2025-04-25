@@ -1,21 +1,26 @@
+<mat-nav-list>
+    @for (label of _accountLabelKeys; track label) {
+        <a mat-list-item>{{ AccountLabel[label] }}</a>
+    }
+</mat-nav-list>
+
+<!--
 <table>
     <tr>
         <td class="account_list">
-            <fieldset>
-                <legend>List of accounts</legend>
-                @for (label of _accountLabelKeys; track label) {
-                <div>{{ AccountLabel[label] }}</div>
-                <table>
-                    @for (account of _accounts.get(label); track account.id) {
-                    <tr>
-                        <td><a routerLink="/account/{{account.id}}" class="account_name" [class]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
-                        <td>{{ account.balance | formatAmount  }}</td>
-                    </tr>
-                    }
-                </table>
-                <br>
+        @for (label of _accountLabelKeys; track label) {
+            <div>{{ AccountLabel[label] }}</div>
+            <table>
+                @for (account of _accounts.get(label); track account.id) {
+                <tr>
+                    <td><a routerLink="/account/{{account.id}}" class="account_name" [class]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
+                    <td>{{ account.balance | formatAmount  }}</td>
+                </tr>
                 }
-            </fieldset>
+            </table>
+            <br>
+            }
         </td>
     </tr>
 </table>
+-->
