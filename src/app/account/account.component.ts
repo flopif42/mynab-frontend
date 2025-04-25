@@ -6,19 +6,18 @@ import { AccountService } from './account.service'
 import { Account } from './account.model'
 import { TransactionComponent } from '../transaction/transaction.component';
 
+enum AccountLabel {
+    CASH,
+    TRACKING,
+    CLOSED
+}
+
 @Component({
     selector: 'app-account',
     templateUrl: './account.component.html',
     styleUrl: './account.component.css',
     imports: [ReactiveFormsModule, TransactionComponent, RouterLink, FormatAmountPipe]
 })
-
- enum AccountLabel {
-    CASH,
-    TRACKING,
-    CLOSED
-}
-
 export class AccountComponent implements OnInit {
     _newAccountForm = new FormGroup({
         account_type: new FormControl(1, [Validators.required]),
