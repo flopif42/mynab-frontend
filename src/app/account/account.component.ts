@@ -12,19 +12,20 @@ import { TransactionComponent } from '../transaction/transaction.component';
     styleUrl: './account.component.css',
     imports: [ReactiveFormsModule, TransactionComponent, RouterLink, FormatAmountPipe]
 })
+
+ enum AccountLabel {
+    CASH,
+    TRACKING,
+    CLOSED
+}
+
 export class AccountComponent implements OnInit {
     _newAccountForm = new FormGroup({
         account_type: new FormControl(1, [Validators.required]),
         account_name: new FormControl('', [Validators.required])
     });
 
-    _accountLabels = {
-        0: 'CASH',
-        1: 'TRACKING',
-        2: 'CLOSED'
-    };
-
-    _accounts: Map<number, Account[]> = new Map();    
+    _accounts: Map<AccountLabel, Account[]> = new Map();    
     _selectedAccount: string | null = '';
 
     constructor(private route: ActivatedRoute, private accountService: AccountService) { }
@@ -52,11 +53,11 @@ export class AccountComponent implements OnInit {
                 accountsFromApi.forEach((account: Account) => {
                     let accountLabel;
                     if (account.status == 0) {
-                        accountLabel = 2; // closed account
+                        accountLabel = AccountLabel.CLOSED;
                     } else if (account.type == 1) {
-                        accountLabel = 0; // cash (on-budget) account
+                        accountLabel = AccountLabel.CASH;
                     } else {
-                        accountLabel = 1; // tracking (off-budget) account
+                        accountLabel = AccountLabel.TRACKING;
                     }
 
                     if (this._accounts.has(accountLabel)) {
