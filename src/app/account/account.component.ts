@@ -1,8 +1,7 @@
 /* account.component.ts */
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { FormatAmountPipe } from '../format-amount.pipe';
+import { ActivatedRoute } from '@angular/router';
 import { AccountService } from './account.service'
 import { Account } from './account.model'
 import { TransactionComponent } from '../transaction/transaction.component';
@@ -17,7 +16,7 @@ export enum AccountLabel {
     selector: 'app-account',
     templateUrl: './account.component.html',
     styleUrl: './account.component.css',
-    imports: [ReactiveFormsModule, TransactionComponent, RouterLink, FormatAmountPipe]
+    imports: [ReactiveFormsModule, TransactionComponent]
 })
 export class AccountComponent implements OnInit {
     _newAccountForm = new FormGroup({
