@@ -1,12 +1,13 @@
 import { Component, Injectable } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { materialImports } from './material';
+import { AccountComponent } from './account/account.component';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    imports: [RouterLink, RouterOutlet, materialImports]
+    imports: [RouterLink, RouterOutlet, materialImports, AccountComponent]
 })
 
 @Injectable({
