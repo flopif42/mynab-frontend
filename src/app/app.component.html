@@ -27,11 +27,8 @@
       </a>
     </mat-nav-list>
 
-    <!-- If the sidenav is not collapsed, display "Add account" button and list of accounts -->
+    <!-- If the sidenav is not collapsed, display list of accounts and "Add account" button -->
     @if (!_collapsed) {
-        <div class="add-account">
-            <button mat-stroked-button color="primary" class="full-width">Add account</button>
-        </div>  
         <mat-nav-list>
         @for (label of _accountLabelKeys; track label) {
 	        <a mat-list-item (click)="toggle(label)" style="cursor: pointer;">
@@ -50,6 +47,9 @@
 	        }
         }
         </mat-nav-list>
+        <div class="add-account">
+            <button mat-stroked-button color="primary" class="full-width">Add account</button>
+        </div>  
     }
       
     <!-- Collapse/expand toggle at bottom -->
