@@ -44,6 +44,7 @@ export class AppComponent implements OnInit {
     constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private userService: UserService) { }
 
     ngOnInit() {
+        this.getCollapsePreferences()
         this.listAccounts()
         this.route.paramMap.subscribe(params => {
             this._selectedAccount = params.get('id_account')!;
