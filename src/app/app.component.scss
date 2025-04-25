@@ -37,21 +37,21 @@ mat-nav-list {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%; /* ensure it fills the mat-list-item’s width */
+    width: 100%; 
 }
 
 .account_name {
     display: inline;
     color: blue;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .account_balance {
     display: inline;
     color: green;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .mdc-list-item.mdc-list-item--with-one-line {
-    height: 36px;
+    height: 32px;
 }
