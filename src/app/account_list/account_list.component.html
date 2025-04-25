@@ -3,8 +3,8 @@
     <a mat-list-item>{{ AccountLabel[label] }}</a>
     @for (account of _accounts.get(label); track account.id) {
         <a mat-list-item routerLink="/account/{{account.id}}">
-            <span>{{ account.name }}</span>
-            <span>{{ account.balance | formatAmount }}</span>
+            <div class="account_name">{{ account.name }}</div>
+            <div class="account_balance">{{ account.balance | formatAmount }}</div>
         </a>
     }
 }
