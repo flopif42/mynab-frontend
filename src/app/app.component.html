@@ -9,19 +9,19 @@
   >
     <!-- Main nav items -->
     <mat-nav-list>
-      <a mat-list-item routerLink="/budget" class="nav_item">
+      <a mat-list-item routerLink="/budget">
         <mat-icon matListItemIcon>account_balance_wallet</mat-icon>
         @if (!_collapsed) { <span>Budget</span> }
       </a>
-      <a class="nav_item" mat-list-item routerLink="/payee">
+      <a mat-list-item routerLink="/payee">
         <mat-icon matListItemIcon>person_apron</mat-icon>
         @if (!_collapsed) { <span>Payees</span> }
       </a>
-      <a class="nav_item" mat-list-item routerLink="/category">
+      <a mat-list-item routerLink="/category">
         <mat-icon matListItemIcon>label</mat-icon>
         @if (!_collapsed) { <span>Categories</span> }
       </a>
-      <a class="nav_item" mat-list-item routerLink="/accounts">
+      <a mat-list-item routerLink="/accounts">
         <mat-icon matListItemIcon>account_balance</mat-icon>
         @if (!_collapsed) { <span>All accounts</span> }
       </a>
