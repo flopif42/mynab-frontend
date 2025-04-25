@@ -9,3 +9,7 @@
     color: green;
     font-size: 12px;
 }
+
+.mdc-list-item.mdc-list-item--with-one-line {
+    height: 36px;
+}
