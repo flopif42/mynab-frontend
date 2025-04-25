@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { materialImports } from './material';
 import { FormatAmountPipe } from './format-amount.pipe';
 import { AccountService } from './account/account.service'
+import { UserService } from './user/user.service'
+import { UserProfile } from './user/user.model'
 import { Account } from './account/account.model'
 
 export enum AccountLabel {
@@ -33,12 +35,13 @@ export class AppComponent implements OnInit {
     ];
 
     _isLoggedIn = false;
-    _collapsed = false;
+    _isSidenavCollapsed = false;
     _accounts: Map<AccountLabel, Account[]> = new Map();
-    _expandedSections = new Set<AccountLabel>();
+    _collapsedSections = new Set<AccountLabel>();
     _selectedAccount: string | null = '';
+    _user: UserProfile;
 
-    constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService) { }
+    constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private userService: UserService) { }
 
     ngOnInit() {
         this.listAccounts()
@@ -51,20 +54,40 @@ export class AppComponent implements OnInit {
         return accountId == parseInt(this._selectedAccount)
     }
 
-    isExpanded(label: AccountLabel): boolean {
-        return this._expandedSections.has(label);
+    isSectionCollapsed(label: AccountLabel): boolean {
+        return this._collapsedSections.has(label);
     }
 
     toggle(label: AccountLabel) {
-        if (this._expandedSections.has(label)) {
-            this._expandedSections.delete(label);
+        if (this._collapsedSections.has(label)) {
+            this._collapsedSections.delete(label);
         } else {
-            this._expandedSections.add(label);
+            this._collapsedSections.add(label);
         }
     }
 
     parseInt(someNumber: string): number {
         return parseInt(someNumber)
+    }
+
+    getCollapsePreferences() {
+        this.userService.getProfile().subscribe(
+            response => {
+                this._user = response;
+                if (this._user.ui_collapse_cash == 1) {
+                    this._collapsedSections.add(AccountLabel.CASH)
+                }
+                if (this._user.ui_collapse_tracking == 1) {
+                    this._collapsedSections.add(AccountLabel.TRACKING)
+                }
+                if (this._user.ui_collapse_closed == 1) {
+                    this._collapsedSections.add(AccountLabel.CLOSED)
+                }
+            },
+            error => {
+                console.error('in getUserProfile() error')
+            }
+        )
     }
 
     listAccounts() {

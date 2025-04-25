@@ -5,14 +5,6 @@ import { PayeeService } from './payee.service'
 import { Payee } from './payee.model'
 import { Sortable } from 'sortablejs';
 
-/*
-interface Account {
-    id: number;
-    name: string;
-    balance: number;
-}
-*/
-
 @Component({
     selector: 'app-payee',
     templateUrl: './payee.component.html',
