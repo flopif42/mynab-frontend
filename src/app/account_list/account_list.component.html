@@ -1,7 +1,13 @@
 <mat-nav-list>
-    @for (label of _accountLabelKeys; track label) {
-        <a mat-list-item>{{ AccountLabel[label] }}</a>
+@for (label of _accountLabelKeys; track label) {
+    <a mat-list-item>{{ AccountLabel[label] }}</a>
+    @for (account of _accounts.get(label); track account.id) {
+        <a mat-list-item routerLink="/account/{{account.id}}">
+            <span>{{ account.name }}</span>
+            <span>{{ account.balance | formatAmount }}</span>
+        </a>
     }
+}
 </mat-nav-list>
 
 <!--
@@ -14,7 +20,7 @@
                 @for (account of _accounts.get(label); track account.id) {
                 <tr>
                     <td><a routerLink="/account/{{account.id}}" class="account_name" [class]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
-                    <td>{{ account.balance | formatAmount  }}</td>
+                    <td>{{ account.balance | formatAmount }}</td>
                 </tr>
                 }
             </table>
