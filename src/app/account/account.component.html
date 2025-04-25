@@ -3,10 +3,10 @@
         <td class="account_list">
             <fieldset>
                 <legend>List of accounts</legend>
-
-                <div>CASH</div>
+                @for (label of AccountLabel; track label.index) {
+                <div>{{ label }}</div>
                 <table>
-                    @for (account of _accounts.get(AccountLabel.CASH); track account.id) {
+                    @for (account of _accounts.get(label); track account.id) {
                     <tr>
                         <td><a routerLink="/account/{{account.id}}" class="account_name" [class]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
                         <td>{{ account.balance | formatAmount  }}</td>
@@ -14,7 +14,7 @@
                     }
                 </table>
                 <br>
-
+                }
             </fieldset>
             <form [formGroup]="_newAccountForm" (ngSubmit)="onClickCreateAccount()">
                 <fieldset>
