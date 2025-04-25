@@ -13,6 +13,6 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     getProfile(): Observable<UserProfile> {
-        return this.http.get<Object>(this.m_endpoint + '/profile')
+        return this.http.get<UserProfile>(this.m_endpoint + '/profile')
     }
 }
