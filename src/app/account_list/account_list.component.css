@@ -1,13 +1,11 @@
 .account_name {
+    display: inline;
     color: blue;
     font-size: 14px;
 }
 
 .account_balance {
+    display: inline;
     color: green;
     font-size: 12px;
-}
-
-.mat-mdc-list-item.mdc-list-item--with-leading-icon.mdc-list-item--with-one-line {
-    height: 30px
 }
