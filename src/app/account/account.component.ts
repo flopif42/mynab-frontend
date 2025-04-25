@@ -20,11 +20,18 @@ export enum AccountLabel {
     imports: [ReactiveFormsModule, TransactionComponent, RouterLink, FormatAmountPipe]
 })
 export class AccountComponent implements OnInit {
-    public AccountLabel = AccountLabel;
     _newAccountForm = new FormGroup({
         account_type: new FormControl(1, [Validators.required]),
         account_name: new FormControl('', [Validators.required])
     });
+
+    AccountLabel = AccountLabel;
+
+    _accountLabelKeys = [
+        AccountLabel.CASH,
+        AccountLabel.TRACKING,
+        AccountLabel.CLOSED
+    ] as AccountLabel[];
 
     _accounts: Map<AccountLabel, Account[]> = new Map();    
     _selectedAccount: string | null = '';
