@@ -4,7 +4,7 @@
         <td class="account_list">
             <fieldset>
                 <legend>List of accounts</legend>
-                @for (label of _accountLabelKeys; track label.index) {
+                @for (label of _accountLabelKeys; track label) {
                 <div>{{ label }}</div>
                 <table>
                     @for (account of _accounts.get(label); track account.id) {
