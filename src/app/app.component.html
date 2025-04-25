@@ -39,7 +39,7 @@
         @for (label of _accountLabelKeys; track label) {
 	        <a mat-list-item (click)="toggle(label)" style="cursor: pointer;">
 		        <mat-icon matListIcon>
-			        {{ isExpanded(label) ? 'expand_more' : 'chevron_right' }}
+			        {{ !isSectionCollapsed(label) ? 'expand_more' : 'chevron_right' }}
 		        </mat-icon>
 		        <span class="account_section">{{ AccountLabel[label] }}</span>
 	        </a>

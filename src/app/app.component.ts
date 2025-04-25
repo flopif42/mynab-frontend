@@ -128,7 +128,7 @@ export class AppComponent implements OnInit {
     }
 
     toggleSidenav() {
-        this._collapsed = !this._collapsed;
+        this._isSidenavCollapsed = !this._isSidenavCollapsed;
     }
 
 }
