@@ -17,6 +17,7 @@
                 <br>
                 }
             </fieldset>
+            <!--
             <form [formGroup]="_newAccountForm" (ngSubmit)="onClickCreateAccount()">
                 <fieldset>
                     <legend>Add new account</legend>
@@ -34,6 +35,7 @@
                     <button type="submit">Create</button>
                 </fieldset>
             </form>
+            -->
         </td>
         <td class="txn_list">
             <app-transaction (_transactionChanged)="onTransactionsChanged()" [_selectedAccount]="this._selectedAccount"></app-transaction>
