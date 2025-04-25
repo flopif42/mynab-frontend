@@ -18,14 +18,10 @@ export class AccountComponent implements OnInit {
         account_name: new FormControl('', [Validators.required])
     });
 
-    _accountTypes = [
-        { "id": 1, "label": 'On-budget' },
-        { "id": 2, "label": 'Off-budget' }
-    ];
-
-    _accountStatuses = {
-        1: 'Open',
-        0: 'Closed'
+    _accountLabels = {
+        0: 'CASH',
+        1: 'TRACKING',
+        2: 'CLOSED'
     };
 
     _accounts: Map<number, Account[]> = new Map();    
@@ -54,11 +50,19 @@ export class AccountComponent implements OnInit {
                 const accountsFromApi: Account[] = response
                 this._accounts.clear()
                 accountsFromApi.forEach((account: Account) => {
-                    const typeKey = account.type;
-                    if (this._accounts.has(typeKey)) {
-                        this._accounts.get(typeKey)!.push(account);
+                    let accountLabel;
+                    if (account.status == 0) {
+                        accountLabel = 2; // closed account
+                    } else if (account.type == 1) {
+                        accountLabel = 0; // cash (on-budget) account
                     } else {
-                        this._accounts.set(typeKey, [account])
+                        accountLabel = 1; // tracking (off-budget) account
+                    }
+
+                    if (this._accounts.has(accountLabel)) {
+                        this._accounts.get(accountLabel)!.push(account);
+                    } else {
+                        this._accounts.set(accountLabel, [account])
                     }
                 })
             },

@@ -3,21 +3,13 @@
         <td class="account_list">
             <fieldset>
                 <legend>List of accounts</legend>
-                @for (accountType of _accountTypes; track accountType.id) {
-                <div>{{ accountType.label }} accounts</div>
+                @for (accountLabel of _accountLabels; track accountLabel) {
+                <div>{{ _accountLabels[accountLabel] }}</div>
                 <table>
-                    @for (account of _accounts.get(accountType.id); track account.id) {
+                    @for (account of _accounts.get(accountLabel); track account.id) {
                     <tr>
-                        <td>
-                            <a class="account_status {{ _accountStatuses[account.status].toLowerCase() }}" href="javascript:void(0);" (click)="onClickStatusAccount(account.id, account.status)">{{ _accountStatuses[account.status].toUpperCase() }}</a>
-                        </td>
                         <td><a routerLink="/account/{{account.id}}" class="account_name" [class]="{'selected': this.isSelectedAccount(account.id)}">{{ account.name }}</a></td>
                         <td>{{ account.balance | formatAmount  }}</td>
-                        <td>
-                            @if (account.can_be_deleted) {
-                            <a href="javascript:void(0);" (click)="onClickDeleteAccount(account.id)">Delete</a>
-                            }
-                        </td>
                     </tr>
                     }
                 </table>
