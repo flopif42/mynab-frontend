@@ -15,7 +15,7 @@ export enum AccountLabel {
     selector: 'app-account_list',
     templateUrl: './account_list.component.html',
     styleUrl: './account_list.component.css',
-    imports: [ReactiveFormsModule, TransactionComponent, RouterLink, FormatAmountPipe]
+    imports: [ReactiveFormsModule, RouterLink, FormatAmountPipe]
 })
 export class AccountListComponent implements OnInit {
     AccountLabel = AccountLabel;
