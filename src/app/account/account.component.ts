@@ -1,3 +1,4 @@
+/* account.component.ts */
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -19,6 +20,7 @@ export enum AccountLabel {
     imports: [ReactiveFormsModule, TransactionComponent, RouterLink, FormatAmountPipe]
 })
 export class AccountComponent implements OnInit {
+    public AccountLabel = AccountLabel;
     _newAccountForm = new FormGroup({
         account_type: new FormControl(1, [Validators.required]),
         account_name: new FormControl('', [Validators.required])
