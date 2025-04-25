@@ -25,7 +25,6 @@ export class UserComponent implements OnInit {
     }
     
     getUserProfile() {
-        /*
         this.userService.getProfile().subscribe(
             response => {
                 this._user = response;
@@ -33,6 +32,6 @@ export class UserComponent implements OnInit {
             error => {
                 console.error('in getUserProfile() error')
             }
-        )*/
+        )
     };
 }
