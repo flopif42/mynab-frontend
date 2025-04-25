@@ -39,7 +39,7 @@
 	        </a>
 	        @for (account of _accounts.get(label); track account.id) {
 		        @if (isExpanded(label)) {
-			        <a class="account-row" mat-list-item routerLink="/account/{{account.id}}">
+			        <a routerLink="/account/{{account.id}}" class="account-row">
 				        <div matLine class="account_name">{{ account.name }}</div>
 				        <div matLine class="account_balance">{{ account.balance | formatAmount }}&euro;</div>
 			        </a>
