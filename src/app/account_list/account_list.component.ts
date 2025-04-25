@@ -15,7 +15,6 @@ export enum AccountLabel {
 @Component({
     selector: 'app-account_list',
     templateUrl: './account_list.component.html',
-    styleUrls: ['../app.component.scss'],
     imports: [ReactiveFormsModule, RouterLink, FormatAmountPipe, materialImports]
 })
 export class AccountListComponent implements OnInit {
