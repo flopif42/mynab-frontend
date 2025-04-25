@@ -31,7 +31,7 @@ export class AccountComponent implements OnInit {
         AccountLabel.CASH,
         AccountLabel.TRACKING,
         AccountLabel.CLOSED
-    ] as AccountLabel[];
+    ];
 
     _accounts: Map<AccountLabel, Account[]> = new Map();    
     _selectedAccount: string | null = '';
