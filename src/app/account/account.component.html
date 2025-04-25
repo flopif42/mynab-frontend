@@ -5,7 +5,7 @@
             <fieldset>
                 <legend>List of accounts</legend>
                 @for (label of _accountLabelKeys; track label) {
-                <div>{{ label }}</div>
+                <div>{{ AccountLabel[label] }}</div>
                 <table>
                     @for (account of _accounts.get(label); track account.id) {
                     <tr>
