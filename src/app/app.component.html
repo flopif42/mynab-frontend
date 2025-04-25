@@ -35,7 +35,7 @@
 		        <mat-icon matListIcon>
 			        {{ isExpanded(label) ? 'expand_more' : 'chevron_right' }}
 		        </mat-icon>
-		        <div class="account_section">{{ AccountLabel[label] }}</div>
+		        <span class="account_section">{{ AccountLabel[label] }}</span>
 	        </a>
 	        @for (account of _accounts.get(label); track account.id) {
 		        @if (isExpanded(label)) {
