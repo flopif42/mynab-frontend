@@ -41,7 +41,7 @@
 		        @if (isExpanded(label)) {
 			        <a mat-list-item routerLink="/account/{{account.id}}">
 				        <div matLine class="account_name">{{ account.name }}</div>
-				        <div matLine class="account_balance">{{ account.balance | formatAmount }}</div>
+				        <div matLine class="account_balance">{{ account.balance | formatAmount }}&euro;</div>
 			        </a>
 		        }
 	        }
