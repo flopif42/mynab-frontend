@@ -42,7 +42,9 @@ export class AppComponent implements OnInit {
 
     initAccountSections() {
         console.log('Call initAccountSections()');
+        console.log(Object.keys(AccountSection))
         Object.keys(AccountSection).forEach((key, index) => {
+            console.log(key + ' : ' + index);
             this._accountSections.push(key);
         })
     }
