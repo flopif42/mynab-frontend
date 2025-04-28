@@ -24,25 +24,15 @@ bootstrapApplication(RootComponent, {
                 component: AboutComponent,
             },
             {
-                path: 'about',
-                title: 'About2',
-                component: AboutComponent,
+                path: 'login',
+                title: 'Login',
+                component: LoginComponent,
             },
-            /*
             {
                 path: 'sign-up',
                 title: 'Signup',
                 component: SignupComponent,
             },
-            */
-            /*
-            {
-                path: 'login',
-                //path: '',
-                title: 'Login',
-                component: LoginComponent,
-            }
-            */
             /*,
             {
                 path: 'app',
