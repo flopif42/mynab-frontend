@@ -1,5 +1,6 @@
 /* about.component.ts */
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment'
 import { materialImports } from '../utils/material';
@@ -7,7 +8,7 @@ import { materialImports } from '../utils/material';
 @Component({
     selector: 'app-about',
     templateUrl: 'about.component.html',
-    imports: [materialImports]
+    imports: [materialImports, RouterModule]
 })
 export class AboutComponent {
     m_endpoint = environment.apiUrl;
