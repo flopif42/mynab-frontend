@@ -18,12 +18,13 @@ import { AuthInterceptor } from './app/utils/log-auth-interceptor.service'
 bootstrapApplication(RootComponent, {
     providers: [
         provideRouter([
-            /*
+            
             {
-                path: '',
+                path: 'about',
                 title: 'About',
                 component: AboutComponent,
             },
+            /*
             {
                 path: 'sign-up',
                 title: 'Signup',
