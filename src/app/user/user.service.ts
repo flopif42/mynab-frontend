@@ -17,6 +17,6 @@ export class UserService {
     }
 
     logout(): Observable<Object> {
-        return this.http.get<Object>(this.m_endpoint + '/logout')
+        return this.http.post<Object>(this.m_endpoint + '/logout')
     }
 }
