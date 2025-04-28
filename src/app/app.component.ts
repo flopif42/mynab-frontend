@@ -52,6 +52,9 @@ export class AppComponent implements OnInit {
     }
 
     isSectionCollapsed(section: AccountSection): boolean {
+        console.log('in isSectionCollapsed()');
+        console.log(this._collapsedSections);
+        console.log(section);
         return this._collapsedSections.has(section);
     }
 
