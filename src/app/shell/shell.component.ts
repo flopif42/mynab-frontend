@@ -71,7 +71,6 @@ export class ShellComponent implements OnInit {
         this.userService.getProfile().subscribe(
             response => {
                 this._user = response;
-                console.log(this._user);
                 if (this._user.ui_collapse_cash) {
                     this._collapsedSections.add(0)
                 }
