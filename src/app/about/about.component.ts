@@ -1,9 +1,10 @@
 /* about.component.ts */
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment'
 import { materialImports } from '../utils/material';
+import { UserService } from '../user/user.service'
 
 @Component({
     selector: 'app-about',
@@ -21,9 +22,22 @@ export class AboutComponent {
     _dbServerStatus: string;
     _dbVersion: string;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private userService: UserService, private router: Router) { }
+
+    isUserLoggedin() {
+        this.userService.getProfile().subscribe(
+            response => {
+                console.log('User is logged in')
+                this.router.navigate(['/accounts'])
+            },
+            error => {
+                console.log('User is not logged in')
+            }
+        )
+    }
 
     ngOnInit() {
+        this.isUserLoggedin();
         this.getServerInfo();
         this._clientVersion = environment.jenkinsBuildNumber;
         this._apiDocUrl = environment.apiUrl + '/apidocs/';
