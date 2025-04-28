@@ -43,9 +43,9 @@
 		        </mat-icon>
 		        <span class="account_section">{{ section }}</span>
 	        </a>
-            @if (!isSectionCollapsed(section)) {
-	            @for (account of _accounts.get(section); track account.id) {
-			    <a mat-list-item routerLink="/account/{{account.id}}">
+            @if (!isSectionCollapsed(index)) {
+	            @for (account of _accounts.get(index); track account.id) {
+			    <a mat-list-item routerLink="/account/{{ account.id }}">
                     <div class="account-row">
 				        <div matLine class="account_name">{{ account.name }}</div>
 				        <div matLine class="account_balance">{{ account.balance | formatAmount }}&euro;</div>
