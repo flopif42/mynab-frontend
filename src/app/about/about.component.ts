@@ -23,9 +23,9 @@ export class AboutComponent {
 
     ngOnInit() {
         this.getServerInfo();
-        this._clientVersion = environment.jenkinsBuildNumber
-        this._apiDocUrl = environment.apiUrl + '/apidocs/'
-        this._loginUrl = '/login'
+        this._clientVersion = environment.jenkinsBuildNumber;
+        this._apiDocUrl = environment.apiUrl + '/apidocs/';
+        this._loginUrl = environment.apiUrl + '/login/';
     }
 
     public getServerInfo() {
