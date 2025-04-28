@@ -27,20 +27,23 @@ export class AppComponent implements OnInit {
     _collapsedSections = new Set<AccountSection>();
     _selectedAccount: string | null = '';
     _user: UserProfile;
-    _accountSections = [
-        AccountSection.CASH,
-        AccountSection.TRACKING,
-        AccountSection.CLOSED
-    ];
+    _accountSections = [];
 
     constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private userService: UserService) { }
 
     ngOnInit() {
+        this.initAccountSections();
         this.getCollapsePreferences()
         this.listAccounts()
         this.route.paramMap.subscribe(params => {
             this._selectedAccount = params.get('id_account')!;
         });
+    }
+
+    initAccountSections() {
+        Object.keys(AccountSection).forEach((key) => {
+            this._accountSections.push(key);
+        })
     }
 
     isSelectedAccount(accountId: number): boolean {
