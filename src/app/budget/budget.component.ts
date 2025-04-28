@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormatAmountPipe } from '../format-amount.pipe'
+import { FormatAmountPipe } from '../utils/format-amount.pipe'
 import { BudgetService } from './budget.service'
 import { Budget } from './budget.model'
 import { ParentCategory } from '../category/parent.category.model'
