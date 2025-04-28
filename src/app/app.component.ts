@@ -41,9 +41,7 @@ export class AppComponent implements OnInit {
     }
 
     initAccountSections() {
-        console.log('Call initAccountSections()');
         Object.keys(AccountSection).filter((v) => isNaN(Number(v))).forEach((key, index) => {
-            console.log(key + ' : ' + index);
             this._accountSections.push(key);
         })
     }

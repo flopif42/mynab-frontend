@@ -7,8 +7,8 @@ import { UserProfile } from './user.model';
     templateUrl: 'user.component.html',
 })
 export class UserComponent implements OnInit {
-    _user: UserProfile;
-
+//    _user: UserProfile;
+    _user = {};
     constructor(private userService: UserService) { }
 
     ngOnInit() {
