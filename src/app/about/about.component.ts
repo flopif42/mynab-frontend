@@ -15,6 +15,7 @@ export class AboutComponent {
     _apiServerStatus: string;
     _apiVersion: string;
     _apiDocUrl: string;
+    _loginUrl: string;
     _dbServerStatus: string;
     _dbVersion: string;
 
@@ -24,6 +25,7 @@ export class AboutComponent {
         this.getServerInfo();
         this._clientVersion = environment.jenkinsBuildNumber
         this._apiDocUrl = environment.apiUrl + '/apidocs/'
+        this._loginUrl = environment.apiUrl + '/login'
     }
 
     public getServerInfo() {
