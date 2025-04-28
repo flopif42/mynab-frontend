@@ -36,12 +36,12 @@
     <!-- If the sidenav is not collapsed, display list of accounts and "Add account" button -->
     @if (!_isSidenavCollapsed) {
         <mat-nav-list>
-        @for (section of _accountSections; track section) {
-	        <a mat-list-item (click)="toggleCollapse(section)" style="cursor: pointer;">
+        @for (section of _accountSections; track section; let index = $index) {
+	        <a mat-list-item (click)="toggleCollapse(index)" style="cursor: pointer;">
 		        <mat-icon matListIcon>
-			        {{ !isSectionCollapsed(section) ? 'expand_more' : 'chevron_right' }}
+			        {{ !isSectionCollapsed(index) ? 'expand_more' : 'chevron_right' }}
 		        </mat-icon>
-		        <span class="account_section">{{ _accountSections[section] }}</span>
+		        <span class="account_section">{{ section }}</span>
 	        </a>
             @if (!isSectionCollapsed(section)) {
 	            @for (account of _accounts.get(section); track account.id) {
