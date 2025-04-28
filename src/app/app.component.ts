@@ -4,7 +4,7 @@ import { OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { materialImports } from './material';
-import { FormatAmountPipe } from './format-amount.pipe';
+import { FormatAmountPipe } from './utils/format-amount.pipe';
 import { AccountService } from './account/account.service'
 import { UserService } from './user/user.service'
 import { UserProfile } from './user/user.model'
