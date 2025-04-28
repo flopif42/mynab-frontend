@@ -69,7 +69,7 @@ bootstrapApplication(RootComponent, {
                     },
                     {
                         path: 'user',
-                        title: 'User profile',
+                        title: 'User settings',
                         component: UserComponent,
                     }
                 ]
