@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment'
-import { materialImports } from '../material';
+import { materialImports } from '../utils/material';
 
 @Component({
     selector: 'app-about',
