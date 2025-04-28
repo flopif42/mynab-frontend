@@ -21,11 +21,11 @@ import { Account } from './account/account.model'
     providedIn: 'root'
 })
 export class AppComponent implements OnInit {
-    _accountSections = {
-        0: 'CASH',
-        1: 'TRACKING',
-        2: 'CLOSED'
-    }
+    _accountSections = [
+        'CASH',
+        'TRACKING',
+        'CLOSED'
+    ];
 
     _isLoggedIn = false;
     _isSidenavCollapsed = false;
