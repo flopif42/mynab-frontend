@@ -27,7 +27,11 @@ export class AppComponent implements OnInit {
     _collapsedSections = new Set<AccountSection>();
     _selectedAccount: string | null = '';
     _user: UserProfile;
-    _accountSections = AccountSection;
+    _accountSections = [
+        AccountSection.CASH,
+        AccountSection.TRACKING,
+        AccountSection.CLOSED
+    ];
 
     constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private userService: UserService) { }
 
