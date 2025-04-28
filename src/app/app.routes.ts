@@ -8,47 +8,13 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { ShellComponent } from './shell/shell.component';
 
 export const routes: Routes = [
     {
-        path: '',
-        title: 'About',
-        component: AboutComponent,
-    },
-    {
-        path: 'account/:id_account',
-        title: 'Accounts',
-        component: AccountComponent,
-    },
-    {
-        path: 'accounts',
-        title: 'All accounts',
-        component: AccountComponent,
-    },
-    {
-        path: 'budget',
-        title: 'Budget',
-        component: BudgetComponent,
-    },
-    {
-        path: 'payee',
-        title: 'Payees',
-        component: PayeeComponent,
-    },
-    {
-        path: 'category',
-        title: 'Categories',
-        component: CategoryComponent,
-    },
-    {
-        path: 'transaction',
-        title: 'Transactions',
-        component: TransactionComponent,
-    },
-    {
-        path: 'user',
-        title: 'User profile',
-        component: UserComponent,
+        path: 'sign-up',
+        title: 'Signup',
+        component: SignupComponent,
     },
     {
         path: 'login',
@@ -56,8 +22,49 @@ export const routes: Routes = [
         component: LoginComponent,
     },
     {
-        path: 'sign-up',
-        title: 'Signup',
-        component: SignupComponent,
-    }
+        path: '',
+        component: ShellComponent,
+        children: [
+            {
+                path: '',
+                title: 'About',
+                component: AboutComponent,
+            },
+            {
+                path: 'account/:id_account',
+                title: 'Accounts',
+                component: AccountComponent,
+            },
+            {
+                path: 'accounts',
+                title: 'All accounts',
+                component: AccountComponent,
+            },
+            {
+                path: 'budget',
+                title: 'Budget',
+                component: BudgetComponent,
+            },
+            {
+                path: 'payee',
+                title: 'Payees',
+                component: PayeeComponent,
+            },
+            {
+                path: 'category',
+                title: 'Categories',
+                component: CategoryComponent,
+            },
+            {
+                path: 'transaction',
+                title: 'Transactions',
+                component: TransactionComponent,
+            },
+            {
+                path: 'user',
+                title: 'User profile',
+                component: UserComponent,
+            }
+        ]
+    },
 ];
