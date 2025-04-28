@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
     }
 
     initAccountSections() {
+        console.log('Call initAccountSections()');
         Object.keys(AccountSection).forEach((key) => {
             this._accountSections.push(key);
         })
