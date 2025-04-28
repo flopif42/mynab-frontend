@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
     constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private userService: UserService) { }
 
     ngOnInit() {
+        this._user = new UserProfile();
         this.initAccountSections();
         this.getCollapsePreferences()
         this.listAccounts()
