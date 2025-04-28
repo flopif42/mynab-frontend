@@ -2,7 +2,7 @@ export class UserProfile {
     email_address: string;
     first_name: string;
     last_name: string;
-    ui_collapse_cash: number;
-    ui_collapse_closed: number;
-    ui_collapse_tracking: number;
+    ui_collapse_cash: boolean;
+    ui_collapse_closed: boolean;
+    ui_collapse_tracking: boolean;
 }

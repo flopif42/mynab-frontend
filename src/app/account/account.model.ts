@@ -6,3 +6,9 @@ export class Account {
     balance: number;
     can_be_deleted: number;
 }
+
+export enum AccountSection {
+    CASH,
+    TRACKING,
+    CLOSED
+}

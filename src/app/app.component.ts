@@ -8,13 +8,7 @@ import { FormatAmountPipe } from './utils/format-amount.pipe';
 import { AccountService } from './account/account.service'
 import { UserService } from './user/user.service'
 import { UserProfile } from './user/user.model'
-import { Account } from './account/account.model'
-
-export enum AccountLabel {
-    CASH,
-    TRACKING,
-    CLOSED
-}
+import { Account, AccountSection } from './account/account.model'
 
 @Component({
     selector: 'app-root',
@@ -27,17 +21,10 @@ export enum AccountLabel {
     providedIn: 'root'
 })
 export class AppComponent implements OnInit {
-    AccountLabel = AccountLabel;
-    _accountLabelKeys = [
-        AccountLabel.CASH,
-        AccountLabel.TRACKING,
-        AccountLabel.CLOSED
-    ];
-
     _isLoggedIn = false;
     _isSidenavCollapsed = false;
-    _accounts: Map<AccountLabel, Account[]> = new Map();
-    _collapsedSections = new Set<AccountLabel>();
+    _accounts: Map<AccountSection, Account[]> = new Map();
+    _collapsedSections = new Set<AccountSection>();
     _selectedAccount: string | null = '';
     _user: UserProfile;
 
@@ -55,15 +42,15 @@ export class AppComponent implements OnInit {
         return accountId == parseInt(this._selectedAccount)
     }
 
-    isSectionCollapsed(label: AccountLabel): boolean {
-        return this._collapsedSections.has(label);
+    isSectionCollapsed(section: AccountSection): boolean {
+        return this._collapsedSections.has(section);
     }
 
-    toggle(label: AccountLabel) {
-        if (this._collapsedSections.has(label)) {
-            this._collapsedSections.delete(label);
+    toggleCollapse(section: AccountSection) {
+        if (this._collapsedSections.has(section)) {
+            this._collapsedSections.delete(section);
         } else {
-            this._collapsedSections.add(label);
+            this._collapsedSections.add(section);
         }
     }
 
@@ -75,14 +62,14 @@ export class AppComponent implements OnInit {
         this.userService.getProfile().subscribe(
             response => {
                 this._user = response;
-                if (this._user.ui_collapse_cash == 1) {
-                    this._collapsedSections.add(AccountLabel.CASH)
+                if (this._user.ui_collapse_cash) {
+                    this._collapsedSections.add(AccountSection.CASH)
                 }
-                if (this._user.ui_collapse_tracking == 1) {
-                    this._collapsedSections.add(AccountLabel.TRACKING)
+                if (this._user.ui_collapse_tracking) {
+                    this._collapsedSections.add(AccountSection.TRACKING)
                 }
-                if (this._user.ui_collapse_closed == 1) {
-                    this._collapsedSections.add(AccountLabel.CLOSED)
+                if (this._user.ui_collapse_closed) {
+                    this._collapsedSections.add(AccountSection.CLOSED)
                 }
             },
             error => {
@@ -91,26 +78,31 @@ export class AppComponent implements OnInit {
         )
     }
 
+    getAccountSection(account: Account): AccountSection {
+        if (account.status == 0) {
+            return AccountSection.CLOSED;
+        }
+        if (account.type == 1) {
+            return AccountSection.CASH;
+        }
+        return AccountSection.TRACKING;
+    }
+
+    assignSection(account: Account, section: AccountSection) {
+        if (this._accounts.has(section)) {
+            this._accounts.get(section)!.push(account);
+        } else {
+            this._accounts.set(section, [account])
+        }
+    }
+
     listAccounts() {
         this.accountService.getList().subscribe(
             response => {
                 const accountsFromApi: Account[] = response
                 this._accounts.clear()
                 accountsFromApi.forEach((account: Account) => {
-                    let accountLabel;
-                    if (account.status == 0) {
-                        accountLabel = AccountLabel.CLOSED;
-                    } else if (account.type == 1) {
-                        accountLabel = AccountLabel.CASH;
-                    } else {
-                        accountLabel = AccountLabel.TRACKING;
-                    }
-
-                    if (this._accounts.has(accountLabel)) {
-                        this._accounts.get(accountLabel)!.push(account);
-                    } else {
-                        this._accounts.set(accountLabel, [account])
-                    }
+                    this.assignSection(account, this.getAccountSection(account));
                 })
             },
             error => {
