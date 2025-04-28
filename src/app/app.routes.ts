@@ -12,6 +12,11 @@ import { ShellComponent } from './shell/shell.component';
 
 export const routes: Routes = [
     {
+        path: '',
+        title: 'About',
+        component: AboutComponent,
+    },
+    {
         path: 'sign-up',
         title: 'Signup',
         component: SignupComponent,
@@ -22,14 +27,9 @@ export const routes: Routes = [
         component: LoginComponent,
     },
     {
-        path: '',
+        path: 'app',
         component: ShellComponent,
         children: [
-            {
-                path: '',
-                title: 'About',
-                component: AboutComponent,
-            },
             {
                 path: 'account/:id_account',
                 title: 'Accounts',
