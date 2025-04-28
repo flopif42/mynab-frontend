@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
-import { ShellComponent } from '../shell/shell.component'
+// import { ShellComponent } from '../shell/shell.component'
 
 @Component({
     selector: 'login',
@@ -16,7 +16,7 @@ export class LoginComponent {
         password: new FormControl('', [Validators.required])
     });
     _displayLoginErrorMessage = false;
-    constructor(private app: ShellComponent, private router: Router, private authService: AuthService) { }
+    constructor(/*private app: ShellComponent, */private router: Router, private authService: AuthService) { }
 
     // log in button
     onSubmit() {
@@ -27,12 +27,12 @@ export class LoginComponent {
                 (response) => {
                     this._displayLoginErrorMessage = false;
                     this.router.navigate(['/accounts'])
-                    this.app._isLoggedIn = true;
+            //        this.app._isLoggedIn = true;
                 },
                 (error) => {
                     if (error.status == 401) {
                         this._displayLoginErrorMessage = true;
-                        this.app._isLoggedIn = false;
+              //          this.app._isLoggedIn = false;
                     }
                 });
         }

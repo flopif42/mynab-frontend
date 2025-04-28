@@ -1,7 +1,6 @@
-import { Router } from '@angular/router'
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router'
+import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { confirmPasswordValidator } from '../utils/confirm-password.validator';
 import { SignupService, checkEmailResponse } from './signup.service';
 
@@ -11,7 +10,7 @@ import { SignupService, checkEmailResponse } from './signup.service';
     styleUrl: 'signup.component.css',
     imports: [ReactiveFormsModule]
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
     _signupForm = new FormGroup({
         email: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required]),
