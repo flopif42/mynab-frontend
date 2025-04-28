@@ -37,11 +37,6 @@ export class AppComponent implements OnInit {
     constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private userService: UserService) { }
 
     ngOnInit() {
-        if (!this._isLoggedIn) {
-            this.router.navigate(['/login']);
-            return;
-        }
-
         this._user = new UserProfile();
         this.getCollapsePreferences()
         this.listAccounts()
