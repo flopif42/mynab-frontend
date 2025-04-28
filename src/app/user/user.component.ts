@@ -28,7 +28,14 @@ export class UserComponent implements OnInit {
         )
     };
 
-    logout(): void {
-        this.router.navigate(['/']); // Use Angular Router to navigate
+    logout() {
+        this.userService.logout().subscribe(
+            response => {
+                this.router.navigate(['/']);
+            },
+            error => {
+                console.error('in logout() error')
+            }
+        )
     }
 }

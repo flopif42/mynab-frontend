@@ -15,4 +15,8 @@ export class UserService {
     getProfile(): Observable<UserProfile> {
         return this.http.get<UserProfile>(this.m_endpoint + '/profile')
     }
+
+    logout(): Object {
+        return this.http.get<Object>(this.m_endpoint + '/logout')
+    }
 }
