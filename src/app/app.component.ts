@@ -8,7 +8,7 @@ import { FormatAmountPipe } from './utils/format-amount.pipe';
 import { AccountService } from './account/account.service'
 import { UserService } from './user/user.service'
 import { UserProfile } from './user/user.model'
-import { Account, AccountSection } from './account/account.model'
+import { Account } from './account/account.model'
 
 @Component({
     selector: 'app-root',
@@ -21,19 +21,23 @@ import { Account, AccountSection } from './account/account.model'
     providedIn: 'root'
 })
 export class AppComponent implements OnInit {
+    _accountSections = {
+        0: 'CASH',
+        1: 'TRACKING',
+        2: 'CLOSED'
+    }
+
     _isLoggedIn = false;
     _isSidenavCollapsed = false;
-    _accounts: Map<AccountSection, Account[]> = new Map();
-    _collapsedSections = new Set<AccountSection>();
+    _accounts: Map<number, Account[]> = new Map();
+    _collapsedSections = new Set<number>();
     _selectedAccount: string | null = '';
     _user: UserProfile;
-    _accountSections = [];
 
     constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private userService: UserService) { }
 
     ngOnInit() {
         this._user = new UserProfile();
-        this.initAccountSections();
         this.getCollapsePreferences()
         this.listAccounts()
         this.route.paramMap.subscribe(params => {
@@ -41,24 +45,15 @@ export class AppComponent implements OnInit {
         });
     }
 
-    initAccountSections() {
-        Object.keys(AccountSection).filter((v) => isNaN(Number(v))).forEach((key, index) => {
-            this._accountSections.push(key);
-        })
-    }
-
     isSelectedAccount(accountId: number): boolean {
         return accountId == parseInt(this._selectedAccount)
     }
 
-    isSectionCollapsed(section: AccountSection): boolean {
-        console.log('in isSectionCollapsed()');
-        console.log(this._collapsedSections);
-        console.log(section);
+    isSectionCollapsed(section: number): boolean {
         return this._collapsedSections.has(section);
     }
 
-    toggleCollapse(section: AccountSection) {
+    toggleCollapse(section: number) {
         if (this._collapsedSections.has(section)) {
             this._collapsedSections.delete(section);
         } else {
@@ -76,13 +71,13 @@ export class AppComponent implements OnInit {
                 this._user = response;
                 console.log(this._user);
                 if (this._user.ui_collapse_cash) {
-                    this._collapsedSections.add(AccountSection.CASH)
+                    this._collapsedSections.add(0)
                 }
                 if (this._user.ui_collapse_tracking) {
-                    this._collapsedSections.add(AccountSection.TRACKING)
+                    this._collapsedSections.add(1)
                 }
                 if (this._user.ui_collapse_closed) {
-                    this._collapsedSections.add(AccountSection.CLOSED)
+                    this._collapsedSections.add(2)
                 }
             },
             error => {
@@ -91,17 +86,17 @@ export class AppComponent implements OnInit {
         )
     }
 
-    getAccountSection(account: Account): AccountSection {
+    getAccountSection(account: Account): number {
         if (account.status == 0) {
-            return AccountSection.CLOSED;
+            return 2;
         }
         if (account.type == 1) {
-            return AccountSection.CASH;
+            return 0;
         }
-        return AccountSection.TRACKING;
+        return 1;
     }
 
-    assignSection(account: Account, section: AccountSection) {
+    assignSection(account: Account, section: number) {
         if (this._accounts.has(section)) {
             this._accounts.get(section)!.push(account);
         } else {

@@ -41,7 +41,7 @@
 		        <mat-icon matListIcon>
 			        {{ !isSectionCollapsed(section) ? 'expand_more' : 'chevron_right' }}
 		        </mat-icon>
-		        <span class="account_section">{{ section }}</span>
+		        <span class="account_section">{{ _accountSections[section] }}</span>
 	        </a>
             @if (!isSectionCollapsed(section)) {
 	            @for (account of _accounts.get(section); track account.id) {
