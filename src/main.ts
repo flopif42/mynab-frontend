@@ -33,9 +33,8 @@ bootstrapApplication(RootComponent, {
                 title: 'Signup',
                 component: SignupComponent,
             },
-            /*,
             {
-                path: 'app',
+                path: '',
                 component: ShellComponent,
                 children: [
                     {
@@ -74,7 +73,7 @@ bootstrapApplication(RootComponent, {
                         component: UserComponent,
                     }
                 ]
-            },*/
+            },
         ]
         ),
         provideHttpClient(
