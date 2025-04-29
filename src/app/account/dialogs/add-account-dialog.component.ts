@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
     MAT_DIALOG_DATA,
