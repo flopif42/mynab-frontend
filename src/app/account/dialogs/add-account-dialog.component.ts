@@ -32,9 +32,11 @@ export interface DialogData {
     ],
 })
 export class AddAccountDialogComponent {
-    readonly dialogRef = inject(MatDialogRef<AddAccountDialogComponent>);
+//    readonly dialogRef = inject();
     readonly data = inject<DialogData>(MAT_DIALOG_DATA);
     readonly animal = model(this.data.animal);
+
+    constructor(private dialogRef: MatDialogRef<AddAccountDialogComponent>) { }
 
     onNoClick(): void {
         this.dialogRef.close();
