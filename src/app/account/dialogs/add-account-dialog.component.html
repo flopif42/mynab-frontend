@@ -1,26 +1,25 @@
 <h2 mat-dialog-title>Add Unlinked Account</h2>
-<mat-dialog-content [formGroup]="accountForm" class="dialog-content">
+<mat-dialog-content [formGroup]="_addAccountForm" class="dialog-content">
   <p class="subtitle">
     <strong>Let’s go!</strong> And don’t worry—if you change your mind, you can link your account at any time.
   </p>
 
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Give it a nickname</mat-label>
-    <input matInput formControlName="nickname" />
+    <input matInput formControlName="account_name" />
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>What type of account are you adding?</mat-label>
-    <mat-select formControlName="type">
-      <mat-option *ngFor="let type of accountTypes" [value]="type">
-        {{ type }}
-      </mat-option>
+    <mat-select formControlName="account_type">
+        <mat-option [value]="1">On-budget</mat-option>
+        <mat-option [value]="2">Off-budget</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>What is your current account balance?</mat-label>
-    <input matInput formControlName="balance" type="number" />
+    <input matInput formControlName="account_balance" type="number" />
   </mat-form-field>
 </mat-dialog-content>
 
