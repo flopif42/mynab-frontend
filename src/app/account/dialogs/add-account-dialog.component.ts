@@ -6,6 +6,7 @@ import { materialImports } from '../../utils/material'
 @Component({
     selector: 'add-account-dialog',
     templateUrl: 'add-account-dialog.component.html',
+    styleUrls: ['./add-account-dialog.component.scss'],
     imports: [FormsModule, ReactiveFormsModule, materialImports]
 })
 export class AddAccountDialogComponent implements OnInit {
