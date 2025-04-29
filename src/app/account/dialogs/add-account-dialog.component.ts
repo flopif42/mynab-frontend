@@ -1,4 +1,4 @@
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { materialImports } from '../../utils/material';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -11,7 +11,7 @@ export const addAccountDialogConfig = {
 @Component({
     selector: 'add-account-dialog',
     templateUrl: './add-account-dialog.component.html',
-    imports: [materialImports],
+    imports: [materialImports, ReactiveFormsModule],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddAccountDialogComponent {
