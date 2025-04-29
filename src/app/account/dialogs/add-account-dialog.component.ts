@@ -13,7 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 export interface AccountInfo {
-    account_name: string;
+    accountName: string;
 }
 
 @Component({
@@ -31,8 +31,8 @@ export interface AccountInfo {
     ],
 })
 export class AddAccountDialogComponent {
-    readonly accountParams = inject<AccountInfo>(MAT_DIALOG_DATA);
-    readonly account_name = model(this.accountParams.account_name);
+    readonly _accountParams = inject<AccountInfo>(MAT_DIALOG_DATA);
+    readonly _account_name = model(this._accountParams.accountName);
 
     constructor(private dialogRef: MatDialogRef<AddAccountDialogComponent>) { }
 
