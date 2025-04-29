@@ -31,7 +31,7 @@
       </a>
     </mat-nav-list>
 
-    <!-- If the sidenav is not collapsed, display list of accounts and "Add account" button -->
+    <!-- If the sidenav isn't collapsed, display the list of accounts and "Add account" button -->
     @if (!_isSidenavCollapsed) {
         <mat-nav-list>
         @for (section of _accountSections; track section; let index = $index) {
@@ -54,7 +54,7 @@
         }
         </mat-nav-list>
         <div class="add-account">
-            <button mat-stroked-button color="primary" class="full-width">Add account</button>
+            <button mat-stroked-button color="primary" class="full-width" (click)="openAddAccountDialog()">Add account</button>
         </div>  
     }
       

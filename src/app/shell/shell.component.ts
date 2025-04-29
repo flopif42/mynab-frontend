@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { materialImports } from '../utils/material';
+import { MatDialog } from '@angular/material/dialog';
 import { FormatAmountPipe } from '../utils/format-amount.pipe';
 import { AccountService } from '../account/account.service'
 import { UserService } from '../user/user.service'
@@ -14,7 +15,6 @@ import { Account } from '../account/account.model'
     styleUrls: ['./shell.component.scss'],
     imports: [RouterLink, RouterOutlet, materialImports, ReactiveFormsModule, FormatAmountPipe]
 })
-
 export class ShellComponent implements OnInit {
     _accountSections = [
         'CASH',
@@ -29,7 +29,10 @@ export class ShellComponent implements OnInit {
     _selectedAccount: string | null = '';
     _user: UserProfile;
 
-    constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private userService: UserService) { }
+    constructor(private router: Router, private route: ActivatedRoute,
+        private accountService: AccountService, private userService: UserService,
+        private dialog: MatDialog
+    ) { }
 
     ngOnInit() {
         this._user = new UserProfile();
@@ -37,6 +40,14 @@ export class ShellComponent implements OnInit {
         this.listAccounts()
         this.route.paramMap.subscribe(params => {
             this._selectedAccount = params.get('id_account')!;
+        });
+    }
+
+    openAddAccountDialog() {
+        const dialogRef = this.dialog.open(DialogContentExampleDialog);
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
         });
     }
 
@@ -121,3 +132,11 @@ export class ShellComponent implements OnInit {
     }
 
 }
+
+@Component({
+    selector: 'dialog-content-example-dialog',
+    templateUrl: './dialog-content-example-dialog.html',
+    imports: [materialImports],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DialogContentExampleDialog { }
