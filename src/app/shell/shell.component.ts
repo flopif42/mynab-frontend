@@ -45,7 +45,10 @@ export class ShellComponent implements OnInit {
     }
 
     openAddAccountDialog() {
-        const dialogRef = this.dialog.open(AddAccountDialogComponent);
+        const dialogRef = this.dialog.open(AddAccountDialogComponent, {
+            height: '600px',
+            width: '400px'
+        });
 
         dialogRef.afterClosed().subscribe(result => {
             console.log(`Dialog result: ${result}`);
