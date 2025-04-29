@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import {
-    MatDialogActions,
-    MatDialogContent,
-    MatDialogRef,
-    MatDialogTitle,
-} from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { MatDialogRef } from '@angular/material/dialog';
+import { materialImports } from '../../utils/material';
+
 
 @Component({
     selector: 'add-account-dialog',
     templateUrl: 'add-account-dialog.component.html',
+<<<<<<< HEAD
+    imports: [ReactiveFormsModule, FormsModule, materialImports],
+=======
     imports: [
         MatFormFieldModule,
         MatInputModule,
@@ -22,20 +19,21 @@ import { MatInputModule } from '@angular/material/input';
         MatDialogContent,
         MatDialogActions
     ],
+>>>>>>> parent of 2087de5 (y)
 })
 export class AddAccountDialogComponent implements OnInit {
-    form: FormGroup;
+    _addAccountForm: FormGroup;
 
     constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<AddAccountDialogComponent>) {}
 
     ngOnInit() {
-        this.form = this.fb.group({
+        this._addAccountForm = this.fb.group({
             account_name: ['', [Validators.required]]
         });
     }
 
     save() {
-        this.dialogRef.close(this.form.value);
+        this.dialogRef.close(this._addAccountForm.value);
     }
 
     close() {
