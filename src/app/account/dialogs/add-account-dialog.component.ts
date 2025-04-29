@@ -1,5 +1,5 @@
-import { Component, inject, model } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
     MAT_DIALOG_DATA,
@@ -11,10 +11,6 @@ import {
 } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
-export interface AccountInfo {
-    accountName: string;
-}
 
 @Component({
     selector: 'add-account-dialog',
@@ -31,12 +27,15 @@ export interface AccountInfo {
     ],
 })
 export class AddAccountDialogComponent {
-    readonly _accountParams = inject<AccountInfo>(MAT_DIALOG_DATA);
-    readonly _account = model(this._accountParams);
+    form: FormGroup;
 
-    constructor(private dialogRef: MatDialogRef<AddAccountDialogComponent>) { }
+    constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<AddAccountDialogComponent>) {}
 
-    onNoClick(): void {
+    save() {
+        this.dialogRef.close(this.form.value);
+    }
+
+    close() {
         this.dialogRef.close();
     }
 }

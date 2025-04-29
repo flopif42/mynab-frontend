@@ -1,14 +1,14 @@
 <h2 mat-dialog-title>Add Account</h2>
-<mat-dialog-content>
+<mat-dialog-content [formGroup]="form">
   <p>What's your favorite animal?</p>
   <mat-form-field>
     <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="_account.accountName" />
+    <input matInput formControlName="account_name" />
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="_account()" cdkFocusInitial>Ok</button>
+    <button class="mat-raised-button"(click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
 </mat-dialog-actions>
 
 <!-- 

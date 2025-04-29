@@ -47,17 +47,12 @@ export class ShellComponent implements OnInit {
     }
 
     /* Add account dialog */
-    readonly _newAccountName = signal('');
-
     openAddAccountDialog() {
-        const dialogRef = this.dialog.open(AddAccountDialogComponent, {
-            data: { newAccountName: this._newAccountName() },
-        });
+        const dialogRef = this.dialog.open(AddAccountDialogComponent);
 
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
             if (result !== undefined) {
-                this._newAccountName.set(result);
                 console.log(result);
             }
         });
