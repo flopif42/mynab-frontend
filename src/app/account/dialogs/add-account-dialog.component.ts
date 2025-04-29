@@ -15,13 +15,15 @@ export const addAccountDialogConfig = {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddAccountDialogComponent {
-    constructor(private dialogRef: MatDialogRef<AddAccountDialogComponent>) { }
+    _addAccountForm: FormGroup;
 
-    _addAccountForm = new FormGroup({
-        account_type: new FormControl(1, [Validators.required]),
-        account_name: new FormControl('', [Validators.required]),
-        account_balance: new FormControl('', [Validators.required, Validators.pattern(/^-?\d+(\.\d{1,2})?$/)])
-    });
+    constructor(private dialogRef: MatDialogRef<AddAccountDialogComponent>) {
+        this._addAccountForm = new FormGroup({
+            account_type: new FormControl(1, [Validators.required]),
+            account_name: new FormControl('', [Validators.required]),
+            account_balance: new FormControl('', [Validators.required, Validators.pattern(/^-?\d+(\.\d{1,2})?$/)])
+        });
+    }
 
     onSubmit() {
         if (this._addAccountForm.valid) {
