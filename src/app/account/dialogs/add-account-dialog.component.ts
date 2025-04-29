@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject, model, signal } from '@angular/core';
+import { Component, inject, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
     MAT_DIALOG_DATA,
-    MatDialog,
     MatDialogActions,
     MatDialogClose,
     MatDialogContent,
@@ -19,8 +18,8 @@ export interface DialogData {
 }
 
 @Component({
-    selector: 'dialog-overview-example-dialog',
-    templateUrl: 'dialog-overview-example-dialog.html',
+    selector: 'add-account-dialog',
+    templateUrl: 'add-account-dialog.component.html',
     imports: [
         MatFormFieldModule,
         MatInputModule,

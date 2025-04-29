@@ -59,6 +59,7 @@ export class ShellComponent implements OnInit {
             console.log('The dialog was closed');
             if (result !== undefined) {
                 this.animal.set(result);
+                console.log(result);
             }
         });
     }
