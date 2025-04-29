@@ -1,10 +1,8 @@
-import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
-    MAT_DIALOG_DATA,
     MatDialogActions,
-    MatDialogClose,
     MatDialogContent,
     MatDialogRef,
     MatDialogTitle,
@@ -26,10 +24,16 @@ import { MatInputModule } from '@angular/material/input';
         MatDialogClose,
     ],
 })
-export class AddAccountDialogComponent {
+export class AddAccountDialogComponent implements OnInit {
     form: FormGroup;
 
     constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<AddAccountDialogComponent>) {}
+
+    ngOnInit() {
+        this.form = this.fb.group({
+            account_name: ['', [Validators.required]]
+        });
+    }
 
     save() {
         this.dialogRef.close(this.form.value);
