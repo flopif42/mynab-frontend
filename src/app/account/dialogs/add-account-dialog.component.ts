@@ -31,7 +31,7 @@ export class AddAccountDialogComponent {
     _addAccountForm = new FormGroup({
         account_type: new FormControl(1, [Validators.required]),
         account_name: new FormControl('', [Validators.required]),
-        account_balance: new FormControl('', ['', [Validators.required, Validators.pattern(/^-?\d+(\.\d{1,2})?$/)]])
+        account_balance: new FormControl('', [Validators.required, Validators.pattern(/^-?\d+(\.\d{1,2})?$/)])
     });
 
     onSubmit() {
