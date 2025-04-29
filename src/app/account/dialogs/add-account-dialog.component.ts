@@ -20,8 +20,7 @@ import { MatInputModule } from '@angular/material/input';
         MatButtonModule,
         MatDialogTitle,
         MatDialogContent,
-        MatDialogActions,
-        MatDialogClose,
+        MatDialogActions
     ],
 })
 export class AddAccountDialogComponent implements OnInit {
