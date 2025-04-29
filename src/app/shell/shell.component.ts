@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { materialImports } from '../utils/material';
@@ -8,6 +8,7 @@ import { AccountService } from '../account/account.service'
 import { UserService } from '../user/user.service'
 import { UserProfile } from '../user/user.model'
 import { Account } from '../account/account.model'
+import { AddAccountDialogComponent } from '../account/dialogs/add-account-dialog.component'
 
 @Component({
     selector: 'app-shell',
@@ -44,7 +45,7 @@ export class ShellComponent implements OnInit {
     }
 
     openAddAccountDialog() {
-        const dialogRef = this.dialog.open(DialogContentExampleDialog);
+        const dialogRef = this.dialog.open(AddAccountDialogComponent);
 
         dialogRef.afterClosed().subscribe(result => {
             console.log(`Dialog result: ${result}`);
@@ -132,11 +133,3 @@ export class ShellComponent implements OnInit {
     }
 
 }
-
-@Component({
-    selector: 'dialog-content-example-dialog',
-    templateUrl: './dialog-content-example-dialog.html',
-    imports: [materialImports],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class DialogContentExampleDialog { }
