@@ -51,7 +51,7 @@ export class ShellComponent implements OnInit {
 
     openAddAccountDialog() {
         const dialogRef = this.dialog.open(AddAccountDialogComponent, {
-            accountParams: { newAccountName: this.animal() },
+            data: { newAccountName: this.animal() },
         });
 
         dialogRef.afterClosed().subscribe(result => {
