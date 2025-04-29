@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { materialImports } from '../utils/material';
+import { materialImports } from '../../utils/material';
 
 @Component({
     selector: 'add-account-dialog',
