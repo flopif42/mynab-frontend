@@ -1,8 +1,6 @@
-import { Component, Injectable } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { materialImports } from '../utils/material';
 import { FormatAmountPipe } from '../utils/format-amount.pipe';
 import { AccountService } from '../account/account.service'
@@ -17,11 +15,6 @@ import { Account } from '../account/account.model'
     imports: [RouterLink, RouterOutlet, materialImports, ReactiveFormsModule, FormatAmountPipe]
 })
 
-/*
-@Injectable({
-    providedIn: 'root'
-})
-*/
 export class ShellComponent implements OnInit {
     _accountSections = [
         'CASH',
@@ -63,10 +56,6 @@ export class ShellComponent implements OnInit {
         }
     }
 
-    parseInt(someNumber: string): number {
-        return parseInt(someNumber)
-    }
-
     getCollapsePreferences() {
         this.userService.getProfile().subscribe(
             response => {
@@ -87,21 +76,19 @@ export class ShellComponent implements OnInit {
         )
     }
 
-    getAccountSection(account: Account): number {
-        if (account.status == 0) {
-            return 2;
-        }
-        if (account.type == 1) {
-            return 0;
-        }
-        return 1;
-    }
+    assignSection(account: Account) {
+        let section = 0; // -> section CASH
 
-    assignSection(account: Account, section: number) {
+        if (account.type == 2) { // type = off-budget
+            section = 1; // -> section TRACKING
+        }
+        if (account.status == 0) { // status = closed
+            section = 2; // -> section CLOSED
+        }
         if (this._accounts.has(section)) {
             this._accounts.get(section)!.push(account);
         } else {
-            this._accounts.set(section, [account])
+            this._accounts.set(section, [account]);
         }
     }
 
@@ -111,7 +98,7 @@ export class ShellComponent implements OnInit {
                 const accountsFromApi: Account[] = response
                 this._accounts.clear()
                 accountsFromApi.forEach((account: Account) => {
-                    this.assignSection(account, this.getAccountSection(account));
+                    this.assignSection(account);
                 })
             },
             error => {
