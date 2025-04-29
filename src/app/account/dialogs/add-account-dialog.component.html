@@ -1,11 +1,32 @@
-<h2 mat-dialog-title>Add account</h2>
-<mat-dialog-content class="mat-typography">
-    <p>Account name</p>
-    <mat-form-field>
-        <input matInput placeholder="Account name" formControlName="account_name">
-    </mat-form-field>
+<h2 mat-dialog-title>Add Unlinked Account</h2>
+<mat-dialog-content [formGroup]="accountForm" class="dialog-content">
+  <p class="subtitle">
+    <strong>Let’s go!</strong> And don’t worry—if you change your mind, you can link your account at any time.
+  </p>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Give it a nickname</mat-label>
+    <input matInput formControlName="nickname" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>What type of account are you adding?</mat-label>
+    <mat-select formControlName="type">
+      <mat-option *ngFor="let type of accountTypes" [value]="type">
+        {{ type }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>What is your current account balance?</mat-label>
+    <input matInput formControlName="balance" type="number" />
+  </mat-form-field>
 </mat-dialog-content>
+
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Add</button>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-flat-button color="primary" [disabled]="!accountForm.valid" (click)="onSubmit()">
+    Next
+  </button>
 </mat-dialog-actions>
