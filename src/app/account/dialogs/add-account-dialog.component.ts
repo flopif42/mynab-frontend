@@ -32,7 +32,7 @@ export interface AccountInfo {
 })
 export class AddAccountDialogComponent {
     readonly _accountParams = inject<AccountInfo>(MAT_DIALOG_DATA);
-    readonly _account_name = model(this._accountParams.accountName);
+    readonly _account = model(this._accountParams);
 
     constructor(private dialogRef: MatDialogRef<AddAccountDialogComponent>) { }
 
