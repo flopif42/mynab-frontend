@@ -1,28 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import {
-    MatDialogActions,
-    MatDialogContent,
-    MatDialogRef,
-    MatDialogTitle,
-} from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle, } from '@angular/material/dialog';
 
 @Component({
     selector: 'add-account-dialog',
     templateUrl: 'add-account-dialog.component.html',
     imports: [
+        FormsModule,
         ReactiveFormsModule,
+
+        materialImports/*,
+        
         MatFormFieldModule,
         MatInputModule,
-        FormsModule,
         MatButtonModule,
         MatDialogTitle,
         MatDialogContent,
         MatDialogActions
-    ],
+        */
+    ]
 })
 export class AddAccountDialogComponent implements OnInit {
     _addAccountForm: FormGroup;
