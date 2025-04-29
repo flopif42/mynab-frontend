@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, inject, model, signal } from '@angular/core';
+import { ChangeDetectionStrategy,  inject, model, signal } from '@angular/core';
 
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -49,7 +49,6 @@ export class ShellComponent implements OnInit {
     /* Add account dialog */
     readonly animal = signal('');
     readonly name = model('');
-    readonly dialog = inject(MatDialog);
 
     openAddAccountDialog() {
         const dialogRef = this.dialog.open(AddAccountDialogComponent, {
@@ -60,15 +59,6 @@ export class ShellComponent implements OnInit {
             console.log('The dialog was closed');
             if (result !== undefined) {
                 this.animal.set(result);
-            }
-        });
-    }
-
-        const dialogRef = this.dialog.open(AddAccountDialogComponent, addAccountDialogConfig);
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                console.log('New account:', result);
             }
         });
     }
