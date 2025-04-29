@@ -8,7 +8,7 @@ import { AccountService } from '../account/account.service'
 import { UserService } from '../user/user.service'
 import { UserProfile } from '../user/user.model'
 import { Account } from '../account/account.model'
-import { AddAccountDialogComponent } from '../account/dialogs/add-account-dialog.component'
+import { AddAccountDialogComponent, addAccountDialogConfig } from '../account/dialogs/add-account-dialog.component'
 
 @Component({
     selector: 'app-shell',
@@ -45,10 +45,7 @@ export class ShellComponent implements OnInit {
     }
 
     openAddAccountDialog() {
-        const dialogRef = this.dialog.open(AddAccountDialogComponent, {
-            height: '600px',
-            width: '400px'
-        });
+        const dialogRef = this.dialog.open(AddAccountDialogComponent, addAccountDialogConfig);
 
         dialogRef.afterClosed().subscribe(result => {
             console.log(`Dialog result: ${result}`);

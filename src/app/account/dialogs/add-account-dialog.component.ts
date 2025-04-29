@@ -8,3 +8,8 @@ import { materialImports } from '../../utils/material';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddAccountDialogComponent { }
+
+export const addAccountDialogConfig = {
+    width: '360px',
+    height: '610px'
+}
