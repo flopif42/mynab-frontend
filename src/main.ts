@@ -2,6 +2,8 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { withInterceptorsFromDi, HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 
+import { TestComponent } from './app/test/test.component';
+
 import { RootComponent } from './app/root.component';
 import { AboutComponent } from './app/about/about.component';
 import { AccountComponent } from './app/account/account.component';
@@ -32,6 +34,11 @@ bootstrapApplication(RootComponent, {
                 path: 'sign-up',
                 title: 'Signup',
                 component: SignupComponent,
+            },
+            {
+                path: 'test',
+                title: 'Testing stuff',
+                component: TestComponent,
             },
             {
                 path: '',

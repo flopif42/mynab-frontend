@@ -6,7 +6,6 @@ import { environment } from '../../environments/environment'
 import { materialImports } from '../utils/material';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../user/user.service'
-import { FormFieldAppearanceExample } from '../test/test.component'
 
 @Component({
     selector: 'app-about',
@@ -59,9 +58,5 @@ export class AboutComponent {
                 this._apiServerStatus = 'Down'
             }
         )
-    }
-
-    onClickTest() {
-        const dialogRef = this.dialog.open(FormFieldAppearanceExample);
     }
 }
