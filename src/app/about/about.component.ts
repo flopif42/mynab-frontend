@@ -4,7 +4,9 @@ import { RouterModule, Router } from '@angular/router';
 import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment'
 import { materialImports } from '../utils/material';
+import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../user/user.service'
+import { FormFieldAppearanceExample } from '../test/test.component'
 
 @Component({
     selector: 'app-about',
@@ -22,7 +24,7 @@ export class AboutComponent {
     _dbServerStatus: string;
     _dbVersion: string;
 
-    constructor(private http: HttpClient, private userService: UserService, private router: Router) { }
+    constructor(private http: HttpClient, private userService: UserService, private router: Router, private dialog: MatDialog) { }
 
     isUserLoggedin() {
         this.userService.getProfile().subscribe(
@@ -57,5 +59,9 @@ export class AboutComponent {
                 this._apiServerStatus = 'Down'
             }
         )
+    }
+
+    onClickTest() {
+        const dialogRef = this.dialog.open(FormFieldAppearanceExample);
     }
 }
