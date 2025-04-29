@@ -13,11 +13,6 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-export const addAccountDialogConfig = {
-    width: '360px',
-    height: '610px'
-}
-
 export interface DialogData {
     animal: string;
     name: string;

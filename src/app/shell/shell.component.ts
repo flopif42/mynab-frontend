@@ -1,3 +1,5 @@
+import { ChangeDetectionStrategy, inject, model, signal } from '@angular/core';
+
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
@@ -8,7 +10,7 @@ import { AccountService } from '../account/account.service'
 import { UserService } from '../user/user.service'
 import { UserProfile } from '../user/user.model'
 import { Account } from '../account/account.model'
-import { AddAccountDialogComponent, addAccountDialogConfig } from '../account/dialogs/add-account-dialog.component'
+import { AddAccountDialogComponent } from '../account/dialogs/add-account-dialog.component'
 
 @Component({
     selector: 'app-shell',
@@ -45,7 +47,23 @@ export class ShellComponent implements OnInit {
     }
 
     /* Add account dialog */
+    readonly animal = signal('');
+    readonly name = model('');
+    readonly dialog = inject(MatDialog);
+
     openAddAccountDialog() {
+        const dialogRef = this.dialog.open(AddAccountDialogComponent, {
+            data: { name: this.name(), animal: this.animal() },
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+            if (result !== undefined) {
+                this.animal.set(result);
+            }
+        });
+    }
+
         const dialogRef = this.dialog.open(AddAccountDialogComponent, addAccountDialogConfig);
 
         dialogRef.afterClosed().subscribe(result => {
