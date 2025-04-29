@@ -1,17 +1,26 @@
-<h2 mat-dialog-title>Add Unlinked Account</h2>
+<h2 mat-dialog-title>Add Account</h2>
+<mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput [(ngModel)]="animal" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="animal()" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>
 
+<!-- 
+<h2 mat-dialog-title>Add Unlinked Account</h2>
 <mat-dialog-content [formGroup]="_addAccountForm" class="dialog-content">
   <p class="subtitle">
     <strong>Let's go!</strong> And don't worry if you change your mind, you can link your account at any time.
   </p>
-
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Give it a nickname</mat-label>
     <input matInput formControlName="account_name" />
   </mat-form-field>
-
-<!--
-
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>What type of account are you adding?</mat-label>
     <mat-select formControlName="account_type">
@@ -19,20 +28,15 @@
         <mat-option [value]="2">Off-budget</mat-option>
     </mat-select>
   </mat-form-field>
-
-
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>What is your current account balance?</mat-label>
     <input matInput formControlName="account_balance" type="number" />
   </mat-form-field>
--->
 </mat-dialog-content>
-<!--
 <mat-dialog-actions align="end">
   <button mat-button (click)="onCancel()">Cancel</button>
   <button mat-flat-button color="primary" [disabled]="!_addAccountForm.valid" (click)="onSubmit()">
     Next
   </button>
 </mat-dialog-actions>
-
 -->

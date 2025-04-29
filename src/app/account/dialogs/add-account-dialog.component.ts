@@ -1,38 +1,48 @@
-import { FormBuilder, Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { materialImports } from '../../utils/material';
-import { MatDialogRef } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, Component, inject, model, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import {
+    MAT_DIALOG_DATA,
+    MatDialog,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogContent,
+    MatDialogRef,
+    MatDialogTitle,
+} from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 export const addAccountDialogConfig = {
     width: '360px',
     height: '610px'
 }
 
+export interface DialogData {
+    animal: string;
+    name: string;
+}
+
 @Component({
-    selector: 'add-account-dialog',
-    templateUrl: './add-account-dialog.component.html',
-    imports: [materialImports, ReactiveFormsModule],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'dialog-overview-example-dialog',
+    templateUrl: 'dialog-overview-example-dialog.html',
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        MatButtonModule,
+        MatDialogTitle,
+        MatDialogContent,
+        MatDialogActions,
+        MatDialogClose,
+    ],
 })
 export class AddAccountDialogComponent {
-    _addAccountForm: FormGroup;
+    readonly dialogRef = inject(MatDialogRef<AddAccountDialogComponent>);
+    readonly data = inject<DialogData>(MAT_DIALOG_DATA);
+    readonly animal = model(this.data.animal);
 
-    constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<AddAccountDialogComponent>) {
-        this._addAccountForm = this.fb.group({
-            account_type: new FormControl(1, [Validators.required]),
-            account_name: new FormControl('', [Validators.required]),
-            account_balance: new FormControl('', [Validators.required, Validators.pattern(/^-?\d+(\.\d{1,2})?$/)])
-        });
-    }
-
-    onSubmit() {
-        if (this._addAccountForm.valid) {
-            this.dialogRef.close(this._addAccountForm.value);
-        }
-    }
-
-    onCancel() {
+    onNoClick(): void {
         this.dialogRef.close();
     }
 }
-

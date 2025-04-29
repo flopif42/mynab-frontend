@@ -44,6 +44,7 @@ export class ShellComponent implements OnInit {
         });
     }
 
+    /* Add account dialog */
     openAddAccountDialog() {
         const dialogRef = this.dialog.open(AddAccountDialogComponent, addAccountDialogConfig);
 
