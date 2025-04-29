@@ -16,17 +16,6 @@ export const addAccountDialogConfig = {
 })
 export class AddAccountDialogComponent {
     constructor(private dialogRef: MatDialogRef<AddAccountDialogComponent>) { }
-    /*
-    _addAccountForm = new FormGroup();
-
-    constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<AddAccountDialogComponent>) {
-        this._addAccountForm = this.fb.group({
-            account_type: new FormControl(1, [Validators.required]),
-            account_name: new FormControl('', [Validators.required]),
-            account_balance: new FormControl('', ['', [Validators.required, Validators.pattern(/^-?\d+(\.\d{1,2})?$/)]])
-        });
-    }
-    */
 
     _addAccountForm = new FormGroup({
         account_type: new FormControl(1, [Validators.required]),
