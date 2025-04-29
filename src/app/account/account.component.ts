@@ -79,21 +79,6 @@ export class AccountComponent implements OnInit {
         this.listAccounts()
     }
 
-    onClickCreateAccount() {
-        if (this._newAccountForm.value && this._newAccountForm.value.account_name && this._newAccountForm.value.account_type) {
-            this.accountService.create(this._newAccountForm.value.account_name, this._newAccountForm.value.account_type)
-                .subscribe(
-                    res => {
-                        console.log("Account created.")
-                        this.listAccounts()
-                    },
-                    error => {
-                        console.error("Error creating account")
-                    }
-                )
-        }
-    }
-
     onClickDeleteAccount(accountId) {
         if (confirm("Are you sure you want to delete this account ?")) {
             this.accountService.delete(accountId)
