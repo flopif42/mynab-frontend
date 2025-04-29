@@ -21,11 +21,11 @@ export class AddAccountDialogComponent implements OnInit {
         });
     }
 
-    save() {
+    onSubmit() {
         this.dialogRef.close(this._addAccountForm.value);
     }
 
-    close() {
+    onCancel() {
         this.dialogRef.close();
     }
 }
