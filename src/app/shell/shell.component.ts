@@ -47,7 +47,7 @@ export class ShellComponent implements OnInit {
     /* Add account dialog */
     openAddAccountDialog() {
         const dialogRef = this.dialog.open(AddAccountDialogComponent, {
-            width: "300px",
+            width: "400px",
             height: "600px"
         });
 
