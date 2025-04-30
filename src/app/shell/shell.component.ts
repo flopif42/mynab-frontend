@@ -52,9 +52,20 @@ export class ShellComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
             if (result !== undefined) {
                 console.log(result);
+                this.accountService.create(result['account_name'], result['account_type'])
+                    .subscribe(
+                        res => {
+                            console.log("Account created.")
+                            this.listAccounts();
+                        },
+                        error => {
+                            console.error("Error creating category")
+                        }
+                    )
+
+
             }
         });
     }
