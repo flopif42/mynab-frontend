@@ -53,7 +53,7 @@ export class ShellComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result !== undefined) {
-                console.log(result);
+                // console.log(result);
                 this.accountService.create(result['account_name'], result['account_type'])
                     .subscribe(
                         res => {
