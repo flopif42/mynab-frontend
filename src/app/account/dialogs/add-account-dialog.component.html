@@ -1,29 +1,29 @@
-<h2 mat-dialog-title class="dialog-title">Add account</h2>
- <button mat-icon-button (click)="onCancel()" class="close-button" aria-label="Close">
-    <mat-icon>close</mat-icon>
-  </button>
+<h2 mat-dialog-title class="dialog-title">
+    Add account
+    <button mat-icon-button (click)="onCancel()" class="close-button" aria-label="Close"><mat-icon>close</mat-icon></button>
+</h2>
 <mat-dialog-content [formGroup]="_addAccountForm" class="dialog-content">
-  <p class="subtitle">
-    <strong>Let's go!</strong>
-  </p>
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Give it a nickname</mat-label>
-    <input matInput formControlName="account_name" />
-  </mat-form-field>
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>What type of account are you adding?</mat-label>
-    <mat-select formControlName="account_type">
-        <mat-option [value]="1">On-budget</mat-option>
-        <mat-option [value]="2">Off-budget</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>What is your current account balance?</mat-label>
-    <input matInput formControlName="account_balance" type="number" />
-  </mat-form-field>
+    <p class="subtitle">
+        <strong>Let's go!</strong>
+    </p>
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Give it a nickname</mat-label>
+        <input matInput formControlName="account_name" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>What type of account are you adding?</mat-label>
+        <mat-select formControlName="account_type">
+            <mat-option [value]="1">On-budget</mat-option>
+            <mat-option [value]="2">Off-budget</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>What is your current account balance?</mat-label>
+        <input matInput formControlName="account_balance" type="number" />
+    </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-flat-button color="primary" [disabled]="!_addAccountForm.valid" (click)="onSubmit()">Done</button>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-flat-button color="primary" [disabled]="!_addAccountForm.valid" (click)="onSubmit()">Done</button>
 </mat-dialog-actions>
 
