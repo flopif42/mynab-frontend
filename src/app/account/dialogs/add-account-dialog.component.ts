@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormsModule, /*FormBuilder, */FormGroup, Validators, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormsModule, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { materialImports } from '../../utils/material'
 
@@ -9,21 +9,7 @@ import { materialImports } from '../../utils/material'
     styleUrls: ['./add-account-dialog.component.scss'],
     imports: [FormsModule, ReactiveFormsModule, materialImports]
 })
-export class AddAccountDialogComponent /*implements OnInit*/ {
-    /*
-    _addAccountForm: FormGroup;
-
-    constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<AddAccountDialogComponent>) {}
-
-    ngOnInit() {
-        this._addAccountForm = this.fb.group({
-            account_name: ['', Validators.required],
-            account_type: ['', Validators.required],
-            account_balance: ['', [Validators.required, Validators.pattern(/^-?\d+(\.\d{1,2})?$/)]]
-        });
-    }
-    */
-
+export class AddAccountDialogComponent {
     constructor(private dialogRef: MatDialogRef<AddAccountDialogComponent>) { }
 
     _addAccountForm = new FormGroup({

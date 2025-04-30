@@ -1,5 +1,11 @@
 <h2 mat-dialog-title>Add account</h2>
+ <button mat-icon-button (click)="onCancel()" class="close-button" aria-label="Close">
+    <mat-icon>close</mat-icon>
+  </button>
 <mat-dialog-content [formGroup]="_addAccountForm" class="dialog-content">
+  <p class="subtitle">
+    <strong>Let's go!</strong>
+  </p>
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Give it a nickname</mat-label>
     <input matInput formControlName="account_name" />
@@ -18,5 +24,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-flat-button color="primary" [disabled]="!_addAccountForm.valid" (click)="onSubmit()">Add</button>
+  <button mat-flat-button color="primary" [disabled]="!_addAccountForm.valid" (click)="onSubmit()">Done</button>
 </mat-dialog-actions>
+
