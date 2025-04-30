@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { materialImports } from '../../utils/material'
@@ -9,14 +9,8 @@ import { materialImports } from '../../utils/material'
     styleUrls: ['./add-account-dialog.component.scss'],
     imports: [FormsModule, ReactiveFormsModule, materialImports]
 })
-export class AddAccountDialogComponent implements AfterViewInit {
-    @ViewChild('accountNameInput') _accountNameInput!: ElementRef<HTMLInputElement>;
-
+export class AddAccountDialogComponent {
     constructor(private dialogRef: MatDialogRef<AddAccountDialogComponent>) { }
-
-    ngAfterViewInit() {
-        setTimeout(() => this._accountNameInput.nativeElement.focus());
-    }
 
     _addAccountForm = new FormGroup({
         account_name: new FormControl('', Validators.required),
