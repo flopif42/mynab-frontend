@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
-import { materialImports } from '../utils/material';
 import { MatDialog } from '@angular/material/dialog';
+import { materialImports } from '../utils/material';
 import { FormatAmountPipe } from '../utils/format-amount.pipe';
 import { AccountService } from '../account/account.service'
 import { UserService } from '../user/user.service'
@@ -136,12 +136,7 @@ export class ShellComponent implements OnInit {
         )
     }
 
-    onTransactionsChanged() {
-        this.listAccounts()
-    }
-
     toggleSidenav() {
         this._isSidenavCollapsed = !this._isSidenavCollapsed;
     }
-
 }
