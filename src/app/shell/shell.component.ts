@@ -23,7 +23,6 @@ export class ShellComponent implements OnInit {
         'CLOSED'
     ];
 
-    _isLoggedIn = false;
     _isSidenavCollapsed = false;
     _accounts: Map<number, Account[]> = new Map();
     _collapsedSections = new Set<number>();
@@ -139,11 +138,6 @@ export class ShellComponent implements OnInit {
 
     onTransactionsChanged() {
         this.listAccounts()
-    }
-
-    logout() {
-        this._isLoggedIn = false
-        this.router.navigate(['/login'])
     }
 
     toggleSidenav() {
